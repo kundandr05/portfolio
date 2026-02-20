@@ -1,0 +1,37 @@
+﻿
+> portfolio@0.1.0 lint
+> eslint
+
+
+C:\Users\kunda\OneDrive\Music\Documents\portfolio\src\components\shared\ParticleBackground.tsx
+  26:9  warning  Unused eslint-disable directive (no problems were reported from '@typescript-eslint/no-unused-vars')
+  27:9  warning  Compilation Skipped: Inline `class` declarations are not supported
+
+Move class declarations outside of components/hooks.
+
+C:\Users\kunda\OneDrive\Music\Documents\portfolio\src\components\shared\ParticleBackground.tsx:27:9
+  25 |
+  26 |         // eslint-disable-next-line @typescript-eslint/no-unused-vars
+> 27 |         class Particle {
+     |         ^^^^^^^^^^^^^^^^
+> 28 |             x: number;
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 29 |             y: number;
+     ΓÇª
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 61 |             }
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 62 |         }
+     | ^^^^^^^^^^ Inline `class` declarations are not supported
+  63 |
+  64 |         const init = () => {
+  65 |             particles = [];
+
+  react-hooks/unsupported-syntax
+
+C:\Users\kunda\OneDrive\Music\Documents\portfolio\src\components\shared\ThemeToggle.tsx
+  14:9  warning  Unused eslint-disable directive (no problems were reported from 'react-hooks/exhaustive-deps')
+
+Γ£û 3 problems (0 errors, 3 warnings)
+  0 errors and 2 warnings potentially fixable with the `--fix` option.
+

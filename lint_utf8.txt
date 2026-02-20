@@ -1,0 +1,63 @@
+﻿
+> portfolio@0.1.0 lint
+> eslint
+
+
+C:\Users\kunda\OneDrive\Music\Documents\portfolio\src\app\about\page.tsx
+  4:26  warning  'Code' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\kunda\OneDrive\Music\Documents\portfolio\src\app\skills\page.tsx
+  4:39  warning  'Wrench' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\kunda\OneDrive\Music\Documents\portfolio\src\components\home\Testimonials.tsx
+  56:86  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  56:98  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+C:\Users\kunda\OneDrive\Music\Documents\portfolio\src\components\projects\ProjectCard.tsx
+  5:8  warning  'Image' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\kunda\OneDrive\Music\Documents\portfolio\src\components\shared\ParticleBackground.tsx
+  26:9  warning  Compilation Skipped: Inline `class` declarations are not supported
+
+Move class declarations outside of components/hooks.
+
+C:\Users\kunda\OneDrive\Music\Documents\portfolio\src\components\shared\ParticleBackground.tsx:26:9
+  24 |         resizeCanvas();
+  25 |
+> 26 |         class Particle {
+     |         ^^^^^^^^^^^^^^^^
+> 27 |             x: number;
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 28 |             y: number;
+     ΓÇª
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 60 |             }
+     | ^^^^^^^^^^^^^^^^^^^^^^
+> 61 |         }
+     | ^^^^^^^^^^ Inline `class` declarations are not supported
+  62 |
+  63 |         const init = () => {
+  64 |             particles = [];
+
+  react-hooks/unsupported-syntax
+
+C:\Users\kunda\OneDrive\Music\Documents\portfolio\src\components\shared\ThemeToggle.tsx
+  15:13  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\kunda\OneDrive\Music\Documents\portfolio\src\components\shared\ThemeToggle.tsx:15:13
+  13 |
+  14 |         if (savedTheme === 'light' || (!savedTheme && !prefersDark)) {
+> 15 |             setIsDark(false);
+     |             ^^^^^^^^^ Avoid calling setState() directly within an effect
+  16 |             document.documentElement.classList.add('light');
+  17 |         } else {
+  18 |             setIsDark(true);  react-hooks/set-state-in-effect
+
+Γ£û 7 problems (3 errors, 4 warnings)
+
