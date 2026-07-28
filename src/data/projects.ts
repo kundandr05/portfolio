@@ -69,6 +69,24 @@ export const projects: Project[] = [
         futureImprovements: "Integrate AI-driven personalized learning paths and advanced analytics."
     },
     {
+        slug: "krishna-leela-chatbot",
+        title: "Krishna Leela Chatbot",
+        description: "A specialized AI conversational agent built to answer queries exclusively about Krishna Leela. Engineered with strict system prompts and API boundaries to prevent out-of-domain topics.",
+        tags: ["AI", "Next.js", "Prompt Engineering", "API"],
+        image: "/project1.jpg",
+        github: "https://github.com/kundandr05/KrishnaLeela",
+        demo: "https://krishna-leela.vercel.app/",
+        demoLabel: "Live Demo",
+        keyFeatures: [
+            "Domain-specific conversational intelligence",
+            "Strict topic-bounding algorithms",
+            "Seamless API key integration and protection"
+        ],
+        architecture: "A Next.js frontend seamlessly communicating with a securely integrated LLM backend API.",
+        challenges: "Designing rigorous prompt guardrails to ensure the chatbot consistently refused to answer off-topic questions without breaking conversational flow.",
+        futureImprovements: "Integrate a specialized vector database (RAG) containing authoritative texts for higher accuracy."
+    },
+    {
         slug: "personal-portfolio-website",
         title: "Personal Portfolio Website",
         description: "Modern portfolio built with Next.js showcasing projects, research publications, technical skills, and professional achievements.",
