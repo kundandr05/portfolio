@@ -14,15 +14,16 @@ export default function Footer() {
                 </div>
 
                 <div className="flex space-x-6">
-                    <a href="#" className="text-gray-400 hover:text-neon-cyan transition-colors duration-300 transform hover:scale-110">
+                    <a href="https://github.com/kundandr05" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-neon-cyan transition-colors duration-300 transform hover:scale-110">
                         <Github className="w-5 h-5" />
                     </a>
-                    <a href="#" className="text-gray-400 hover:text-neon-magenta transition-colors duration-300 transform hover:scale-110">
+                    <a href="https://linkedin.com/in/kundan-d-r-914274310" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-neon-magenta transition-colors duration-300 transform hover:scale-110">
                         <Linkedin className="w-5 h-5" />
                     </a>
-                    <a href="#" className="text-gray-400 hover:text-neon-green transition-colors duration-300 transform hover:scale-110">
+                    <a href="mailto:kundandr05@gmail.com" className="text-gray-400 hover:text-neon-green transition-colors duration-300 transform hover:scale-110">
                         <Mail className="w-5 h-5" />
                     </a>
+                    {/* Twitter kept generic as no profile was provided */}
                     <a href="#" className="text-gray-400 hover:text-neon-purple transition-colors duration-300 transform hover:scale-110">
                         <Twitter className="w-5 h-5" />
                     </a>

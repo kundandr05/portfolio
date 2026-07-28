@@ -19,6 +19,10 @@ export default function Hero() {
                     className="text-center lg:text-left space-y-8"
                 >
                     <motion.div variants={fadeInUp} className="space-y-4">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neon-green/10 border border-neon-green/30 text-neon-green text-sm font-medium mb-2">
+                            <span className="w-2 h-2 rounded-full bg-neon-green animate-pulse"></span>
+                            Open to Internships
+                        </div>
                         <h2 className="text-neon-cyan text-xl md:text-2xl font-medium tracking-wide">
                             HELLO, I AM
                         </h2>
@@ -31,13 +35,16 @@ export default function Hero() {
                             <span className="text-neon-magenta">2027 CSE (AI & ML)</span> |{' '}
                             <span className="text-neon-cyan">Published Researcher</span>
                         </h3>
+                        <h4 className="text-lg md:text-xl font-light text-gray-400 mt-2">
+                            Research Paper Published (IJCRT) &bull; 2 Books Published on Amazon KDP
+                        </h4>
                     </motion.div>
 
                     <motion.p
                         variants={fadeInUp}
                         className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto lg:mx-0 leading-relaxed"
                     >
-                        AI & ML undergraduate (2027) and published researcher specializing in intelligent systems, multi-agent architectures, and scalable backend development. Passionate about building AI-driven solutions that combine research, engineering, and real-world problem solving using modern technologies and clean system design.
+                        AI & ML undergraduate at Maharaja Institute of Technology, Mysuru, with experience in FastAPI, Agentic AI, and backend development. Published researcher and author with a strong interest in intelligent systems, automation, and real-world problem solving. Currently building AI-driven applications and expanding expertise in software development and machine learning.
                     </motion.p>
 
                     <motion.div
@@ -74,9 +81,9 @@ export default function Hero() {
                         className="flex gap-6 justify-center lg:justify-start pt-8"
                     >
                         {[
-                            { icon: Github, href: "https://github.com", color: "hover:text-neon-cyan" },
-                            { icon: Linkedin, href: "https://linkedin.com", color: "hover:text-neon-magenta" },
-                            { icon: Mail, href: "mailto:email@example.com", color: "hover:text-neon-green" }
+                            { icon: Github, href: "https://github.com/kundandr05", color: "hover:text-neon-cyan" },
+                            { icon: Linkedin, href: "https://linkedin.com/in/kundan-d-r-914274310", color: "hover:text-neon-magenta" },
+                            { icon: Mail, href: "mailto:kundandr05@gmail.com", color: "hover:text-neon-green" }
                         ].map((social, index) => (
                             <a
                                 key={index}

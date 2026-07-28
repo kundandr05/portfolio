@@ -46,7 +46,7 @@ export default function About() {
                                     <User className="text-neon-cyan" /> Who I Am
                                 </h2>
                                 <p className="text-gray-300 leading-relaxed mb-4">
-                                    I am a 2027 outgoing batch Computer Science (AI & ML) undergraduate at Maharaja Institute of Technology, Mysuru, with a strong foundation in Artificial Intelligence, Machine Learning, and backend development.
+                                    I am a Computer Science (AI & ML) undergraduate at Maharaja Institute of Technology, Mysuru, with interests in Artificial Intelligence, backend development, and intelligent automation.
                                 </p>
                                 <p className="text-gray-300 leading-relaxed mb-4">
                                     I have designed and published an Agentic AI-based Tournament Management System in a peer-reviewed journal, demonstrating practical expertise in multi-agent systems, FastAPI, and intelligent automation.
@@ -54,8 +54,11 @@ export default function About() {
                                 <p className="text-gray-300 leading-relaxed mb-4">
                                     Beyond academics, I am also an author of two published books, reflecting my creativity, discipline, and storytelling ability.
                                 </p>
-                                <p className="text-gray-300 leading-relaxed">
+                                <p className="text-gray-300 leading-relaxed mb-4">
                                     I am passionate about building intelligent systems that combine research, engineering, and real-world impact.
+                                </p>
+                                <p className="text-gray-300 leading-relaxed">
+                                    Currently focused on strengthening software engineering fundamentals, improving Zeno AI, solving data structures and algorithms problems, and preparing for AI and software development internships.
                                 </p>
                             </motion.div>
 
@@ -76,20 +79,17 @@ export default function About() {
                                     <p className="text-gray-300 text-sm">To specialize in Artificial Intelligence and Multi-Agent Systems, contributing to innovative research and developing impactful AI-driven products at scale.</p>
                                 </div>
 
-                                {/* Experience */}
+                                {/* Highlights */}
                                 <div className="glass-panel p-6 rounded-xl hover:border-neon-cyan/50 transition-colors duration-300 md:col-span-2">
-                                    <h3 className="text-xl font-bold text-neon-cyan mb-2">Experience</h3>
-                                    <div className="mb-4">
-                                        <h4 className="text-white font-medium">AI & Backend Developer – Academic Research Project</h4>
-                                        <p className="text-gray-400 text-sm mb-2">2025</p>
-                                        <ul className="text-gray-300 text-sm list-disc list-inside space-y-1">
-                                            <li>Architected and deployed an intelligent tournament management system using Agentic AI.</li>
-                                            <li>Developed REST APIs with FastAPI ensuring performance and scalability.</li>
-                                            <li>Implemented autonomous workflows and multi-agent coordination logic.</li>
-                                            <li>Conducted unit, integration, and system testing for reliability.</li>
-                                            <li>Research published in IJCRT, demonstrating applied AI engineering skills.</li>
-                                        </ul>
-                                    </div>
+                                    <h3 className="text-xl font-bold text-neon-cyan mb-4">Highlights</h3>
+                                    <ul className="text-gray-300 text-sm list-disc list-inside space-y-2">
+                                        <li>Research Paper Published (IJCRT)</li>
+                                        <li>2 Books Published on Amazon KDP</li>
+                                        <li>Built Zeno AI Chatbot using FastAPI</li>
+                                        <li>Developed Agentic AI Tournament Management System</li>
+                                        <li>AIML Undergraduate (2023–2027)</li>
+                                        <li>Open to AI & Software Development Internships</li>
+                                    </ul>
                                 </div>
                             </motion.div>
                         </div>

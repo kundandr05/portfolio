@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from 'lucide-react';
+import { Mail, MapPin, Github, Linkedin } from 'lucide-react';
 import PageTransition from '@/components/shared/PageTransition';
 import { useState } from 'react';
 
@@ -117,8 +117,8 @@ export default function Contact() {
                                 <h2 className="text-2xl font-bold text-white mb-6">Connect</h2>
                                 <div className="flex gap-4">
                                     {[
-                                        { icon: Github, href: "https://github.com/", color: "hover:text-neon-cyan" },
-                                        { icon: Linkedin, href: "https://linkedin.com/in/kundandr", color: "hover:text-neon-magenta" }
+                                        { icon: Github, href: "https://github.com/kundandr05", color: "hover:text-neon-cyan" },
+                                        { icon: Linkedin, href: "https://linkedin.com/in/kundan-d-r-914274310", color: "hover:text-neon-magenta" }
                                     ].map((social, index) => (
                                         <a
                                             key={index}

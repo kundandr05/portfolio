@@ -112,14 +112,20 @@ export default function Courses() {
                                     </div>
                                 </div>
 
-                                <a
-                                    href={course.certificateLink}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-full py-2 rounded-lg border border-white/10 text-white text-sm font-medium hover:bg-white/10 transition-colors flex items-center justify-center gap-2"
-                                >
-                                    View Certificate <ExternalLink className="w-4 h-4" />
-                                </a>
+                                {(!course.certificateLink || course.certificateLink === '#') ? (
+                                    <span className="w-full py-2 rounded-lg border border-white/10 text-gray-500 text-sm font-medium flex items-center justify-center gap-2 cursor-not-allowed bg-white/5">
+                                        Certificate Available On Request
+                                    </span>
+                                ) : (
+                                    <a
+                                        href={course.certificateLink}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-full py-2 rounded-lg border border-white/10 text-white text-sm font-medium hover:bg-white/10 transition-colors flex items-center justify-center gap-2"
+                                    >
+                                        View Certificate <ExternalLink className="w-4 h-4" />
+                                    </a>
+                                )}
                             </motion.div>
                         ))}
                     </div>

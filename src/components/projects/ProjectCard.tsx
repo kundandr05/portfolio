@@ -3,9 +3,11 @@
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { ExternalLink, Github, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 
 interface ProjectProps {
+    slug?: string;
     title: string;
     description: string;
     tags: string[];
@@ -22,6 +24,7 @@ export default function ProjectCard({ project }: { project: ProjectProps }) {
     const rotateY = useTransform(x, [-100, 100], [-30, 30]);
 
     const [isHovered, setIsHovered] = useState(false);
+    const [imageError, setImageError] = useState(false);
 
     return (
         <motion.div
@@ -41,12 +44,22 @@ export default function ProjectCard({ project }: { project: ProjectProps }) {
             />
 
             {/* Image Container */}
-            <div className="relative h-48 w-full overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
-                {/* Placeholder for actual image */}
-                <div className="w-full h-full bg-gray-800 flex items-center justify-center text-gray-500">
-                    Project Preview
-                </div>
+            <div className="relative h-48 w-full overflow-hidden bg-gray-900">
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10 pointer-events-none" />
+                {project.image && !imageError ? (
+                    <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        onError={() => setImageError(true)}
+                    />
+                ) : (
+                    <div className="absolute inset-0 flex items-center justify-center bg-gray-800 text-gray-500 font-medium">
+                        Project Preview
+                    </div>
+                )}
             </div>
 
             {/* Content */}
@@ -68,7 +81,11 @@ export default function ProjectCard({ project }: { project: ProjectProps }) {
                 </div>
 
                 <div className="flex gap-4 mt-auto">
-                    {project.github && (
+                    {(!project.github || project.github === '#') ? (
+                        <span className="flex items-center gap-2 text-sm font-medium text-gray-600 cursor-not-allowed" title={project.githubLabel || "Code unavailable"}>
+                            <Github className="w-4 h-4" /> {project.githubLabel || "Code (Coming Soon)"}
+                        </span>
+                    ) : (
                         <a
                             href={project.github}
                             target="_blank"
@@ -78,7 +95,12 @@ export default function ProjectCard({ project }: { project: ProjectProps }) {
                             <Github className="w-4 h-4" /> Code
                         </a>
                     )}
-                    {project.demo && (
+                    
+                    {(!project.demo || project.demo === '#') ? (
+                        <span className="flex items-center gap-2 text-sm font-medium text-gray-600 cursor-not-allowed">
+                            <ExternalLink className="w-4 h-4" /> Coming Soon
+                        </span>
+                    ) : (
                         <a
                             href={project.demo}
                             target="_blank"
@@ -89,7 +111,7 @@ export default function ProjectCard({ project }: { project: ProjectProps }) {
                         </a>
                     )}
                     <Link
-                        href={`/projects/${project.title.toLowerCase().replace(/\s+/g, '-')}`}
+                        href={`/projects/${project.slug || project.title.toLowerCase().replace(/\s+/g, '-')}`}
                         className="ml-auto text-xs text-gray-500 hover:text-white flex items-center gap-1"
                     >
                         Details <ArrowRight className="w-3 h-3" />

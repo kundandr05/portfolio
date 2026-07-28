@@ -10,8 +10,8 @@ const skillCategories = [
         icon: Code2,
         color: "text-neon-cyan",
         skills: [
-            { name: "Python", level: 95 },
-            { name: "C", level: 85 }
+            { name: "Python", level: 80 },
+            { name: "C", level: 70 }
         ]
     },
     {
@@ -19,11 +19,11 @@ const skillCategories = [
         icon: Cpu,
         color: "text-neon-purple",
         skills: [
-            { name: "Machine Learning", level: 90 },
-            { name: "Multi-Agent Systems", level: 95 },
-            { name: "Agentic AI Systems", level: 90 },
-            { name: "Data Analytics", level: 85 },
-            { name: "Decision-Making Algorithms", level: 80 }
+            { name: "Machine Learning", level: 70 },
+            { name: "Multi-Agent Systems", level: 75 },
+            { name: "Agentic AI Systems", level: 75 },
+            { name: "Data Analytics", level: 70 },
+            { name: "Decision-Making Algorithms", level: 65 }
         ]
     },
     {
@@ -31,10 +31,10 @@ const skillCategories = [
         icon: Database,
         color: "text-neon-green",
         skills: [
-            { name: "FastAPI", level: 95 },
-            { name: "REST APIs", level: 90 },
-            { name: "SQLite", level: 85 },
-            { name: "SQL", level: 85 }
+            { name: "FastAPI", level: 75 },
+            { name: "REST APIs", level: 75 },
+            { name: "SQLite", level: 70 },
+            { name: "SQL", level: 55 }
         ]
     },
     {
@@ -44,7 +44,7 @@ const skillCategories = [
         skills: [
             { name: "AWS (Foundations)", level: 65 },
             { name: "Microsoft Azure (Basics)", level: 60 },
-            { name: "IBM Cloud", level: 70 }
+            { name: "IBM Cloud", level: 60 }
         ]
     }
 ];
@@ -62,7 +62,7 @@ export default function Skills() {
                         <h1 className="text-4xl md:text-6xl font-display font-bold text-white mb-4">
                             Technical <span className="text-neon-cyan">Skills</span>
                         </h1>
-                        <p className="text-gray-400">My technical arsenal and proficiency levels.</p>
+                        <p className="text-gray-400">Technologies, tools, and concepts I have worked with through projects, research, and continuous learning.</p>
                     </motion.div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">

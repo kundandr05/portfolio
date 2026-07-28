@@ -1,23 +1,53 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { Briefcase, Calendar } from 'lucide-react';
+import { Briefcase, Calendar, BookOpen, ExternalLink, FileText } from 'lucide-react';
 import PageTransition from '@/components/shared/PageTransition';
 
 const experiences = [
     {
         id: 1,
-        role: "AI & Backend Developer – Academic Research Project",
+        role: "Research Project Developer",
         company: "Maharaja Institute of Technology, Mysuru",
         period: "2025",
         description: [
-            "Architected and deployed an intelligent tournament management system using Agentic AI.",
+            "Designed and developed an intelligent tournament management system using Agentic AI.",
             "Developed REST APIs with FastAPI ensuring performance and scalability.",
             "Implemented autonomous workflows and multi-agent coordination logic.",
             "Conducted unit, integration, and system testing for reliability.",
             "Research published in IJCRT, demonstrating applied AI engineering skills."
         ],
         skills: ["Agentic AI", "Python", "FastAPI", "SQLite", "System Testing", "Research"]
+    }
+];
+
+const publications = [
+    {
+        id: 1,
+        title: "Agentic AI Tournament Management System",
+        journal: "International Journal of Creative Research Thoughts (IJCRT)",
+        date: "2025",
+        description: "A research paper detailing the design, architecture, and implementation of a multi-agent system for automating tournament workflows. Explores the practical applications of Agentic AI in complex, real-world scheduling and coordination problems.",
+        link: "#", // Placeholder
+        type: "Research Paper"
+    },
+    {
+        id: 2,
+        title: "RECLAIM YOUR FOCUS: A Guide to Dopamine Detox and Get Things Done",
+        journal: "Amazon",
+        date: "Published",
+        description: "A practical guide to overcoming digital distractions, resetting your dopamine baseline, and developing a disciplined mindset for enhanced productivity and focus.",
+        link: "https://amzn.in/d/0ciekGdp",
+        type: "Book"
+    },
+    {
+        id: 3,
+        title: "The Two-Speed Mind: Solving the 90s vs. 2000s Conflict to End Your Structural Stress",
+        journal: "Amazon",
+        date: "Published",
+        description: "An analytical exploration of the generational conflict in work methodologies, proposing frameworks to align traditional discipline with modern agility to eliminate structural stress.",
+        link: "https://amzn.in/d/08onPw5l",
+        type: "Book"
     }
 ];
 
@@ -85,6 +115,69 @@ export default function Experience() {
                             </motion.div>
                         ))}
                     </div>
+
+                    {/* Research Publications Section */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="mt-32 max-w-4xl mx-auto"
+                    >
+                        <h2 className="text-3xl md:text-5xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-purple mb-12 text-center">
+                            Publications & Authorship
+                        </h2>
+
+                        <div className="space-y-6">
+                            {publications.map((pub, index) => (
+                                <motion.div
+                                    key={pub.id}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: index * 0.1 }}
+                                    className="glass-panel p-8 rounded-2xl relative overflow-hidden group hover:border-neon-cyan/50 transition-colors duration-300"
+                                >
+                                    <div className="absolute -right-10 -top-10 w-40 h-40 bg-neon-cyan/10 blur-3xl rounded-full group-hover:bg-neon-cyan/20 transition-colors" />
+                                    
+                                    <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 relative z-10">
+                                        <div className="flex-1">
+                                            <div className="flex items-center gap-3 mb-3">
+                                                {pub.type === "Book" ? (
+                                                    <BookOpen className="w-6 h-6 text-neon-purple" />
+                                                ) : (
+                                                    <FileText className="w-6 h-6 text-neon-cyan" />
+                                                )}
+                                                <h3 className="text-xl font-bold text-white group-hover:text-neon-cyan transition-colors">
+                                                    {pub.title}
+                                                </h3>
+                                            </div>
+                                            
+                                            <div className="flex items-center gap-4 text-sm text-gray-400 mb-4">
+                                                <span className="flex items-center gap-1 text-neon-magenta">
+                                                    <Calendar className="w-4 h-4" /> {pub.date}
+                                                </span>
+                                                <span>|</span>
+                                                <span className="font-medium text-gray-300">{pub.journal}</span>
+                                            </div>
+                                            
+                                            <p className="text-gray-300 leading-relaxed text-sm">
+                                                {pub.description}
+                                            </p>
+                                        </div>
+
+                                        <a
+                                            href={pub.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="shrink-0 flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/10 rounded-lg text-white hover:bg-neon-cyan/20 hover:border-neon-cyan hover:text-neon-cyan transition-all duration-300 font-medium"
+                                        >
+                                            View <ExternalLink className="w-4 h-4" />
+                                        </a>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </motion.div>
                 </div>
             </section>
         </PageTransition>

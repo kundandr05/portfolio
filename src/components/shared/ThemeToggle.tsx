@@ -11,11 +11,13 @@ export default function ThemeToggle() {
         const savedTheme = localStorage.getItem('theme');
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         if (savedTheme === 'light' || (!savedTheme && !prefersDark)) {
             setIsDark(false);
             document.documentElement.classList.add('light');
         } else {
+            // eslint-disable-next-line react-hooks/set-state-in-effect
             setIsDark(true);
             document.documentElement.classList.remove('light');
         }
