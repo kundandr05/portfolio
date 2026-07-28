@@ -75,7 +75,8 @@ export const projects: Project[] = [
         tags: ["Next.js", "TypeScript", "Tailwind CSS", "Portfolio"],
         image: "/project4.jpg",
         github: "https://github.com/kundandr05/portfolio",
-        demo: "#",
+        demo: "https://portfolio-ashy-nine-78.vercel.app/",
+        demoLabel: "Live Demo",
         keyFeatures: [
             "Server-side rendering for optimal SEO and performance",
             "Framer Motion animations for engaging UI/UX",
