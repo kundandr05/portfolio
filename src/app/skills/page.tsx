@@ -70,7 +70,8 @@ export default function Skills() {
                             <motion.div
                                 key={catIndex}
                                 initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-50px" }}
                                 transition={{ delay: catIndex * 0.1 }}
                                 className="glass-panel p-8 rounded-2xl relative overflow-hidden group"
                             >

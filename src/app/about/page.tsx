@@ -27,7 +27,8 @@ export default function About() {
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"
-                    animate="visible"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
                     className="container mx-auto px-4"
                 >
                     <motion.h1

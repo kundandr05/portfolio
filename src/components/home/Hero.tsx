@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowRight, Download, Github, Linkedin, Mail } from 'lucide-react';
 import Image from 'next/image';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
+import MagneticWrapper from '@/components/shared/MagneticWrapper';
 
 export default function Hero() {
     return (
@@ -51,29 +52,35 @@ export default function Hero() {
                         variants={fadeInUp}
                         className="flex flex-wrap gap-4 justify-center lg:justify-start"
                     >
-                        <Link
-                            href="/projects"
-                            className="px-8 py-4 bg-neon-cyan/10 border border-neon-cyan text-neon-cyan rounded-full font-medium hover:bg-neon-cyan hover:text-black transition-all duration-300 flex items-center gap-2 group"
-                        >
-                            View Projects
-                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                        </Link>
+                        <MagneticWrapper>
+                            <Link
+                                href="/projects"
+                                className="px-8 py-4 bg-neon-cyan/10 border border-neon-cyan text-neon-cyan rounded-full font-medium hover:bg-neon-cyan hover:text-black transition-all duration-300 flex items-center gap-2 group"
+                            >
+                                View Projects
+                                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                            </Link>
+                        </MagneticWrapper>
 
-                        <Link
-                            href="/about"
-                            className="px-8 py-4 bg-white/5 border border-white/10 text-white rounded-full font-medium hover:bg-white/10 transition-all duration-300"
-                        >
-                            About Me
-                        </Link>
+                        <MagneticWrapper>
+                            <Link
+                                href="/about"
+                                className="px-8 py-4 bg-white/5 border border-white/10 text-white rounded-full font-medium hover:bg-white/10 transition-all duration-300"
+                            >
+                                About Me
+                            </Link>
+                        </MagneticWrapper>
 
-                        <a
-                            href="/Kundan_DR_Resume_2027_AI_ML.pdf"
-                            download
-                            className="px-8 py-4 bg-neon-magenta/10 border border-neon-magenta text-neon-magenta rounded-full font-medium hover:bg-neon-magenta hover:text-black transition-all duration-300 flex items-center gap-2"
-                        >
-                            Resume
-                            <Download className="w-5 h-5" />
-                        </a>
+                        <MagneticWrapper>
+                            <a
+                                href="/Kundan_DR_Resume_2027_AI_ML.pdf"
+                                download
+                                className="px-8 py-4 bg-neon-magenta/10 border border-neon-magenta text-neon-magenta rounded-full font-medium hover:bg-neon-magenta hover:text-black transition-all duration-300 flex items-center gap-2"
+                            >
+                                Resume
+                                <Download className="w-5 h-5" />
+                            </a>
+                        </MagneticWrapper>
                     </motion.div>
 
                     <motion.div

@@ -58,7 +58,8 @@ export default function Experience() {
                 <div className="container mx-auto px-4">
                     <motion.h1
                         initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-100px" }}
                         className="text-4xl md:text-6xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-neon-cyan mb-16 text-center"
                     >
                         Experience
