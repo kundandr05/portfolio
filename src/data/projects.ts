@@ -73,7 +73,7 @@ export const projects: Project[] = [
         title: "Krishna Leela Chatbot",
         description: "A specialized AI conversational agent built to answer queries exclusively about Krishna Leela. Engineered with strict system prompts and API boundaries to prevent out-of-domain topics.",
         tags: ["AI", "Next.js", "Prompt Engineering", "API"],
-        image: "/project1.jpg",
+        image: "/project5.png",
         github: "https://github.com/kundandr05/KrishnaLeela",
         demo: "https://krishna-leela.vercel.app/",
         demoLabel: "Live Demo",
