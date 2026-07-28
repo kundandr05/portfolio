@@ -56,7 +56,7 @@ export const projects: Project[] = [
         description: "A comprehensive Learning Management System built to facilitate online education, course management, and student engagement.",
         tags: ["React", "LMS", "Web App", "Vercel"],
         image: "/project3.jpg",
-        github: "#",
+        github: "https://github.com/kundandr05/Ravikumar-lms",
         demo: "https://ravikumar-lms.vercel.app/",
         demoLabel: "Live Demo",
         keyFeatures: [
