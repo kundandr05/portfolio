@@ -109,7 +109,7 @@ export const projects: Project[] = [
         title: "Personal Portfolio Website",
         description: "Modern portfolio built with Next.js showcasing projects, research publications, technical skills, and professional achievements.",
         tags: ["Next.js", "TypeScript", "Tailwind CSS", "Portfolio"],
-        image: "/project4.jpg",
+        image: "/project4.png",
         github: "https://github.com/kundandr05/portfolio",
         demo: "https://kundandr-portfolio.vercel.app/",
         demoLabel: "Live Demo",
