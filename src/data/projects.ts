@@ -71,20 +71,20 @@ export const projects: Project[] = [
     {
         slug: "krishna-leela-chatbot",
         title: "Krishna Leela Chatbot",
-        description: "A specialized AI conversational agent built to answer queries exclusively about Krishna Leela. Engineered with strict system prompts and API boundaries to prevent out-of-domain topics.",
-        tags: ["AI", "Next.js", "Prompt Engineering", "API"],
+        description: "A divine storytelling AI chatbot that narrates stories of Lord Krishna in English, Kannada, Tamil, and Telugu, powered by Google Gemini API.",
+        tags: ["Vanilla JS", "Gemini API", "HTML/CSS", "AI Chatbot"],
         image: "/project5.png",
         github: "https://github.com/kundandr05/KrishnaLeela",
         demo: "https://krishna-leela.vercel.app/",
         demoLabel: "Live Demo",
         keyFeatures: [
-            "Domain-specific conversational intelligence",
-            "Strict topic-bounding algorithms",
-            "Seamless API key integration and protection"
+            "Multi-language support for diverse storytelling",
+            "Real-time streaming responses using Google Gemini API",
+            "Dynamic UI with suggestion chips and animations"
         ],
-        architecture: "A Next.js frontend seamlessly communicating with a securely integrated LLM backend API.",
-        challenges: "Designing rigorous prompt guardrails to ensure the chatbot consistently refused to answer off-topic questions without breaking conversational flow.",
-        futureImprovements: "Integrate a specialized vector database (RAG) containing authoritative texts for higher accuracy."
+        architecture: "A pure frontend application leveraging Vanilla JavaScript to directly interface with the Google Gemini API without a backend.",
+        challenges: "Securely managing API key configuration through localStorage and parsing streaming text responses in pure Vanilla JavaScript.",
+        futureImprovements: "Integrate a lightweight Node.js backend to completely obscure the API key and manage context windows more efficiently."
     },
     {
         slug: "personal-portfolio-website",
