@@ -9,6 +9,7 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const orbitron = Orbitron({ subsets: ['latin'], variable: '--font-orbitron' });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://kundandr-portfolio.vercel.app/'),
   title: 'Cyberpunk Portfolio | Developer & Creator',
   description: 'A futuristic portfolio showcasing my projects and skills.',
 };
