@@ -87,6 +87,24 @@ export const projects: Project[] = [
         futureImprovements: "Integrate a lightweight Node.js backend to completely obscure the API key and manage context windows more efficiently."
     },
     {
+        slug: "ollama-chatbot",
+        title: "Ollama Chatbot",
+        description: "A local, privacy-focused conversational AI interface that communicates directly with Ollama models running on your machine. Includes web search capabilities and real-time streaming.",
+        tags: ["Python", "Ollama", "LLM", "Local AI"],
+        image: "/project6.png",
+        github: "https://github.com/kundandr05/ollama-chatbot",
+        demo: "https://kundan-ollama-chatbot.vercel.app",
+        demoLabel: "Live Demo",
+        keyFeatures: [
+            "Seamless integration with local Ollama models",
+            "Real-time streaming responses with context history",
+            "Live DuckDuckGo web search integration"
+        ],
+        architecture: "A Python application providing a clean UI layer that interfaces with the local Ollama API, allowing for completely offline, private AI conversations.",
+        challenges: "Handling real-time token streaming and implementing robust connection checks for the local Ollama instance.",
+        futureImprovements: "Add support for more specialized local models and enhance the RAG (Retrieval-Augmented Generation) pipeline."
+    },
+    {
         slug: "personal-portfolio-website",
         title: "Personal Portfolio Website",
         description: "Modern portfolio built with Next.js showcasing projects, research publications, technical skills, and professional achievements.",
