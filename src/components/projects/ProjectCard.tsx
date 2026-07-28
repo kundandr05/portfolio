@@ -13,6 +13,7 @@ interface ProjectProps {
     tags: string[];
     image: string;
     github?: string;
+    githubLabel?: string;
     demo?: string;
     demoLabel?: string;
 }
