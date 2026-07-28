@@ -51,22 +51,22 @@ export const projects: Project[] = [
         futureImprovements: "Expand the system to handle multi-tier bracket tournaments and integrate a live scoreboard UI."
     },
     {
-        slug: "erp-student-management-system",
-        title: "ERP Student Management System",
-        description: "ERP solution developed during Innovathon to streamline academic and administrative workflows through centralized student management, attendance tracking, and communication modules.",
-        tags: ["Python", "Database", "ERP", "System Design"],
+        slug: "learning-management-system",
+        title: "Learning Management System (LMS)",
+        description: "A comprehensive Learning Management System built to facilitate online education, course management, and student engagement.",
+        tags: ["React", "LMS", "Web App", "Vercel"],
         image: "/project3.jpg",
         github: "#",
-        githubLabel: "Private Team Project",
-        demo: "#",
+        demo: "https://ravikumar-lms.vercel.app/",
+        demoLabel: "Live Demo",
         keyFeatures: [
-            "Centralized student record management",
-            "Automated attendance tracking and reporting",
-            "Faculty and student communication portals"
+            "Online course tracking and management",
+            "Interactive student dashboard",
+            "Seamless user authentication and progress saving"
         ],
-        architecture: "A monolithic architecture using Python and a relational database optimized for fast queries and secure data isolation.",
-        challenges: "Designing a schema that efficiently supported both administrative broad queries and specific student views.",
-        futureImprovements: "Migrate the frontend to Next.js and implement real-time push notifications."
+        architecture: "Modern web application architecture designed for scalability and responsive user experience.",
+        challenges: "Implementing a clean and intuitive UI that caters to both students and administrators.",
+        futureImprovements: "Integrate AI-driven personalized learning paths and advanced analytics."
     },
     {
         slug: "personal-portfolio-website",
