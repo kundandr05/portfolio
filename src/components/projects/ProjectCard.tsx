@@ -37,7 +37,7 @@ export default function ProjectCard({ project }: { project: ProjectProps }) {
             whileTap={{ cursor: "grabbing" }}
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
-            className="relative w-full h-[450px] bg-black/40 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden group perspective-1000"
+            className="relative w-full h-full min-h-[450px] flex flex-col bg-black/40 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden group perspective-1000"
         >
             {/* Glow Effect */}
             <div
@@ -45,7 +45,7 @@ export default function ProjectCard({ project }: { project: ProjectProps }) {
             />
 
             {/* Image Container */}
-            <div className="relative h-48 w-full overflow-hidden bg-gray-900">
+            <div className="relative h-48 shrink-0 w-full overflow-hidden bg-gray-900">
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10 pointer-events-none" />
                 {project.image && !imageError ? (
                     <Image
@@ -64,7 +64,7 @@ export default function ProjectCard({ project }: { project: ProjectProps }) {
             </div>
 
             {/* Content */}
-            <div className="p-6 relative z-20 h-[calc(100%-12rem)] flex flex-col justify-between">
+            <div className="p-6 relative z-20 flex-1 flex flex-col justify-between">
                 <div>
                     <h3 className="text-2xl font-bold font-display text-white mb-2 group-hover:text-neon-cyan transition-colors">
                         {project.title}
