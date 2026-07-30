@@ -27,6 +27,14 @@ export default function ProjectCard({ project }: { project: ProjectProps }) {
     const [isHovered, setIsHovered] = useState(false);
     const [imageError, setImageError] = useState(false);
 
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        const xPos = e.clientX - rect.left;
+        const yPos = e.clientY - rect.top;
+        e.currentTarget.style.setProperty("--mouse-x", `${xPos}px`);
+        e.currentTarget.style.setProperty("--mouse-y", `${yPos}px`);
+    };
+
     return (
         <motion.div
             style={{ x, y, rotateX, rotateY, z: 100 }}
@@ -37,11 +45,21 @@ export default function ProjectCard({ project }: { project: ProjectProps }) {
             whileTap={{ cursor: "grabbing" }}
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
+            onMouseMove={handleMouseMove}
             className="relative w-full h-full min-h-[450px] flex flex-col bg-black/40 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden group perspective-1000"
         >
-            {/* Glow Effect */}
-            <div
-                className={`absolute inset-0 bg-gradient-to-br from-neon-cyan/20 via-transparent to-neon-purple/20 opacity-0 transition-opacity duration-500 ${isHovered ? 'opacity-100' : ''}`}
+            {/* Mouse-responsive color pop & glowing gradient */}
+            <div 
+                className="absolute inset-0 z-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"
+                style={{
+                    background: `radial-gradient(800px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(0, 243, 255, 0.15), transparent 40%)`
+                }}
+            />
+            <div 
+                className="absolute inset-0 z-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"
+                style={{
+                    background: `radial-gradient(400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(255, 0, 255, 0.15), transparent 40%)`
+                }}
             />
 
             {/* Image Container */}
