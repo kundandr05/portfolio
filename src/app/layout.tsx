@@ -13,8 +13,9 @@ const orbitron = Orbitron({ subsets: ['latin'], variable: '--font-orbitron' });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://kundandr-portfolio.vercel.app/'),
-  title: 'Cyberpunk Portfolio | Developer & Creator',
-  description: 'A futuristic portfolio showcasing my projects and skills.',
+  title: 'Kundan DR | AI & Machine Learning Engineer',
+  description: 'Portfolio of Kundan DR, an AI & Machine Learning Engineer, Backend Developer (FastAPI), Published Researcher, and Author. Showcasing projects in Agentic AI, LLMs, and Software Development.',
+  keywords: ['Kundan DR', 'AI Engineer', 'Machine Learning', 'FastAPI', 'Agentic AI', 'Backend Developer', 'Portfolio'],
 };
 
 export default function RootLayout({
