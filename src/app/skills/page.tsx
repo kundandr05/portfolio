@@ -88,7 +88,6 @@ export default function Skills() {
                                         <div key={skillIndex}>
                                             <div className="flex justify-between items-end mb-2">
                                                 <span className="text-gray-300 font-medium">{skill.name}</span>
-                                                <span className={`text-sm ${category.color}`}>{skill.level}%</span>
                                             </div>
                                             <div className="h-2 w-full bg-white/10 rounded-full overflow-hidden">
                                                 <motion.div

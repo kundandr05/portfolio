@@ -1,27 +1,13 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Github, Linkedin } from 'lucide-react';
+import { Mail, MapPin, Github, Linkedin, Phone } from 'lucide-react';
 import PageTransition from '@/components/shared/PageTransition';
-import { useState } from 'react';
 
 export default function Contact() {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        message: ''
-    });
-
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        // Helper functionality to send email would go here
-        console.log('Form submitted:', formData);
-        alert('Message sent! (Simulation)');
-    };
-
     return (
         <PageTransition>
-            <section className="py-20">
+            <section className="py-20 min-h-[calc(100vh-200px)] flex items-center">
                 <div className="container mx-auto px-4">
                     <motion.div
                         initial={{ opacity: 0 }}
@@ -34,103 +20,70 @@ export default function Contact() {
                         <p className="text-gray-400">Open to AI internships, research collaborations, and backend development opportunities.</p>
                     </motion.div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-                        {/* Contact Form */}
+                    <div className="max-w-3xl mx-auto space-y-8">
+                        {/* Contact Info Grid */}
                         <motion.div
-                            initial={{ opacity: 0, x: -50 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            className="glass-panel p-8 rounded-2xl"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="glass-panel p-8 md:p-12 rounded-2xl"
                         >
-                            <h2 className="text-2xl font-bold text-white mb-6">Send a Message</h2>
-                            <form onSubmit={handleSubmit} className="space-y-6">
-                                <div>
-                                    <label htmlFor="name" className="block text-gray-400 text-sm font-medium mb-2">Name</label>
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        required
-                                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-colors"
-                                        placeholder="Your Name"
-                                        value={formData.name}
-                                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                    />
-                                </div>
-                                <div>
-                                    <label htmlFor="email" className="block text-gray-400 text-sm font-medium mb-2">Email</label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        required
-                                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-colors"
-                                        placeholder="your@email.com"
-                                        value={formData.email}
-                                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                    />
-                                </div>
-                                <div>
-                                    <label htmlFor="message" className="block text-gray-400 text-sm font-medium mb-2">Message</label>
-                                    <textarea
-                                        id="message"
-                                        required
-                                        rows={5}
-                                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-colors resize-none"
-                                        placeholder="Describe your project..."
-                                        value={formData.message}
-                                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                    />
-                                </div>
-                            </form>
-                        </motion.div>
-
-                        {/* Contact Info */}
-                        <motion.div
-                            initial={{ opacity: 0, x: 50 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            className="space-y-8"
-                        >
-                            <div className="glass-panel p-8 rounded-2xl">
-                                <h2 className="text-2xl font-bold text-white mb-6">Contact Info</h2>
-                                <div className="space-y-6">
-                                    <div className="flex items-start gap-4">
-                                        <div className="p-3 bg-neon-cyan/20 rounded-lg text-neon-cyan">
-                                            <Mail className="w-6 h-6" />
-                                        </div>
-                                        <div>
-                                            <h3 className="text-white font-medium mb-1">Email</h3>
-                                            <p className="text-gray-400">kundandr05@gmail.com</p>
-                                        </div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <a href="tel:+917019934034" className="flex items-center gap-4 group hover:bg-white/5 p-4 rounded-xl transition-colors">
+                                    <div className="p-4 bg-neon-magenta/20 rounded-xl text-neon-magenta group-hover:scale-110 transition-transform">
+                                        <Phone className="w-8 h-8" />
                                     </div>
+                                    <div>
+                                        <h3 className="text-white font-medium mb-1">Phone</h3>
+                                        <p className="text-gray-400 group-hover:text-neon-magenta transition-colors">+91 7019934034</p>
+                                    </div>
+                                </a>
 
-                                    <div className="flex items-start gap-4">
-                                        <div className="p-3 bg-neon-green/20 rounded-lg text-neon-green">
-                                            <MapPin className="w-6 h-6" />
-                                        </div>
-                                        <div>
-                                            <h3 className="text-white font-medium mb-1">Location</h3>
-                                            <p className="text-gray-400">Mysuru, Karnataka, India</p>
-                                        </div>
+                                <a href="mailto:kundandr05@gmail.com" className="flex items-center gap-4 group hover:bg-white/5 p-4 rounded-xl transition-colors">
+                                    <div className="p-4 bg-neon-cyan/20 rounded-xl text-neon-cyan group-hover:scale-110 transition-transform">
+                                        <Mail className="w-8 h-8" />
+                                    </div>
+                                    <div>
+                                        <h3 className="text-white font-medium mb-1">Email</h3>
+                                        <p className="text-gray-400 group-hover:text-neon-cyan transition-colors">kundandr05@gmail.com</p>
+                                    </div>
+                                </a>
+
+                                <div className="flex items-center gap-4 p-4">
+                                    <div className="p-4 bg-neon-green/20 rounded-xl text-neon-green">
+                                        <MapPin className="w-8 h-8" />
+                                    </div>
+                                    <div>
+                                        <h3 className="text-white font-medium mb-1">Location</h3>
+                                        <p className="text-gray-400">Mysuru, Karnataka, India</p>
                                     </div>
                                 </div>
                             </div>
+                        </motion.div>
 
-                            <div className="glass-panel p-8 rounded-2xl">
-                                <h2 className="text-2xl font-bold text-white mb-6">Connect</h2>
-                                <div className="flex gap-4">
-                                    {[
-                                        { icon: Github, href: "https://github.com/kundandr05", color: "hover:text-neon-cyan" },
-                                        { icon: Linkedin, href: "https://linkedin.com/in/kundan-d-r-914274310", color: "hover:text-neon-magenta" }
-                                    ].map((social, index) => (
-                                        <a
-                                            key={index}
-                                            href={social.href}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className={`w-12 h-12 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 ${social.color} transition-all duration-300 hover:scale-110`}
-                                        >
-                                            <social.icon className="w-6 h-6" />
-                                        </a>
-                                    ))}
-                                </div>
+                        {/* Social Links */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2 }}
+                            className="glass-panel p-8 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-6"
+                        >
+                            <h2 className="text-2xl font-bold text-white">Connect Online</h2>
+                            <div className="flex gap-4">
+                                {[
+                                    { icon: Github, name: "GitHub", href: "https://github.com/kundandr05", color: "hover:text-neon-cyan hover:border-neon-cyan" },
+                                    { icon: Linkedin, name: "LinkedIn", href: "https://linkedin.com/in/kundan-d-r-914274310", color: "hover:text-neon-magenta hover:border-neon-magenta" }
+                                ].map((social, index) => (
+                                    <a
+                                        key={index}
+                                        href={social.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className={`px-6 py-3 rounded-lg bg-white/5 border border-white/10 flex items-center gap-3 text-gray-300 transition-all duration-300 hover:scale-105 ${social.color}`}
+                                    >
+                                        <social.icon className="w-6 h-6" />
+                                        <span className="font-medium">{social.name}</span>
+                                    </a>
+                                ))}
                             </div>
                         </motion.div>
                     </div>
