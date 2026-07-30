@@ -37,31 +37,50 @@ export default function Navbar() {
 
                     {/* Desktop Menu */}
                     <div className="hidden xl:flex items-center space-x-6">
-                        <div className="flex space-x-1">
+                        <motion.div 
+                            initial="hidden"
+                            animate="visible"
+                            variants={{
+                                hidden: { opacity: 0 },
+                                visible: {
+                                    opacity: 1,
+                                    transition: { staggerChildren: 0.1, delayChildren: 0.2 }
+                                }
+                            }}
+                            className="flex space-x-1"
+                        >
                             {navItems.map((item) => (
-                                <MagneticWrapper key={item.path}>
-                                    <Link
-                                        href={item.path}
-                                        className={cn(
-                                            "px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 relative group overflow-hidden inline-block",
-                                            pathname === item.path
-                                                ? "text-neon-cyan"
-                                                : "text-gray-300 hover:text-white"
-                                        )}
-                                    >
-                                        <span className="relative z-10">{item.name}</span>
-                                        {pathname === item.path && (
-                                            <motion.div
-                                                layoutId="navbar-indicator"
-                                                className="absolute inset-0 bg-white/5 border-b-2 border-neon-cyan"
-                                                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                                            />
-                                        )}
-                                        <div className="absolute inset-0 bg-white/5 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
-                                    </Link>
-                                </MagneticWrapper>
+                                <motion.div 
+                                    key={item.path}
+                                    variants={{
+                                        hidden: { opacity: 0, y: -10 },
+                                        visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 20 } }
+                                    }}
+                                >
+                                    <MagneticWrapper>
+                                        <Link
+                                            href={item.path}
+                                            className={cn(
+                                                "px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 relative group overflow-hidden inline-block",
+                                                pathname === item.path
+                                                    ? "text-neon-cyan"
+                                                    : "text-gray-300 hover:text-white"
+                                            )}
+                                        >
+                                            <span className="relative z-10">{item.name}</span>
+                                            {pathname === item.path && (
+                                                <motion.div
+                                                    layoutId="navbar-indicator"
+                                                    className="absolute inset-0 bg-white/5 border-b-2 border-neon-cyan"
+                                                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                                />
+                                            )}
+                                            <div className="absolute inset-0 bg-white/5 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
+                                        </Link>
+                                    </MagneticWrapper>
+                                </motion.div>
                             ))}
-                        </div>
+                        </motion.div>
 
                         <div className="flex items-center space-x-4 pl-6 border-l border-white/10">
                             <ThemeToggle />

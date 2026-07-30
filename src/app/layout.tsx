@@ -3,7 +3,7 @@ import { Inter, Orbitron } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import ParticleBackground from '@/components/shared/ParticleBackground';
+import AuroraBackground from '@/components/shared/AuroraBackground';
 import CustomCursor from '@/components/shared/CustomCursor';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${orbitron.variable}`}>
       <body className="bg-black text-white min-h-screen flex flex-col antialiased selection:bg-neon-cyan selection:text-black">
         <CustomCursor />
-        <ParticleBackground />
+        <AuroraBackground />
         <Navbar />
         <main className="flex-grow pt-16 container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {children}
