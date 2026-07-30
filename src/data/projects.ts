@@ -8,6 +8,7 @@ export interface Project {
     githubLabel?: string;
     demo?: string;
     demoLabel?: string;
+    videoUrl?: string;
     keyFeatures?: string[];
     architecture?: string;
     challenges?: string;
@@ -21,6 +22,7 @@ export const projects: Project[] = [
         description: "AI-powered chatbot built using FastAPI and LLM integration. Designed to provide conversational assistance while exploring prompt engineering, backend APIs, and intelligent response generation. Currently being enhanced to improve answer quality and user experience.",
         tags: ["Python", "FastAPI", "AI", "LLM", "SQLite"],
         image: "/project1.jpg",
+        videoUrl: "/placeholder-video.mp4",
         github: "https://github.com/kundandr05/Zeno_chatbot",
         demo: "#",
         keyFeatures: [
@@ -38,6 +40,7 @@ export const projects: Project[] = [
         description: "Research-based multi-agent tournament management platform that automates scheduling, team registration, match coordination, and intelligent workflow execution using Agentic AI principles.",
         tags: ["Python", "FastAPI", "SQLite", "Agentic AI", "Research"],
         image: "/project2.jpg",
+        videoUrl: "/placeholder-video2.mp4",
         github: "#",
         githubLabel: "Private Team Project",
         demo: "#",

@@ -4,7 +4,7 @@ import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { ExternalLink, Github, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 interface ProjectProps {
     slug?: string;
@@ -16,6 +16,7 @@ interface ProjectProps {
     githubLabel?: string;
     demo?: string;
     demoLabel?: string;
+    videoUrl?: string;
 }
 
 export default function ProjectCard({ project }: { project: ProjectProps }) {
@@ -26,6 +27,18 @@ export default function ProjectCard({ project }: { project: ProjectProps }) {
 
     const [isHovered, setIsHovered] = useState(false);
     const [imageError, setImageError] = useState(false);
+    const videoRef = useRef<HTMLVideoElement>(null);
+
+    useEffect(() => {
+        if (!videoRef.current) return;
+        
+        if (isHovered) {
+            videoRef.current.play().catch(e => console.log("Video auto-play prevented:", e));
+        } else {
+            videoRef.current.pause();
+            videoRef.current.currentTime = 0;
+        }
+    }, [isHovered]);
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
         const rect = e.currentTarget.getBoundingClientRect();
@@ -71,13 +84,23 @@ export default function ProjectCard({ project }: { project: ProjectProps }) {
                         alt={project.title}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        className={`object-cover transition-transform duration-700 group-hover:scale-110 ${isHovered && project.videoUrl ? 'opacity-0' : 'opacity-100'}`}
                         onError={() => setImageError(true)}
                     />
                 ) : (
                     <div className="absolute inset-0 flex items-center justify-center bg-gray-800 text-gray-500 font-medium">
                         Project Preview
                     </div>
+                )}
+                {project.videoUrl && (
+                    <video
+                        ref={videoRef}
+                        src={project.videoUrl}
+                        muted
+                        loop
+                        playsInline
+                        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
+                    />
                 )}
             </div>
 
