@@ -76,6 +76,17 @@ export default function AuroraBackground() {
                 />
             </div>
 
+            {/* Animated Cyberpunk Grid Overlay */}
+            <div 
+                className="absolute inset-0 z-15 pointer-events-none opacity-20"
+                style={{
+                    backgroundImage: `linear-gradient(rgba(0, 243, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 243, 255, 0.1) 1px, transparent 1px)`,
+                    backgroundSize: '40px 40px',
+                    maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 80%)',
+                    WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 80%)'
+                }}
+            />
+
             {/* Noise Overlay Texture (Inline SVG) */}
             <div 
                 className="absolute inset-0 z-20 opacity-[0.03] mix-blend-overlay pointer-events-none" 

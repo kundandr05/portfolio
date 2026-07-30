@@ -6,11 +6,50 @@ import { ArrowRight, Download, Github, Linkedin, Mail } from 'lucide-react';
 import Image from 'next/image';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import MagneticWrapper from '@/components/shared/MagneticWrapper';
+import Typewriter from '@/components/shared/Typewriter';
+
+const techBadges = [
+    { name: "Python", top: "10%", left: "5%", delay: 0 },
+    { name: "FastAPI", top: "20%", right: "10%", delay: 1 },
+    { name: "Next.js", bottom: "30%", left: "10%", delay: 2 },
+    { name: "React", top: "40%", left: "45%", delay: 0.5 },
+    { name: "Tailwind CSS", bottom: "15%", right: "15%", delay: 1.5 },
+    { name: "Framer Motion", top: "5%", right: "30%", delay: 0.8 },
+    { name: "AI & ML", bottom: "10%", left: "30%", delay: 2.5 },
+    { name: "SQL", top: "50%", right: "5%", delay: 1.2 },
+    { name: "Git", bottom: "45%", left: "2%", delay: 0.3 },
+    { name: "Vercel", bottom: "50%", right: "20%", delay: 1.8 }
+];
 
 export default function Hero() {
     return (
-        <section className="min-h-[calc(100vh-80px)] flex items-center justify-center py-20">
-            <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <section className="min-h-[calc(100vh-80px)] flex items-center justify-center py-20 relative overflow-hidden">
+            
+            {/* Floating Tech Badges */}
+            <div className="absolute inset-0 pointer-events-none z-0 hidden lg:block">
+                {techBadges.map((badge, index) => (
+                    <motion.div
+                        key={index}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ 
+                            opacity: 0.6, 
+                            y: [0, -15, 0], 
+                            x: [0, 10, 0] 
+                        }}
+                        transition={{
+                            opacity: { duration: 1, delay: badge.delay },
+                            y: { duration: 4 + index, repeat: Infinity, ease: "easeInOut" },
+                            x: { duration: 5 + index, repeat: Infinity, ease: "easeInOut" }
+                        }}
+                        className="absolute px-3 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-xs text-neon-cyan font-mono"
+                        style={{ top: badge.top, bottom: badge.bottom, left: badge.left, right: badge.right }}
+                    >
+                        {badge.name}
+                    </motion.div>
+                ))}
+            </div>
+
+            <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
 
                 {/* Text Content */}
                 <motion.div
@@ -32,9 +71,16 @@ export default function Hero() {
                                 Kundan DR
                             </span>
                         </h1>
-                        <h3 className="text-xl md:text-3xl font-light text-gray-300">
-                            <span className="text-neon-magenta">2027 CSE (AI & ML)</span> |{' '}
-                            <span className="text-neon-cyan">Published Researcher</span>
+                        <h3 className="text-xl md:text-3xl font-light text-gray-300 min-h-[40px]">
+                            <Typewriter 
+                                words={[
+                                    "AI & Machine Learning Engineer",
+                                    "Backend Developer",
+                                    "FastAPI Developer",
+                                    "Researcher",
+                                    "Published Author"
+                                ]} 
+                            />
                         </h3>
                         <h4 className="text-lg md:text-xl font-light text-gray-400 mt-2">
                             Research Paper Published (IJCRT) &bull; 2 Books Published on Amazon KDP
