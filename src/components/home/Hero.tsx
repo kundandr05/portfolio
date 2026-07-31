@@ -129,7 +129,7 @@ export default function Hero() {
                         {/* Glowing Core / Image Placeholder */}
                         <div className="absolute inset-10 rounded-full bg-gradient-to-br from-neon-cyan/20 to-neon-magenta/20 backdrop-blur-sm border border-white/10 flex items-center justify-center overflow-hidden">
                             <Image
-                                src="/profile.png"
+                                src="/profile.jpg"
                                 alt="Profile"
                                 fill
                                 className="object-cover"
