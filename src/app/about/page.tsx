@@ -84,7 +84,7 @@ export default function About() {
                                 <div className="glass-panel p-6 rounded-xl hover:border-neon-cyan/50 transition-colors duration-300 md:col-span-2">
                                     <h3 className="text-xl font-bold text-neon-cyan mb-4">Highlights</h3>
                                     <ul className="text-gray-300 text-sm list-disc list-inside space-y-2">
-                                        <li>Research Paper Published (IJCRT)</li>
+                                        <li>Published "Tournament Management Agent Using Agentic Artificial Intelligence" (IJCRT)</li>
                                         <li>2 Books Published on Amazon KDP</li>
                                         <li>Built Zeno AI Chatbot using FastAPI</li>
                                         <li>Developed Agentic AI Tournament Management System</li>
