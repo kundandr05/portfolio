@@ -12,7 +12,7 @@ const publications = [
         publisher: "IJCRT",
         date: "December 2025",
         description: "A detailed design and implementation of an AI-powered Tournament Management Agent based on Agentic Artificial Intelligence. The system introduces an autonomous conversational agent capable of understanding natural language queries and executing tournament management tasks.",
-        link: "/paper.pdf",
+        link: "http://ijcrt.org/viewfull.php?&p_id=IJCRT2512785",
         icon: FileText,
         color: "text-neon-cyan"
     },
