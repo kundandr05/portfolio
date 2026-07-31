@@ -98,15 +98,23 @@ export default function About() {
                         {/* Right Column: Skills/Strengths & Resume */}
                         <div className="space-y-8">
                             {/* Profile Image Card */}
-                            <motion.div variants={itemVariants} className="flex justify-center items-center relative group">
-                                <div className="relative w-3/4 md:w-2/3 lg:w-3/4 mx-auto aspect-square rounded-full overflow-hidden border-2 border-white/10 shadow-2xl">
-                                    <div className="absolute inset-0 bg-gradient-to-t from-neon-cyan/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
-                                    <Image
-                                        src="/profile.jpg"
-                                        alt="Profile"
-                                        fill
-                                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                                    />
+                            <motion.div variants={itemVariants} className="flex justify-center items-center relative group py-8">
+                                <div className="relative w-[300px] h-[300px] md:w-[380px] md:h-[380px] mx-auto">
+                                    {/* Rotating Rings */}
+                                    <div className="absolute inset-0 border-2 border-neon-cyan/30 rounded-full animate-[spin_10s_linear_infinite]" />
+                                    <div className="absolute inset-2 border-2 border-neon-magenta/30 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
+                                    <div className="absolute inset-4 border-2 border-neon-green/30 rounded-full animate-[spin_20s_linear_infinite]" />
+
+                                    {/* Image Core */}
+                                    <div className="absolute inset-6 rounded-full overflow-hidden border-2 border-white/10 shadow-2xl bg-gray-900">
+                                        <div className="absolute inset-0 bg-gradient-to-t from-neon-cyan/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none" />
+                                        <Image
+                                            src="/profile.jpg"
+                                            alt="Profile"
+                                            fill
+                                            className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                        />
+                                    </div>
                                 </div>
                             </motion.div>
                             <motion.div variants={itemVariants} className="glass-panel p-8 rounded-2xl">
