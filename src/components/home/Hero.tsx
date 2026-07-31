@@ -120,14 +120,14 @@ export default function Hero() {
                     transition={{ duration: 0.8 }}
                     className="relative mx-auto lg:ml-auto"
                 >
-                    <div className="relative w-80 h-80 md:w-96 md:h-96">
+                    <div className="relative w-[320px] h-[320px] md:w-[480px] md:h-[480px]">
                         {/* Rotating Rings */}
                         <div className="absolute inset-0 border-2 border-neon-cyan/30 rounded-full animate-[spin_10s_linear_infinite]" />
-                        <div className="absolute inset-4 border-2 border-neon-magenta/30 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
-                        <div className="absolute inset-8 border-2 border-neon-green/30 rounded-full animate-[spin_20s_linear_infinite]" />
+                        <div className="absolute inset-2 border-2 border-neon-magenta/30 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
+                        <div className="absolute inset-4 border-2 border-neon-green/30 rounded-full animate-[spin_20s_linear_infinite]" />
 
                         {/* Glowing Core / Image Placeholder */}
-                        <div className="absolute inset-10 rounded-full bg-gradient-to-br from-neon-cyan/20 to-neon-magenta/20 backdrop-blur-sm border border-white/10 flex items-center justify-center overflow-hidden">
+                        <div className="absolute inset-6 rounded-full bg-gradient-to-br from-neon-cyan/20 to-neon-magenta/20 backdrop-blur-sm border border-white/10 flex items-center justify-center overflow-hidden">
                             <Image
                                 src="/profile.jpg"
                                 alt="Profile"
