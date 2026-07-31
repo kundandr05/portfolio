@@ -8,11 +8,11 @@ import Image from 'next/image';
 const publications = [
     {
         type: "research",
-        title: "Intelligent Multi-Agent Workflows (Placeholder Title)",
+        title: "Tournament Management Agent Using Agentic Artificial Intelligence",
         publisher: "IJCRT",
-        date: "2025",
-        description: "A comprehensive study on the efficiency of autonomous multi-agent systems in specialized scheduling tasks. Detailed abstract and findings will be updated here.",
-        link: "#",
+        date: "December 2025",
+        description: "A detailed design and implementation of an AI-powered Tournament Management Agent based on Agentic Artificial Intelligence. The system introduces an autonomous conversational agent capable of understanding natural language queries and executing tournament management tasks.",
+        link: "http://ijcrt.org/viewfull.php?&p_id=IJCRT2512785",
         icon: FileText,
         color: "text-neon-cyan"
     },
