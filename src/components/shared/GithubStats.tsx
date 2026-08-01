@@ -22,7 +22,7 @@ export default function GithubStats() {
                             </div>
                         </div>
 
-                        <div className="flex gap-8 text-center">
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center w-full md:w-auto">
                             <div>
                                 <div className="text-3xl font-bold text-neon-cyan flex justify-center items-center gap-2">
                                     <Star className="w-5 h-5" /> Active
