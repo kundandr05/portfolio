@@ -22,11 +22,11 @@ export const projects: Project[] = [
         title: "Zeno AI: Intelligent Multi-Modal Assistant",
         description: "Zeno is a highly polished, production-ready AI assistant designed to provide real-time web intelligence and multi-modal vision capabilities. Built with a focus on premium UI/UX, featuring a bespoke \"Aurora Midnight\" glassmorphism interface and dynamic AI routing.",
         tags: ["React.js", "Vite", "OpenRouter API", "Firebase Auth", "Render"],
-        image: "/project1.jpg",
+        image: "/project-zeno.png",
         videoUrl: "/placeholder-video.mp4",
         github: "https://github.com/kundandr05/Zeno_chatbot",
         demo: "https://zeno-chatbot-k46i.onrender.com/",
-        demoLabel: "Live Demo",
+        demoLabel: "Live on Render",
         keyFeatures: [
             "Dynamic AI Routing Engine utilizing Perplexity and Gemini 2.5 Flash",
             "Premium Glassmorphism UI with vibrant aurora gradients and micro-animations",
