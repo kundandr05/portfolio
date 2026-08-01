@@ -24,11 +24,11 @@ const experiences = [
 const publications = [
     {
         id: 1,
-        title: "Agentic AI Tournament Management System",
+        title: "Tournament Management Agent Using Agentic Artificial Intelligence",
         journal: "International Journal of Creative Research Thoughts (IJCRT)",
         date: "2025",
-        description: "A research paper detailing the design, architecture, and implementation of a multi-agent system for automating tournament workflows. Explores the practical applications of Agentic AI in complex, real-world scheduling and coordination problems.",
-        link: "/paper.pdf", // Updated to local PDF
+        description: "A detailed design and implementation of an AI-powered Tournament Management Agent based on Agentic Artificial Intelligence. The system introduces an autonomous conversational agent capable of understanding natural language queries and executing tournament management tasks.",
+        link: "http://ijcrt.org/viewfull.php?&p_id=IJCRT2512785",
         type: "Research Paper"
     },
     {
