@@ -19,21 +19,23 @@ export interface Project {
 export const projects: Project[] = [
     {
         slug: "zeno-ai",
-        title: "Zeno AI",
-        description: "AI-powered chatbot built using FastAPI and LLM integration. Designed to provide conversational assistance while exploring prompt engineering, backend APIs, and intelligent response generation. Currently being enhanced to improve answer quality and user experience.",
-        tags: ["Python", "FastAPI", "AI", "LLM", "SQLite"],
+        title: "Zeno AI: Intelligent Multi-Modal Assistant",
+        description: "Zeno is a highly polished, production-ready AI assistant designed to provide real-time web intelligence and multi-modal vision capabilities. Built with a focus on premium UI/UX, featuring a bespoke \"Aurora Midnight\" glassmorphism interface and dynamic AI routing.",
+        tags: ["React.js", "Vite", "OpenRouter API", "Firebase Auth", "Render"],
         image: "/project1.jpg",
         videoUrl: "/placeholder-video.mp4",
         github: "https://github.com/kundandr05/Zeno_chatbot",
-        demo: "#",
+        demo: "https://zeno-ai.onrender.com",
+        demoLabel: "Live Demo",
         keyFeatures: [
-            "Context-aware conversational interactions",
-            "Prompt engineering for optimized responses",
-            "FastAPI backend for low-latency API integration"
+            "Dynamic AI Routing Engine utilizing Perplexity and Gemini 2.5 Flash",
+            "Premium Glassmorphism UI with vibrant aurora gradients and micro-animations",
+            "Resilient Architecture with automated fallback mechanisms to free models",
+            "Firebase Authentication supporting Google OAuth, Email/Password, and Guest Mode"
         ],
-        architecture: "The application uses a FastAPI backend connected to an SQLite database for session storage, with intelligent querying directed to a modern LLM API.",
-        challenges: "Integrating the LLM API efficiently while maintaining fast response times required careful asynchronous programming.",
-        futureImprovements: "Implement user authentication and save long-term conversational memory using vector databases."
+        architecture: "Frontend built with React.js, Vite, and Vanilla CSS. Backend API powered by OpenRouter API and OpenAI SDK. Features dynamic routing between Perplexity (Llama 3.1 Sonar Pro) for text/web search and Google (Gemini 2.5 Flash) for vision analysis.",
+        challenges: "Engineering custom routing logic to dynamically switch between different LLMs based on user input context (text vs. image) while ensuring a seamless user experience and handling API rate limits gracefully.",
+        futureImprovements: "Expand the dynamic routing logic to support a wider array of specialized local and cloud models and implement long-term conversational memory using vector databases."
     },
     {
         slug: "agentic-ai-tournament-management-system",
