@@ -54,8 +54,8 @@ export default function GithubStats() {
                     </div>
 
                     {/* Calendar Placeholder */}
-                    <div className="mt-8 pt-8 border-t border-white/10">
-                        <div className="h-32 w-full bg-black/40 rounded-lg flex items-center justify-center text-gray-600">
+                    <div className="mt-8 pt-8 border-t border-white/10 overflow-x-auto">
+                        <div className="h-32 min-w-[800px] w-full bg-black/40 rounded-lg flex items-center justify-center text-gray-600">
                             {/* In a real app, use react-activity-calendar here */}
                             [Contribution Calendar Visualization]
                         </div>

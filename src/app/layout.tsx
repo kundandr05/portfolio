@@ -7,6 +7,7 @@ import AuroraBackground from '@/components/shared/AuroraBackground';
 import CustomCursor from '@/components/shared/CustomCursor';
 import Preloader from '@/components/shared/Preloader';
 import ScrollProgress from '@/components/shared/ScrollProgress';
+import ScrollToTop from '@/components/shared/ScrollToTop';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const orbitron = Orbitron({ subsets: ['latin'], variable: '--font-orbitron' });
@@ -28,6 +29,7 @@ export default function RootLayout({
       <body className="bg-black text-white min-h-screen flex flex-col antialiased selection:bg-neon-cyan selection:text-black">
         <Preloader />
         <ScrollProgress />
+        <ScrollToTop />
         <CustomCursor />
         <AuroraBackground />
         <Navbar />

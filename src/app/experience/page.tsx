@@ -28,7 +28,7 @@ const publications = [
         journal: "International Journal of Creative Research Thoughts (IJCRT)",
         date: "2025",
         description: "A research paper detailing the design, architecture, and implementation of a multi-agent system for automating tournament workflows. Explores the practical applications of Agentic AI in complex, real-world scheduling and coordination problems.",
-        link: "#", // Placeholder
+        link: "/paper.pdf", // Updated to local PDF
         type: "Research Paper"
     },
     {
