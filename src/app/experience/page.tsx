@@ -35,18 +35,18 @@ const publications = [
         id: 2,
         title: "RECLAIM YOUR FOCUS: A Guide to Dopamine Detox and Get Things Done",
         journal: "Amazon",
-        date: "Published",
-        description: "A practical guide to overcoming digital distractions, resetting your dopamine baseline, and developing a disciplined mindset for enhanced productivity and focus.",
-        link: "https://amzn.in/d/0ciekGdp",
+        date: "2024",
+        description: "In a world drowning in digital noise, our brains are overstimulated by notifications and endless scrolling. This book is your roadmap back to clarity, exploring the science behind distractions and how our modern environment overloads the brain's reward system.",
+        link: "https://a.co/d/07SiOZpN",
         type: "Book"
     },
     {
         id: 3,
         title: "The Two-Speed Mind: Solving the 90s vs. 2000s Conflict to End Your Structural Stress",
         journal: "Amazon",
-        date: "Published",
-        description: "An analytical exploration of the generational conflict in work methodologies, proposing frameworks to align traditional discipline with modern agility to eliminate structural stress.",
-        link: "https://amzn.in/d/08onPw5l",
+        date: "2024",
+        description: "Stop calling it burnout. It's structural failure. You are suffering from a structural non-alignment between the stable 1990s Mindset and the relentless speed of the 2000s World. This book introduces Computational Physics to expose the true source of modern anxiety.",
+        link: "https://a.co/d/0euaUcnC",
         type: "Book"
     }
 ];

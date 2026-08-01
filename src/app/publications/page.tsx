@@ -18,23 +18,23 @@ const publications = [
     },
     {
         type: "book",
-        title: "Mastering Agentic AI (Placeholder Title)",
-        publisher: "Amazon KDP",
-        date: "2026",
-        description: "A deep dive into building production-ready LLM agents using FastAPI and Python. Covers vector databases, prompt engineering, and autonomous workflows.",
-        link: "#",
-        image: "/placeholder-book.jpg",
+        title: "RECLAIM YOUR FOCUS: A Guide to Dopamine Detox and Get Things Done",
+        publisher: "Amazon",
+        date: "2024",
+        description: "In a world drowning in digital noise, our brains are overstimulated by notifications and endless scrolling. This book is your roadmap back to clarity, exploring the science behind distractions and how our modern environment overloads the brain's reward system. Learn to strategically fast from high-stimulation activities, combat burnout, and forge new habits for a more intentional life.",
+        link: "https://a.co/d/07SiOZpN",
+        image: "/book-reclaim.jpg",
         icon: BookOpen,
         color: "text-neon-magenta"
     },
     {
         type: "book",
-        title: "The Future of Backend Architecture (Placeholder Title)",
-        publisher: "Amazon KDP",
-        date: "2026",
-        description: "An exploration of modern backend scalable systems, focusing on microservices, serverless deployments, and optimal API design.",
-        link: "#",
-        image: "/placeholder-book2.jpg",
+        title: "The Two-Speed Mind: Solving the 90s vs. 2000s Conflict to End Your Structural Stress",
+        publisher: "Amazon",
+        date: "2024",
+        description: "Stop calling it burnout. It's structural failure. You are suffering from a structural non-alignment between the stable 1990s Mindset and the relentless speed of the 2000s World. This book introduces Computational Physics to expose the true source of modern anxiety and provides a clear path to achieving the structural rebellion required for computational peace.",
+        link: "https://a.co/d/0euaUcnC",
+        image: "/book-twospeed.jpg",
         icon: BookOpen,
         color: "text-neon-green"
     }
@@ -72,6 +72,11 @@ export default function Publications() {
                                 <div className={`absolute -top-10 -right-10 w-40 h-40 bg-gradient-to-br from-${pub.color.replace('text-', '')}/20 to-transparent blur-3xl rounded-full`} />
 
                                 <div className="p-8 flex-grow flex flex-col">
+                                    {pub.image && (
+                                        <div className="w-full h-48 relative mb-6 rounded-xl overflow-hidden shadow-[0_0_15px_rgba(0,0,0,0.5)] border border-white/10 group-hover:border-neon-cyan/30 transition-colors">
+                                            <Image src={pub.image} alt={pub.title} fill className="object-cover" />
+                                        </div>
+                                    )}
                                     <div className="flex items-center gap-3 mb-4">
                                         <div className={`p-3 bg-white/5 rounded-lg ${pub.color}`}>
                                             <pub.icon className="w-6 h-6" />
