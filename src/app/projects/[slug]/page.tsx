@@ -155,6 +155,17 @@ export default function ProjectDetail({ params }: { params: Promise<{ slug: stri
                                         <ExternalLink className="w-5 h-5" /> {project.demoLabel || "Live Demo"}
                                     </a>
                                 )}
+                                
+                                {project.youtubeUrl && (
+                                    <a
+                                        href={project.youtubeUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-red-500/20 border border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition-all duration-300 font-medium"
+                                    >
+                                        <ExternalLink className="w-5 h-5" /> Watch on YouTube
+                                    </a>
+                                )}
                             </div>
 
                             {/* Challenges & Future */}

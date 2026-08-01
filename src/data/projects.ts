@@ -9,6 +9,7 @@ export interface Project {
     demo?: string;
     demoLabel?: string;
     videoUrl?: string;
+    youtubeUrl?: string;
     keyFeatures?: string[];
     architecture?: string;
     challenges?: string;
@@ -62,6 +63,7 @@ export const projects: Project[] = [
         github: "https://github.com/kundandr05/Ravikumar-lms",
         demo: "https://ravikumar-lms.vercel.app/",
         demoLabel: "Live Demo",
+        youtubeUrl: "https://youtu.be/Cy9P7ElcsvU?si=XJdITCEoDqAy35vY",
         keyFeatures: [
             "Online course tracking and management",
             "Interactive student dashboard",
