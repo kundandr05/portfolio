@@ -25,7 +25,7 @@ export const projects: Project[] = [
         image: "/project1.jpg",
         videoUrl: "/placeholder-video.mp4",
         github: "https://github.com/kundandr05/Zeno_chatbot",
-        demo: "https://zeno-ai.onrender.com",
+        demo: "https://zeno-chatbot-k46i.onrender.com/",
         demoLabel: "Live Demo",
         keyFeatures: [
             "Dynamic AI Routing Engine utilizing Perplexity and Gemini 2.5 Flash",
