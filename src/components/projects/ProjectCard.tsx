@@ -59,19 +59,19 @@ export default function ProjectCard({ project }: { project: ProjectProps }) {
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
             onMouseMove={handleMouseMove}
-            className="relative w-full h-full min-h-[450px] flex flex-col bg-black/40 backdrop-blur-xl rounded-2xl border border-white/10 overflow-hidden group perspective-1000"
+            className="relative w-full h-full min-h-[450px] flex flex-col bg-surface/60 backdrop-blur-xl rounded-2xl border border-neon-cyan/20 overflow-hidden group perspective-1000 shadow-[0_8px_32px_rgba(0,217,255,0.1)] hover:shadow-[0_12px_40px_rgba(0,217,255,0.2)] hover:border-neon-cyan/40 transition-all duration-300"
         >
             {/* Mouse-responsive color pop & glowing gradient */}
             <div 
                 className="absolute inset-0 z-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"
                 style={{
-                    background: `radial-gradient(800px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(0, 243, 255, 0.15), transparent 40%)`
+                    background: `radial-gradient(800px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(0, 217, 255, 0.15), transparent 40%)`
                 }}
             />
             <div 
                 className="absolute inset-0 z-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none"
                 style={{
-                    background: `radial-gradient(400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(255, 0, 255, 0.15), transparent 40%)`
+                    background: `radial-gradient(400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(255, 0, 110, 0.15), transparent 40%)`
                 }}
             />
 

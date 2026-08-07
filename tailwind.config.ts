@@ -9,22 +9,23 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#0a0a0a",
-        foreground: "#ededed",
+        background: "#0a0e27",
+        foreground: "#ffffff",
+        surface: "#1a1f3a",
         neon: {
-          cyan: "#00f3ff",
-          magenta: "#ff00ff",
-          green: "#39ff14",
-          purple: "#bc13fe",
+          cyan: "#00d9ff",
+          magenta: "#ff006e",
+          purple: "#7c3aed",
         },
         glass: {
-          border: "rgba(255, 255, 255, 0.1)",
-          bg: "rgba(255, 255, 255, 0.05)",
+          border: "rgba(0, 217, 255, 0.2)",
+          bg: "rgba(26, 31, 58, 0.6)",
         }
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'sans-serif'],
-        display: ['var(--font-orbitron)', 'sans-serif'],
+        display: ['var(--font-space-grotesk)', 'sans-serif'],
+        mono: ['var(--font-fira-code)', 'monospace'],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

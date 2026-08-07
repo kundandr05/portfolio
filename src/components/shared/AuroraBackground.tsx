@@ -40,39 +40,39 @@ export default function AuroraBackground() {
     };
 
     return (
-        <div className="fixed inset-0 overflow-hidden bg-black -z-50 pointer-events-none">
+        <div className="fixed inset-0 overflow-hidden bg-background -z-50 pointer-events-none">
             {/* Base gradient layers */}
-            <div className="absolute inset-0 bg-black mix-blend-multiply z-10" />
+            <div className="absolute inset-0 bg-background mix-blend-multiply z-10" />
 
             {/* Glowing Blobs Container */}
             <div className="absolute inset-0 opacity-40 mix-blend-screen filter blur-[100px] md:blur-[140px] transform-gpu">
                 
-                {/* Electric Blue Blob */}
+                {/* Purple Blob */}
                 <motion.div
                     variants={blobVariants}
                     animate="animate1"
-                    className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vh] rounded-full bg-blue-600/50"
+                    className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vh] rounded-full bg-neon-purple/50"
                 />
                 
-                {/* Neon Magenta Blob */}
+                {/* Magenta Blob */}
                 <motion.div
                     variants={blobVariants}
                     animate="animate2"
-                    className="absolute top-[20%] right-[-10%] w-[60vw] h-[60vh] rounded-full bg-fuchsia-600/40"
+                    className="absolute top-[20%] right-[-10%] w-[60vw] h-[60vh] rounded-full bg-neon-magenta/40"
                 />
 
                 {/* Cyan Blob */}
                 <motion.div
                     variants={blobVariants}
                     animate="animate3"
-                    className="absolute bottom-[-20%] left-[20%] w-[70vw] h-[50vh] rounded-full bg-cyan-500/40"
+                    className="absolute bottom-[-20%] left-[20%] w-[70vw] h-[50vh] rounded-full bg-neon-cyan/40"
                 />
 
-                {/* Emerald/Neon Green Blob */}
+                {/* Cyan/Purple mix Blob */}
                 <motion.div
                     variants={blobVariants}
                     animate="animate4"
-                    className="absolute top-[40%] left-[40%] w-[40vw] h-[40vh] rounded-full bg-emerald-500/30"
+                    className="absolute top-[40%] left-[40%] w-[40vw] h-[40vh] rounded-full bg-neon-cyan/30"
                 />
             </div>
 
@@ -80,7 +80,7 @@ export default function AuroraBackground() {
             <div 
                 className="absolute inset-0 z-15 pointer-events-none opacity-20"
                 style={{
-                    backgroundImage: `linear-gradient(rgba(0, 243, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 243, 255, 0.1) 1px, transparent 1px)`,
+                    backgroundImage: `linear-gradient(rgba(0, 217, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 217, 255, 0.1) 1px, transparent 1px)`,
                     backgroundSize: '40px 40px',
                     maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 80%)',
                     WebkitMaskImage: 'radial-gradient(ellipse at center, black 40%, transparent 80%)'

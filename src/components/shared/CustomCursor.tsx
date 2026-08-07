@@ -59,18 +59,18 @@ export default function CustomCursor() {
             animate={{
                 height: isHovering ? 60 : 32,
                 width: isHovering ? 60 : 32,
-                backgroundColor: isHovering ? "rgba(0, 243, 255, 0.15)" : "transparent",
-                border: isHovering ? "1px solid rgba(0, 243, 255, 0.8)" : "2px solid rgba(0, 243, 255, 0.4)",
+                backgroundColor: isHovering ? "rgba(0, 217, 255, 0.15)" : "transparent",
+                border: isHovering ? "1px solid rgba(0, 217, 255, 0.8)" : "2px solid rgba(0, 217, 255, 0.4)",
                 boxShadow: isHovering 
-                    ? "0 0 30px rgba(0, 243, 255, 0.6), inset 0 0 20px rgba(0, 243, 255, 0.4)" 
-                    : "0 0 10px rgba(0, 243, 255, 0.2), inset 0 0 5px rgba(0, 243, 255, 0.1)",
+                    ? "0 0 30px rgba(0, 217, 255, 0.6), inset 0 0 20px rgba(0, 217, 255, 0.4)" 
+                    : "0 0 10px rgba(0, 217, 255, 0.2), inset 0 0 5px rgba(0, 217, 255, 0.1)",
             }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
         >
             {/* Inner tiny dot */}
             <motion.div 
                 animate={{ opacity: isHovering ? 0 : 1, scale: isHovering ? 0 : 1 }}
-                className="w-1.5 h-1.5 bg-neon-cyan rounded-full shadow-[0_0_8px_rgba(0,243,255,1)]"
+                className="w-1.5 h-1.5 bg-neon-cyan rounded-full shadow-[0_0_8px_rgba(0,217,255,1)]"
             />
         </motion.div>
     );

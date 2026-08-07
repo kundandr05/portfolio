@@ -1,30 +1,28 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #0a0a0a;
-  --color-foreground: #ededed;
+  --color-background: #0a0e27;
+  --color-foreground: #ffffff;
+  --color-surface: #1a1f3a;
+  --color-text-secondary: #a0aec0;
 
-  --color-neon-cyan: #00f3ff;
-  --color-neon-magenta: #ff00ff;
-  --color-neon-green: #39ff14;
-  --color-neon-purple: #bc13fe;
+  --color-neon-cyan: #00d9ff;
+  --color-neon-magenta: #ff006e;
+  --color-neon-purple: #7c3aed;
 
-  --color-glass-border: rgba(255, 255, 255, 0.1);
-  --color-glass-bg: rgba(255, 255, 255, 0.05);
+  --color-glass-border: rgba(0, 217, 255, 0.2);
+  --color-glass-bg: rgba(26, 31, 58, 0.6);
 
   --font-sans: var(--font-inter), sans-serif;
-  --font-display: var(--font-orbitron), sans-serif;
+  --font-display: var(--font-space-grotesk), sans-serif;
+  --font-mono: var(--font-fira-code), monospace;
 
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-
-  /* Custom shadows if needed, though v4 handles shadows differently. 
-     We can stick to inline styles or utilities for complex shadows, 
-     or define --shadow-neon-cyan if supported. */
 }
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --background: #0a0e27;
+  --foreground: #ffffff;
 }
 
 body {
@@ -54,21 +52,39 @@ body {
 
 /* Selection Color */
 ::selection {
-  background: #00f3ff;
+  background: #00d9ff;
   color: #000;
+}
+
+/* 3D Utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
 }
 
 /* Utilities */
 .glass-panel {
-  background-color: rgba(255, 255, 255, 0.07); /* Slightly more opaque for mobile without blur */
+  background-color: rgba(26, 31, 58, 0.8); /* Slightly more opaque for mobile without blur */
   border: 1px solid var(--color-glass-border);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 217, 255, 0.05);
+  transition: all 0.3s ease-out;
 }
 
 @media (min-width: 768px) {
   .glass-panel {
     background-color: var(--color-glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 217, 255, 0.1);
+  }
+  .glass-panel:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(0, 217, 255, 0.2);
+    border-color: rgba(0, 217, 255, 0.4);
   }
 }
 

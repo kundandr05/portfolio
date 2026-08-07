@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, Orbitron } from 'next/font/google';
+import { Inter, Space_Grotesk, Fira_Code } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -10,7 +10,8 @@ import ScrollProgress from '@/components/shared/ScrollProgress';
 import ScrollToTop from '@/components/shared/ScrollToTop';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-const orbitron = Orbitron({ subsets: ['latin'], variable: '--font-orbitron' });
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space-grotesk' });
+const firaCode = Fira_Code({ subsets: ['latin'], variable: '--font-fira-code' });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://kundandr-portfolio.vercel.app/'),
@@ -25,8 +26,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${orbitron.variable}`}>
-      <body className="bg-black text-white min-h-screen flex flex-col antialiased selection:bg-neon-cyan selection:text-black">
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${firaCode.variable}`}>
+      <body className="bg-background text-foreground min-h-screen flex flex-col antialiased selection:bg-neon-cyan selection:text-black">
         <Preloader />
         <ScrollProgress />
         <ScrollToTop />
