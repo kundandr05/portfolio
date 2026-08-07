@@ -109,63 +109,14 @@ export default function Hero() {
                     </div>
                 </motion.div>
 
-                {/* Visual Element / 3D Floating Profile */}
+                {/* 3D CyberCore Placeholder (Rendered by Global Scene.tsx) */}
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.8, y: 50 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    transition={{ duration: 1, ease: "easeOut" }}
-                    className="relative mx-auto lg:ml-auto perspective-1000"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 2, delay: 1 }}
+                    className="relative w-full h-[50vh] lg:h-full lg:w-1/2 flex items-center justify-center pointer-events-none"
                 >
-                    <div className="relative w-[320px] h-[320px] md:w-[480px] md:h-[480px] transform-style-3d">
-                        {/* Floating 3D Orbits */}
-                        <motion.div 
-                            animate={{ rotateX: 360, rotateY: 360 }}
-                            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                            className="absolute inset-0 border-2 border-neon-cyan/20 rounded-full" 
-                        />
-                        <motion.div 
-                            animate={{ rotateX: -360, rotateY: -180 }}
-                            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                            className="absolute inset-4 border-2 border-neon-magenta/20 rounded-full" 
-                        />
-                        <motion.div 
-                            animate={{ rotateZ: 360, rotateX: 180 }}
-                            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                            className="absolute inset-8 border-[1px] border-neon-purple/30 rounded-full" 
-                        />
-
-                        {/* Floating Geometric Shapes (Parallax Particles) */}
-                        <motion.div
-                            animate={{ y: [0, -20, 0], rotate: [0, 90, 0] }}
-                            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute top-10 left-10 w-8 h-8 border border-neon-cyan/50 backdrop-blur-md rounded-lg"
-                        />
-                        <motion.div
-                            animate={{ y: [0, 30, 0], rotate: [0, -90, 0] }}
-                            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                            className="absolute bottom-20 right-10 w-12 h-12 border border-neon-magenta/50 rounded-full backdrop-blur-md"
-                        />
-                        <motion.div
-                            animate={{ x: [0, 20, 0], y: [0, 15, 0] }}
-                            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-                            className="absolute top-1/2 -left-5 w-6 h-6 bg-neon-purple/20 blur-sm rounded-full"
-                        />
-
-                        {/* Glowing Core / Glassmorphism Profile */}
-                        <motion.div 
-                            animate={{ y: [-10, 10, -10] }}
-                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute inset-12 rounded-full bg-surface/50 backdrop-blur-xl border border-neon-cyan/30 flex items-center justify-center overflow-hidden shadow-[0_0_50px_rgba(0,217,255,0.2)]"
-                        >
-                            <Image
-                                src="/profile.jpg"
-                                alt="Profile"
-                                fill
-                                className="object-cover opacity-90 mix-blend-luminosity hover:mix-blend-normal transition-all duration-700"
-                                priority
-                            />
-                        </motion.div>
-                    </div>
+                    {/* The actual 3D CyberCore is rendered underneath this area by Scene.tsx */}
                 </motion.div>
             </div>
         </section>

@@ -9,6 +9,8 @@ import Preloader from '@/components/shared/Preloader';
 import ScrollProgress from '@/components/shared/ScrollProgress';
 import ScrollToTop from '@/components/shared/ScrollToTop';
 
+import Scene from '@/components/shared/Scene';
+
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space-grotesk' });
 const firaCode = Fira_Code({ subsets: ['latin'], variable: '--font-fira-code' });
@@ -27,7 +29,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${firaCode.variable}`}>
-      <body className="bg-background text-foreground min-h-screen flex flex-col antialiased selection:bg-neon-cyan selection:text-black">
+      <body className="bg-transparent text-foreground min-h-screen flex flex-col antialiased selection:bg-neon-cyan selection:text-black">
+        <Scene />
         <Preloader />
         <ScrollProgress />
         <ScrollToTop />
