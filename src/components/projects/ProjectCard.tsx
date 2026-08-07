@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionValue, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { ExternalLink, Github, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -20,10 +20,13 @@ interface ProjectProps {
 }
 
 export default function ProjectCard({ project }: { project: ProjectProps }) {
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
-    const rotateX = useTransform(y, [-100, 100], [30, -30]);
-    const rotateY = useTransform(x, [-100, 100], [-30, 30]);
+    // 3D Hover Tilt Physics
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
+    const smoothX = useSpring(mouseX, { damping: 20, stiffness: 300 });
+    const smoothY = useSpring(mouseY, { damping: 20, stiffness: 300 });
+    const rotateX = useTransform(smoothY, [-1, 1], [15, -15]);
+    const rotateY = useTransform(smoothX, [-1, 1], [-15, 15]);
 
     const [isHovered, setIsHovered] = useState(false);
     const [imageError, setImageError] = useState(false);
@@ -44,22 +47,33 @@ export default function ProjectCard({ project }: { project: ProjectProps }) {
         const rect = e.currentTarget.getBoundingClientRect();
         const xPos = e.clientX - rect.left;
         const yPos = e.clientY - rect.top;
+        
+        // Update CSS variables for glow
         e.currentTarget.style.setProperty("--mouse-x", `${xPos}px`);
         e.currentTarget.style.setProperty("--mouse-y", `${yPos}px`);
+
+        // Update motion values for 3D tilt (normalized from -1 to 1)
+        const xPct = (xPos / rect.width) * 2 - 1;
+        const yPct = (yPos / rect.height) * 2 - 1;
+        mouseX.set(xPct);
+        mouseY.set(yPct);
+    };
+
+    const handleMouseLeave = () => {
+        setIsHovered(false);
+        // Reset tilt on leave
+        mouseX.set(0);
+        mouseY.set(0);
     };
 
     return (
         <motion.div
-            style={{ x, y, rotateX, rotateY, z: 100 }}
-            drag
-            dragElastic={0.18}
-            dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-            whileHover={{ scale: 1.02, cursor: "grabbing" }}
-            whileTap={{ cursor: "grabbing" }}
+            style={{ rotateX, rotateY, z: 100 }}
+            whileHover={{ scale: 1.02 }}
             onHoverStart={() => setIsHovered(true)}
-            onHoverEnd={() => setIsHovered(false)}
+            onHoverEnd={handleMouseLeave}
             onMouseMove={handleMouseMove}
-            className="relative w-full h-full min-h-[450px] flex flex-col bg-surface/60 backdrop-blur-xl rounded-2xl border border-neon-cyan/20 overflow-hidden group perspective-1000 shadow-[0_8px_32px_rgba(0,217,255,0.1)] hover:shadow-[0_12px_40px_rgba(0,217,255,0.2)] hover:border-neon-cyan/40 transition-all duration-300"
+            className="relative w-full h-full min-h-[450px] flex flex-col bg-surface/60 backdrop-blur-xl rounded-2xl border border-neon-cyan/20 overflow-hidden group shadow-[0_8px_32px_rgba(0,217,255,0.1)] hover:shadow-[0_12px_40px_rgba(0,217,255,0.3)] hover:border-neon-cyan/40 transition-colors duration-300 transform-style-3d perspective-1000"
         >
             {/* Mouse-responsive color pop & glowing gradient */}
             <div 

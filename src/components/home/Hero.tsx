@@ -111,12 +111,26 @@ export default function Hero() {
 
                 {/* 3D CyberCore Placeholder (Rendered by Global Scene.tsx) */}
                 <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 2, delay: 1 }}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1.5, ease: "easeOut" }}
                     className="relative w-full h-[50vh] lg:h-full lg:w-1/2 flex items-center justify-center pointer-events-none"
                 >
                     {/* The actual 3D CyberCore is rendered underneath this area by Scene.tsx */}
+                    {/* Glassmorphism Profile Overlay */}
+                    <motion.div 
+                        animate={{ y: [-10, 10, -10] }}
+                        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                        className="relative w-[280px] h-[280px] md:w-[380px] md:h-[380px] rounded-full bg-surface/30 backdrop-blur-md border border-neon-cyan/40 flex items-center justify-center overflow-hidden shadow-[0_0_60px_rgba(0,217,255,0.3)] pointer-events-auto"
+                    >
+                        <Image
+                            src="/profile.jpg"
+                            alt="Profile"
+                            fill
+                            className="object-cover opacity-80 mix-blend-luminosity hover:mix-blend-normal transition-all duration-700"
+                            priority
+                        />
+                    </motion.div>
                 </motion.div>
             </div>
         </section>

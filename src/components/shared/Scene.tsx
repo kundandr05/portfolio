@@ -4,9 +4,29 @@ import { Canvas } from "@react-three/fiber";
 import { EffectComposer, Bloom, DepthOfField, ChromaticAberration, Noise } from "@react-three/postprocessing";
 import { BlendFunction } from "postprocessing";
 import { Suspense, useEffect, useState } from "react";
+import { useFrame, useThree } from "@react-three/fiber";
 import CyberCore from "./CyberCore";
 import Particles from "./Particles";
 import { usePathname } from "next/navigation";
+import * as THREE from "three";
+
+// Camera controller that tracks window scroll
+function ScrollCamera() {
+    const { camera } = useThree();
+    
+    useFrame(() => {
+        // Calculate a target Y position based on scroll.
+        // As you scroll down, the camera moves down (so objects appear to move up).
+        // 0.05 is a multiplier for scroll speed in 3D space.
+        const scrollY = window.scrollY;
+        const targetY = -(scrollY * 0.05);
+
+        // Interpolate current camera Y towards target Y for smoothness
+        camera.position.y += (targetY - camera.position.y) * 0.1;
+    });
+
+    return null;
+}
 
 export default function Scene() {
     const [mounted, setMounted] = useState(false);
@@ -29,6 +49,8 @@ export default function Scene() {
                 dpr={[1, 2]} // Support high-DPI screens but cap at 2 for performance
                 gl={{ antialias: false, alpha: true }} // Disable antialias since we use postprocessing
             >
+                <ScrollCamera />
+                
                 {/* Lighting Setup */}
                 <ambientLight intensity={0.2} color="#7c3aed" />
                 <directionalLight position={[10, 10, 10]} intensity={1.5} color="#00d9ff" />
