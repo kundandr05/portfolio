@@ -58,6 +58,21 @@ export default function About() {
                             </motion.div>
 
                             <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {/* Experience */}
+                                <div className="glass-panel p-6 rounded-xl hover:border-neon-cyan/50 transition-colors duration-300 md:col-span-2">
+                                    <h3 className="text-xl font-bold text-neon-cyan mb-4">Experience</h3>
+                                    
+                                    <div className="mb-2">
+                                        <p className="text-white font-medium">Software Engineering Intern (Incubation Internship)</p>
+                                        <p className="text-gray-400 text-sm">WizzyBox Private Limited (WCAP) | Starting Sep 2026</p>
+                                    </div>
+                                    <ul className="text-gray-300 text-sm list-disc list-inside space-y-1">
+                                        <li>Selected for the highly competitive WizzyBox Career Accelerator Program (WCAP) in partnership with NammaQA.</li>
+                                        <li>Will be engaging in end-to-end training, live project exposure, and hands-on deliverables in an onsite/offshore model.</li>
+                                        <li>Focused on industry-led technologies spanning AI/ML, Python Full-Stack, and Software Testing.</li>
+                                    </ul>
+                                </div>
+
                                 {/* Academic */}
                                 <div className="glass-panel p-6 rounded-xl hover:border-neon-magenta/50 transition-colors duration-300">
                                     <h3 className="text-xl font-bold text-neon-magenta mb-4">Education</h3>
@@ -90,12 +105,12 @@ export default function About() {
                                 <div className="glass-panel p-6 rounded-xl hover:border-neon-cyan/50 transition-colors duration-300 md:col-span-2">
                                     <h3 className="text-xl font-bold text-neon-cyan mb-4">Highlights</h3>
                                     <ul className="text-gray-300 text-sm list-disc list-inside space-y-2">
+                                        <li>Incoming Software Engineering Intern at WizzyBox</li>
                                         <li>Published "Tournament Management Agent Using Agentic Artificial Intelligence" (IJCRT)</li>
                                         <li>2 Books Published on Amazon KDP</li>
                                         <li>Built Zeno AI Chatbot using FastAPI</li>
                                         <li>Developed Agentic AI Tournament Management System</li>
                                         <li>AIML Undergraduate (2023–2027)</li>
-                                        <li>Open to AI & Software Development Internships</li>
                                     </ul>
                                 </div>
                             </motion.div>
