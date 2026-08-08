@@ -6,6 +6,20 @@ import PageTransition from '@/components/shared/PageTransition';
 
 const experiences = [
     {
+        id: 2,
+        role: "Software Engineering Intern (Incubation)",
+        company: "WizzyBox Private Limited (WCAP)",
+        period: "Starting Sep 2026",
+        description: [
+            "Selected for the highly competitive WizzyBox Career Accelerator Program (WCAP) in partnership with NammaQA.",
+            "Will engage in end-to-end training, live project exposure, and hands-on deliverables in an onsite/offshore model.",
+            "Focused on industry-led technologies spanning AI/ML, Python Full-Stack, and Software Testing."
+        ],
+        skills: ["AI/ML", "Python", "Software Engineering", "Full-Stack"],
+        link: "/WizzyBox_Offer_Letter.pdf",
+        linkLabel: "View Offer Letter"
+    },
+    {
         id: 1,
         role: "Research Project Developer",
         company: "Maharaja Institute of Technology, Mysuru",
@@ -101,13 +115,24 @@ export default function Experience() {
                                                 <li key={idx}>{point}</li>
                                             ))}
                                         </ul>
-                                        <div className="flex flex-wrap gap-2">
+                                        <div className="flex flex-wrap gap-2 mb-4">
                                             {exp.skills.map((skill, i) => (
                                                 <span key={i} className="text-xs px-2 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300">
                                                     {skill}
                                                 </span>
                                             ))}
                                         </div>
+                                        {exp.link && (
+                                            <a
+                                                href={exp.link}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="inline-flex items-center gap-2 text-sm text-neon-cyan hover:text-white transition-colors"
+                                            >
+                                                <FileText className="w-4 h-4" />
+                                                {exp.linkLabel}
+                                            </a>
+                                        )}
                                     </div>
                                 </div>
 
