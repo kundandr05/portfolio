@@ -36,7 +36,8 @@ export default function Scene() {
         <div className="fixed inset-0 w-full h-full pointer-events-none z-[-10]">
             <Canvas
                 camera={{ position: [0, 0, 50], fov: 45 }}
-                dpr={[1, 2]} // Support high-DPI screens but cap at 2 for performance
+                dpr={[1, 1.5]} // Capped at 1.5 to guarantee high refresh rate (60/120fps) even on Retina displays
+                performance={{ min: 0.5 }} // Allows R3F to scale down resolution if frame rate drops
             >
                 <ScrollCamera />
                 
