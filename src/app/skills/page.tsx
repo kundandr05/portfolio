@@ -10,8 +10,11 @@ const skillCategories = [
         icon: Code2,
         color: "text-neon-cyan",
         skills: [
-            { name: "Python", level: 80 },
-            { name: "C", level: 70 }
+            { name: "Python", level: 90 },
+            { name: "JavaScript/TypeScript", level: 85 },
+            { name: "Java", level: 75 },
+            { name: "C", level: 70 },
+            { name: "HTML/CSS", level: 90 }
         ]
     },
     {
@@ -19,32 +22,32 @@ const skillCategories = [
         icon: Cpu,
         color: "text-neon-purple",
         skills: [
-            { name: "Machine Learning", level: 70 },
-            { name: "Multi-Agent Systems", level: 75 },
-            { name: "Agentic AI Systems", level: 75 },
-            { name: "Data Analytics", level: 70 },
-            { name: "Decision-Making Algorithms", level: 65 }
+            { name: "Agentic AI & Multi-Agent Systems", level: 85 },
+            { name: "LLMs (Gemini, Perplexity, OpenAI)", level: 85 },
+            { name: "RAG & Prompt Engineering", level: 80 },
+            { name: "OpenRouter API", level: 80 }
         ]
     },
     {
-        title: "Backend & Databases",
+        title: "Frameworks & Databases",
         icon: Database,
         color: "text-neon-green",
         skills: [
-            { name: "FastAPI", level: 75 },
-            { name: "REST APIs", level: 75 },
-            { name: "SQLite", level: 70 },
-            { name: "SQL", level: 55 }
+            { name: "React.js & Next.js", level: 85 },
+            { name: "FastAPI", level: 80 },
+            { name: "Node.js & Tailwind CSS", level: 80 },
+            { name: "SQL, SQLite & SQLite Cloud", level: 75 }
         ]
     },
     {
-        title: "Cloud & Platforms",
+        title: "Cloud, Deployment & Tools",
         icon: Globe,
         color: "text-neon-magenta",
         skills: [
-            { name: "AWS (Foundations)", level: 65 },
-            { name: "Microsoft Azure (Basics)", level: 60 },
-            { name: "IBM Cloud", level: 60 }
+            { name: "Firebase Auth, Render, Vercel", level: 80 },
+            { name: "AWS & Azure (Basics)", level: 65 },
+            { name: "Git, GitHub & REST APIs", level: 85 },
+            { name: "System Architecture", level: 75 }
         ]
     }
 ];

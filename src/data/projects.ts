@@ -128,5 +128,23 @@ export const projects: Project[] = [
         architecture: "A Next.js 14 App Router application leveraging Tailwind CSS for styling and deployed on Vercel.",
         challenges: "Creating highly customized Framer Motion animations that performed smoothly across mobile devices.",
         futureImprovements: "Add a headless CMS to manage project content dynamically."
+    },
+    {
+        slug: "erp-student-management-system",
+        title: "ERP-Based Student Management System",
+        description: "An ERP solution built to streamline student, faculty, and administrative workflows, developed during Innovathon 2026 at SJBIT.",
+        tags: ["ERP", "Database Management", "Hackathon"],
+        image: "/project4.png", // Using placeholder image for now
+        github: "#",
+        demo: "#",
+        demoLabel: "Innovathon 2026",
+        keyFeatures: [
+            "Comprehensive database modules for attendance management",
+            "Student records and academic performance tracking",
+            "Functional ERP prototype delivered within hackathon timelines"
+        ],
+        architecture: "Collaborative agile development combining frontend interfaces with a robust relational database backend.",
+        challenges: "Delivering a fully functional prototype within strict hackathon time constraints.",
+        futureImprovements: "Expand the modules to include financial and library management systems."
     }
 ];

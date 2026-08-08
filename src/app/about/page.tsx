@@ -47,29 +47,35 @@ export default function About() {
                                     <User className="text-neon-cyan" /> Who I Am
                                 </h2>
                                 <p className="text-gray-300 leading-relaxed mb-4">
-                                    I am a Computer Science (AI & ML) undergraduate at Maharaja Institute of Technology, Mysuru, with interests in Artificial Intelligence, backend development, and intelligent automation.
+                                    Results-driven AI & Machine Learning engineering student with hands-on experience building intelligent AI assistants, multi-agent systems, and scalable backend applications using Python, FastAPI, React, and Next.js.
                                 </p>
                                 <p className="text-gray-300 leading-relaxed mb-4">
-                                    I have designed and published an Agentic AI-based Tournament Management System in a peer-reviewed journal, demonstrating practical expertise in multi-agent systems, FastAPI, and intelligent automation.
-                                </p>
-                                <p className="text-gray-300 leading-relaxed mb-4">
-                                    Beyond academics, I am also an author of two published books, reflecting my creativity, discipline, and storytelling ability.
-                                </p>
-                                <p className="text-gray-300 leading-relaxed mb-4">
-                                    I am passionate about building intelligent systems that combine research, engineering, and real-world impact.
+                                    Published IJCRT researcher and author of two Amazon KDP books with a strong interest in Generative AI, backend engineering, and production-ready software.
                                 </p>
                                 <p className="text-gray-300 leading-relaxed">
-                                    Currently focused on strengthening software engineering fundamentals, improving Zeno AI, solving data structures and algorithms problems, and preparing for AI and software development internships.
+                                    I am passionate about building intelligent systems that combine research, engineering, and real-world impact, and am actively preparing for AI and software development internships.
                                 </p>
                             </motion.div>
 
                             <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {/* Academic */}
                                 <div className="glass-panel p-6 rounded-xl hover:border-neon-magenta/50 transition-colors duration-300">
-                                    <h3 className="text-xl font-bold text-neon-magenta mb-2">Education</h3>
-                                    <p className="text-white font-medium">Bachelor of Engineering (B.E.) in Computer Science & Engineering (AI & ML)</p>
-                                    <p className="text-gray-400 text-sm mb-2">Maharaja Institute of Technology, Mysuru | 2023 - 2027</p>
-                                    <p className="text-gray-300 text-sm">Focused on Artificial Intelligence, Machine Learning, Backend Systems, and Intelligent Automation.</p>
+                                    <h3 className="text-xl font-bold text-neon-magenta mb-4">Education</h3>
+                                    
+                                    <div className="mb-4">
+                                        <p className="text-white font-medium">B.E. in Computer Science & Engineering (AI & ML)</p>
+                                        <p className="text-gray-400 text-sm">Maharaja Institute of Technology, Mysuru | Expected 2027</p>
+                                    </div>
+                                    
+                                    <div className="mb-4">
+                                        <p className="text-white font-medium">Pre-University Course (PCMB)</p>
+                                        <p className="text-gray-400 text-sm">Sri Adichunchanagiri Independent PU College | 2023</p>
+                                    </div>
+
+                                    <div>
+                                        <p className="text-white font-medium">Secondary School Leaving Certificate</p>
+                                        <p className="text-gray-400 text-sm">BGS Central School, Bhadravathi | 2021</p>
+                                    </div>
                                 </div>
 
                                 {/* Goals */}
