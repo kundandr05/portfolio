@@ -117,11 +117,12 @@ export default function Hero() {
                     className="relative w-full h-[50vh] lg:h-full lg:w-1/2 flex items-center justify-center pointer-events-none"
                 >
                     {/* The actual 3D CyberCore is rendered underneath this area by Scene.tsx */}
-                    {/* Glassmorphism Profile Overlay */}
+                    {/* Glassmorphism Profile Overlay (Stable & Professional) */}
                     <motion.div 
-                        animate={{ y: [-10, 10, -10] }}
-                        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                        className="relative w-[280px] h-[280px] md:w-[380px] md:h-[380px] rounded-full bg-surface/30 backdrop-blur-md border border-neon-cyan/40 flex items-center justify-center overflow-hidden shadow-[0_0_60px_rgba(0,217,255,0.3)] pointer-events-auto"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
+                        className="relative w-[280px] h-[280px] md:w-[380px] md:h-[380px] rounded-full bg-surface/30 backdrop-blur-md border border-white/10 flex items-center justify-center overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.5)] pointer-events-auto"
                     >
                         <Image
                             src="/profile.jpg"

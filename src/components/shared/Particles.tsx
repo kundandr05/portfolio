@@ -38,15 +38,15 @@ export default function Particles({ count = 200 }: ParticlesProps) {
         return [positions, colors];
     }, [count]);
 
-    // Animate particles
+    // Animate particles (slower, more professional)
     useFrame((state, delta) => {
         if (pointsRef.current) {
-            // Slow global rotation
-            pointsRef.current.rotation.y += delta * 0.05;
-            pointsRef.current.rotation.x += delta * 0.02;
+            // Very slow global rotation
+            pointsRef.current.rotation.y += delta * 0.01;
+            pointsRef.current.rotation.x += delta * 0.005;
 
-            // Subtle sine wave motion on Y axis
-            pointsRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.5) * 2;
+            // Barely perceptible drift
+            pointsRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.2) * 0.5;
         }
     });
 
@@ -65,10 +65,10 @@ export default function Particles({ count = 200 }: ParticlesProps) {
                 />
             </bufferGeometry>
             <pointsMaterial
-                size={0.5}
+                size={0.15}
                 vertexColors
                 transparent
-                opacity={0.8}
+                opacity={0.3}
                 sizeAttenuation
                 blending={THREE.AdditiveBlending}
                 depthWrite={false}

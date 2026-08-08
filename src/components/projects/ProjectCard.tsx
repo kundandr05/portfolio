@@ -25,8 +25,8 @@ export default function ProjectCard({ project }: { project: ProjectProps }) {
     const mouseY = useMotionValue(0);
     const smoothX = useSpring(mouseX, { damping: 20, stiffness: 300 });
     const smoothY = useSpring(mouseY, { damping: 20, stiffness: 300 });
-    const rotateX = useTransform(smoothY, [-1, 1], [15, -15]);
-    const rotateY = useTransform(smoothX, [-1, 1], [-15, 15]);
+    const rotateX = useTransform(smoothY, [-1, 1], [3, -3]);
+    const rotateY = useTransform(smoothX, [-1, 1], [-3, 3]);
 
     const [isHovered, setIsHovered] = useState(false);
     const [imageError, setImageError] = useState(false);
