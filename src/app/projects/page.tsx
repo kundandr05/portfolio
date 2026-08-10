@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import PageTransition from '@/components/shared/PageTransition';
-import ProjectCard from '@/components/projects/ProjectCard';
+import ProjectCarousel from '@/components/projects/ProjectCarousel';
 
 import { projects } from '@/data/projects';
 
@@ -24,17 +24,8 @@ export default function Projects() {
                         </p>
                     </motion.div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
-                        {projects.map((project, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: index * 0.1 }}
-                            >
-                                <ProjectCard project={project} />
-                            </motion.div>
-                        ))}
+                    <div className="w-full mt-12 pb-12">
+                        <ProjectCarousel projects={projects} />
                     </div>
                 </div>
             </section>
