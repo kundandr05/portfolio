@@ -21,11 +21,11 @@ export const metadata: Metadata = {
   description: 'Portfolio of Kundan DR, an AI & Machine Learning Engineer, Backend Developer (FastAPI), Published Researcher, and Author. Showcasing projects in Agentic AI, LLMs, and Software Development.',
   keywords: ['Kundan DR', 'AI Engineer', 'Machine Learning', 'FastAPI', 'Agentic AI', 'Backend Developer', 'Portfolio'],
   openGraph: {
-    images: ['/thumbnail.jpg'],
+    images: ['/suit-photo.jpg'],
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['/thumbnail.jpg'],
+    images: ['/suit-photo.jpg'],
   }
 };
 
