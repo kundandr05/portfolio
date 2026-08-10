@@ -35,13 +35,13 @@ export default function ProjectCarousel({ projects }: { projects: any[] }) {
     const wheelRotation = -currentIndex * theta;
 
     return (
-        <div className="relative w-full h-[650px] flex flex-col items-center justify-center overflow-hidden">
+        <div className="relative w-full h-[700px] flex flex-col items-center justify-center overflow-hidden">
             {/* Perspective container */}
-            <div className="relative w-full h-[500px] flex items-center justify-center perspective-[1500px]">
+            <div className="relative w-full h-[600px] flex items-center justify-center perspective-[1500px]">
                 
                 {/* The Rotating Wheel */}
                 <motion.div
-                    className="relative w-[350px] h-[450px] transform-style-3d"
+                    className="relative w-[350px] h-[520px] transform-style-3d"
                     animate={{ rotateY: wheelRotation }}
                     transition={{ type: "spring", stiffness: 80, damping: 15 }}
                 >

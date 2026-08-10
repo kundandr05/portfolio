@@ -73,7 +73,7 @@ export default function ProjectCard({ project }: { project: ProjectProps }) {
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={handleMouseLeave}
             onMouseMove={handleMouseMove}
-            className="relative w-full h-full min-h-[450px] flex flex-col bg-surface/60 backdrop-blur-xl rounded-2xl border border-neon-cyan/20 overflow-hidden group shadow-[0_8px_32px_rgba(0,217,255,0.1)] hover:shadow-[0_12px_40px_rgba(0,217,255,0.3)] hover:border-neon-cyan/40 transition-colors duration-300 transform-style-3d perspective-1000"
+            className="relative w-full h-full min-h-[520px] flex flex-col bg-surface/60 backdrop-blur-xl rounded-2xl border border-neon-cyan/20 overflow-hidden group shadow-[0_8px_32px_rgba(0,217,255,0.1)] hover:shadow-[0_12px_40px_rgba(0,217,255,0.3)] hover:border-neon-cyan/40 transition-colors duration-300 transform-style-3d perspective-1000"
         >
             {/* Mouse-responsive color pop & glowing gradient */}
             <div 

@@ -76,7 +76,7 @@ export default function PublicationCarousel({ publications }: { publications: an
                         <div className={`absolute -top-10 -right-10 w-40 h-40 bg-gradient-to-br from-${pub.color.replace('text-', '')}/20 to-transparent blur-3xl rounded-full`} />
 
                         {pub.image && (
-                            <div className="w-full md:w-2/5 h-64 md:h-auto relative border-b md:border-b-0 md:border-r border-white/10 group-hover:border-neon-cyan/30 transition-colors">
+                            <div className="w-full md:w-2/5 h-64 md:h-full min-h-[300px] relative border-b md:border-b-0 md:border-r border-white/10 group-hover:border-neon-cyan/30 transition-colors">
                                 <Image src={pub.image} alt={pub.title} fill className="object-cover" />
                             </div>
                         )}
