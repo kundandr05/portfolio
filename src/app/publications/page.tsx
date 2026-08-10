@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { BookOpen, ExternalLink, FileText } from 'lucide-react';
 import PageTransition from '@/components/shared/PageTransition';
+import PublicationCarousel from '@/components/publications/PublicationCarousel';
 import Image from 'next/image';
 
 const publications = [
@@ -59,56 +60,7 @@ export default function Publications() {
                         </p>
                     </motion.div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-                        {publications.map((pub, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-50px" }}
-                                transition={{ delay: index * 0.1 }}
-                                className="glass-panel rounded-2xl relative overflow-hidden group flex flex-col h-full"
-                            >
-                                {/* Background Glow */}
-                                <div className={`absolute -top-10 -right-10 w-40 h-40 bg-gradient-to-br from-${pub.color.replace('text-', '')}/20 to-transparent blur-3xl rounded-full`} />
-
-                                <div className="p-8 flex-grow flex flex-col">
-                                    {pub.image && (
-                                        <div className="w-full h-48 relative mb-6 rounded-xl overflow-hidden shadow-[0_0_15px_rgba(0,0,0,0.5)] border border-white/10 group-hover:border-neon-cyan/30 transition-colors">
-                                            <Image src={pub.image} alt={pub.title} fill className="object-cover" />
-                                        </div>
-                                    )}
-                                    <div className="flex items-center gap-3 mb-4">
-                                        <div className={`p-3 bg-white/5 rounded-lg ${pub.color}`}>
-                                            <pub.icon className="w-6 h-6" />
-                                        </div>
-                                        <div>
-                                            <span className="text-xs text-gray-400 uppercase tracking-wider font-semibold">{pub.type}</span>
-                                            <div className="text-sm text-gray-300">{pub.publisher} &bull; {pub.date}</div>
-                                        </div>
-                                    </div>
-
-                                    <h2 className="text-2xl font-bold text-white mb-4 group-hover:text-neon-cyan transition-colors">
-                                        {pub.title}
-                                    </h2>
-
-                                    <p className="text-gray-400 mb-8 flex-grow">
-                                        {pub.description}
-                                    </p>
-
-                                    <a
-                                        href={pub.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className={`inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 border border-white/10 ${pub.color} hover:bg-white/10 transition-colors w-fit font-medium`}
-                                    >
-                                        View Publication
-                                        <ExternalLink className="w-4 h-4" />
-                                    </a>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
+                    <PublicationCarousel publications={publications} />
                 </div>
             </section>
         </PageTransition>

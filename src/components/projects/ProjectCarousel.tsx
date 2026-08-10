@@ -50,20 +50,30 @@ export default function ProjectCarousel({ projects }: { projects: any[] }) {
                     onDragEnd={handleDragEnd}
                 >
                     {projects.map((project, index) => {
-                        // The actual index mapped into a 0 to N-1 range for styling
                         const normalizedCurrentIndex = ((currentIndex % numCards) + numCards) % numCards;
                         const isCenter = index === normalizedCurrentIndex;
+                        
+                        // Calculate shortest distance to center
+                        let diff = index - normalizedCurrentIndex;
+                        if (diff > numCards / 2) diff -= numCards;
+                        if (diff < -numCards / 2) diff += numCards;
+
+                        // Only show the center card and the immediate left/right cards
+                        // This hides the back half of the cylinder so text doesn't show through backwards
+                        const isVisible = Math.abs(diff) <= 1;
 
                         return (
                             <div
                                 key={project.title}
-                                className="absolute top-0 left-0 w-full h-full transform-style-3d"
+                                className="absolute top-0 left-0 w-full h-full transform-style-3d transition-opacity duration-500"
                                 style={{
-                                    transform: `rotateY(${index * theta}deg) translateZ(${radius}px)`
+                                    transform: `rotateY(${index * theta}deg) translateZ(${radius}px)`,
+                                    opacity: isVisible ? 1 : 0,
+                                    visibility: isVisible ? "visible" : "hidden"
                                 }}
                             >
-                                {/* We only enable pointer events on the front card to prevent misclicks */}
-                                <div className={`w-full h-full ${!isCenter ? 'pointer-events-none opacity-50' : 'opacity-100'} transition-opacity duration-500`}>
+                                {/* Enforce pointer events ONLY on the front card so it's clickable */}
+                                <div className={`w-full h-full ${!isCenter ? 'pointer-events-none opacity-50' : 'pointer-events-auto opacity-100'} transition-all duration-500`}>
                                     <ProjectCard project={project} />
                                 </div>
                             </div>
