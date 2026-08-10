@@ -82,40 +82,40 @@ export default function ProjectCarousel({ projects }: { projects: any[] }) {
                 </motion.div>
 
                 {/* 2D Click Overlay - immune to 3D rendering bugs */}
-                <div className="absolute w-[350px] h-[520px] z-[100] pointer-events-none flex flex-col justify-end p-6">
-                    <div className="flex gap-4 mt-auto relative pointer-events-auto">
+                <div className="absolute w-[350px] h-[520px] z-[100] pointer-events-none flex flex-col justify-end p-6 pb-6">
+                    <div className="flex gap-4 w-full relative pointer-events-auto items-center">
                         {(!activeProject.github || activeProject.github === '#') ? (
-                            <span className="flex items-center gap-2 text-xs font-medium text-gray-400 cursor-not-allowed bg-black/40 px-3 py-2 rounded-lg backdrop-blur-md border border-white/5">
-                                <Github className="w-3 h-3" /> {activeProject.githubLabel || "Code"}
+                            <span className="flex items-center gap-1.5 text-xs font-medium text-gray-400 cursor-not-allowed whitespace-nowrap">
+                                <Github className="w-3.5 h-3.5" /> {activeProject.githubLabel || "Code"}
                             </span>
                         ) : (
                             <a
                                 href={activeProject.github}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-2 text-xs font-medium text-white hover:text-neon-cyan transition-colors bg-black/40 px-3 py-2 rounded-lg backdrop-blur-md border border-white/10 hover:border-neon-cyan/50"
+                                className="flex items-center gap-1.5 text-xs font-medium text-white hover:text-neon-cyan transition-colors whitespace-nowrap"
                             >
-                                <Github className="w-3 h-3" /> Code
+                                <Github className="w-3.5 h-3.5" /> Code
                             </a>
                         )}
                         
                         {(!activeProject.demo || activeProject.demo === '#') ? (
-                            <span className="flex items-center gap-2 text-xs font-medium text-gray-400 cursor-not-allowed bg-black/40 px-3 py-2 rounded-lg backdrop-blur-md border border-white/5">
-                                <ExternalLink className="w-3 h-3" /> Coming Soon
+                            <span className="flex items-center gap-1.5 text-xs font-medium text-gray-400 cursor-not-allowed whitespace-nowrap">
+                                <ExternalLink className="w-3.5 h-3.5" /> Coming Soon
                             </span>
                         ) : (
                             <a
                                 href={activeProject.demo}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-2 text-xs font-medium text-white hover:text-neon-magenta transition-colors bg-black/40 px-3 py-2 rounded-lg backdrop-blur-md border border-white/10 hover:border-neon-magenta/50"
+                                className="flex items-center gap-1.5 text-xs font-medium text-white hover:text-neon-magenta transition-colors whitespace-nowrap"
                             >
-                                <ExternalLink className="w-3 h-3" /> {activeProject.demoLabel || "Live Demo"}
+                                <ExternalLink className="w-3.5 h-3.5" /> {activeProject.demoLabel || "Live Demo"}
                             </a>
                         )}
                         <a
                             href={`/projects/${activeProject.slug || activeProject.title.toLowerCase().replace(/\s+/g, '-')}`}
-                            className="ml-auto text-xs text-neon-cyan hover:text-white flex items-center gap-1 bg-black/40 px-3 py-2 rounded-lg backdrop-blur-md border border-white/10 hover:border-neon-cyan/50 transition-colors"
+                            className="ml-auto text-xs text-neon-cyan hover:text-white flex items-center gap-1 transition-colors whitespace-nowrap"
                         >
                             Details <ArrowRight className="w-3 h-3" />
                         </a>
