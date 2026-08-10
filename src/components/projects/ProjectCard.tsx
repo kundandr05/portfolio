@@ -1,6 +1,5 @@
 "use client";
 
-import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { ExternalLink, Github, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -20,14 +19,6 @@ interface ProjectProps {
 }
 
 export default function ProjectCard({ project }: { project: ProjectProps }) {
-    // 3D Hover Tilt Physics
-    const mouseX = useMotionValue(0);
-    const mouseY = useMotionValue(0);
-    const smoothX = useSpring(mouseX, { damping: 20, stiffness: 300 });
-    const smoothY = useSpring(mouseY, { damping: 20, stiffness: 300 });
-    const rotateX = useTransform(smoothY, [-1, 1], [3, -3]);
-    const rotateY = useTransform(smoothX, [-1, 1], [-3, 3]);
-
     const [isHovered, setIsHovered] = useState(false);
     const [imageError, setImageError] = useState(false);
     const videoRef = useRef<HTMLVideoElement>(null);
@@ -51,29 +42,18 @@ export default function ProjectCard({ project }: { project: ProjectProps }) {
         // Update CSS variables for glow
         e.currentTarget.style.setProperty("--mouse-x", `${xPos}px`);
         e.currentTarget.style.setProperty("--mouse-y", `${yPos}px`);
-
-        // Update motion values for 3D tilt (normalized from -1 to 1)
-        const xPct = (xPos / rect.width) * 2 - 1;
-        const yPct = (yPos / rect.height) * 2 - 1;
-        mouseX.set(xPct);
-        mouseY.set(yPct);
     };
 
     const handleMouseLeave = () => {
         setIsHovered(false);
-        // Reset tilt on leave
-        mouseX.set(0);
-        mouseY.set(0);
     };
 
     return (
-        <motion.div
-            style={{ rotateX, rotateY, z: 100 }}
-            whileHover={{ scale: 1.02 }}
-            onHoverStart={() => setIsHovered(true)}
-            onHoverEnd={handleMouseLeave}
+        <div
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={handleMouseLeave}
             onMouseMove={handleMouseMove}
-            className="relative w-full h-full min-h-[520px] flex flex-col bg-surface/60 backdrop-blur-xl rounded-2xl border border-neon-cyan/20 overflow-hidden group shadow-[0_8px_32px_rgba(0,217,255,0.1)] hover:shadow-[0_12px_40px_rgba(0,217,255,0.3)] hover:border-neon-cyan/40 transition-colors duration-300 transform-style-3d perspective-1000"
+            className="relative w-full h-full min-h-[520px] flex flex-col bg-surface/60 backdrop-blur-xl rounded-2xl border border-neon-cyan/20 overflow-hidden group shadow-[0_8px_32px_rgba(0,217,255,0.1)] hover:shadow-[0_12px_40px_rgba(0,217,255,0.3)] hover:border-neon-cyan/40 transition-all duration-300 hover:scale-[1.02]"
         >
             {/* Mouse-responsive color pop & glowing gradient */}
             <div 
@@ -90,7 +70,7 @@ export default function ProjectCard({ project }: { project: ProjectProps }) {
             />
 
             {/* Image Container */}
-            <div className="relative h-48 shrink-0 w-full overflow-hidden bg-gray-900">
+            <div className="relative h-48 shrink-0 w-full overflow-hidden bg-gray-900 z-10 pointer-events-none">
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10 pointer-events-none" />
                 {project.image && !imageError ? (
                     <Image
@@ -120,50 +100,51 @@ export default function ProjectCard({ project }: { project: ProjectProps }) {
 
             {/* Content */}
             <div className="p-6 relative z-20 flex-1 flex flex-col justify-between">
-                <div>
-                    <h3 className="text-2xl font-bold font-display text-white mb-2 group-hover:text-neon-cyan transition-colors">
+                <div className="pointer-events-none">
+                    <h3 className="text-xl font-bold font-display text-white mb-2 group-hover:text-neon-cyan transition-colors">
                         {project.title}
                     </h3>
-                    <p className="text-gray-400 text-sm line-clamp-3 mb-4">
+                    <p className="text-gray-400 text-xs line-clamp-4 mb-4">
                         {project.description}
                     </p>
                     <div className="flex flex-wrap gap-2 mb-4">
                         {project.tags.map(tag => (
-                            <span key={tag} className="text-xs px-2 py-1 rounded bg-white/5 text-neon-cyan border border-neon-cyan/20">
+                            <span key={tag} className="text-[10px] px-2 py-1 rounded bg-white/5 text-neon-cyan border border-neon-cyan/20">
                                 {tag}
                             </span>
                         ))}
                     </div>
                 </div>
 
-                <div className="flex gap-4 mt-auto">
+                {/* Clickable links wrapper */}
+                <div className="flex gap-4 mt-auto relative z-30 pointer-events-auto">
                     {(!project.github || project.github === '#') ? (
-                        <span className="flex items-center gap-2 text-sm font-medium text-gray-600 cursor-not-allowed" title={project.githubLabel || "Code unavailable"}>
-                            <Github className="w-4 h-4" /> {project.githubLabel || "Code (Coming Soon)"}
+                        <span className="flex items-center gap-2 text-xs font-medium text-gray-600 cursor-not-allowed" title={project.githubLabel || "Code unavailable"}>
+                            <Github className="w-3 h-3" /> {project.githubLabel || "Code"}
                         </span>
                     ) : (
                         <a
                             href={project.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-2 text-sm font-medium text-white hover:text-neon-cyan transition-colors"
+                            className="flex items-center gap-2 text-xs font-medium text-white hover:text-neon-cyan transition-colors"
                         >
-                            <Github className="w-4 h-4" /> Code
+                            <Github className="w-3 h-3" /> Code
                         </a>
                     )}
                     
                     {(!project.demo || project.demo === '#') ? (
-                        <span className="flex items-center gap-2 text-sm font-medium text-gray-600 cursor-not-allowed">
-                            <ExternalLink className="w-4 h-4" /> Coming Soon
+                        <span className="flex items-center gap-2 text-xs font-medium text-gray-600 cursor-not-allowed">
+                            <ExternalLink className="w-3 h-3" /> Coming Soon
                         </span>
                     ) : (
                         <a
                             href={project.demo}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-2 text-sm font-medium text-white hover:text-neon-magenta transition-colors"
+                            className="flex items-center gap-2 text-xs font-medium text-white hover:text-neon-magenta transition-colors"
                         >
-                            <ExternalLink className="w-4 h-4" /> {project.demoLabel || "Live Demo"}
+                            <ExternalLink className="w-3 h-3" /> {project.demoLabel || "Live Demo"}
                         </a>
                     )}
                     <Link
@@ -174,6 +155,6 @@ export default function ProjectCard({ project }: { project: ProjectProps }) {
                     </Link>
                 </div>
             </div>
-        </motion.div>
+        </div>
     );
 }
