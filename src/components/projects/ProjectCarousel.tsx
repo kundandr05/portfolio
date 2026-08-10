@@ -65,11 +65,13 @@ export default function ProjectCarousel({ projects }: { projects: any[] }) {
                                 style={{
                                     transform: `rotateY(${index * theta}deg) translateZ(${radius}px)`,
                                     opacity: isVisible ? 1 : 0,
-                                    visibility: isVisible ? "visible" : "hidden"
+                                    visibility: isVisible ? "visible" : "hidden",
+                                    pointerEvents: isCenter ? "auto" : "none",
+                                    zIndex: isCenter ? 50 : 10
                                 }}
                             >
-                                {/* Enforce pointer events ONLY on the front card so it's clickable */}
-                                <div className={`w-full h-full ${!isCenter ? 'pointer-events-none opacity-50' : 'pointer-events-auto opacity-100'} transition-all duration-500`}>
+                                {/* We keep the inner div styling for opacity */}
+                                <div className={`w-full h-full ${!isCenter ? 'opacity-50' : 'opacity-100'} transition-all duration-500`}>
                                     <ProjectCard project={project} />
                                 </div>
                             </div>
