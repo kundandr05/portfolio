@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Github, ExternalLink, ArrowRight } from "lucide-react";
 import ProjectCard from "./ProjectCard";
 
 export default function ProjectCarousel({ projects }: { projects: any[] }) {
@@ -33,6 +33,8 @@ export default function ProjectCarousel({ projects }: { projects: any[] }) {
     
     // The entire wheel rotates to show the current index
     const wheelRotation = -currentIndex * theta;
+    const normalizedCurrentIndex = ((currentIndex % numCards) + numCards) % numCards;
+    const activeProject = projects[normalizedCurrentIndex];
 
     return (
         <div className="relative w-full h-[700px] flex flex-col items-center justify-center overflow-hidden">
@@ -78,6 +80,47 @@ export default function ProjectCarousel({ projects }: { projects: any[] }) {
                         );
                     })}
                 </motion.div>
+
+                {/* 2D Click Overlay - immune to 3D rendering bugs */}
+                <div className="absolute w-[350px] h-[520px] z-[100] pointer-events-none flex flex-col justify-end p-6">
+                    <div className="flex gap-4 mt-auto relative pointer-events-auto">
+                        {(!activeProject.github || activeProject.github === '#') ? (
+                            <span className="flex items-center gap-2 text-xs font-medium text-gray-400 cursor-not-allowed bg-black/40 px-3 py-2 rounded-lg backdrop-blur-md border border-white/5">
+                                <Github className="w-3 h-3" /> {activeProject.githubLabel || "Code"}
+                            </span>
+                        ) : (
+                            <a
+                                href={activeProject.github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2 text-xs font-medium text-white hover:text-neon-cyan transition-colors bg-black/40 px-3 py-2 rounded-lg backdrop-blur-md border border-white/10 hover:border-neon-cyan/50"
+                            >
+                                <Github className="w-3 h-3" /> Code
+                            </a>
+                        )}
+                        
+                        {(!activeProject.demo || activeProject.demo === '#') ? (
+                            <span className="flex items-center gap-2 text-xs font-medium text-gray-400 cursor-not-allowed bg-black/40 px-3 py-2 rounded-lg backdrop-blur-md border border-white/5">
+                                <ExternalLink className="w-3 h-3" /> Coming Soon
+                            </span>
+                        ) : (
+                            <a
+                                href={activeProject.demo}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2 text-xs font-medium text-white hover:text-neon-magenta transition-colors bg-black/40 px-3 py-2 rounded-lg backdrop-blur-md border border-white/10 hover:border-neon-magenta/50"
+                            >
+                                <ExternalLink className="w-3 h-3" /> {activeProject.demoLabel || "Live Demo"}
+                            </a>
+                        )}
+                        <a
+                            href={`/projects/${activeProject.slug || activeProject.title.toLowerCase().replace(/\s+/g, '-')}`}
+                            className="ml-auto text-xs text-neon-cyan hover:text-white flex items-center gap-1 bg-black/40 px-3 py-2 rounded-lg backdrop-blur-md border border-white/10 hover:border-neon-cyan/50 transition-colors"
+                        >
+                            Details <ArrowRight className="w-3 h-3" />
+                        </a>
+                    </div>
+                </div>
             </div>
 
             {/* Navigation Controls */}

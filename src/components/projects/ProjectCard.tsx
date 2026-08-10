@@ -116,8 +116,8 @@ export default function ProjectCard({ project }: { project: ProjectProps }) {
                     </div>
                 </div>
 
-                {/* Clickable links wrapper */}
-                <div className="flex gap-4 mt-auto relative z-30 pointer-events-auto">
+                {/* Clickable links wrapper - HIDDEN because 3D blocks clicks. We overlay them in 2D in Carousel */}
+                <div className="flex gap-4 mt-auto relative z-30 opacity-0 pointer-events-none">
                     {(!project.github || project.github === '#') ? (
                         <span className="flex items-center gap-2 text-xs font-medium text-gray-600 cursor-not-allowed" title={project.githubLabel || "Code unavailable"}>
                             <Github className="w-3 h-3" /> {project.githubLabel || "Code"}
