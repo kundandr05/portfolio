@@ -128,7 +128,7 @@ export default function Hero() {
                             className="relative w-[280px] h-[280px] md:w-[380px] md:h-[380px] rounded-full bg-surface/30 backdrop-blur-md border border-white/10 flex items-center justify-center overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.5)] pointer-events-auto"
                         >
                             <Image
-                                src="/profile.jpg"
+                                src="/kundan-profile.jpg"
                                 alt="Profile"
                                 fill
                                 className="object-cover opacity-80 mix-blend-luminosity hover:mix-blend-normal transition-all duration-700"
