@@ -1,34 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import ProjectCard from "./ProjectCard";
 
-// Using any[] here to avoid strict type coupling, as the data structure is flexible
 export default function ProjectCarousel({ projects }: { projects: any[] }) {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const nextSlide = () => {
-        setCurrentIndex((prev) => (prev + 1) % projects.length);
+        setCurrentIndex((prev) => prev + 1);
     };
 
     const prevSlide = () => {
-        setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
-    };
-
-    // Calculate the relative index for layout
-    const getRelativeIndex = (index: number) => {
-        const diff = index - currentIndex;
-        // Normalize the diff to handle wrapping in a circular array
-        const len = projects.length;
-        let relative = diff % len;
-        
-        // Ensure relative index is between -Math.floor(len/2) and Math.floor(len/2)
-        if (relative > len / 2) relative -= len;
-        if (relative < -len / 2) relative += len;
-        
-        return relative;
+        setCurrentIndex((prev) => prev - 1);
     };
 
     const handleDragEnd = (e: any, { offset, velocity }: any) => {
@@ -40,67 +25,55 @@ export default function ProjectCarousel({ projects }: { projects: any[] }) {
         }
     };
 
-    return (
-        <div className="relative w-full h-[600px] flex items-center justify-center perspective-[1200px] overflow-hidden">
-            {/* Cards */}
-            <motion.div 
-                className="relative w-full max-w-md h-[500px] flex items-center justify-center transform-style-3d cursor-grab active:cursor-grabbing"
-                drag="x"
-                dragConstraints={{ left: 0, right: 0 }}
-                dragElastic={0.2}
-                onDragEnd={handleDragEnd}
-            >
-                <AnimatePresence initial={false}>
-                    {projects.map((project, index) => {
-                        const relativeIndex = getRelativeIndex(index);
-                        const isCenter = relativeIndex === 0;
-                        
-                        // Calculate 3D transforms based on relative position
-                        const xOffset = relativeIndex * 150; // Horizontal spread
-                        const zOffset = Math.abs(relativeIndex) * -150; // Push back side items
-                        const rotateYOffset = relativeIndex * -15; // Rotate inwards
-                        const opacityOffset = 1 - Math.abs(relativeIndex) * 0.3; // Fade out side items
-                        const scaleOffset = 1 - Math.abs(relativeIndex) * 0.1; // Scale down side items
-                        const zIndex = 100 - Math.abs(relativeIndex); // Center item on top
+    // Math for the 3D cylinder
+    const numCards = projects.length;
+    const theta = 360 / numCards;
+    // Assuming card width is roughly 350px. Adding some extra radius for spacing.
+    const radius = Math.round((350 / 2) / Math.tan(Math.PI / numCards)) + 50;
+    
+    // The entire wheel rotates to show the current index
+    const wheelRotation = -currentIndex * theta;
 
-                        // Don't render items that are too far away (e.g., more than 2 items away)
-                        if (Math.abs(relativeIndex) > 2) return null;
+    return (
+        <div className="relative w-full h-[650px] flex flex-col items-center justify-center overflow-hidden">
+            {/* Perspective container */}
+            <div className="relative w-full h-[500px] flex items-center justify-center perspective-[1500px]">
+                
+                {/* The Rotating Wheel */}
+                <motion.div
+                    className="relative w-[350px] h-[450px] transform-style-3d cursor-grab active:cursor-grabbing"
+                    animate={{ rotateY: wheelRotation }}
+                    transition={{ type: "spring", stiffness: 80, damping: 15 }}
+                    drag="x"
+                    dragConstraints={{ left: 0, right: 0 }}
+                    dragElastic={0.1}
+                    onDragEnd={handleDragEnd}
+                >
+                    {projects.map((project, index) => {
+                        // The actual index mapped into a 0 to N-1 range for styling
+                        const normalizedCurrentIndex = ((currentIndex % numCards) + numCards) % numCards;
+                        const isCenter = index === normalizedCurrentIndex;
 
                         return (
-                            <motion.div
+                            <div
                                 key={project.title}
-                                className="absolute top-0 left-0 w-full h-full"
-                                initial={false}
-                                animate={{
-                                    x: xOffset,
-                                    z: zOffset,
-                                    rotateY: rotateYOffset,
-                                    opacity: opacityOffset,
-                                    scale: scaleOffset,
-                                    zIndex: zIndex,
-                                }}
-                                transition={{
-                                    duration: 0.5,
-                                    ease: [0.32, 0.72, 0, 1] // Custom cubic-bezier for smooth snappy feel
-                                }}
-                                onClick={() => {
-                                    if (!isCenter) {
-                                        setCurrentIndex(index);
-                                    }
+                                className="absolute top-0 left-0 w-full h-full transform-style-3d"
+                                style={{
+                                    transform: `rotateY(${index * theta}deg) translateZ(${radius}px)`
                                 }}
                             >
-                                {/* Disable pointer events on non-center cards so they don't trigger hover effects/links */}
-                                <div className={`w-full h-full ${!isCenter ? 'pointer-events-none' : ''}`}>
+                                {/* We only enable pointer events on the front card to prevent misclicks */}
+                                <div className={`w-full h-full ${!isCenter ? 'pointer-events-none opacity-50' : 'opacity-100'} transition-opacity duration-500`}>
                                     <ProjectCard project={project} />
                                 </div>
-                            </motion.div>
+                            </div>
                         );
                     })}
-                </AnimatePresence>
-            </motion.div>
+                </motion.div>
+            </div>
 
             {/* Navigation Controls */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-6 z-50">
+            <div className="flex items-center gap-6 mt-8 z-50">
                 <button
                     onClick={prevSlide}
                     className="p-3 rounded-full bg-neon-cyan/10 border border-neon-cyan text-neon-cyan hover:bg-neon-cyan hover:text-black hover:shadow-[0_0_15px_rgba(0,217,255,0.6)] transition-all duration-300 backdrop-blur-md"
@@ -110,17 +83,27 @@ export default function ProjectCarousel({ projects }: { projects: any[] }) {
                 
                 {/* Dots */}
                 <div className="flex gap-2">
-                    {projects.map((_, idx) => (
-                        <button
-                            key={idx}
-                            onClick={() => setCurrentIndex(idx)}
-                            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                                idx === currentIndex 
-                                ? "w-6 bg-neon-cyan shadow-[0_0_10px_rgba(0,217,255,0.8)]" 
-                                : "bg-white/30 hover:bg-white/60"
-                            }`}
-                        />
-                    ))}
+                    {projects.map((_, idx) => {
+                        const normalizedCurrentIndex = ((currentIndex % numCards) + numCards) % numCards;
+                        return (
+                            <button
+                                key={idx}
+                                // Calculate the shortest path to the desired index for smooth rotation
+                                onClick={() => {
+                                    // Find shortest distance
+                                    let diff = idx - normalizedCurrentIndex;
+                                    if (diff > numCards / 2) diff -= numCards;
+                                    if (diff < -numCards / 2) diff += numCards;
+                                    setCurrentIndex(currentIndex + diff);
+                                }}
+                                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                                    idx === normalizedCurrentIndex 
+                                    ? "w-6 bg-neon-cyan shadow-[0_0_10px_rgba(0,217,255,0.8)]" 
+                                    : "bg-white/30 hover:bg-white/60"
+                                }`}
+                            />
+                        );
+                    })}
                 </div>
 
                 <button
