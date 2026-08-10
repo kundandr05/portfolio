@@ -41,13 +41,9 @@ export default function ProjectCarousel({ projects }: { projects: any[] }) {
                 
                 {/* The Rotating Wheel */}
                 <motion.div
-                    className="relative w-[350px] h-[450px] transform-style-3d cursor-grab active:cursor-grabbing"
+                    className="relative w-[350px] h-[450px] transform-style-3d"
                     animate={{ rotateY: wheelRotation }}
                     transition={{ type: "spring", stiffness: 80, damping: 15 }}
-                    drag="x"
-                    dragConstraints={{ left: 0, right: 0 }}
-                    dragElastic={0.1}
-                    onDragEnd={handleDragEnd}
                 >
                     {projects.map((project, index) => {
                         const normalizedCurrentIndex = ((currentIndex % numCards) + numCards) % numCards;
