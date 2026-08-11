@@ -157,7 +157,7 @@ export default function About() {
                                 <div className="flex justify-center gap-4">
                                     <a
                                         href="/Kundan_Resume.pdf"
-                                        download
+                                        download="Kundan_Resume.pdf"
                                         className="px-6 py-3 bg-neon-cyan/20 border border-neon-cyan text-neon-cyan rounded-lg hover:bg-neon-cyan hover:text-black transition-all duration-300 flex items-center gap-2 font-medium"
                                     >
                                         <Download className="w-5 h-5" /> Download CV
