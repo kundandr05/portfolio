@@ -156,7 +156,7 @@ export default function About() {
                                 <p className="text-gray-400 mb-6">Want to know more about my professional background?</p>
                                 <div className="flex justify-center gap-4">
                                     <a
-                                        href="/kundan resume.pdf"
+                                        href="/Kundan_Resume.pdf"
                                         download
                                         className="px-6 py-3 bg-neon-cyan/20 border border-neon-cyan text-neon-cyan rounded-lg hover:bg-neon-cyan hover:text-black transition-all duration-300 flex items-center gap-2 font-medium"
                                     >
