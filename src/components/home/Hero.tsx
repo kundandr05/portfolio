@@ -83,8 +83,8 @@ export default function Hero() {
 
                             <MagneticWrapper>
                                 <a
-                                    href="/Kundan_DR_Resume_2027_AI_ML.pdf"
-                                    download
+                                    href="/Kundan_Resume.pdf"
+                                    download="Kundan_Resume.pdf"
                                     className="px-8 py-4 bg-neon-magenta/10 border border-neon-magenta text-neon-magenta rounded-full font-medium hover:bg-neon-magenta hover:text-white hover:scale-105 hover:shadow-[0_8px_32px_rgba(255,0,110,0.4)] transition-all duration-300 flex items-center gap-2"
                                 >
                                     Resume
