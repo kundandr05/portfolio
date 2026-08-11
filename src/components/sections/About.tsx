@@ -46,7 +46,7 @@ export default function About() {
                                     <User className="text-neon-cyan" /> Who I Am
                                 </h2>
                                 <p className="text-gray-300 leading-relaxed mb-4">
-                                    AI & Machine Learning Engineering student with hands-on experience in Agentic AI, multimodal AI assistants, full-stack development, and backend architecture using Python, FastAPI, React, and Next.js.
+                                    AI & Machine Learning Engineering student with hands-on experience building Agentic AI systems, multimodal assistants, and full-stack applications using Python, FastAPI, React, and Next.js.
                                 </p>
                                 <p className="text-gray-300 leading-relaxed mb-4">
                                     Published research author with an IJCRT publication and two independently published Amazon KDP books. Experienced in hackathon-driven software development, LLM integration, and rapid prototyping.
