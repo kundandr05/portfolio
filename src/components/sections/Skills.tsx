@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { Code2, Database, Globe, Cpu } from 'lucide-react';
-import PageTransition from '@/components/shared/PageTransition';
 
 const skillCategories = [
     {
@@ -54,7 +53,7 @@ const skillCategories = [
 
 export default function Skills() {
     return (
-        <PageTransition>
+        <>
             <section className="py-20">
                 <div className="container mx-auto px-4">
                     <motion.div
@@ -108,6 +107,6 @@ export default function Skills() {
                     </div>
                 </div>
             </section>
-        </PageTransition>
+        </>
     );
 }

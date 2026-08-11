@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { Award, ExternalLink, Calendar, CheckCircle } from 'lucide-react';
-import PageTransition from '@/components/shared/PageTransition';
 
 const courses = [
     {
@@ -57,7 +56,7 @@ const courses = [
 
 export default function Courses() {
     return (
-        <PageTransition>
+        <>
             <section className="py-20">
                 <div className="container mx-auto px-4">
                     <motion.div
@@ -131,6 +130,6 @@ export default function Courses() {
                     </div>
                 </div>
             </section>
-        </PageTransition>
+        </>
     );
 }

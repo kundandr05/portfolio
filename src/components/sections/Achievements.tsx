@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { Trophy, Award, Star, Medal } from 'lucide-react';
-import PageTransition from '@/components/shared/PageTransition';
 
 const achievements = [
     {
@@ -41,7 +40,7 @@ const achievements = [
 
 export default function Achievements() {
     return (
-        <PageTransition>
+        <>
             <section className="py-20">
                 <div className="container mx-auto px-4">
                     <motion.div
@@ -83,6 +82,6 @@ export default function Achievements() {
                     </div>
                 </div>
             </section>
-        </PageTransition>
+        </>
     );
 }

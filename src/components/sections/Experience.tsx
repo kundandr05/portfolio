@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { Briefcase, Calendar, BookOpen, ExternalLink, FileText } from 'lucide-react';
-import PageTransition from '@/components/shared/PageTransition';
 
 const experiences = [
     {
@@ -67,7 +66,7 @@ const publications = [
 
 export default function Experience() {
     return (
-        <PageTransition>
+        <>
             <section className="py-20">
                 <div className="container mx-auto px-4">
                     <motion.h1
@@ -206,6 +205,6 @@ export default function Experience() {
                     </motion.div>
                 </div>
             </section>
-        </PageTransition>
+        </>
     );
 }

@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { BookOpen, ExternalLink, FileText } from 'lucide-react';
-import PageTransition from '@/components/shared/PageTransition';
 import PublicationCarousel from '@/components/publications/PublicationCarousel';
 import Image from 'next/image';
 
@@ -44,7 +43,7 @@ const publications = [
 
 export default function Publications() {
     return (
-        <PageTransition>
+        <>
             <section className="py-20 min-h-screen">
                 <div className="container mx-auto px-4">
                     <motion.div
@@ -63,6 +62,6 @@ export default function Publications() {
                     <PublicationCarousel publications={publications} />
                 </div>
             </section>
-        </PageTransition>
+        </>
     );
 }

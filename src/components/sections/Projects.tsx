@@ -1,14 +1,13 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import PageTransition from '@/components/shared/PageTransition';
 import ProjectCarousel from '@/components/projects/ProjectCarousel';
 
 import { projects } from '@/data/projects';
 
 export default function Projects() {
     return (
-        <PageTransition>
+        <>
             <section className="py-20">
                 <div className="container mx-auto px-4">
                     <motion.div
@@ -29,6 +28,6 @@ export default function Projects() {
                     </div>
                 </div>
             </section>
-        </PageTransition>
+        </>
     );
 }

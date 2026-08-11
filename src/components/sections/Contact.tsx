@@ -2,11 +2,10 @@
 
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Github, Linkedin, Phone } from 'lucide-react';
-import PageTransition from '@/components/shared/PageTransition';
 
 export default function Contact() {
     return (
-        <PageTransition>
+        <>
             <section className="py-20 min-h-[calc(100vh-200px)] flex items-center">
                 <div className="container mx-auto px-4">
                     <motion.div
@@ -89,6 +88,6 @@ export default function Contact() {
                     </div>
                 </div>
             </section>
-        </PageTransition>
+        </>
     );
 }

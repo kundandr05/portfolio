@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import { Download, User, Target, Zap } from 'lucide-react';
 import Image from 'next/image';
-import PageTransition from '@/components/shared/PageTransition';
 
 export default function About() {
     const containerVariants = {
@@ -22,7 +21,7 @@ export default function About() {
     };
 
     return (
-        <PageTransition>
+        <>
             <section className="py-20">
                 <motion.div
                     variants={containerVariants}
@@ -170,6 +169,6 @@ export default function About() {
                     </div>
                 </motion.div>
             </section>
-        </PageTransition>
+        </>
     );
 }
