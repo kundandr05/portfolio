@@ -29,14 +29,6 @@ const achievements = [
         color: "text-neon-green"
     },
     {
-        title: "⚙️ AITRONIX 2025 Expo",
-        organization: "MIT Mysore",
-        date: "May 2025",
-        description: "Presented a theft alert notification system using ESP8266 IoT modules.",
-        icon: Medal,
-        color: "text-yellow-400"
-    },
-    {
         title: "🎓 AI & Cloud Certifications",
         organization: "Infosys Springboard, IBM, Google",
         date: "2024 - 2025",

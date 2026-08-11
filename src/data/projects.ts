@@ -89,24 +89,7 @@ export const projects: Project[] = [
         architecture: "A Python application providing a clean UI layer that interfaces with the local Ollama API, allowing for completely offline, private AI conversations.",
         challenges: "Handling real-time token streaming and implementing robust connection checks for the local Ollama instance.",
         futureImprovements: "Add support for more specialized local models and enhance the RAG (Retrieval-Augmented Generation) pipeline."
-    },
-    {
-        slug: "erp-student-management-system",
-        title: "ERP-Based Integrated Student Management System",
-        description: "Developed an ERP-based prototype to streamline admission, student data, attendance, academic performance, and institutional communication during a 2-day hackathon.",
-        tags: ["ERP", "Database Management", "Hackathon", "INNOVATHON 2026"],
-        image: "/project4.png", // Using placeholder image for now
-        github: "#",
-        demo: "#",
-        demoLabel: "INNOVATHON 2026",
-        keyFeatures: [
-            "Streamlined admission, attendance, and academic performance tracking",
-            "Enhanced institutional communication",
-            "Functional ERP prototype delivered within strict 48-hour timelines"
-        ],
-        architecture: "Built and presented with Team Eclipse Engine under competitive time constraints.",
-        challenges: "Delivering a fully functional prototype within strict hackathon time constraints.",
-        futureImprovements: "Expand the modules to include financial and library management systems."
+
     },
     {
         slug: "zeno-ai",
@@ -146,59 +129,5 @@ export const projects: Project[] = [
         architecture: "Built on a multi-agent framework orchestrating interactions via a FastAPI backend and SQLite database.",
         challenges: "Ensuring distinct agents communicated correctly without race conditions within strict 3-day hackathon limits.",
         futureImprovements: "Expand the system to handle multi-tier bracket tournaments and integrate a live scoreboard UI."
-    },
-    {
-        slug: "lexsent-sentiment-analysis",
-        title: "Lexsent: Deep Learning Sentiment Analysis",
-        description: "Developed Lexsent, a deep learning-based sentiment analysis system for comments from an E-Counselling Module during the SIH Internal Hackathon 2025.",
-        tags: ["Python", "Deep Learning", "RoBERTa", "BiLSTM", "SIH 2025"],
-        image: "/project-zeno.png", // Placeholder
-        github: "#",
-        githubLabel: "SIH Internal Hackathon",
-        demo: "#",
-        keyFeatures: [
-            "RoBERTa-BiLSTM-Attention architecture for advanced sentiment extraction",
-            "Emotion analysis with interactive dashboards",
-            "Policy-oriented insights generation"
-        ],
-        architecture: "Deep learning model integrating RoBERTa, BiLSTM, and Attention mechanisms for high-accuracy text analysis.",
-        challenges: "Processing noisy student feedback data and fine-tuning complex transformer models within a 2-day hackathon.",
-        futureImprovements: "Integrate directly with live E-Counselling modules for real-time risk flagging."
-    },
-    {
-        slug: "ai-customer-risk-intelligence",
-        title: "AI-Based Customer Risk Intelligence System",
-        description: "Developed an AI-based customer risk intelligence system for fraud detection and customer churn prediction during a 48-hour hackathon.",
-        tags: ["Machine Learning", "Fraud Detection", "Python", "Hackathon"],
-        image: "/project5.png", // Placeholder
-        github: "#",
-        githubLabel: "DSCE Hackathon 2026",
-        demo: "#",
-        keyFeatures: [
-            "Identification of anomalous transaction patterns",
-            "Proactive customer behavior analysis for churn prediction",
-            "End-to-end ML pipeline developed in 48 hours"
-        ],
-        architecture: "Machine learning pipeline leveraging scikit-learn and anomaly detection algorithms.",
-        challenges: "Handling highly imbalanced fraud datasets and engineering features for accurate prediction under time pressure.",
-        futureImprovements: "Deploy the model as a microservice with a real-time streaming data pipeline."
-    },
-    {
-        slug: "aitronix-theft-alert",
-        title: "Theft Alert Notification using ESP8266",
-        description: "Presented a theft alert notification system using ESP8266 at the AITRONIX 2025 final expo under the theme 'Dive Into Embedded Intelligence.'",
-        tags: ["IoT", "ESP8266", "Embedded Systems", "Hardware"],
-        image: "/project3.jpg", // Placeholder
-        github: "#",
-        githubLabel: "AITRONIX 2025",
-        demo: "#",
-        keyFeatures: [
-            "Real-time theft alert notifications using IoT",
-            "ESP8266 Wi-Fi module integration",
-            "Embedded intelligence for hardware-based security"
-        ],
-        architecture: "IoT hardware system powered by ESP8266 microcontrollers communicating with a cloud alerting service.",
-        challenges: "Dealing with hardware constraints, power management, and reliable Wi-Fi connections in embedded systems.",
-        futureImprovements: "Add camera modules for visual capture and integrate with mobile push notifications."
     }
 ];
