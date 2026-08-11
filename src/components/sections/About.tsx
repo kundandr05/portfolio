@@ -46,13 +46,13 @@ export default function About() {
                                     <User className="text-neon-cyan" /> Who I Am
                                 </h2>
                                 <p className="text-gray-300 leading-relaxed mb-4">
-                                    Results-driven AI & Machine Learning engineering student with hands-on experience building intelligent AI assistants, multi-agent systems, and scalable backend applications using Python, FastAPI, React, and Next.js.
+                                    AI & Machine Learning Engineering student with hands-on experience in Agentic AI, multimodal AI assistants, full-stack development, and backend architecture using Python, FastAPI, React, and Next.js.
                                 </p>
                                 <p className="text-gray-300 leading-relaxed mb-4">
-                                    Published IJCRT researcher and author of two Amazon KDP books with a strong interest in Generative AI, backend engineering, and production-ready software.
+                                    Published research author with an IJCRT publication and two independently published Amazon KDP books. Experienced in hackathon-driven software development, LLM integration, and rapid prototyping.
                                 </p>
                                 <p className="text-gray-300 leading-relaxed">
-                                    I am passionate about building intelligent systems that combine research, engineering, and real-world impact, and am actively preparing for AI and software development internships.
+                                    I am passionate about building intelligent systems that combine research, engineering, and real-world impact. Incoming incubation intern at WizzyBox.
                                 </p>
                             </motion.div>
 
@@ -104,11 +104,11 @@ export default function About() {
                                 <div className="glass-panel p-6 rounded-xl hover:border-neon-cyan/50 transition-colors duration-300 md:col-span-2">
                                     <h3 className="text-xl font-bold text-neon-cyan mb-4">Highlights</h3>
                                     <ul className="text-gray-300 text-sm list-disc list-inside space-y-2">
-                                        <li>Incoming Software Engineering Intern at WizzyBox</li>
-                                        <li>Published "Tournament Management Agent Using Agentic Artificial Intelligence" (IJCRT)</li>
+                                        <li>Incoming Incubation Intern at WizzyBox</li>
+                                        <li>Multiple Hackathon Wins (SIH, INNOVATHON, DSCE)</li>
+                                        <li>Published Research Paper in IJCRT (Agentic AI)</li>
                                         <li>2 Books Published on Amazon KDP</li>
-                                        <li>Built Zeno AI Chatbot using FastAPI</li>
-                                        <li>Developed Agentic AI Tournament Management System</li>
+                                        <li>Built Zeno AI Multimodal Assistant</li>
                                         <li>AIML Undergraduate (2023–2027)</li>
                                     </ul>
                                 </div>
@@ -156,7 +156,7 @@ export default function About() {
                                 <p className="text-gray-400 mb-6">Want to know more about my professional background?</p>
                                 <div className="flex justify-center gap-4">
                                     <a
-                                        href="/Kundan_DR_Resume_2027_AI_ML.pdf"
+                                        href="/kundan resume.pdf"
                                         download
                                         className="px-6 py-3 bg-neon-cyan/20 border border-neon-cyan text-neon-cyan rounded-lg hover:bg-neon-cyan hover:text-black transition-all duration-300 flex items-center gap-2 font-medium"
                                     >

@@ -5,36 +5,52 @@ import { Trophy, Award, Star, Medal } from 'lucide-react';
 
 const achievements = [
     {
-        title: "📄 Research Publication",
-        organization: "International Journal of Creative Research and Development",
-        date: "2025",
-        description: "Published an Agentic AI research paper.",
+        title: "🏆 SIH Internal Hackathon 2025",
+        organization: "MIT Mysore | Team CodeNova",
+        date: "Sep 2025",
+        description: "Developed Lexsent, a deep learning-based sentiment analysis system using RoBERTa-BiLSTM.",
+        icon: Trophy,
+        color: "text-neon-magenta"
+    },
+    {
+        title: "🥈 INNOVATHON 2026",
+        organization: "SJBIT | Team Eclipse Engine",
+        date: "Mar 2026",
+        description: "Developed an ERP-Based Integrated Student Management System prototype.",
         icon: Award,
         color: "text-neon-cyan"
     },
     {
-        title: "🤖 AI System Development",
-        organization: "Independent Project",
-        date: "2025",
-        description: "Built a scalable multi-agent AI system with backend architecture using FastAPI.",
+        title: "🛡️ AI Customer Risk Intelligence",
+        organization: "Dayananda Sagar College of Engineering",
+        date: "Apr 2026",
+        description: "Developed an AI system for fraud detection and customer churn prediction during a 48-hour hackathon.",
         icon: Star,
-        color: "text-neon-magenta"
-    },
-    {
-        title: "☁ Cloud & AI Simulations",
-        organization: "AWS, Tata Gen AI, IBM, Azure",
-        date: "2024",
-        description: "Completed AWS, Tata Gen AI, IBM Data Science, and Azure cloud simulations.",
-        icon: Medal,
         color: "text-neon-green"
     },
     {
-        title: "📚 Published Author",
-        organization: "Amazon",
-        date: "2023 - 2024",
-        description: "Independently published two books on Amazon.",
-        icon: Trophy,
+        title: "⚙️ AITRONIX 2025 Expo",
+        organization: "MIT Mysore",
+        date: "May 2025",
+        description: "Presented a theft alert notification system using ESP8266 IoT modules.",
+        icon: Medal,
         color: "text-yellow-400"
+    },
+    {
+        title: "🎓 AI & Cloud Certifications",
+        organization: "Infosys Springboard, IBM, Google",
+        date: "2024 - 2025",
+        description: "Certified in Generative AI, LLMOps, IBM AI Fundamentals, and Network Security.",
+        icon: Award,
+        color: "text-neon-cyan"
+    },
+    {
+        title: "📚 Published Author",
+        organization: "Amazon KDP",
+        date: "2024",
+        description: "Independently published two books: 'Reclaim Your Focus' and 'The Two-Speed Mind'.",
+        icon: Star,
+        color: "text-neon-purple"
     }
 ];
 

@@ -17,20 +17,6 @@ const experiences = [
         skills: ["AI/ML", "Python", "Software Engineering", "Full-Stack"],
         link: "/WizzyBox_Offer_Letter.pdf",
         linkLabel: "View Offer Letter"
-    },
-    {
-        id: 1,
-        role: "Research Project Developer",
-        company: "Maharaja Institute of Technology, Mysuru",
-        period: "2025",
-        description: [
-            "Designed and developed an intelligent tournament management system using Agentic AI.",
-            "Developed REST APIs with FastAPI ensuring performance and scalability.",
-            "Implemented autonomous workflows and multi-agent coordination logic.",
-            "Conducted unit, integration, and system testing for reliability.",
-            "Research published in IJCRT, demonstrating applied AI engineering skills."
-        ],
-        skills: ["Agentic AI", "Python", "FastAPI", "SQLite", "System Testing", "Research"]
     }
 ];
 

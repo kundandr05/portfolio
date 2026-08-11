@@ -92,27 +92,27 @@ export const projects: Project[] = [
     },
     {
         slug: "erp-student-management-system",
-        title: "ERP-Based Student Management System",
-        description: "An ERP solution built to streamline student, faculty, and administrative workflows, developed during Innovathon 2026 at SJBIT.",
-        tags: ["ERP", "Database Management", "Hackathon"],
+        title: "ERP-Based Integrated Student Management System",
+        description: "Developed an ERP-based prototype to streamline admission, student data, attendance, academic performance, and institutional communication during a 2-day hackathon.",
+        tags: ["ERP", "Database Management", "Hackathon", "INNOVATHON 2026"],
         image: "/project4.png", // Using placeholder image for now
         github: "#",
         demo: "#",
-        demoLabel: "Innovathon 2026",
+        demoLabel: "INNOVATHON 2026",
         keyFeatures: [
-            "Comprehensive database modules for attendance management",
-            "Student records and academic performance tracking",
-            "Functional ERP prototype delivered within hackathon timelines"
+            "Streamlined admission, attendance, and academic performance tracking",
+            "Enhanced institutional communication",
+            "Functional ERP prototype delivered within strict 48-hour timelines"
         ],
-        architecture: "Collaborative agile development combining frontend interfaces with a robust relational database backend.",
+        architecture: "Built and presented with Team Eclipse Engine under competitive time constraints.",
         challenges: "Delivering a fully functional prototype within strict hackathon time constraints.",
         futureImprovements: "Expand the modules to include financial and library management systems."
     },
     {
         slug: "zeno-ai",
         title: "Zeno AI: Intelligent Multi-Modal Assistant",
-        description: "Zeno is a highly polished, production-ready AI assistant designed to provide real-time web intelligence and multi-modal vision capabilities. Built with a focus on premium UI/UX, featuring a bespoke \"Aurora Midnight\" glassmorphism interface and dynamic AI routing.",
-        tags: ["React.js", "Vite", "OpenRouter API", "Firebase Auth", "Render"],
+        description: "Built a multimodal AI assistant supporting real-time web intelligence and vision analysis with secure Firebase authentication. Implemented dynamic model routing between Gemini 2.5 Flash and Perplexity.",
+        tags: ["React", "Vite", "OpenRouter API", "Firebase Auth", "Render"],
         image: "/project-zeno.png",
         videoUrl: "/placeholder-video.mp4",
         github: "https://github.com/kundandr05/Zeno_chatbot",
@@ -120,31 +120,85 @@ export const projects: Project[] = [
         demoLabel: "Live on Render",
         keyFeatures: [
             "Dynamic AI Routing Engine utilizing Perplexity and Gemini 2.5 Flash",
-            "Premium Glassmorphism UI with vibrant aurora gradients and micro-animations",
-            "Resilient Architecture with automated fallback mechanisms to free models",
-            "Firebase Authentication supporting Google OAuth, Email/Password, and Guest Mode"
+            "Automated fallback handling for resilient AI responses",
+            "Secure Firebase Authentication",
+            "Premium Glassmorphism UI with vibrant aurora gradients"
         ],
-        architecture: "Frontend built with React.js, Vite, and Vanilla CSS. Backend API powered by OpenRouter API and OpenAI SDK. Features dynamic routing between Perplexity (Llama 3.1 Sonar Pro) for text/web search and Google (Gemini 2.5 Flash) for vision analysis.",
-        challenges: "Engineering custom routing logic to dynamically switch between different LLMs based on user input context (text vs. image) while ensuring a seamless user experience and handling API rate limits gracefully.",
+        architecture: "Frontend built with React.js and Vite. Features dynamic routing between Perplexity for text/web search and Gemini 2.5 Flash for vision analysis, deployed on Render.",
+        challenges: "Engineering custom routing logic to dynamically switch between different LLMs based on user input context while ensuring resilient API fallback handling.",
         futureImprovements: "Expand the dynamic routing logic to support a wider array of specialized local and cloud models and implement long-term conversational memory using vector databases."
     },
     {
         slug: "agentic-ai-tournament-management-system",
-        title: "Agentic AI Tournament Management System",
-        description: "Research-based multi-agent tournament management platform that automates scheduling, team registration, match coordination, and intelligent workflow execution using Agentic AI principles.",
-        tags: ["Python", "FastAPI", "SQLite", "Agentic AI", "Research"],
+        title: "Agentic AI-Based Tournament Management System",
+        description: "Developed an AI-powered tournament management platform using an agentic architecture to automate registration, scheduling, and match coordination. Completed core features within a 3-day hackathon.",
+        tags: ["Python", "FastAPI", "SQLite", "Agentic AI", "Hackathon"],
         image: "/project2.jpg",
         videoUrl: "/placeholder-video2.mp4",
         github: "#",
-        githubLabel: "Private Team Project",
+        githubLabel: "Hebbale Academy Hackathon",
         demo: "#",
         keyFeatures: [
             "Autonomous multi-agent scheduling and coordination",
             "Automated team registration and validation workflows",
-            "Real-time match state tracking"
+            "Backend APIs and robust database integration"
         ],
-        architecture: "Built on a multi-agent framework where distinct agents handle scheduling, user interaction, and data validation, orchestrated via a FastAPI backend.",
-        challenges: "Ensuring distinct agents communicated correctly without race conditions required robust state management.",
+        architecture: "Built on a multi-agent framework orchestrating interactions via a FastAPI backend and SQLite database.",
+        challenges: "Ensuring distinct agents communicated correctly without race conditions within strict 3-day hackathon limits.",
         futureImprovements: "Expand the system to handle multi-tier bracket tournaments and integrate a live scoreboard UI."
+    },
+    {
+        slug: "lexsent-sentiment-analysis",
+        title: "Lexsent: Deep Learning Sentiment Analysis",
+        description: "Developed Lexsent, a deep learning-based sentiment analysis system for comments from an E-Counselling Module during the SIH Internal Hackathon 2025.",
+        tags: ["Python", "Deep Learning", "RoBERTa", "BiLSTM", "SIH 2025"],
+        image: "/project-zeno.png", // Placeholder
+        github: "#",
+        githubLabel: "SIH Internal Hackathon",
+        demo: "#",
+        keyFeatures: [
+            "RoBERTa-BiLSTM-Attention architecture for advanced sentiment extraction",
+            "Emotion analysis with interactive dashboards",
+            "Policy-oriented insights generation"
+        ],
+        architecture: "Deep learning model integrating RoBERTa, BiLSTM, and Attention mechanisms for high-accuracy text analysis.",
+        challenges: "Processing noisy student feedback data and fine-tuning complex transformer models within a 2-day hackathon.",
+        futureImprovements: "Integrate directly with live E-Counselling modules for real-time risk flagging."
+    },
+    {
+        slug: "ai-customer-risk-intelligence",
+        title: "AI-Based Customer Risk Intelligence System",
+        description: "Developed an AI-based customer risk intelligence system for fraud detection and customer churn prediction during a 48-hour hackathon.",
+        tags: ["Machine Learning", "Fraud Detection", "Python", "Hackathon"],
+        image: "/project5.png", // Placeholder
+        github: "#",
+        githubLabel: "DSCE Hackathon 2026",
+        demo: "#",
+        keyFeatures: [
+            "Identification of anomalous transaction patterns",
+            "Proactive customer behavior analysis for churn prediction",
+            "End-to-end ML pipeline developed in 48 hours"
+        ],
+        architecture: "Machine learning pipeline leveraging scikit-learn and anomaly detection algorithms.",
+        challenges: "Handling highly imbalanced fraud datasets and engineering features for accurate prediction under time pressure.",
+        futureImprovements: "Deploy the model as a microservice with a real-time streaming data pipeline."
+    },
+    {
+        slug: "aitronix-theft-alert",
+        title: "Theft Alert Notification using ESP8266",
+        description: "Presented a theft alert notification system using ESP8266 at the AITRONIX 2025 final expo under the theme 'Dive Into Embedded Intelligence.'",
+        tags: ["IoT", "ESP8266", "Embedded Systems", "Hardware"],
+        image: "/project3.jpg", // Placeholder
+        github: "#",
+        githubLabel: "AITRONIX 2025",
+        demo: "#",
+        keyFeatures: [
+            "Real-time theft alert notifications using IoT",
+            "ESP8266 Wi-Fi module integration",
+            "Embedded intelligence for hardware-based security"
+        ],
+        architecture: "IoT hardware system powered by ESP8266 microcontrollers communicating with a cloud alerting service.",
+        challenges: "Dealing with hardware constraints, power management, and reliable Wi-Fi connections in embedded systems.",
+        futureImprovements: "Add camera modules for visual capture and integrate with mobile push notifications."
     }
 ];
