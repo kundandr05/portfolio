@@ -4,13 +4,16 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight, Download, Github, Linkedin, Mail } from 'lucide-react';
 import Image from 'next/image';
+import { useRef, useState } from 'react';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import MagneticWrapper from '@/components/shared/MagneticWrapper';
 import Typewriter from '@/components/shared/Typewriter';
-
+import ResumeModal from '@/components/shared/ResumeModal';
 import Marquee from '@/components/shared/Marquee';
 
 export default function Hero() {
+    const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
+
     return (
         <section className="min-h-[calc(100vh-80px)] flex flex-col relative overflow-hidden">
             <div className="flex-1 flex items-center justify-center py-20">
@@ -82,14 +85,13 @@ export default function Hero() {
                             </MagneticWrapper>
 
                             <MagneticWrapper>
-                                <a
-                                    href="/Kundan_Resume.pdf"
-                                    download="Kundan_Resume.pdf"
+                                <button
+                                    onClick={() => setIsResumeModalOpen(true)}
                                     className="px-8 py-4 bg-neon-magenta/10 border border-neon-magenta text-neon-magenta rounded-full font-medium hover:bg-neon-magenta hover:text-white hover:scale-105 hover:shadow-[0_8px_32px_rgba(255,0,110,0.4)] transition-all duration-300 flex items-center gap-2"
                                 >
                                     Resume
                                     <Download className="w-5 h-5" />
-                                </a>
+                                </button>
                             </MagneticWrapper>
                         </motion.div>
 
@@ -140,6 +142,11 @@ export default function Hero() {
             </div>
             {/* The scrolling neon marquee at the bottom of the hero section */}
             <Marquee />
+            
+            <ResumeModal 
+                isOpen={isResumeModalOpen} 
+                onClose={() => setIsResumeModalOpen(false)} 
+            />
         </section>
     );
 }

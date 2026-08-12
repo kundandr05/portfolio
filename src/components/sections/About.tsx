@@ -1,10 +1,13 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { Download, User, Target, Zap } from 'lucide-react';
+import { Download, User, Target, Zap, Eye } from 'lucide-react';
 import Image from 'next/image';
+import { useState } from 'react';
+import ResumeModal from '@/components/shared/ResumeModal';
 
 export default function About() {
+    const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -154,20 +157,23 @@ export default function About() {
                                 <h2 className="text-2xl font-bold text-white mb-6">Resume</h2>
                                 <p className="text-gray-400 mb-6">Want to know more about my professional background?</p>
                                 <div className="flex justify-center gap-4">
-                                    <a
-                                        href="/Kundan_Resume.pdf"
-                                        download="Kundan_Resume.pdf"
+                                    <button
+                                        onClick={() => setIsResumeModalOpen(true)}
                                         className="px-6 py-3 bg-neon-cyan/20 border border-neon-cyan text-neon-cyan rounded-lg hover:bg-neon-cyan hover:text-black transition-all duration-300 flex items-center gap-2 font-medium"
                                     >
-                                        <Download className="w-5 h-5" /> Download CV
-                                    </a>
-                                    {/* Future: Add View Resume Modal Trigger */}
+                                        <Eye className="w-5 h-5" /> View Resume
+                                    </button>
                                 </div>
                             </motion.div>
                         </div>
                     </div>
                 </motion.div>
             </section>
+            
+            <ResumeModal 
+                isOpen={isResumeModalOpen} 
+                onClose={() => setIsResumeModalOpen(false)} 
+            />
         </>
     );
 }
