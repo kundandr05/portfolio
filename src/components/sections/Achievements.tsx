@@ -4,30 +4,7 @@ import { motion } from 'framer-motion';
 import { Trophy, Award, Star, Medal } from 'lucide-react';
 
 const achievements = [
-    {
-        title: "🏆 SIH Internal Hackathon 2025",
-        organization: "MIT Mysore | Team CodeNova",
-        date: "Sep 2025",
-        description: "Developed Lexsent, a deep learning-based sentiment analysis system using RoBERTa-BiLSTM.",
-        icon: Trophy,
-        color: "text-neon-magenta"
-    },
-    {
-        title: "🥈 INNOVATHON 2026",
-        organization: "SJBIT | Team Eclipse Engine",
-        date: "Mar 2026",
-        description: "Developed an ERP-Based Integrated Student Management System prototype.",
-        icon: Award,
-        color: "text-neon-cyan"
-    },
-    {
-        title: "🛡️ AI Customer Risk Intelligence",
-        organization: "Dayananda Sagar College of Engineering",
-        date: "Apr 2026",
-        description: "Developed an AI system for fraud detection and customer churn prediction during a 48-hour hackathon.",
-        icon: Star,
-        color: "text-neon-green"
-    },
+
     {
         title: "🎓 AI & Cloud Certifications",
         organization: "Infosys Springboard, IBM, Google",

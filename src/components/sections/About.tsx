@@ -105,7 +105,6 @@ export default function About() {
                                     <h3 className="text-xl font-bold text-neon-cyan mb-4">Highlights</h3>
                                     <ul className="text-gray-300 text-sm list-disc list-inside space-y-2">
                                         <li>Incoming Incubation Intern at WizzyBox</li>
-                                        <li>Multiple Hackathon Wins (SIH, INNOVATHON, DSCE)</li>
                                         <li>Published Research Paper in IJCRT (Agentic AI)</li>
                                         <li>2 Books Published on Amazon KDP</li>
                                         <li>Built Zeno AI Multimodal Assistant</li>
