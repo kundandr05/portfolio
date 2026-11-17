@@ -1,44 +1,53 @@
-import { Github, Linkedin, Mail, Heart, Coffee } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 
 export default function Footer() {
     return (
-        <footer className="bg-white/90 backdrop-blur-md border-t border-slate-200/90 py-10 mt-auto relative z-10">
-            <div className="container mx-auto px-4 max-w-6xl flex flex-col md:flex-row justify-between items-center gap-6">
-                <div className="text-center md:text-left">
-                    <p className="text-slate-900 text-sm font-bold tracking-tight" suppressHydrationWarning>
-                        &copy; {new Date().getFullYear()} Kundan DR &bull; All rights reserved.
-                    </p>
-                    <p className="text-slate-500 text-xs mt-1 flex items-center justify-center md:justify-start gap-1.5 font-medium">
-                        <span>Crafted with</span>
-                        <Coffee className="w-3.5 h-3.5 text-amber-600 inline" />
-                        <span>& zero generic templates from Mysuru, India 🇮🇳</span>
-                    </p>
+        <footer className="border-t border-stone-200/80 dark:border-stone-800 py-12 bg-[#faf8f5] dark:bg-[#141413] text-stone-600 dark:text-stone-400 text-xs">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-8 border-b border-stone-200/60 dark:border-stone-800">
+                    
+                    {/* Colophon & Why I built this */}
+                    <div className="md:col-span-8 space-y-2">
+                        <span className="font-serif-editorial text-stone-900 dark:text-stone-100 font-semibold text-sm">
+                            Kundan DR &bull; Portfolio Colophon
+                        </span>
+                        <p className="max-w-xl leading-relaxed text-stone-500 dark:text-stone-400">
+                            <strong>Why I built this site:</strong> To document my engineering projects, published research, and books clearly and honestly. Designed with custom tokens, Next.js 16, TypeScript, and Tailwind CSS — with no templates, no heavy 3D bloat, and zero preloader delays.
+                        </p>
+                    </div>
+
+                    {/* Meta & Navigation */}
+                    <div className="md:col-span-4 flex flex-col md:items-end justify-between space-y-2">
+                        <div className="font-mono text-[11px] text-stone-400">
+                            Last updated: <span className="text-stone-600 dark:text-stone-300">November 2026</span>
+                        </div>
+                        <div className="flex items-center gap-4 text-xs font-mono">
+                            <a
+                                href="https://github.com/kundandr05/portfolio"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:text-stone-900 dark:hover:text-stone-100 underline decoration-dotted"
+                            >
+                                Source on GitHub
+                            </a>
+                            <a
+                                href="#main-content"
+                                className="hover:text-stone-900 dark:hover:text-stone-100 flex items-center gap-1"
+                            >
+                                Top <ArrowUp className="w-3 h-3" />
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
-                {/* Quirky Handwritten Stamp */}
-                <div className="text-center">
-                    <span className="font-handwriting text-xl text-blue-600 font-bold rotate-[-2deg] inline-block">
-                        &ldquo;Intelligent Systems. Elegant Solutions.&rdquo;
-                    </span>
-                </div>
-
-                <div className="flex space-x-3">
-                    {[
-                        { icon: Github, href: "https://github.com/kundandr05", label: "GitHub", hover: "hover:text-blue-600 hover:bg-blue-50 hover:border-blue-200" },
-                        { icon: Linkedin, href: "https://linkedin.com/in/kundan-d-r-914274310", label: "LinkedIn", hover: "hover:text-indigo-600 hover:bg-indigo-50 hover:border-indigo-200" },
-                        { icon: Mail, href: "mailto:kundandr05@gmail.com", label: "Email", hover: "hover:text-rose-600 hover:bg-rose-50 hover:border-rose-200" }
-                    ].map((social, index) => (
-                        <a
-                            key={index}
-                            href={social.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={social.label}
-                            className={`p-2.5 rounded-xl border border-slate-200 bg-white text-slate-600 ${social.hover} shadow-sm transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0`}
-                        >
-                            <social.icon className="w-4 h-4" />
-                        </a>
-                    ))}
+                <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-stone-400 font-mono">
+                    <p>
+                        &copy; {new Date().getFullYear()} Kundan DR. All rights reserved.
+                    </p>
+                    <p>
+                        Mysuru, Karnataka, India
+                    </p>
                 </div>
             </div>
         </footer>

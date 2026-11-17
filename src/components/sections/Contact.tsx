@@ -1,152 +1,113 @@
 "use client";
 
-import { motion } from 'framer-motion';
-import { Mail, MapPin, Github, Linkedin, Phone, MessageSquare, ArrowUpRight, Copy, Check } from 'lucide-react';
 import { useState } from 'react';
+import { Mail, Copy, Check, Github, Linkedin, FileText, ArrowUpRight } from 'lucide-react';
+import ResumeModal from '@/components/shared/ResumeModal';
 
 export default function Contact() {
     const [copied, setCopied] = useState(false);
+    const [isResumeOpen, setIsResumeOpen] = useState(false);
 
-    const copyEmail = () => {
-        navigator.clipboard.writeText("kundandr05@gmail.com");
+    const handleCopy = () => {
+        navigator.clipboard.writeText('kundandr05@gmail.com');
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
 
     return (
-        <section id="contact" className="py-24 relative">
-            <div className="container mx-auto px-4 max-w-4xl">
-                {/* Header with Crazy Typography */}
-                <div className="text-center mb-16 relative">
-                    <span className="font-handwriting text-2xl text-emerald-600 font-bold rotate-[-2deg] inline-block mb-1">
-                        let&apos;s start a conversation 📬
+        <>
+            <section id="contact" className="py-24">
+                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    
+                    <span className="text-xs font-mono uppercase tracking-wider text-[#c2410c] dark:text-orange-400 font-bold">
+                        Get in Touch
                     </span>
-                    <h2 className="text-4xl md:text-5xl font-display font-extrabold text-slate-900 tracking-tight">
-                        Let&apos;s Build{' '}
-                        <span className="font-serif-italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-rose-600">
-                            Something Extraordinary
-                        </span>
+                    <h2 className="font-serif-editorial text-4xl sm:text-5xl text-stone-900 dark:text-stone-100 font-semibold mt-1 mb-4">
+                        Let&apos;s talk about systems or research
                     </h2>
-                    <p className="text-slate-600 text-base max-w-xl mx-auto mt-2">
-                        Open for AI Engineering internships, agentic research collaborations, or backend architecture roles.
+                    <p className="text-stone-600 dark:text-stone-400 text-sm sm:text-base max-w-xl mx-auto leading-relaxed mb-10">
+                        I&apos;m actively looking for software engineering internships, AI research collaborations, and backend roles starting from 2027. My inbox is always open.
                     </p>
-                </div>
 
-                {/* Tactile Contact Card */}
-                <div className="bg-white/95 backdrop-blur-md p-8 md:p-12 rounded-3xl border border-slate-200/90 shadow-[0_10px_35px_-5px_rgba(15,23,42,0.08)] relative">
-                    {/* Washi Tape Accent */}
-                    <div className="tape-strip" />
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        
-                        {/* Email Card */}
-                        <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between group hover:border-blue-400 transition-all">
-                            <div className="flex items-center justify-between mb-3">
-                                <div className="p-3 bg-blue-50 text-blue-600 rounded-xl">
-                                    <Mail className="w-5 h-5" />
-                                </div>
-                                <button
-                                    onClick={copyEmail}
-                                    className="p-1.5 rounded-lg bg-white border border-slate-200 text-slate-500 hover:text-blue-600 text-xs font-semibold flex items-center gap-1 shadow-2xs"
-                                    title="Copy email to clipboard"
-                                >
-                                    {copied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
-                                    <span>{copied ? "Copied!" : "Copy"}</span>
-                                </button>
-                            </div>
-                            <div>
-                                <span className="text-xs uppercase font-mono text-slate-400 tracking-wider font-bold">Direct Email</span>
-                                <a
-                                    href="mailto:kundandr05@gmail.com"
-                                    className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors block mt-0.5 truncate"
-                                >
-                                    kundandr05@gmail.com
-                                </a>
-                            </div>
-                        </div>
-
-                        {/* Phone / WhatsApp Card */}
-                        <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 flex flex-col justify-between group hover:border-emerald-400 transition-all">
-                            <div className="flex items-center justify-between mb-3">
-                                <div className="p-3 bg-emerald-50 text-emerald-600 rounded-xl">
-                                    <Phone className="w-5 h-5" />
-                                </div>
-                                <span className="text-[11px] font-mono text-emerald-700 bg-emerald-100/60 px-2 py-0.5 rounded-full font-bold">
-                                    WhatsApp / Call
-                                </span>
-                            </div>
-                            <div>
-                                <span className="text-xs uppercase font-mono text-slate-400 tracking-wider font-bold">Phone Number</span>
-                                <a
-                                    href="tel:+917019934034"
-                                    className="text-base font-bold text-slate-900 group-hover:text-emerald-600 transition-colors block mt-0.5"
-                                >
-                                    +91 70199 34034
-                                </a>
-                            </div>
-                        </div>
-
-                        {/* Location */}
-                        <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center gap-4">
-                            <div className="p-3 bg-rose-50 text-rose-600 rounded-xl">
-                                <MapPin className="w-5 h-5" />
-                            </div>
-                            <div>
-                                <span className="text-xs uppercase font-mono text-slate-400 tracking-wider font-bold">Location</span>
-                                <p className="text-sm font-bold text-slate-900 mt-0.5">
-                                    Mysuru, Karnataka, India
-                                </p>
-                                <p className="text-xs text-slate-500 font-mono">Available for Remote / Hybrid</p>
-                            </div>
-                        </div>
-
-                        {/* Social Quick Links */}
-                        <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center justify-around">
-                            <a
-                                href="https://github.com/kundandr05"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex flex-col items-center gap-1 text-slate-600 hover:text-blue-600 transition-colors"
-                            >
-                                <Github className="w-6 h-6" />
-                                <span className="text-[11px] font-mono font-bold">GitHub</span>
-                            </a>
-                            <a
-                                href="https://linkedin.com/in/kundan-d-r-914274310"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex flex-col items-center gap-1 text-slate-600 hover:text-indigo-600 transition-colors"
-                            >
-                                <Linkedin className="w-6 h-6" />
-                                <span className="text-[11px] font-mono font-bold">LinkedIn</span>
-                            </a>
+                    {/* Primary Big Email Action Box */}
+                    <div className="card-editorial p-8 sm:p-10 max-w-2xl mx-auto mb-10 text-center">
+                        <span className="text-xs font-mono uppercase tracking-wider text-stone-400 block mb-2 font-medium">
+                            Direct Email
+                        </span>
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                             <a
                                 href="mailto:kundandr05@gmail.com"
-                                className="flex flex-col items-center gap-1 text-slate-600 hover:text-rose-600 transition-colors"
+                                className="font-mono text-xl sm:text-2xl font-bold text-stone-900 dark:text-stone-100 hover:text-[#c2410c] dark:hover:text-orange-400 transition-colors"
                             >
-                                <Mail className="w-6 h-6" />
-                                <span className="text-[11px] font-mono font-bold">Email</span>
+                                kundandr05@gmail.com
                             </a>
+                            <button
+                                onClick={handleCopy}
+                                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:text-stone-900 text-xs font-medium transition-colors"
+                                title="Copy email address"
+                            >
+                                {copied ? (
+                                    <>
+                                        <Check className="w-3.5 h-3.5 text-emerald-600" />
+                                        <span>Copied!</span>
+                                    </>
+                                ) : (
+                                    <>
+                                        <Copy className="w-3.5 h-3.5" />
+                                        <span>Copy</span>
+                                    </>
+                                )}
+                            </button>
+                        </div>
+
+                        <div className="pt-6 mt-6 border-t border-stone-100 dark:border-stone-800 flex flex-wrap items-center justify-center gap-4">
+                            <a
+                                href="mailto:kundandr05@gmail.com"
+                                className="btn-editorial-primary text-xs"
+                            >
+                                <Mail className="w-4 h-4" />
+                                Open Mail Client
+                            </a>
+                            <button
+                                onClick={() => setIsResumeOpen(true)}
+                                className="btn-editorial-secondary text-xs"
+                            >
+                                <FileText className="w-4 h-4 text-[#c2410c]" />
+                                View Resume
+                            </button>
                         </div>
                     </div>
 
-                    {/* Bottom CTA Box */}
-                    <div className="mt-8 pt-8 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-                        <div>
-                            <p className="font-handwriting text-xl text-slate-800 font-bold">
-                                Have an internship or project in mind?
-                            </p>
-                            <p className="text-xs text-slate-500">I typically reply within 24 hours.</p>
-                        </div>
+                    {/* Social & Professional Links */}
+                    <div className="flex items-center justify-center gap-8 text-xs font-mono">
                         <a
-                            href="mailto:kundandr05@gmail.com"
-                            className="btn-tactile px-6 py-3 bg-slate-900 text-white rounded-2xl font-bold text-xs hover:bg-slate-800 transition-all flex items-center gap-2 shrink-0"
+                            href="https://github.com/kundandr05"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
                         >
-                            <Mail className="w-4 h-4" /> Send Direct Email
+                            <Github className="w-4 h-4" />
+                            GitHub
+                            <ArrowUpRight className="w-3 h-3 text-stone-400" />
+                        </a>
+                        <a
+                            href="https://linkedin.com/in/kundan-d-r-914274310"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors"
+                        >
+                            <Linkedin className="w-4 h-4" />
+                            LinkedIn
+                            <ArrowUpRight className="w-3 h-3 text-stone-400" />
                         </a>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+
+            <ResumeModal
+                isOpen={isResumeOpen}
+                onClose={() => setIsResumeOpen(false)}
+            />
+        </>
     );
 }
