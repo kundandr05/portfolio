@@ -58,7 +58,7 @@ export default function Hero() {
                             variants={fadeInUp}
                             className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto lg:mx-0 leading-relaxed"
                         >
-                            AI & ML undergraduate at Maharaja Institute of Technology, Mysuru, with experience in FastAPI, Agentic AI, and backend development. Published researcher and author with a strong interest in intelligent systems, automation, and real-world problem solving. Currently building AI-driven applications and expanding expertise in software development and machine learning.
+                            AI & Machine Learning Engineering student at Maharaja Institute of Technology, Mysuru, with hands-on experience building Agentic AI systems, LLM-powered applications, and full-stack software. Published research author with an IJCRT publication, two Amazon KDP books, and UI/UX design intern at WizzyBox.
                         </motion.p>
 
                         <motion.div

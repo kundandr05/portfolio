@@ -49,13 +49,13 @@ export default function About() {
                                     <User className="text-neon-cyan" /> Who I Am
                                 </h2>
                                 <p className="text-gray-300 leading-relaxed mb-4">
-                                    AI & Machine Learning Engineering student with hands-on experience building Agentic AI systems, multimodal assistants, and full-stack applications using Python, FastAPI, React, and Next.js.
+                                    AI & Machine Learning Engineering student with hands-on experience building Agentic AI systems, LLM-powered applications, and full-stack software. Skilled in Python, FastAPI, React, Next.js, REST APIs, database development, and AI integration.
                                 </p>
                                 <p className="text-gray-300 leading-relaxed mb-4">
-                                    Published research author with an IJCRT publication and two independently published Amazon KDP books. Experienced in hackathon-driven software development, LLM integration, and rapid prototyping.
+                                    Published research author with an IJCRT publication and two Amazon KDP books. Also developing expertise in UI/UX design and user-centred product development.
                                 </p>
                                 <p className="text-gray-300 leading-relaxed">
-                                    I am passionate about building intelligent systems that combine research, engineering, and real-world impact. Incoming incubation intern at WizzyBox.
+                                    Passionate about developing practical AI-driven solutions and building scalable applications that solve real-world problems. UI/UX Design Intern at WizzyBox.
                                 </p>
                             </motion.div>
 
@@ -65,13 +65,13 @@ export default function About() {
                                     <h3 className="text-xl font-bold text-neon-cyan mb-4">Experience</h3>
                                     
                                     <div className="mb-2">
-                                        <p className="text-white font-medium">Software Engineering Intern (Incubation Internship)</p>
-                                        <p className="text-gray-400 text-sm">WizzyBox Private Limited (WCAP) | Starting Sep 2026</p>
+                                        <p className="text-white font-medium">UI/UX Design Intern – WizzyBox Career Accelerator Program (WCAP)</p>
+                                        <p className="text-gray-400 text-sm">WizzyBox Private Limited | Sep 2026 – Present</p>
                                     </div>
                                     <ul className="text-gray-300 text-sm list-disc list-inside space-y-1">
-                                        <li>Selected for the highly competitive WizzyBox Career Accelerator Program (WCAP) in partnership with NammaQA.</li>
-                                        <li>Will be engaging in end-to-end training, live project exposure, and hands-on deliverables in an onsite/offshore model.</li>
-                                        <li>Focused on industry-led technologies spanning AI/ML, Python Full-Stack, and Software Testing.</li>
+                                        <li>Selected for WCAP, delivered by WizzyBox in partnership with NammaQA.</li>
+                                        <li>Applying design thinking through target audience research, empathy mapping, personas, user stories, and user journey mapping.</li>
+                                        <li>Working on competitive audits, problem statements, information architecture, user flows, storyboards, and low-fidelity wireframes.</li>
                                     </ul>
                                 </div>
 
@@ -107,7 +107,7 @@ export default function About() {
                                 <div className="glass-panel p-6 rounded-xl hover:border-neon-cyan/50 transition-colors duration-300 md:col-span-2">
                                     <h3 className="text-xl font-bold text-neon-cyan mb-4">Highlights</h3>
                                     <ul className="text-gray-300 text-sm list-disc list-inside space-y-2">
-                                        <li>Incoming Incubation Intern at WizzyBox</li>
+                                        <li>UI/UX Design Intern at WizzyBox (WCAP)</li>
                                         <li>Published Research Paper in IJCRT (Agentic AI)</li>
                                         <li>2 Books Published on Amazon KDP</li>
                                         <li>Built Zeno AI Multimodal Assistant</li>

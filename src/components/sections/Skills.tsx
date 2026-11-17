@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { Code2, Database, Globe, Cpu } from 'lucide-react';
+import { Code2, Database, Globe, Cpu, Palette, Layers } from 'lucide-react';
 
 const skillCategories = [
     {
@@ -10,10 +10,10 @@ const skillCategories = [
         color: "text-neon-cyan",
         skills: [
             { name: "Python", level: 90 },
-            { name: "JavaScript/TypeScript", level: 85 },
+            { name: "JavaScript / TypeScript", level: 85 },
+            { name: "Dart", level: 80 },
             { name: "Java", level: 75 },
-            { name: "C", level: 70 },
-            { name: "HTML/CSS", level: 90 }
+            { name: "C", level: 70 }
         ]
     },
     {
@@ -21,32 +21,54 @@ const skillCategories = [
         icon: Cpu,
         color: "text-neon-purple",
         skills: [
-            { name: "Agentic AI & Multi-Agent Systems", level: 85 },
-            { name: "LLMs (Gemini, Perplexity, OpenAI)", level: 85 },
-            { name: "RAG & Prompt Engineering", level: 80 },
-            { name: "OpenRouter API", level: 80 }
+            { name: "Agentic AI & Multi-Agent Systems", level: 88 },
+            { name: "LLM Integration (Gemini, OpenAI, Ollama)", level: 88 },
+            { name: "RAG & Prompt Engineering", level: 82 },
+            { name: "Sentiment Analysis & Machine Learning", level: 80 }
         ]
     },
     {
-        title: "Frameworks & Databases",
-        icon: Database,
+        title: "Development & Frameworks",
+        icon: Layers,
         color: "text-neon-green",
         skills: [
-            { name: "React.js & Next.js", level: 85 },
-            { name: "FastAPI", level: 80 },
-            { name: "Node.js & Tailwind CSS", level: 80 },
-            { name: "SQL, SQLite & SQLite Cloud", level: 75 }
+            { name: "React.js & Next.js", level: 88 },
+            { name: "FastAPI & Express.js", level: 82 },
+            { name: "Flutter & Mobile/PWA", level: 80 },
+            { name: "Node.js & Tailwind CSS", level: 85 },
+            { name: "REST APIs & Prisma", level: 82 }
         ]
     },
     {
-        title: "Cloud, Deployment & Tools",
-        icon: Globe,
+        title: "Databases & Backend",
+        icon: Database,
+        color: "text-neon-cyan",
+        skills: [
+            { name: "PostgreSQL & Supabase", level: 82 },
+            { name: "SQL & SQLite", level: 85 },
+            { name: "Firebase (Auth & Firestore)", level: 80 }
+        ]
+    },
+    {
+        title: "UI/UX & Product Design",
+        icon: Palette,
         color: "text-neon-magenta",
         skills: [
-            { name: "Firebase Auth, Render, Vercel", level: 80 },
-            { name: "AWS & Azure (Basics)", level: 65 },
-            { name: "Git, GitHub & REST APIs", level: 85 },
-            { name: "System Architecture", level: 75 }
+            { name: "Design Thinking & User Research", level: 85 },
+            { name: "Empathy Mapping & Personas", level: 85 },
+            { name: "User Journeys & Information Architecture", level: 82 },
+            { name: "Wireframing, Prototyping & Figma", level: 85 }
+        ]
+    },
+    {
+        title: "Tools & Cloud Platforms",
+        icon: Globe,
+        color: "text-neon-purple",
+        skills: [
+            { name: "Git & GitHub", level: 88 },
+            { name: "Vercel & Render", level: 85 },
+            { name: "OpenRouter & Groq", level: 82 },
+            { name: "Figma", level: 85 }
         ]
     }
 ];

@@ -6,15 +6,15 @@ import { Briefcase, Calendar, BookOpen, ExternalLink, FileText } from 'lucide-re
 const experiences = [
     {
         id: 2,
-        role: "Software Engineering Intern (Incubation)",
-        company: "WizzyBox Private Limited (WCAP)",
-        period: "Starting Sep 2026",
+        role: "UI/UX Design Intern – WizzyBox Career Accelerator Program (WCAP)",
+        company: "WizzyBox Private Limited",
+        period: "Sep 2026 – Present",
         description: [
-            "Selected for the highly competitive WizzyBox Career Accelerator Program (WCAP) in partnership with NammaQA.",
-            "Will engage in end-to-end training, live project exposure, and hands-on deliverables in an onsite/offshore model.",
-            "Focused on industry-led technologies spanning AI/ML, Python Full-Stack, and Software Testing."
+            "Selected for WCAP, delivered by WizzyBox in partnership with NammaQA.",
+            "Applying design thinking through target audience research, empathy mapping, personas, user stories, and user journey mapping.",
+            "Working on competitive audits, problem statements, information architecture, user flows, storyboards, and low-fidelity wireframes."
         ],
-        skills: ["AI/ML", "Python", "Software Engineering", "Full-Stack"],
+        skills: ["UI/UX Design", "Design Thinking", "User Research", "Wireframing", "Figma", "Information Architecture"],
         link: "/WizzyBox_Offer_Letter.pdf",
         linkLabel: "View Offer Letter"
     }
