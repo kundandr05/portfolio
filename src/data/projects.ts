@@ -18,6 +18,27 @@ export interface Project {
 
 export const projects: Project[] = [
     {
+        slug: "dispatchgrid",
+        title: "DispatchGrid: Autonomous Workforce Dispatch & Recovery Engine",
+        description: "Autonomous full-stack workforce dispatch platform with automated technician allocation, constraint-based greedy scheduling, 2-opt route optimization, and Groq-powered AI booking assistance.",
+        tags: ["React", "TypeScript", "Node.js", "Express", "Prisma", "Groq AI", "Leaflet", "Render"],
+        image: "/project-dispatchgrid.png",
+        github: "https://github.com/kundandr05/ByteForge_H4H",
+        githubLabel: "ByteForge H4H",
+        demo: "https://byteforge-h4h.onrender.com",
+        demoLabel: "Live on Render",
+        keyFeatures: [
+            "Constraint-based scheduling engine enforcing 7 operational constraints with greedy heuristics & 2-opt route optimization",
+            "Disruption recovery engine dynamically recalculating technician schedules upon cancellations, delays, or emergency tickets",
+            "Groq-powered conversational AI booking assistant for automated customer booking and natural language intent parsing",
+            "Interactive geospatial dispatch map visualization built with Leaflet and live status tracking",
+            "Role-based portals (Admin, Field Technician, Customer) with SHA-256 hash-chained tamper-evident audit logs"
+        ],
+        architecture: "Frontend engineered with React, TypeScript, and Tailwind CSS. Backend services powered by Node.js, Express, and Prisma ORM with SQLite, integrating ultra-fast Groq LPU inference for AI assistance and deployed live on Render.",
+        challenges: "Developing an algorithmic constraint solver capable of simultaneously balancing technician skill requirements, shift constraints, travel time, and priority dispatch in real time during field disruptions.",
+        futureImprovements: "Add real-time GPS telemetry via WebSockets, multi-depot fleet rebalancing, and predictive dispatch using historical seasonal demand models."
+    },
+    {
         slug: "personal-portfolio-website",
         title: "Personal Portfolio Website",
         description: "Modern portfolio built with Next.js showcasing projects, research publications, technical skills, and professional achievements.",
@@ -116,7 +137,7 @@ export const projects: Project[] = [
         title: "Agentic AI-Based Tournament Management System",
         description: "Developed an AI-powered tournament management platform using an agentic architecture to automate registration, scheduling, and match coordination. Completed core features within a 3-day hackathon.",
         tags: ["Python", "FastAPI", "SQLite", "Agentic AI", "Hackathon"],
-        image: "/project2.jpg",
+        image: "/paper-image.png",
         videoUrl: "/placeholder-video2.mp4",
         github: "#",
         githubLabel: "Hebbale Academy Hackathon",
