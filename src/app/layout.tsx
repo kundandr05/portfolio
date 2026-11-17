@@ -46,7 +46,7 @@ export default function RootLayout({
         <CustomCursor />
         <AuroraBackground />
         <Navbar />
-        <main className="flex-grow pt-16 container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <main className="flex-grow pt-16 container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 overflow-x-clip">
           {children}
         </main>
         <Footer />
