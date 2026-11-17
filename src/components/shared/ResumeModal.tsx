@@ -41,20 +41,20 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
                         transition={{ type: "spring", duration: 0.5, bounce: 0 }}
-                        className="relative w-full max-w-5xl h-full flex flex-col bg-[#0a0a0f] border border-neon-cyan/20 rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,217,255,0.15)]"
+                        className="relative w-full max-w-5xl h-full flex flex-col bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-2xl"
                     >
                         {/* Header */}
-                        <div className="flex items-center justify-between p-4 border-b border-white/10 bg-white/5 backdrop-blur-md shrink-0">
-                            <h2 className="text-xl font-display font-bold text-white flex items-center gap-2">
-                                <span className="w-2 h-2 rounded-full bg-neon-cyan animate-pulse" />
+                        <div className="flex items-center justify-between p-4 border-b border-slate-200 bg-slate-50/90 backdrop-blur-md shrink-0">
+                            <h2 className="text-xl font-display font-bold text-slate-900 flex items-center gap-2">
+                                <span className="w-2.5 h-2.5 rounded-full bg-blue-600 animate-pulse" />
                                 Resume Preview
                             </h2>
-                            <div className="flex items-center gap-3">
+                            <div className="flex items-center gap-2">
                                 <a 
                                     href="/Kundan_Resume.pdf" 
                                     target="_blank" 
                                     rel="noopener noreferrer"
-                                    className="p-2 text-gray-400 hover:text-neon-cyan transition-colors hidden sm:block"
+                                    className="p-2 text-slate-500 hover:text-blue-600 hover:bg-slate-100 rounded-lg transition-colors hidden sm:block"
                                     title="Open in new tab"
                                 >
                                     <ExternalLink className="w-5 h-5" />
@@ -62,14 +62,14 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                                 <a 
                                     href="/Kundan_Resume.pdf" 
                                     download="Kundan_Resume.pdf"
-                                    className="p-2 text-gray-400 hover:text-neon-magenta transition-colors"
+                                    className="p-2 text-slate-500 hover:text-rose-600 hover:bg-slate-100 rounded-lg transition-colors"
                                     title="Download PDF"
                                 >
                                     <Download className="w-5 h-5" />
                                 </a>
                                 <button 
                                     onClick={onClose}
-                                    className="p-2 text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-lg transition-all"
+                                    className="p-2 text-slate-500 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-lg transition-all"
                                     title="Close"
                                 >
                                     <X className="w-5 h-5" />
@@ -78,10 +78,10 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                         </div>
 
                         {/* PDF Viewer */}
-                        <div className="flex-1 bg-white/5 p-2 sm:p-4 overflow-hidden">
+                        <div className="flex-1 bg-slate-100 p-2 sm:p-4 overflow-hidden">
                             <iframe 
                                 src="/Kundan_Resume.pdf?v=20261117#toolbar=0" 
-                                className="w-full h-full rounded-lg border border-white/10 bg-white"
+                                className="w-full h-full rounded-lg border border-slate-200 bg-white shadow-inner"
                                 title="Resume PDF Preview"
                             />
                         </div>

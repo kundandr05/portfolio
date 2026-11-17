@@ -15,10 +15,10 @@ export default function Projects() {
                         animate={{ opacity: 1, y: 0 }}
                         className="text-center mb-16"
                     >
-                        <h1 className="text-4xl md:text-6xl font-display font-bold text-white mb-4">
-                            Featured <span className="text-neon-cyan">Projects</span>
+                        <h1 className="text-4xl md:text-6xl font-display font-bold text-slate-900 mb-4">
+                            Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Projects</span>
                         </h1>
-                        <p className="text-gray-400 max-w-2xl mx-auto">
+                        <p className="text-slate-600 max-w-2xl mx-auto">
                             A showcase of my AI, backend development, research, and software engineering projects, highlighting practical problem-solving and real-world application development.
                         </p>
                     </motion.div>

@@ -83,10 +83,10 @@ export default function Skills() {
                         animate={{ opacity: 1 }}
                         className="text-center mb-16"
                     >
-                        <h1 className="text-4xl md:text-6xl font-display font-bold text-white mb-4">
-                            Technical <span className="text-neon-cyan">Skills</span>
+                        <h1 className="text-4xl md:text-6xl font-display font-bold text-slate-900 mb-4">
+                            Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Skills</span>
                         </h1>
-                        <p className="text-gray-400">Technologies, tools, and concepts I have worked with through projects, research, and continuous learning.</p>
+                        <p className="text-slate-600">Technologies, tools, and concepts I have worked with through projects, research, and continuous learning.</p>
                     </motion.div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
@@ -97,28 +97,28 @@ export default function Skills() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: "-50px" }}
                                 transition={{ delay: catIndex * 0.1 }}
-                                className="glass-panel p-8 rounded-2xl relative overflow-hidden group"
+                                className="glass-panel p-8 rounded-2xl relative overflow-hidden group hover:border-blue-400/50 transition-colors"
                             >
-                                {/* Background Glow */}
-                                <div className={`absolute -top-10 -right-10 w-40 h-40 bg-gradient-to-br from-${category.color.replace('text-', '')}/20 to-transparent blur-3xl rounded-full`} />
-
                                 <div className="flex items-center gap-3 mb-8">
-                                    <category.icon className={`w-8 h-8 ${category.color}`} />
-                                    <h2 className="text-2xl font-bold text-white">{category.title}</h2>
+                                    <div className="p-2.5 rounded-xl bg-blue-50 text-blue-600">
+                                        <category.icon className="w-6 h-6" />
+                                    </div>
+                                    <h2 className="text-xl font-bold text-slate-900">{category.title}</h2>
                                 </div>
 
                                 <div className="space-y-6">
                                     {category.skills.map((skill, skillIndex) => (
                                         <div key={skillIndex}>
                                             <div className="flex justify-between items-end mb-2">
-                                                <span className="text-gray-300 font-medium">{skill.name}</span>
+                                                <span className="text-slate-700 font-medium text-sm">{skill.name}</span>
+                                                <span className="text-slate-400 text-xs font-semibold">{skill.level}%</span>
                                             </div>
-                                            <div className="h-2 w-full bg-white/10 rounded-full overflow-hidden">
+                                            <div className="h-2 w-full bg-slate-100 rounded-full overflow-hidden">
                                                 <motion.div
                                                     initial={{ width: 0 }}
                                                     whileInView={{ width: `${skill.level}%` }}
                                                     transition={{ duration: 1, delay: 0.2 }}
-                                                    className={`h-full rounded-full ${category.color.replace('text-', 'bg-')} shadow-[0_0_10px_currentColor]`}
+                                                    className="h-full rounded-full bg-gradient-to-r from-blue-500 to-indigo-600"
                                                 />
                                             </div>
                                         </div>

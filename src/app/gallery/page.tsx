@@ -19,17 +19,19 @@ export default function Gallery() {
 
     return (
         <PageTransition>
-            <section className="py-20">
-                <div className="container mx-auto px-4">
+            <section className="py-20 min-h-screen">
+                <div className="container mx-auto px-4 max-w-6xl">
                     <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
                         className="text-center mb-16"
                     >
-                        <h1 className="text-4xl md:text-6xl font-display font-bold text-white mb-4">
-                            Life in <span className="text-neon-green">Frames</span>
+                        <h1 className="text-4xl md:text-6xl font-display font-extrabold text-slate-900 tracking-tight mb-4">
+                            Life in <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-rose-600">Frames</span>
                         </h1>
-                        <p className="text-gray-400">Capturing moments from my professional and personal journey.</p>
+                        <p className="text-slate-600 text-base max-w-xl mx-auto">
+                            Capturing milestones, hackathons, and moments from my journey as an engineer.
+                        </p>
                     </motion.div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -38,13 +40,15 @@ export default function Gallery() {
                                 layoutId={`image-${image.id}`}
                                 key={image.id}
                                 onClick={() => setSelectedId(image.id)}
-                                className="cursor-pointer overflow-hidden rounded-xl border border-white/10 relative group h-64"
+                                className="cursor-pointer overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm hover:shadow-lg transition-all duration-300 relative group h-64"
                             >
-                                <div className="w-full h-full bg-gray-800 flex items-center justify-center text-gray-500 group-hover:bg-gray-700 transition-colors">
+                                <div className="w-full h-full bg-slate-100 flex items-center justify-center text-slate-500 font-medium group-hover:bg-slate-200/70 transition-colors">
                                     {image.alt}
                                 </div>
-                                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                    <span className="text-white font-medium border border-white/30 px-4 py-2 rounded-full backdrop-blur-sm">View</span>
+                                <div className="absolute inset-0 bg-slate-950/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
+                                    <span className="text-white font-semibold text-xs border border-white/40 px-4 py-2 rounded-full bg-white/20 backdrop-blur-md">
+                                        View Photo
+                                    </span>
                                 </div>
                             </motion.div>
                         ))}
@@ -56,24 +60,24 @@ export default function Gallery() {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
-                                className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md p-4"
+                                className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-md p-4"
                                 onClick={() => setSelectedId(null)}
                             >
                                 <div className="relative max-w-4xl w-full h-full flex items-center justify-center">
                                     <button
                                         onClick={() => setSelectedId(null)}
-                                        className="absolute top-4 right-4 text-white hover:text-neon-cyan p-2 bg-white/10 rounded-full z-50"
+                                        className="absolute top-4 right-4 text-white hover:text-rose-400 p-2.5 bg-white/10 hover:bg-white/20 rounded-full z-50 transition-colors"
+                                        aria-label="Close modal"
                                     >
                                         <X className="w-6 h-6" />
                                     </button>
 
                                     <motion.div
                                         layoutId={`image-${selectedId}`}
-                                        className="max-h-[80vh] w-full bg-gray-800 rounded-xl overflow-hidden flex items-center justify-center"
+                                        className="max-h-[80vh] w-full bg-white rounded-2xl overflow-hidden flex items-center justify-center border border-slate-200 shadow-2xl p-8"
                                         onClick={(e) => e.stopPropagation()}
                                     >
-                                        {/* Placeholder for actual full-size image */}
-                                        <span className="text-white text-xl">Full Size Image Preview</span>
+                                        <span className="text-slate-800 text-lg font-medium">Full Size Image Preview</span>
                                     </motion.div>
                                 </div>
                             </motion.div>

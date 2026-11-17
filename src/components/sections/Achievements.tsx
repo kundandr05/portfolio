@@ -33,10 +33,10 @@ export default function Achievements() {
                         animate={{ opacity: 1 }}
                         className="text-center mb-16"
                     >
-                        <h1 className="text-4xl md:text-6xl font-display font-bold text-white mb-4">
-                            Honors & <span className="text-neon-magenta">Achievements</span>
+                        <h1 className="text-4xl md:text-6xl font-display font-bold text-slate-900 mb-4">
+                            Honors & <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-rose-500 to-indigo-600">Achievements</span>
                         </h1>
-                        <p className="text-gray-400">Milestones that mark my journey of excellence.</p>
+                        <p className="text-slate-600">Milestones that mark my journey of excellence.</p>
                     </motion.div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -47,18 +47,18 @@ export default function Achievements() {
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
-                                whileHover={{ y: -10 }}
-                                className="glass-panel p-8 rounded-2xl flex items-start gap-6 border border-white/5 hover:border-white/20 transition-all duration-300"
+                                whileHover={{ y: -6 }}
+                                className="glass-panel p-8 rounded-2xl flex items-start gap-6 border border-slate-200/80 hover:border-blue-300 transition-all duration-300"
                             >
-                                <div className={`p-4 bg-white/5 rounded-full ${item.color} shadow-[0_0_15px_currentColor]`}>
-                                    <item.icon className="w-8 h-8" />
+                                <div className="p-4 bg-blue-50 text-blue-600 rounded-2xl shadow-sm">
+                                    <item.icon className="w-7 h-7" />
                                 </div>
                                 <div>
-                                    <h3 className="text-xl font-bold text-white mb-1 group-hover:text-neon-cyan transition-colors">
+                                    <h3 className="text-xl font-bold text-slate-900 mb-1 group-hover:text-blue-600 transition-colors">
                                         {item.title}
                                     </h3>
-                                    <p className="text-sm text-neon-cyan mb-2">{item.organization} | {item.date}</p>
-                                    <p className="text-gray-400 text-sm leading-relaxed">
+                                    <p className="text-sm text-blue-600 font-semibold mb-2">{item.organization} &bull; {item.date}</p>
+                                    <p className="text-slate-600 text-sm leading-relaxed">
                                         {item.description}
                                     </p>
                                 </div>

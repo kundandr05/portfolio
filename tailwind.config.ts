@@ -9,17 +9,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#0a0e27",
-        foreground: "#ffffff",
-        surface: "#1a1f3a",
+        background: "#f8fafc",
+        foreground: "#0f172a",
+        surface: "#ffffff",
         neon: {
-          cyan: "#00d9ff",
-          magenta: "#ff006e",
+          cyan: "#2563eb",
+          magenta: "#f43f5e",
           purple: "#7c3aed",
+          green: "#059669",
         },
         glass: {
-          border: "rgba(0, 217, 255, 0.2)",
-          bg: "rgba(26, 31, 58, 0.6)",
+          border: "rgba(15, 23, 42, 0.08)",
+          bg: "rgba(255, 255, 255, 0.85)",
         }
       },
       fontFamily: {

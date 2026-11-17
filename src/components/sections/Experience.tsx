@@ -59,14 +59,14 @@ export default function Experience() {
                         initial={{ opacity: 0, y: -20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
-                        className="text-4xl md:text-6xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-neon-cyan mb-16 text-center"
+                        className="text-4xl md:text-6xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-rose-600 mb-16 text-center"
                     >
                         Experience
                     </motion.h1>
 
                     <div className="relative max-w-4xl mx-auto">
                         {/* Vertical Line */}
-                        <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-neon-cyan via-neon-purple to-neon-magenta opacity-30" />
+                        <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-blue-500 via-indigo-500 to-rose-500 opacity-25" />
 
                         {experiences.map((exp, index) => (
                             <motion.div
@@ -79,30 +79,30 @@ export default function Experience() {
                                     }`}
                             >
                                 {/* Timeline Dot */}
-                                <div className="absolute left-[-5px] md:left-1/2 md:-ml-[6px] w-3 h-3 rounded-full bg-neon-cyan shadow-[0_0_10px_#00f3ff] z-10 mt-6" />
+                                <div className="absolute left-[-5px] md:left-1/2 md:-ml-[6px] w-3 h-3 rounded-full bg-blue-600 shadow-[0_0_10px_rgba(37,99,235,0.4)] z-10 mt-6" />
 
                                 {/* Content Card */}
                                 <div className="md:w-1/2 pl-8 md:pl-0 md:pr-12 group">
-                                    <div className={`glass-panel p-6 rounded-xl hover:border-neon-cyan/50 transition-all duration-300 transform group-hover:-translate-y-1 ${index % 2 === 0 ? 'md:mr-12' : 'md:ml-12'
+                                    <div className={`glass-panel p-6 rounded-2xl hover:border-blue-400/50 transition-all duration-300 transform group-hover:-translate-y-1 ${index % 2 === 0 ? 'md:mr-12' : 'md:ml-12'
                                         }`}>
-                                        <div className="flex items-center gap-2 text-neon-cyan mb-2">
+                                        <div className="flex items-center gap-2 text-blue-600 mb-2">
                                             <Briefcase className="w-4 h-4" />
-                                            <h3 className="font-bold text-lg">{exp.role}</h3>
+                                            <h3 className="font-bold text-lg text-slate-900">{exp.role}</h3>
                                         </div>
-                                        <div className="flex items-center gap-2 text-gray-400 text-sm mb-4">
-                                            <Calendar className="w-3 h-3" />
+                                        <div className="flex items-center gap-2 text-slate-500 text-sm mb-4">
+                                            <Calendar className="w-3.5 h-3.5" />
                                             <span>{exp.period}</span>
                                             <span className="mx-2">|</span>
-                                            <span>{exp.company}</span>
+                                            <span className="font-medium text-slate-700">{exp.company}</span>
                                         </div>
-                                        <ul className="text-gray-300 mb-4 leading-relaxed text-sm list-disc list-inside space-y-1">
+                                        <ul className="text-slate-600 mb-4 leading-relaxed text-sm list-disc list-inside space-y-1">
                                             {exp.description.map((point, idx) => (
                                                 <li key={idx}>{point}</li>
                                             ))}
                                         </ul>
-                                        <div className="flex flex-wrap gap-2 mb-4">
+                                        <div className="flex flex-wrap gap-1.5 mb-4">
                                             {exp.skills.map((skill, i) => (
-                                                <span key={i} className="text-xs px-2 py-1 rounded-full bg-white/5 border border-white/10 text-gray-300">
+                                                <span key={i} className="text-xs px-2.5 py-1 rounded-full bg-blue-50 border border-blue-200/80 text-blue-700 font-medium">
                                                     {skill}
                                                 </span>
                                             ))}
@@ -112,7 +112,7 @@ export default function Experience() {
                                                 href={exp.link}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="inline-flex items-center gap-2 text-sm text-neon-cyan hover:text-white transition-colors"
+                                                className="inline-flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 font-medium transition-colors"
                                             >
                                                 <FileText className="w-4 h-4" />
                                                 {exp.linkLabel}
@@ -134,7 +134,7 @@ export default function Experience() {
                         viewport={{ once: true }}
                         className="mt-32 max-w-4xl mx-auto"
                     >
-                        <h2 className="text-3xl md:text-5xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-purple mb-12 text-center">
+                        <h2 className="text-3xl md:text-5xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 mb-12 text-center">
                             Publications & Authorship
                         </h2>
 
@@ -146,32 +146,30 @@ export default function Experience() {
                                     whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: index * 0.1 }}
-                                    className="glass-panel p-8 rounded-2xl relative overflow-hidden group hover:border-neon-cyan/50 transition-colors duration-300"
+                                    className="glass-panel p-8 rounded-2xl relative overflow-hidden group hover:border-blue-400/50 transition-colors duration-300"
                                 >
-                                    <div className="absolute -right-10 -top-10 w-40 h-40 bg-neon-cyan/10 blur-3xl rounded-full group-hover:bg-neon-cyan/20 transition-colors" />
-                                    
                                     <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 relative z-10">
                                         <div className="flex-1">
                                             <div className="flex items-center gap-3 mb-3">
                                                 {pub.type === "Book" ? (
-                                                    <BookOpen className="w-6 h-6 text-neon-purple" />
+                                                    <BookOpen className="w-6 h-6 text-indigo-600" />
                                                 ) : (
-                                                    <FileText className="w-6 h-6 text-neon-cyan" />
+                                                    <FileText className="w-6 h-6 text-blue-600" />
                                                 )}
-                                                <h3 className="text-xl font-bold text-white group-hover:text-neon-cyan transition-colors">
+                                                <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                                                     {pub.title}
                                                 </h3>
                                             </div>
                                             
-                                            <div className="flex items-center gap-4 text-sm text-gray-400 mb-4">
-                                                <span className="flex items-center gap-1 text-neon-magenta">
+                                            <div className="flex items-center gap-4 text-sm text-slate-500 mb-4">
+                                                <span className="flex items-center gap-1 text-rose-600 font-medium">
                                                     <Calendar className="w-4 h-4" /> {pub.date}
                                                 </span>
                                                 <span>|</span>
-                                                <span className="font-medium text-gray-300">{pub.journal}</span>
+                                                <span className="font-medium text-slate-700">{pub.journal}</span>
                                             </div>
                                             
-                                            <p className="text-gray-300 leading-relaxed text-sm">
+                                            <p className="text-slate-600 leading-relaxed text-sm">
                                                 {pub.description}
                                             </p>
                                         </div>
@@ -180,7 +178,7 @@ export default function Experience() {
                                             href={pub.link}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="shrink-0 flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/10 rounded-lg text-white hover:bg-neon-cyan/20 hover:border-neon-cyan hover:text-neon-cyan transition-all duration-300 font-medium"
+                                            className="shrink-0 flex items-center gap-2 px-6 py-3 bg-blue-50 border border-blue-200 rounded-xl text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300 font-medium shadow-sm"
                                         >
                                             View <ExternalLink className="w-4 h-4" />
                                         </a>

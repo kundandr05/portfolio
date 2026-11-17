@@ -28,7 +28,7 @@ export default function ProjectDetail({ params }: { params: Promise<{ slug: stri
                         animate={{ opacity: 1, x: 0 }}
                         className="mb-8"
                     >
-                        <Link href="/projects" className="inline-flex items-center text-neon-cyan hover:text-white transition-colors gap-2">
+                        <Link href="/projects" className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors gap-2">
                             <ArrowLeft className="w-5 h-5" /> Back to Projects
                         </Link>
                     </motion.div>
@@ -39,27 +39,27 @@ export default function ProjectDetail({ params }: { params: Promise<{ slug: stri
                         animate={{ opacity: 1, y: 0 }}
                         className="mb-12"
                     >
-                        <h1 className="text-4xl md:text-6xl font-display font-bold text-white mb-6">
+                        <h1 className="text-4xl md:text-6xl font-display font-extrabold text-slate-900 tracking-tight mb-6">
                             {project.title}
                         </h1>
-                        <div className="flex flex-wrap gap-3 mb-6">
+                        <div className="flex flex-wrap gap-2.5 mb-6">
                             {project.tags.map(tag => (
-                                <span key={tag} className="px-3 py-1 text-sm rounded-full bg-white/5 text-neon-cyan border border-neon-cyan/20">
+                                <span key={tag} className="px-3 py-1 text-xs font-semibold rounded-full bg-blue-50 text-blue-700 border border-blue-200">
                                     {tag}
                                 </span>
                             ))}
                         </div>
-                        <p className="text-xl text-gray-300 leading-relaxed">
+                        <p className="text-xl text-slate-600 leading-relaxed font-normal">
                             {project.description}
                         </p>
                     </motion.div>
 
                     {/* Image */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
+                        initial={{ opacity: 0, scale: 0.98 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.1 }}
-                        className="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 mb-16 shadow-[0_0_50px_rgba(0,243,255,0.1)]"
+                        className="relative w-full aspect-video rounded-3xl overflow-hidden border border-slate-200/80 mb-16 shadow-[0_20px_50px_-12px_rgba(15,23,42,0.12)] bg-slate-100"
                     >
                         {!imageError ? (
                             <Image
@@ -70,11 +70,11 @@ export default function ProjectDetail({ params }: { params: Promise<{ slug: stri
                                 onError={() => setImageError(true)}
                             />
                         ) : (
-                            <div className="absolute inset-0 flex items-center justify-center bg-gray-900 text-gray-500 text-xl font-medium">
+                            <div className="absolute inset-0 flex items-center justify-center bg-slate-100 text-slate-400 text-xl font-medium">
                                 Project Preview Screenshot
                             </div>
                         )}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/10 via-transparent to-transparent pointer-events-none" />
                     </motion.div>
 
                     {/* Details Grid */}
@@ -83,19 +83,22 @@ export default function ProjectDetail({ params }: { params: Promise<{ slug: stri
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="md:col-span-2 space-y-12"
+                            className="md:col-span-2 space-y-8"
                         >
                             {/* Key Features */}
                             {project.keyFeatures && (
-                                <div className="glass-panel p-8 rounded-2xl relative overflow-hidden">
-                                    <div className="absolute -top-10 -right-10 w-32 h-32 bg-neon-cyan/20 blur-3xl rounded-full" />
-                                    <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                                        <Target className="text-neon-cyan" /> Key Features
+                                <div className="bg-white/90 backdrop-blur-md border border-slate-200/80 p-8 rounded-3xl shadow-sm relative overflow-hidden">
+                                    <div className="absolute -top-12 -right-12 w-36 h-36 bg-blue-500/10 blur-3xl rounded-full" />
+                                    <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                                        <div className="p-2 rounded-xl bg-blue-50 text-blue-600">
+                                            <Target className="w-5 h-5" />
+                                        </div>
+                                        Key Features
                                     </h2>
-                                    <ul className="space-y-4">
+                                    <ul className="space-y-3.5">
                                         {project.keyFeatures.map((feature, idx) => (
-                                            <li key={idx} className="flex items-start gap-3 text-gray-300">
-                                                <CheckCircle2 className="w-5 h-5 text-neon-cyan shrink-0 mt-0.5" />
+                                            <li key={idx} className="flex items-start gap-3 text-slate-700 text-sm leading-relaxed">
+                                                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
                                                 <span>{feature}</span>
                                             </li>
                                         ))}
@@ -105,12 +108,15 @@ export default function ProjectDetail({ params }: { params: Promise<{ slug: stri
 
                             {/* Technical Architecture */}
                             {project.architecture && (
-                                <div className="glass-panel p-8 rounded-2xl relative overflow-hidden">
-                                    <div className="absolute -top-10 -right-10 w-32 h-32 bg-neon-purple/20 blur-3xl rounded-full" />
-                                    <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                                        <Layers className="text-neon-purple" /> Technical Architecture
+                                <div className="bg-white/90 backdrop-blur-md border border-slate-200/80 p-8 rounded-3xl shadow-sm relative overflow-hidden">
+                                    <div className="absolute -top-12 -right-12 w-36 h-36 bg-violet-500/10 blur-3xl rounded-full" />
+                                    <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                                        <div className="p-2 rounded-xl bg-violet-50 text-violet-600">
+                                            <Layers className="w-5 h-5" />
+                                        </div>
+                                        Technical Architecture
                                     </h2>
-                                    <p className="text-gray-300 leading-relaxed">
+                                    <p className="text-slate-600 leading-relaxed text-sm">
                                         {project.architecture}
                                     </p>
                                 </div>
@@ -122,37 +128,38 @@ export default function ProjectDetail({ params }: { params: Promise<{ slug: stri
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
-                            className="space-y-8"
+                            className="space-y-6"
                         >
                             {/* Action Links */}
-                            <div className="glass-panel p-6 rounded-2xl space-y-4">
+                            <div className="bg-white/90 backdrop-blur-md border border-slate-200/80 p-6 rounded-3xl space-y-3 shadow-sm">
+                                <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Project Links</h3>
                                 {(!project.github || project.github === '#') ? (
-                                    <span className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-white/5 border border-white/10 text-gray-500 cursor-not-allowed font-medium" title={project.githubLabel || "Code unavailable"}>
-                                        <Github className="w-5 h-5" /> {project.githubLabel || "Code (Coming Soon)"}
+                                    <span className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-slate-100 border border-slate-200 text-slate-400 cursor-not-allowed font-medium text-sm" title={project.githubLabel || "Code unavailable"}>
+                                        <Github className="w-4 h-4" /> {project.githubLabel || "Code (Coming Soon)"}
                                     </span>
                                 ) : (
                                     <a
                                         href={project.github}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-white/5 border border-white/10 text-white hover:bg-neon-cyan/20 hover:border-neon-cyan hover:text-neon-cyan transition-all duration-300 font-medium"
+                                        className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-slate-900 text-white hover:bg-slate-800 transition-all duration-200 font-semibold text-sm shadow-sm hover:shadow"
                                     >
-                                        <Github className="w-5 h-5" /> View Source Code
+                                        <Github className="w-4 h-4" /> View Source Code
                                     </a>
                                 )}
                                 
                                 {(!project.demo || project.demo === '#') ? (
-                                    <span className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-white/5 border border-white/10 text-gray-500 cursor-not-allowed font-medium">
-                                        <ExternalLink className="w-5 h-5" /> Demo (Coming Soon)
+                                    <span className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-slate-100 border border-slate-200 text-slate-400 cursor-not-allowed font-medium text-sm">
+                                        <ExternalLink className="w-4 h-4" /> Demo (Coming Soon)
                                     </span>
                                 ) : (
                                     <a
                                         href={project.demo}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-neon-magenta/20 border border-neon-magenta text-neon-magenta hover:bg-neon-magenta hover:text-white transition-all duration-300 font-medium"
+                                        className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 font-semibold text-sm shadow-sm hover:shadow-md"
                                     >
-                                        <ExternalLink className="w-5 h-5" /> {project.demoLabel || "Live Demo"}
+                                        <ExternalLink className="w-4 h-4" /> {project.demoLabel || "Live Demo"}
                                     </a>
                                 )}
                                 
@@ -161,28 +168,28 @@ export default function ProjectDetail({ params }: { params: Promise<{ slug: stri
                                         href={project.youtubeUrl}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-red-500/20 border border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition-all duration-300 font-medium"
+                                        className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-600 hover:bg-rose-100 transition-all duration-200 font-medium text-sm"
                                     >
-                                        <ExternalLink className="w-5 h-5" /> Watch on YouTube
+                                        <ExternalLink className="w-4 h-4" /> Watch on YouTube
                                     </a>
                                 )}
                             </div>
 
                             {/* Challenges & Future */}
                             {project.challenges && (
-                                <div className="glass-panel p-6 rounded-2xl">
-                                    <h3 className="text-lg font-bold text-white mb-3">Challenges Overcome</h3>
-                                    <p className="text-sm text-gray-400 leading-relaxed">
+                                <div className="bg-white/90 backdrop-blur-md border border-slate-200/80 p-6 rounded-3xl shadow-sm">
+                                    <h3 className="text-base font-bold text-slate-900 mb-2">Challenges Overcome</h3>
+                                    <p className="text-xs text-slate-600 leading-relaxed">
                                         {project.challenges}
                                     </p>
                                 </div>
                             )}
                             {project.futureImprovements && (
-                                <div className="glass-panel p-6 rounded-2xl">
-                                    <h3 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
-                                        <Rocket className="w-4 h-4 text-neon-green" /> Future Iterations
+                                <div className="bg-white/90 backdrop-blur-md border border-slate-200/80 p-6 rounded-3xl shadow-sm">
+                                    <h3 className="text-base font-bold text-slate-900 mb-2 flex items-center gap-2">
+                                        <Rocket className="w-4 h-4 text-emerald-600" /> Future Iterations
                                     </h3>
-                                    <p className="text-sm text-gray-400 leading-relaxed">
+                                    <p className="text-xs text-slate-600 leading-relaxed">
                                         {project.futureImprovements}
                                     </p>
                                 </div>

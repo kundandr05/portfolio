@@ -51,10 +51,10 @@ export default function Publications() {
                         animate={{ opacity: 1 }}
                         className="text-center mb-16"
                     >
-                        <h1 className="text-4xl md:text-6xl font-display font-bold text-white mb-4">
-                            Publications & <span className="text-neon-cyan">Books</span>
+                        <h1 className="text-4xl md:text-6xl font-display font-bold text-slate-900 mb-4">
+                            Publications & <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Books</span>
                         </h1>
-                        <p className="text-gray-400 max-w-2xl mx-auto">
+                        <p className="text-slate-600 max-w-2xl mx-auto">
                             My published research papers and authored books on Artificial Intelligence, Machine Learning, and Software Development.
                         </p>
                     </motion.div>

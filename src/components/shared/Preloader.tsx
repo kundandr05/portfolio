@@ -24,7 +24,7 @@ export default function Preloader() {
                     initial={{ y: 0 }}
                     exit={{ y: "-100%" }}
                     transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }} // Premium custom cubic-bezier
-                    className="fixed inset-0 z-[10000] bg-black flex flex-col items-center justify-center pointer-events-none"
+                    className="fixed inset-0 z-[10000] bg-[#f8fafc] flex flex-col items-center justify-center pointer-events-none"
                 >
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
@@ -33,19 +33,19 @@ export default function Preloader() {
                         className="flex flex-col items-center"
                     >
                         <div className="flex items-center space-x-3 mb-6">
-                            <Terminal className="w-12 h-12 text-neon-cyan animate-pulse" />
-                            <span className="text-3xl font-bold font-display tracking-wider text-white">
+                            <Terminal className="w-10 h-10 text-blue-600 animate-pulse" />
+                            <span className="text-3xl font-bold font-display tracking-wider text-slate-900">
                                 KUNDAN DR
                             </span>
                         </div>
                         
                         {/* Loading Progress Bar */}
-                        <div className="w-48 h-1 bg-white/10 rounded-full overflow-hidden">
+                        <div className="w-48 h-1 bg-slate-200 rounded-full overflow-hidden">
                             <motion.div 
                                 initial={{ width: "0%" }}
                                 animate={{ width: "100%" }}
                                 transition={{ duration: 1.5, ease: "easeInOut" }}
-                                className="h-full bg-neon-cyan"
+                                className="h-full bg-blue-600"
                             />
                         </div>
                         <motion.span 

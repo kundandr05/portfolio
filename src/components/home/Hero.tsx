@@ -27,19 +27,19 @@ export default function Hero() {
                         className="text-center lg:text-left space-y-8"
                     >
                         <motion.div variants={fadeInUp} className="space-y-4">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neon-cyan/10 border border-neon-cyan/30 text-neon-cyan text-sm font-medium mb-2">
-                                <span className="w-2 h-2 rounded-full bg-neon-cyan animate-pulse"></span>
+                            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-sm font-semibold mb-2 shadow-sm">
+                                <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
                                 Open to Internships
                             </div>
-                            <h2 className="text-neon-purple text-xl md:text-2xl font-medium tracking-wide">
+                            <h2 className="text-indigo-600 text-xl md:text-2xl font-semibold tracking-wide">
                                 AI/ML Engineer Sculpting the Future
                             </h2>
-                            <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white tracking-tighter">
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan via-white to-neon-magenta">
+                            <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight">
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-rose-600">
                                     Kundan DR
                                 </span>
                             </h1>
-                            <h3 className="text-xl md:text-3xl font-light text-gray-300 min-h-[40px]">
+                            <h3 className="text-xl md:text-3xl font-normal text-slate-800 min-h-[40px]">
                                 <Typewriter 
                                     words={[
                                         "Intelligent Systems. Elegant Solutions.",
@@ -49,14 +49,14 @@ export default function Hero() {
                                     ]} 
                                 />
                             </h3>
-                            <h4 className="text-lg md:text-xl font-light text-gray-400 mt-2">
+                            <h4 className="text-lg md:text-xl font-medium text-slate-500 mt-2">
                                 Research Paper Published (IJCRT) &bull; 2 Books Published on Amazon KDP
                             </h4>
                         </motion.div>
 
                         <motion.p
                             variants={fadeInUp}
-                            className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto lg:mx-0 leading-relaxed"
+                            className="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal"
                         >
                             AI & Machine Learning Engineering student at Maharaja Institute of Technology, Mysuru, with hands-on experience building Agentic AI systems, LLM-powered applications, and full-stack software. Published research author with an IJCRT publication, two Amazon KDP books, and UI/UX design intern at WizzyBox.
                         </motion.p>
@@ -68,7 +68,7 @@ export default function Hero() {
                             <MagneticWrapper>
                                 <Link
                                     href="/projects"
-                                    className="px-8 py-4 bg-neon-cyan/20 border border-neon-cyan text-neon-cyan rounded-full font-medium hover:bg-neon-cyan hover:text-black hover:scale-105 hover:shadow-[0_8px_32px_rgba(0,217,255,0.4)] transition-all duration-300 flex items-center gap-2 group"
+                                    className="px-8 py-4 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 hover:scale-105 shadow-[0_4px_20px_rgba(37,99,235,0.25)] hover:shadow-[0_8px_25px_rgba(37,99,235,0.35)] transition-all duration-300 flex items-center gap-2 group"
                                 >
                                     Explore My Work
                                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -78,7 +78,7 @@ export default function Hero() {
                             <MagneticWrapper>
                                 <Link
                                     href="/about"
-                                    className="px-8 py-4 bg-surface border border-white/10 text-white rounded-full font-medium hover:bg-white/10 hover:border-neon-purple hover:text-neon-purple hover:scale-105 transition-all duration-300"
+                                    className="px-8 py-4 bg-white/90 border border-slate-200 text-slate-700 rounded-full font-medium hover:bg-slate-50 hover:border-indigo-300 hover:text-indigo-600 hover:scale-105 shadow-sm transition-all duration-300"
                                 >
                                     Dive Into the Experience
                                 </Link>
@@ -87,7 +87,7 @@ export default function Hero() {
                             <MagneticWrapper>
                                 <button
                                     onClick={() => setIsResumeModalOpen(true)}
-                                    className="px-8 py-4 bg-neon-magenta/10 border border-neon-magenta text-neon-magenta rounded-full font-medium hover:bg-neon-magenta hover:text-white hover:scale-105 hover:shadow-[0_8px_32px_rgba(255,0,110,0.4)] transition-all duration-300 flex items-center gap-2"
+                                    className="px-8 py-4 bg-rose-50 border border-rose-200 text-rose-600 rounded-full font-medium hover:bg-rose-100 hover:scale-105 shadow-sm transition-all duration-300 flex items-center gap-2"
                                 >
                                     Resume
                                     <Download className="w-5 h-5" />
@@ -97,43 +97,42 @@ export default function Hero() {
 
                         <div className="flex gap-6 justify-center lg:justify-start pt-8">
                             {[
-                                { icon: Github, href: "https://github.com/kundandr05", color: "hover:text-neon-cyan hover:drop-shadow-[0_0_8px_rgba(0,217,255,0.8)]" },
-                                { icon: Linkedin, href: "https://linkedin.com/in/kundan-d-r-914274310", color: "hover:text-neon-magenta hover:drop-shadow-[0_0_8px_rgba(255,0,110,0.8)]" },
-                                { icon: Mail, href: "mailto:kundandr05@gmail.com", color: "hover:text-neon-purple hover:drop-shadow-[0_0_8px_rgba(124,58,237,0.8)]" }
+                                { icon: Github, href: "https://github.com/kundandr05", color: "hover:text-blue-600" },
+                                { icon: Linkedin, href: "https://linkedin.com/in/kundan-d-r-914274310", color: "hover:text-indigo-600" },
+                                { icon: Mail, href: "mailto:kundandr05@gmail.com", color: "hover:text-rose-600" }
                             ].map((social, index) => (
                                 <a
                                     key={index}
                                     href={social.href}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className={`text-gray-400 ${social.color} transition-all duration-300 transform hover:scale-125 hover:-translate-y-1`}
+                                    className={`text-slate-400 ${social.color} transition-all duration-300 transform hover:scale-125 hover:-translate-y-1`}
                                 >
-                                    <social.icon className="w-8 h-8" />
+                                    <social.icon className="w-7 h-7" />
                                 </a>
                             ))}
                         </div>
                     </motion.div>
 
-                    {/* 3D CyberCore Placeholder (Rendered by Global Scene.tsx) */}
+                    {/* Profile Showcase Frame */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 1.5, ease: "easeOut" }}
                         className="relative w-full h-[50vh] lg:h-full lg:w-1/2 flex items-center justify-center pointer-events-none"
                     >
-                        {/* The actual 3D CyberCore is rendered underneath this area by Scene.tsx */}
-                        {/* Glassmorphism Profile Overlay (Stable & Professional) */}
+                        {/* Radiant Prism Profile Frame */}
                         <motion.div 
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
-                            className="relative w-[280px] h-[280px] md:w-[380px] md:h-[380px] rounded-full bg-surface/30 backdrop-blur-md border border-white/10 flex items-center justify-center overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.5)] pointer-events-auto"
+                            className="relative w-[280px] h-[280px] md:w-[380px] md:h-[380px] rounded-full bg-white border-4 border-white shadow-[0_25px_60px_-15px_rgba(37,99,235,0.25)] flex items-center justify-center overflow-hidden pointer-events-auto group"
                         >
                             <Image
                                 src="/suit-photo.jpg"
                                 alt="Profile"
                                 fill
-                                className="object-cover opacity-80 mix-blend-luminosity hover:mix-blend-normal transition-all duration-700"
+                                className="object-cover transition-transform duration-700 group-hover:scale-105"
                                 priority
                             />
                         </motion.div>

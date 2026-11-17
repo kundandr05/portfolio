@@ -71,32 +71,29 @@ export default function PublicationCarousel({ publications }: { publications: an
                     }}
                     className="absolute w-full px-12"
                 >
-                    <div className="glass-panel rounded-2xl relative overflow-hidden group flex flex-col md:flex-row h-full max-h-[500px]">
-                        {/* Background Glow */}
-                        <div className={`absolute -top-10 -right-10 w-40 h-40 bg-gradient-to-br from-${pub.color.replace('text-', '')}/20 to-transparent blur-3xl rounded-full`} />
-
+                    <div className="glass-panel rounded-2xl relative overflow-hidden group flex flex-col md:flex-row h-full max-h-[500px] border border-slate-200/80 shadow-md">
                         {pub.image && (
-                            <div className="w-full md:w-2/5 h-64 md:h-full min-h-[300px] relative border-b md:border-b-0 md:border-r border-white/10 group-hover:border-neon-cyan/30 transition-colors">
+                            <div className="w-full md:w-2/5 h-64 md:h-full min-h-[300px] relative border-b md:border-b-0 md:border-r border-slate-200 bg-slate-100">
                                 <Image src={pub.image} alt={pub.title} fill className="object-cover" />
                             </div>
                         )}
                         
                         <div className="p-8 flex-grow flex flex-col justify-center w-full md:w-3/5">
                             <div className="flex items-center gap-3 mb-4">
-                                <div className={`p-3 bg-white/5 rounded-lg ${pub.color}`}>
+                                <div className="p-3 bg-blue-50 text-blue-600 rounded-xl">
                                     <pub.icon className="w-6 h-6" />
                                 </div>
                                 <div>
-                                    <span className="text-xs text-gray-400 uppercase tracking-wider font-semibold">{pub.type}</span>
-                                    <div className="text-sm text-gray-300">{pub.publisher} &bull; {pub.date}</div>
+                                    <span className="text-xs text-blue-600 uppercase tracking-wider font-bold">{pub.type}</span>
+                                    <div className="text-sm text-slate-500 font-medium">{pub.publisher} &bull; {pub.date}</div>
                                 </div>
                             </div>
 
-                            <h2 className="text-2xl font-bold text-white mb-4 group-hover:text-neon-cyan transition-colors">
+                            <h2 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-blue-600 transition-colors">
                                 {pub.title}
                             </h2>
 
-                            <p className="text-gray-400 mb-8 flex-grow">
+                            <p className="text-slate-600 mb-8 flex-grow leading-relaxed text-sm">
                                 {pub.description}
                             </p>
 
@@ -104,7 +101,7 @@ export default function PublicationCarousel({ publications }: { publications: an
                                 href={pub.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className={`inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 border border-white/10 ${pub.color} hover:bg-white/10 transition-colors w-fit font-medium z-10 relative`}
+                                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-blue-50 border border-blue-200 text-blue-600 hover:bg-blue-600 hover:text-white transition-all w-fit font-medium z-10 relative shadow-sm"
                             >
                                 View Publication
                                 <ExternalLink className="w-4 h-4" />
@@ -116,16 +113,18 @@ export default function PublicationCarousel({ publications }: { publications: an
 
             {/* Navigation Controls */}
             <button
-                className="absolute left-0 top-1/2 -translate-y-1/2 p-3 rounded-full bg-neon-cyan/10 border border-neon-cyan text-neon-cyan hover:bg-neon-cyan hover:text-black hover:shadow-[0_0_15px_rgba(0,217,255,0.6)] transition-all duration-300 backdrop-blur-md z-50"
+                className="absolute left-0 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white border border-slate-200 text-slate-700 hover:bg-blue-600 hover:text-white hover:border-blue-600 hover:shadow-md transition-all duration-300 shadow-sm z-50"
                 onClick={prevSlide}
+                aria-label="Previous Publication"
             >
-                <ChevronLeft className="w-6 h-6" />
+                <ChevronLeft className="w-5 h-5" />
             </button>
             <button
-                className="absolute right-0 top-1/2 -translate-y-1/2 p-3 rounded-full bg-neon-cyan/10 border border-neon-cyan text-neon-cyan hover:bg-neon-cyan hover:text-black hover:shadow-[0_0_15px_rgba(0,217,255,0.6)] transition-all duration-300 backdrop-blur-md z-50"
+                className="absolute right-0 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white border border-slate-200 text-slate-700 hover:bg-blue-600 hover:text-white hover:border-blue-600 hover:shadow-md transition-all duration-300 shadow-sm z-50"
                 onClick={nextSlide}
+                aria-label="Next Publication"
             >
-                <ChevronRight className="w-6 h-6" />
+                <ChevronRight className="w-5 h-5" />
             </button>
             
             {/* Dots */}
@@ -137,11 +136,12 @@ export default function PublicationCarousel({ publications }: { publications: an
                             setDirection(idx > currentIndex ? 1 : -1);
                             setCurrentIndex(idx);
                         }}
-                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        className={`h-2 rounded-full transition-all duration-300 ${
                             idx === currentIndex 
-                            ? "w-6 bg-neon-cyan shadow-[0_0_10px_rgba(0,217,255,0.8)]" 
-                            : "bg-white/30 hover:bg-white/60"
+                            ? "w-6 bg-blue-600 shadow-sm shadow-blue-500/40" 
+                            : "w-2 bg-slate-300 hover:bg-slate-400"
                         }`}
+                        aria-label={`Go to slide ${idx + 1}`}
                     />
                 ))}
             </div>

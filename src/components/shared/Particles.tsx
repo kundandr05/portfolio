@@ -17,9 +17,9 @@ export default function Particles({ count = 200 }: ParticlesProps) {
         const colors = new Float32Array(count * 3);
         
         const colorPalette = [
-            new THREE.Color("#00d9ff"), // Cyan
-            new THREE.Color("#ff006e"), // Magenta
-            new THREE.Color("#7c3aed")  // Purple
+            new THREE.Color("#2563eb"), // Prism Cobalt
+            new THREE.Color("#f43f5e"), // Prism Rose
+            new THREE.Color("#7c3aed")  // Prism Violet
         ];
 
         for (let i = 0; i < count; i++) {
@@ -65,12 +65,12 @@ export default function Particles({ count = 200 }: ParticlesProps) {
                 />
             </bufferGeometry>
             <pointsMaterial
-                size={0.15}
+                size={0.2}
                 vertexColors
                 transparent
-                opacity={0.3}
+                opacity={0.35}
                 sizeAttenuation
-                blending={THREE.AdditiveBlending}
+                blending={THREE.NormalBlending}
                 depthWrite={false}
             />
         </points>

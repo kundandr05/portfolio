@@ -75,9 +75,9 @@ export default function ProjectCarousel({ projects }: { projects: any[] }) {
                 <button
                     onClick={prevSlide}
                     aria-label="Previous Project"
-                    className="p-3 rounded-full bg-neon-cyan/10 border border-neon-cyan text-neon-cyan hover:bg-neon-cyan hover:text-black hover:shadow-[0_0_15px_rgba(0,217,255,0.6)] transition-all duration-300 backdrop-blur-md active:scale-95"
+                    className="p-3 rounded-full bg-white border border-slate-200 text-slate-700 hover:bg-blue-600 hover:text-white hover:border-blue-600 hover:shadow-md transition-all duration-300 shadow-sm active:scale-95"
                 >
-                    <ChevronLeft className="w-6 h-6" />
+                    <ChevronLeft className="w-5 h-5" />
                 </button>
                 
                 {/* Dots */}
@@ -96,8 +96,8 @@ export default function ProjectCarousel({ projects }: { projects: any[] }) {
                                 }}
                                 className={`h-2 rounded-full transition-all duration-300 ${
                                     isCurrent 
-                                    ? "w-6 bg-neon-cyan shadow-[0_0_10px_rgba(0,217,255,0.8)]" 
-                                    : "w-2 bg-white/30 hover:bg-white/60"
+                                    ? "w-6 bg-blue-600 shadow-sm shadow-blue-500/40" 
+                                    : "w-2 bg-slate-300 hover:bg-slate-400"
                                 }`}
                             />
                         );
@@ -107,9 +107,9 @@ export default function ProjectCarousel({ projects }: { projects: any[] }) {
                 <button
                     onClick={nextSlide}
                     aria-label="Next Project"
-                    className="p-3 rounded-full bg-neon-cyan/10 border border-neon-cyan text-neon-cyan hover:bg-neon-cyan hover:text-black hover:shadow-[0_0_15px_rgba(0,217,255,0.6)] transition-all duration-300 backdrop-blur-md active:scale-95"
+                    className="p-3 rounded-full bg-white border border-slate-200 text-slate-700 hover:bg-blue-600 hover:text-white hover:border-blue-600 hover:shadow-md transition-all duration-300 shadow-sm active:scale-95"
                 >
-                    <ChevronRight className="w-6 h-6" />
+                    <ChevronRight className="w-5 h-5" />
                 </button>
             </div>
         </div>
