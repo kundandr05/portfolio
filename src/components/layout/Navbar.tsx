@@ -3,22 +3,25 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, FileText } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, Terminal, Sparkles } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import ResumeModal from '@/components/shared/ResumeModal';
+import MagneticWrapper from '@/components/shared/MagneticWrapper';
 
 const navItems = [
-    { name: 'Work', path: '/#work' },
+    { name: 'Home', path: '/#home' },
+    { name: 'Studio Desk', path: '/#desk' },
     { name: 'About', path: '/#about' },
-    { name: 'Research & Books', path: '/#research' },
     { name: 'Experience', path: '/#experience' },
-    { name: 'Contact', path: '/#contact' }
+    { name: 'Projects', path: '/#projects' },
+    { name: 'Skills', path: '/#skills' },
+    { name: 'Publications', path: '/#publications' },
+    { name: 'Contact', path: '/#contact' },
 ];
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
-    const [activeSection, setActiveSection] = useState('/#work');
-    const [isResumeOpen, setIsResumeOpen] = useState(false);
+    const [activeSection, setActiveSection] = useState('/#home');
     const pathname = usePathname();
 
     useEffect(() => {
@@ -30,19 +33,28 @@ export default function Navbar() {
                     }
                 });
             },
-            { rootMargin: '-25% 0px -65% 0px' }
+            { rootMargin: '-20% 0px -70% 0px' }
         );
 
         navItems.forEach((item) => {
             const id = item.path.replace('/#', '');
-            const el = document.getElementById(id);
-            if (el) observer.observe(el);
+            const element = document.getElementById(id);
+            if (element) observer.observe(element);
         });
 
         return () => observer.disconnect();
     }, [pathname]);
 
-    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const hash = window.location.hash;
+            if (hash) {
+                setActiveSection(`/${hash}`);
+            }
+        }
+    }, [pathname]);
+
+    const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
         setIsOpen(false);
         const id = path.replace('/#', '');
         const element = document.getElementById(id);
@@ -55,103 +67,98 @@ export default function Navbar() {
     };
 
     return (
-        <>
-            <header className="fixed top-0 left-0 right-0 z-40 bg-[#faf8f5]/90 dark:bg-[#141413]/90 backdrop-blur-md border-b border-stone-200/80 dark:border-stone-800 transition-colors">
-                <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex items-center justify-between h-16">
-                        
-                        {/* Wordmark */}
-                        <Link
-                            href="/"
-                            className="group flex items-baseline gap-2 text-stone-900 dark:text-stone-100 font-bold tracking-tight hover:text-[#c2410c] transition-colors"
-                        >
-                            <span className="font-serif-editorial text-2xl font-semibold tracking-tight">
-                                Kundan DR
-                            </span>
-                            <span className="hidden sm:inline text-xs font-mono text-stone-400 dark:text-stone-500 font-normal">
-                                / engineer &bull; author
-                            </span>
-                        </Link>
-
-                        {/* Desktop Navigation */}
-                        <nav className="hidden md:flex items-center space-x-1" aria-label="Main Navigation">
-                            {navItems.map((item) => {
-                                const isActive = activeSection === item.path;
-                                return (
-                                    <Link
-                                        key={item.path}
-                                        href={item.path}
-                                        onClick={(e) => handleNavClick(e, item.path)}
-                                        className={cn(
-                                            "px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all",
-                                            isActive
-                                                ? "text-[#c2410c] dark:text-orange-400 font-semibold bg-orange-50 dark:bg-orange-950/40"
-                                                : "text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 hover:bg-stone-100/60 dark:hover:bg-stone-800/60"
-                                        )}
-                                    >
-                                        {item.name}
-                                    </Link>
-                                );
-                            })}
-
-                            <div className="pl-3 border-l border-stone-200 dark:border-stone-800 ml-2">
-                                <button
-                                    onClick={() => setIsResumeOpen(true)}
-                                    className="btn-editorial-primary text-xs !py-1.5 !px-3"
-                                >
-                                    <FileText className="w-3.5 h-3.5" />
-                                    Resume
-                                </button>
-                            </div>
-                        </nav>
-
-                        {/* Mobile Menu Button */}
-                        <div className="flex items-center gap-2 md:hidden">
-                            <button
-                                onClick={() => setIsResumeOpen(true)}
-                                className="btn-editorial-primary text-xs !py-1.5 !px-2.5"
-                                aria-label="View Resume"
-                            >
-                                <FileText className="w-3.5 h-3.5" />
-                            </button>
-                            <button
-                                onClick={() => setIsOpen(!isOpen)}
-                                className="p-2 text-stone-700 dark:text-stone-300 hover:text-stone-900 dark:hover:text-stone-100 focus:outline-none"
-                                aria-label="Toggle navigation menu"
-                                aria-expanded={isOpen}
-                            >
-                                {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-                            </button>
+        <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/80 shadow-[0_1px_3px_rgba(0,0,0,0.03)]">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex items-center justify-between h-16">
+                    <Link href="/#home" onClick={(e) => handleLinkClick(e, '/#home')} className="flex items-center space-x-2.5 group">
+                        <div className="w-8 h-8 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold text-xs shadow-sm group-hover:bg-blue-600 transition-colors">
+                            K
                         </div>
+                        <div className="flex flex-col">
+                            <span className="text-sm font-black font-display tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors leading-tight">
+                                KUNDAN DR
+                            </span>
+                            <span className="text-[10px] text-slate-500 font-mono">
+                                AI Engineer &bull; Author
+                            </span>
+                        </div>
+                    </Link>
+
+                    {/* Desktop Menu */}
+                    <div className="hidden lg:flex items-center space-x-1">
+                        {navItems.map((item) => (
+                            <MagneticWrapper key={item.path}>
+                                <Link
+                                    href={item.path}
+                                    onClick={(e) => handleLinkClick(e, item.path)}
+                                    className={cn(
+                                        "px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 relative group inline-block",
+                                        activeSection === item.path
+                                            ? "text-blue-600 bg-blue-50/80 font-bold"
+                                            : "text-slate-600 hover:text-slate-900 hover:bg-slate-100/60"
+                                    )}
+                                >
+                                    <span>{item.name}</span>
+                                </Link>
+                            </MagneticWrapper>
+                        ))}
+
+                        <a
+                            href="mailto:kundandr05@gmail.com"
+                            className="ml-3 px-4 py-2 rounded-xl bg-slate-900 text-white text-xs font-bold hover:bg-blue-600 transition-colors shadow-sm"
+                        >
+                            Let&apos;s Talk
+                        </a>
+                    </div>
+
+                    {/* Mobile Menu Button */}
+                    <div className="lg:hidden flex items-center">
+                        <button
+                            onClick={() => setIsOpen(!isOpen)}
+                            className="text-slate-700 hover:text-blue-600 p-2 focus:outline-none"
+                            aria-label="Toggle menu"
+                        >
+                            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                        </button>
                     </div>
                 </div>
+            </div>
 
-                {/* Mobile Dropdown */}
+            {/* Mobile Menu */}
+            <AnimatePresence>
                 {isOpen && (
-                    <div className="md:hidden border-t border-stone-200 dark:border-stone-800 bg-[#faf8f5] dark:bg-[#141413] px-4 pt-3 pb-6 space-y-1 shadow-lg">
+                    <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="lg:hidden bg-white/95 backdrop-blur-xl border-b border-slate-200 px-4 pt-2 pb-6 space-y-1 shadow-lg"
+                    >
                         {navItems.map((item) => (
                             <Link
                                 key={item.path}
                                 href={item.path}
-                                onClick={(e) => handleNavClick(e, item.path)}
+                                onClick={(e) => handleLinkClick(e, item.path)}
                                 className={cn(
-                                    "block px-3 py-2 rounded-lg text-sm font-medium",
+                                    "block px-4 py-2.5 rounded-xl text-sm font-semibold transition-colors",
                                     activeSection === item.path
-                                        ? "text-[#c2410c] font-semibold bg-orange-50 dark:bg-orange-950/40"
-                                        : "text-stone-700 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800"
+                                        ? "text-blue-600 bg-blue-50 font-bold"
+                                        : "text-slate-700 hover:text-blue-600 hover:bg-slate-50"
                                 )}
                             >
                                 {item.name}
                             </Link>
                         ))}
-                    </div>
+                        <div className="pt-2">
+                            <a
+                                href="mailto:kundandr05@gmail.com"
+                                className="block w-full text-center px-4 py-2.5 rounded-xl bg-slate-900 text-white text-sm font-bold shadow-sm"
+                            >
+                                Contact Directly
+                            </a>
+                        </div>
+                    </motion.div>
                 )}
-            </header>
-
-            <ResumeModal
-                isOpen={isResumeOpen}
-                onClose={() => setIsResumeOpen(false)}
-            />
-        </>
+            </AnimatePresence>
+        </nav>
     );
 }

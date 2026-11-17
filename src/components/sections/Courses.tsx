@@ -1,58 +1,138 @@
-import { certifications } from '@/data/certifications';
+"use client";
+
+import { motion } from 'framer-motion';
+import { Award, ExternalLink, Calendar, CheckCircle } from 'lucide-react';
+
+const courses = [
+    {
+        title: "AWS APAC – Solutions Architecture",
+        platform: "Forage",
+        date: "2024",
+        skills: ["AWS", "Cloud Architecture", "System Design"],
+        certificateLink: "#",
+        image: "/cert1.jpg"
+    },
+    {
+        title: "Gen AI Powered Data Analytics",
+        platform: "Tata",
+        date: "2024",
+        skills: ["AI", "Data Analytics", "Machine Learning"],
+        certificateLink: "#",
+        image: "/cert2.jpg"
+    },
+    {
+        title: "Software Engineering Simulation",
+        platform: "Wells Fargo",
+        date: "2024",
+        skills: ["Software Engineering", "System Design"],
+        certificateLink: "#",
+        image: "/cert3.jpg"
+    },
+    {
+        title: "Tools for Data Science",
+        platform: "IBM",
+        date: "2024",
+        skills: ["Python", "Data Science", "IBM"],
+        certificateLink: "#",
+        image: "/cert4.jpg"
+    },
+    {
+        title: "Microsoft Azure Cloud Services",
+        platform: "Microsoft",
+        date: "2024",
+        skills: ["Azure", "Cloud Computing"],
+        certificateLink: "#",
+        image: "/cert5.jpg"
+    },
+    {
+        title: "Crash Course on Python",
+        platform: "Google",
+        date: "2024",
+        skills: ["Python Programming"],
+        certificateLink: "#",
+        image: "/cert6.jpg"
+    }
+];
 
 export default function Courses() {
     return (
-        <section id="certifications" className="py-20 border-b border-stone-200/80 dark:border-stone-800">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                
-                {/* Section Header */}
-                <div className="mb-10">
-                    <span className="text-xs font-mono uppercase tracking-wider text-[#c2410c] dark:text-orange-400 font-bold">
-                        Certifications &amp; Training
-                    </span>
-                    <h2 className="font-serif-editorial text-3xl sm:text-4xl text-stone-900 dark:text-stone-100 font-semibold mt-1">
-                        Industry simulations &amp; coursework
-                    </h2>
-                    <p className="text-stone-600 dark:text-stone-400 text-sm mt-2 max-w-xl">
-                        Verified simulations and certifications completed through Google, IBM, Microsoft, Tata, Wells Fargo, and Forage.
-                    </p>
-                </div>
+        <>
+            <section className="py-20">
+                <div className="container mx-auto px-4">
+                    <div className="text-center mb-16 relative">
+                        <span className="font-handwriting text-2xl text-rose-500 font-bold rotate-[-2deg] inline-block mb-1">
+                            lifelong learning 📜
+                        </span>
+                        <h2 className="text-4xl md:text-5xl font-display font-extrabold text-slate-900 tracking-tight">
+                            Certifications &{' '}
+                            <span className="font-serif-italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-rose-600">
+                                Specialized Training
+                            </span>
+                        </h2>
+                        <p className="text-slate-600 text-base max-w-xl mx-auto mt-2">
+                            Industry credentials certified by Google, IBM, Microsoft, and DeepLearning.AI.
+                        </p>
+                    </div>
 
-                {/* Compact Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {certifications.map((cert) => (
-                        <div
-                            key={cert.title}
-                            className="card-editorial p-5 flex flex-col justify-between"
-                        >
-                            <div>
-                                <div className="flex items-center justify-between text-[11px] font-mono text-stone-400 mb-2">
-                                    <span className="font-semibold text-[#c2410c] dark:text-orange-400">{cert.issuer}</span>
-                                    <span>{cert.year}</span>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                        {courses.map((course, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: index * 0.1 }}
+                                whileHover={{ y: -5 }}
+                                className="glass-panel p-6 rounded-2xl border-l-4 border-l-rose-500 hover:border-l-blue-600 transition-all duration-300 group"
+                            >
+                                <div className="flex justify-between items-start mb-4">
+                                    <div>
+                                        <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                                            {course.title}
+                                        </h3>
+                                        <p className="text-rose-600 text-sm font-semibold flex items-center gap-1 mt-1">
+                                            <Award className="w-4 h-4" /> {course.platform}
+                                        </p>
+                                    </div>
+                                    <div className="p-2.5 bg-blue-50 text-blue-600 rounded-xl">
+                                        <Award className="w-5 h-5" />
+                                    </div>
                                 </div>
-                                <h3 className="font-serif-editorial text-base font-semibold text-stone-900 dark:text-stone-100 leading-snug mb-3">
-                                    {cert.title}
-                                </h3>
-                                <div className="flex flex-wrap gap-1 mb-3">
-                                    {cert.skills.map((s) => (
-                                        <span
-                                            key={s}
-                                            className="px-2 py-0.5 rounded bg-stone-100 dark:bg-stone-800 text-[10px] font-mono text-stone-600 dark:text-stone-300"
-                                        >
-                                            {s}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
 
-                            <div className="pt-3 border-t border-stone-100 dark:border-stone-800 flex items-center justify-between text-[11px] text-stone-400 font-mono">
-                                <span>{cert.domain}</span>
-                                <span className="text-stone-500 italic">{cert.note}</span>
-                            </div>
-                        </div>
-                    ))}
+                                <div className="flex items-center gap-2 text-slate-400 text-xs mb-4">
+                                    <Calendar className="w-3.5 h-3.5" />
+                                    {course.date}
+                                </div>
+
+                                <div className="mb-6">
+                                    <p className="text-slate-500 text-xs uppercase tracking-wider mb-2 font-medium">Skills Learned:</p>
+                                    <div className="flex flex-wrap gap-1.5">
+                                        {course.skills.map((skill, i) => (
+                                            <span key={i} className="flex items-center gap-1 text-xs px-2.5 py-1 bg-slate-100 rounded-full text-slate-700 font-medium">
+                                                <CheckCircle className="w-3 h-3 text-emerald-600" /> {skill}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {(!course.certificateLink || course.certificateLink === '#') ? (
+                                    <span className="w-full py-2.5 rounded-xl border border-slate-200 text-slate-500 text-xs font-medium flex items-center justify-center gap-2 cursor-not-allowed bg-slate-50">
+                                        Certificate Available On Request
+                                    </span>
+                                ) : (
+                                    <a
+                                        href={course.certificateLink}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-full py-2.5 rounded-xl border border-blue-200 bg-blue-50 text-blue-600 text-xs font-medium hover:bg-blue-600 hover:text-white transition-colors flex items-center justify-center gap-2 shadow-sm"
+                                    >
+                                        View Certificate <ExternalLink className="w-3.5 h-3.5" />
+                                    </a>
+                                )}
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </>
     );
 }

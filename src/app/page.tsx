@@ -1,23 +1,64 @@
 import Hero from '@/components/home/Hero';
-import Projects from '@/components/sections/Projects';
+import HumanDesk from '@/components/sections/HumanDesk';
 import About from '@/components/sections/About';
-import Publications from '@/components/sections/Publications';
 import Experience from '@/components/sections/Experience';
-import Skills from '@/components/sections/Skills';
+import Projects from '@/components/sections/Projects';
 import Courses from '@/components/sections/Courses';
+import Skills from '@/components/sections/Skills';
+import Achievements from '@/components/sections/Achievements';
+import Publications from '@/components/sections/Publications';
 import Contact from '@/components/sections/Contact';
+import GithubStats from '@/components/shared/GithubStats';
+import PageTransition from '@/components/shared/PageTransition';
 
 export default function Home() {
   return (
-    <div className="flex flex-col gap-0 w-full overflow-hidden">
-      <Hero />
-      <Projects />
-      <About />
-      <Publications />
-      <Experience />
-      <Skills />
-      <Courses />
-      <Contact />
-    </div>
+    <PageTransition>
+      <div className="flex flex-col gap-0 w-full overflow-hidden">
+        <section id="home">
+          <Hero />
+        </section>
+
+        <section id="desk">
+          <HumanDesk />
+        </section>
+        
+        <section id="about">
+          <About />
+        </section>
+
+        <section id="experience">
+          <Experience />
+        </section>
+
+        <section id="projects">
+          <Projects />
+        </section>
+
+        <section id="courses">
+          <Courses />
+        </section>
+
+        <section id="skills">
+          <Skills />
+        </section>
+
+        <section id="achievements">
+          <Achievements />
+        </section>
+
+        <section id="publications">
+          <Publications />
+        </section>
+
+        <section id="contact">
+          <Contact />
+        </section>
+
+        <section id="github-stats">
+          <GithubStats />
+        </section>
+      </div>
+    </PageTransition>
   );
 }
