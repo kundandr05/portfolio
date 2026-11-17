@@ -7,6 +7,7 @@ import Link from 'next/link';
 
 export default function HumanDesk() {
     // Live Mysuru Clock (IST = UTC+5:30)
+    const [mounted, setMounted] = useState(false);
     const [currentTime, setCurrentTime] = useState<string>('');
     const [isPlayingMusic, setIsPlayingMusic] = useState<boolean>(true);
     const [terminalOutput, setTerminalOutput] = useState<string>(
@@ -15,6 +16,7 @@ export default function HumanDesk() {
     const [activeCmd, setActiveCmd] = useState<string>('welcome');
 
     useEffect(() => {
+        setMounted(true);
         const updateClock = () => {
             const now = new Date();
             const istTime = now.toLocaleTimeString('en-IN', {
@@ -96,8 +98,8 @@ export default function HumanDesk() {
                         <div className="my-2">
                             <div className="flex items-baseline gap-2">
                                 <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 shrink-0" />
-                                <span className="text-2xl sm:text-4xl font-mono font-bold text-slate-900 tracking-tight">
-                                    {currentTime || "11:45:00 PM"}
+                                <span suppressHydrationWarning className="text-2xl sm:text-4xl font-mono font-bold text-slate-900 tracking-tight">
+                                    {mounted && currentTime ? currentTime : "11:45:00 PM"}
                                 </span>
                             </div>
                             <div className="flex items-center gap-1.5 text-xs text-slate-500 mt-1.5 font-medium">

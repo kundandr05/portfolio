@@ -37,8 +37,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${firaCode.variable}`}>
-      <body className="bg-transparent text-foreground min-h-screen flex flex-col antialiased selection:bg-neon-cyan selection:text-black">
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${firaCode.variable}`} suppressHydrationWarning>
+      <body className="bg-transparent text-foreground min-h-screen flex flex-col antialiased selection:bg-neon-cyan selection:text-black" suppressHydrationWarning>
         <Scene />
         <Preloader />
         <ScrollProgress />

@@ -5,7 +5,7 @@ export default function Footer() {
         <footer className="bg-white/90 backdrop-blur-md border-t border-slate-200/90 py-10 mt-auto relative z-10">
             <div className="container mx-auto px-4 max-w-6xl flex flex-col md:flex-row justify-between items-center gap-6">
                 <div className="text-center md:text-left">
-                    <p className="text-slate-900 text-sm font-bold tracking-tight">
+                    <p className="text-slate-900 text-sm font-bold tracking-tight" suppressHydrationWarning>
                         &copy; {new Date().getFullYear()} Kundan DR &bull; All rights reserved.
                     </p>
                     <p className="text-slate-500 text-xs mt-1 flex items-center justify-center md:justify-start gap-1.5 font-medium">
