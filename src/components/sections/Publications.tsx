@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import { BookOpen, ExternalLink, FileText } from 'lucide-react';
 import PublicationCarousel from '@/components/publications/PublicationCarousel';
-import Image from 'next/image';
 
 const publications = [
     {
@@ -15,7 +14,7 @@ const publications = [
         link: "http://ijcrt.org/viewfull.php?&p_id=IJCRT2512785",
         image: "/paper-image.png",
         icon: FileText,
-        color: "text-neon-cyan"
+        color: "text-blue-600"
     },
     {
         type: "book",
@@ -26,7 +25,7 @@ const publications = [
         link: "https://a.co/d/07SiOZpN",
         image: "/book-reclaim.jpg",
         icon: BookOpen,
-        color: "text-neon-magenta"
+        color: "text-rose-600"
     },
     {
         type: "book",
@@ -37,31 +36,31 @@ const publications = [
         link: "https://a.co/d/0euaUcnC",
         image: "/book-twospeed.jpg",
         icon: BookOpen,
-        color: "text-neon-green"
+        color: "text-indigo-600"
     }
 ];
 
 export default function Publications() {
     return (
-        <>
-            <section className="py-20 min-h-screen">
-                <div className="container mx-auto px-4">
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className="text-center mb-16"
-                    >
-                        <h1 className="text-4xl md:text-6xl font-display font-bold text-slate-900 mb-4">
-                            Publications & <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Books</span>
-                        </h1>
-                        <p className="text-slate-600 max-w-2xl mx-auto">
-                            My published research papers and authored books on Artificial Intelligence, Machine Learning, and Software Development.
-                        </p>
-                    </motion.div>
-
-                    <PublicationCarousel publications={publications} />
+        <section id="publications" className="py-20">
+            <div className="container mx-auto px-4 max-w-6xl">
+                <div className="text-center mb-16 relative">
+                    <span className="font-handwriting text-2xl text-rose-500 font-bold rotate-[-2deg] inline-block mb-1">
+                        scholarly work & authorship 📖
+                    </span>
+                    <h2 className="text-4xl md:text-5xl font-display font-extrabold text-slate-900 tracking-tight">
+                        Published{' '}
+                        <span className="font-serif-italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-rose-600">
+                            Words & Papers
+                        </span>
+                    </h2>
+                    <p className="text-slate-600 text-base max-w-xl mx-auto mt-2">
+                        Peer-reviewed research in Agentic AI alongside two books authored and published globally on Amazon KDP.
+                    </p>
                 </div>
-            </section>
-        </>
+
+                <PublicationCarousel publications={publications} />
+            </div>
+        </section>
     );
 }

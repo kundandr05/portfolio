@@ -55,14 +55,17 @@ export default function Experience() {
         <>
             <section className="py-20">
                 <div className="container mx-auto px-4">
-                    <motion.h1
-                        initial={{ opacity: 0, y: -20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-100px" }}
-                        className="text-4xl md:text-6xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-rose-600 mb-16 text-center"
-                    >
-                        Experience
-                    </motion.h1>
+                    <div className="text-center mb-16 relative">
+                        <span className="font-handwriting text-2xl text-blue-600 font-bold rotate-[-2deg] inline-block mb-1">
+                            professional journey 💼
+                        </span>
+                        <h2 className="text-4xl md:text-5xl font-display font-extrabold text-slate-900 tracking-tight">
+                            Experience &{' '}
+                            <span className="font-serif-italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-rose-600">
+                                Internships
+                            </span>
+                        </h2>
+                    </div>
 
                     <div className="relative max-w-4xl mx-auto">
                         {/* Vertical Line */}

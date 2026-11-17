@@ -1,4 +1,5 @@
 import Hero from '@/components/home/Hero';
+import HumanDesk from '@/components/sections/HumanDesk';
 import About from '@/components/sections/About';
 import Experience from '@/components/sections/Experience';
 import Projects from '@/components/sections/Projects';
@@ -16,6 +17,10 @@ export default function Home() {
       <div className="flex flex-col gap-0 w-full overflow-hidden">
         <section id="home">
           <Hero />
+        </section>
+
+        <section id="desk">
+          <HumanDesk />
         </section>
         
         <section id="about">

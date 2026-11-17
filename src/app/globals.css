@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -14,7 +15,7 @@
   --color-glass-border: rgba(15, 23, 42, 0.08);
   --color-glass-bg: rgba(255, 255, 255, 0.85);
 
-  --font-sans: var(--font-inter), sans-serif;
+  --font-sans: 'Plus Jakarta Sans', var(--font-inter), sans-serif;
   --font-display: var(--font-space-grotesk), sans-serif;
   --font-mono: var(--font-fira-code), monospace;
 
@@ -61,6 +62,16 @@ body {
   color: #ffffff;
 }
 
+/* Typography Extensions */
+.font-handwriting {
+  font-family: 'Caveat', cursive;
+}
+
+.font-serif-italic {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+}
+
 /* 3D Utilities */
 .perspective-1000 {
   perspective: 1000px;
@@ -70,13 +81,60 @@ body {
   transform-style: preserve-3d;
 }
 
-/* Glass Panel (Stripe & Apple Prism Light Style) */
+/* Tactile 3D Buttons (Human physical touch) */
+.btn-tactile {
+  box-shadow: 3px 3px 0px #0f172a;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-tactile:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px #0f172a;
+}
+
+.btn-tactile:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #0f172a;
+}
+
+/* Tactile Secondary Button */
+.btn-tactile-secondary {
+  box-shadow: 3px 3px 0px rgba(15, 23, 42, 0.15);
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-tactile-secondary:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0px rgba(15, 23, 42, 0.25);
+}
+
+.btn-tactile-secondary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px rgba(15, 23, 42, 0.1);
+}
+
+/* Sticky Tape Accent Effect */
+.tape-strip {
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 86px;
+  height: 20px;
+  background-color: rgba(254, 240, 138, 0.7);
+  backdrop-filter: blur(2px);
+  border: 1px dashed rgba(202, 138, 4, 0.35);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  z-index: 20;
+}
+
+/* Glass Panel */
 .glass-panel {
   background-color: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(15, 23, 42, 0.08);
-  border-radius: 16px;
+  border-radius: 20px;
   box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }

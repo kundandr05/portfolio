@@ -59,16 +59,20 @@ export default function Courses() {
         <>
             <section className="py-20">
                 <div className="container mx-auto px-4">
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className="text-center mb-16"
-                    >
-                        <h1 className="text-4xl md:text-6xl font-display font-bold text-slate-900 mb-4">
-                            Certifications & <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-600 to-indigo-600">Courses</span>
-                        </h1>
-                        <p className="text-slate-600">Continuous learning is the key to staying ahead.</p>
-                    </motion.div>
+                    <div className="text-center mb-16 relative">
+                        <span className="font-handwriting text-2xl text-rose-500 font-bold rotate-[-2deg] inline-block mb-1">
+                            lifelong learning 📜
+                        </span>
+                        <h2 className="text-4xl md:text-5xl font-display font-extrabold text-slate-900 tracking-tight">
+                            Certifications &{' '}
+                            <span className="font-serif-italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-rose-600">
+                                Specialized Training
+                            </span>
+                        </h2>
+                        <p className="text-slate-600 text-base max-w-xl mx-auto mt-2">
+                            Industry credentials certified by Google, IBM, Microsoft, and DeepLearning.AI.
+                        </p>
+                    </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                         {courses.map((course, index) => (
