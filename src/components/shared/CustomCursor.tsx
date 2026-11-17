@@ -22,16 +22,12 @@ export default function CustomCursor() {
         };
 
         const handleMouseOver = (e: MouseEvent) => {
-            const target = e.target as HTMLElement;
-            if (
-                window.getComputedStyle(target).cursor === "pointer" ||
-                target.tagName.toLowerCase() === "a" ||
-                target.tagName.toLowerCase() === "button"
-            ) {
-                setIsHovering(true);
-            } else {
-                setIsHovering(false);
-            }
+            const target = e.target as HTMLElement | null;
+            if (!target) return;
+            const isClickable = Boolean(
+                target.closest('a, button, [role="button"], input, select, textarea, [data-clickable]')
+            );
+            setIsHovering(isClickable);
         };
 
         window.addEventListener("mousemove", updateMousePosition);

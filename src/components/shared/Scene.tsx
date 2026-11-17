@@ -5,19 +5,16 @@ import { useFrame, useThree } from "@react-three/fiber";
 import Particles from "./Particles";
 import * as THREE from "three";
 
-// Camera controller that tracks window scroll
+// Camera controller that tracks window scroll smoothly without waking on idle
 function ScrollCamera() {
     const { camera } = useThree();
     
     useFrame(() => {
-        // Calculate a target Y position based on scroll.
-        // As you scroll down, the camera moves down (so objects appear to move up).
-        // 0.05 is a multiplier for scroll speed in 3D space.
         const scrollY = window.scrollY;
         const targetY = -(scrollY * 0.05);
-
-        // Interpolate current camera Y towards target Y for smoothness
-        camera.position.y += (targetY - camera.position.y) * 0.1;
+        if (Math.abs(targetY - camera.position.y) > 0.005) {
+            camera.position.y += (targetY - camera.position.y) * 0.1;
+        }
     });
 
     return null;
@@ -27,6 +24,8 @@ export default function Scene() {
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        // Only run Three.js canvas on devices with pointer (desktop/laptop) to save battery and GPU on mobile
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
         setMounted(true);
     }, []);
 
@@ -36,17 +35,15 @@ export default function Scene() {
         <div className="fixed inset-0 w-full h-full pointer-events-none z-[-10]">
             <Canvas
                 camera={{ position: [0, 0, 50], fov: 45 }}
-                dpr={[1, 1.5]} // Capped at 1.5 to guarantee high refresh rate (60/120fps) even on Retina displays
-                performance={{ min: 0.5 }} // Allows R3F to scale down resolution if frame rate drops
+                dpr={[1, 1.2]} // Capped at 1.2 for buttery smooth 120fps with minimal GPU fillrate
+                gl={{ antialias: false, powerPreference: "high-performance" }}
+                performance={{ min: 0.5 }}
             >
                 <ScrollCamera />
-                
-                {/* Lighting Setup */}
                 <ambientLight intensity={0.5} color="#7c3aed" />
                 <directionalLight position={[10, 10, 10]} intensity={1.5} color="#00d9ff" />
-                
                 <Suspense fallback={null}>
-                    <Particles count={40} />
+                    <Particles count={35} />
                 </Suspense>
             </Canvas>
         </div>
