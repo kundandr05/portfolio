@@ -9,6 +9,8 @@ export interface PublicationItem {
   description: string;
   link: string;
   linkLabel: string;
+  pdfUrl?: string;
+  pdfLabel?: string;
   image: string;
   badge: string;
   color: "tomato" | "yellow" | "green" | "blue";
@@ -20,13 +22,15 @@ export const publications: PublicationItem[] = [
     id: "agentic-ai-paper",
     type: "Research Paper",
     title: "Tournament Management Agent Using Agentic Artificial Intelligence",
-    subtitle: "Autonomous Multi-Agent Coordination for Scheduling & Verification",
+    subtitle: "Autonomous Conversational Agent for Scheduling & Verification",
     venueOrPublisher: "International Journal of Creative Research Thoughts (IJCRT)",
-    date: "July 2026",
-    identifier: "Volume 14, Issue 7 · ISSN: 2320-2882",
-    description: "Peer-reviewed research proposing an event-driven multi-agent framework to solve NP-hard sports tournament scheduling, dynamic referee assignment, and automated bracket state transitions.",
-    link: "https://ijcrt.org/papers/IJCRT2607147.pdf",
-    linkLabel: "Read Full Paper (IJCRT PDF)",
+    date: "December 2025",
+    identifier: "Volume 13, Issue 12 · Paper ID: IJCRT2512785 · ISSN: 2320-2882",
+    description: "Peer-reviewed research presenting an autonomous conversational agent capable of understanding natural language queries and executing tournament management tasks. Integrates FastAPI backend, SQLite persistent storage, and Google Gemini for natural language reasoning.",
+    link: "https://ijcrt.org/viewpaperforall.php?paper=IJCRT2512785",
+    linkLabel: "View on IJCRT Portal",
+    pdfUrl: "https://ijcrt.org/papers/IJCRT2512785.pdf",
+    pdfLabel: "Download Paper (PDF)",
     image: "/paper-image.png",
     badge: "Peer-Reviewed",
     color: "tomato",

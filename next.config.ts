@@ -39,6 +39,14 @@ const nextConfig: NextConfig = {
         source: '/projects/campusos',
         destination: '/projects/campus-os',
       },
+      {
+        source: '/paper',
+        destination: '/paper.pdf',
+      },
+      {
+        source: '/IJCRT2512785.pdf',
+        destination: '/paper.pdf',
+      },
     ];
   },
 };
