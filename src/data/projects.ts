@@ -155,9 +155,11 @@ export const projects: Project[] = [
     built: "Built an entirely local, self-hosted web UI connecting directly to Ollama runtimes (Llama 3, Mistral, Qwen) with optional live web retrieval.",
     result: "Complete data sovereignty, zero token bills, offline-first execution, and streaming markdown output.",
     tags: ["Python", "Ollama", "FastAPI", "WebSockets", "Local AI", "Tailwind CSS"],
-    image: "/project5.png",
+    image: "/project-ollama.png",
     github: "https://github.com/kundandr05/ollama-chatbot",
     githubLabel: "kundandr05/ollama-chatbot",
+    demo: "https://kundan-ollama-chatbot.vercel.app/",
+    demoLabel: "Live Demo",
     role: "Open Source Creator",
     timeline: "2025",
     keyFeatures: [
