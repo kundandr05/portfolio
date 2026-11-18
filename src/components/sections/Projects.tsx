@@ -301,7 +301,7 @@ export default function Projects() {
                     </h4>
 
                     <p className="text-xs text-stone-600 mt-1 mb-3 line-clamp-2">
-                      {project.problem}
+                      {project.tagline}
                     </p>
 
                     <div className="flex flex-wrap gap-1 mb-4">

@@ -24,12 +24,20 @@ const nextConfig: NextConfig = {
         destination: '/Kundan_Resume.pdf',
       },
       {
-        source: '/projects/campus-os',
-        destination: '/projects/college-management-system-lms',
+        source: '/projects/college-management-system-lms',
+        destination: '/projects/eduagent-adaptive-lms',
+      },
+      {
+        source: '/projects/lms',
+        destination: '/projects/eduagent-adaptive-lms',
+      },
+      {
+        source: '/projects/eduagent',
+        destination: '/projects/eduagent-adaptive-lms',
       },
       {
         source: '/projects/campusos',
-        destination: '/projects/college-management-system-lms',
+        destination: '/projects/campus-os',
       },
     ];
   },

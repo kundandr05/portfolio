@@ -1,3 +1,46 @@
+export interface CaseStudySlot {
+  title: string;
+  description: string;
+  placeholderText: string;
+}
+
+export interface CaseStudyFlowStep {
+  step: string;
+  title: string;
+  description: string;
+  badge?: string;
+}
+
+export interface CaseStudyArchitectureRow {
+  layer: string;
+  technologies: string;
+  details: string;
+}
+
+export interface CaseStudyChallenge {
+  title: string;
+  problem: string;
+  whatIDid: string;
+  result: string;
+}
+
+export interface EduAgentCaseStudy {
+  overview: string;
+  studentSide: {
+    description: string;
+    slots: CaseStudySlot[];
+  };
+  instructorSide: {
+    description: string;
+    slots: CaseStudySlot[];
+  };
+  security: string;
+  agentFlow: CaseStudyFlowStep[];
+  architectureTable: CaseStudyArchitectureRow[];
+  challengeCards: CaseStudyChallenge[];
+  whatILearnedTodo: string;
+}
+
 export interface Project {
   slug: string;
   title: string;
@@ -24,6 +67,7 @@ export interface Project {
   outcome: string;
   color: "tomato" | "yellow" | "green" | "blue";
   rotation: string; // e.g. "-rotate-1", "rotate-2" for scrapbook feel
+  eduAgentCaseStudy?: EduAgentCaseStudy;
 }
 
 export const projects: Project[] = [
@@ -174,7 +218,7 @@ export const projects: Project[] = [
     rotation: "-rotate-1"
   },
   {
-    slug: "college-management-system-lms",
+    slug: "campus-os",
     title: "Campus OS",
     tagline: "AI-Powered Multi-Tenant College ERP & Academic Operating System",
     category: "Full-Stack",
@@ -204,6 +248,164 @@ export const projects: Project[] = [
     outcome: "Deployed live on Vercel Edge Network with 200+ simulated student records, active multi-tier authentication, and fully interactive administration dashboards.",
     color: "tomato",
     rotation: "rotate-2"
+  },
+  {
+    slug: "eduagent-adaptive-lms",
+    title: "EduAgent — Adaptive Learning Management System",
+    tagline: "An LMS that tells each student what to learn next, and sends them back to the basics when a quiz goes badly.",
+    category: "Full-Stack",
+    date: "2025",
+    problem: "Most e-learning platforms are passive. Students watch videos in a fixed order with no feedback, so gaps go unnoticed and people drop out. EduAgent is an adaptive LMS with a rule-based agent that tracks quiz scores, lesson completion and study habits, then decides the student's next step.",
+    built: "Built an adaptive LMS featuring a rule-based agent that manages dynamic student queues, course builder CMS with automated MCQ grading, human-in-the-loop priority override, and database-level Firestore security rules.",
+    result: "Instant deterministic learning remediation, zero per-request LLM API costs, and robust role-based student and instructor data isolation.",
+    tags: [
+      "Next.js (App Router)",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Shadcn UI",
+      "Radix",
+      "Lucide",
+      "Next.js API Routes",
+      "Firebase Auth",
+      "Cloud Firestore",
+      "Firestore Security Rules",
+      "Vercel"
+    ],
+    image: "/project-eduagent.png",
+    github: "https://github.com/kundandr05/Ravikumar-lms",
+    githubLabel: "Ravikumar-lms",
+    demo: "https://ravikumar-lms.vercel.app/",
+    demoLabel: "Live Demo",
+    role: "Full-Stack Architect & Developer",
+    timeline: "2025",
+    keyFeatures: [
+      "Student adaptive dashboard with dynamic Continue Learning, System Suggestions, and Instructor Action queues",
+      "Automatic remediation engine locking next modules and queuing prerequisite videos when a quiz score drops below 50%",
+      "Interactive study workspace with dedicated video player, timestamped bookmarks, and private per-lesson notes",
+      "Instructor/Admin course CMS with downloadable assignments, automated MCQ grading, and human-in-the-loop priority task assignment",
+      "Cohort analytics tracking test attempts, average scores, and curriculum completion rates",
+      "Firestore Security Rules enforcing database-layer authorization using request.auth.uid and role validation"
+    ],
+    architecture: "Next.js App Router on React 19, styled with Tailwind CSS and Shadcn UI. Next.js API Routes coordinate serverless backend logic, while Firebase Auth and Cloud Firestore handle user state, progress tracking, and security rule enforcement.",
+    challenges: "Handling multi-collection Firestore dashboard hydration without SQL joins (solved via Promise.allSettled) and deterministic adaptive routing with zero LLM API costs.",
+    outcome: "Deployed live on Vercel with active student study queues, automated quiz grading, and role-based permissions.",
+    color: "green",
+    rotation: "-rotate-1",
+    eduAgentCaseStudy: {
+      overview: "Most e-learning platforms are passive. Students watch videos in a fixed order with no feedback, so gaps go unnoticed and people drop out. EduAgent is an adaptive LMS with a rule-based agent that tracks quiz scores, lesson completion and study habits, then decides the student's next step.",
+      studentSide: {
+        description: "Adaptive dashboard with queues (Continue Learning, System Suggestions, Instructor Action Items). If a student scores below 50% on a module test, the agent puts prerequisite videos first before they can move on. Study workspace with a video player, timestamped bookmarks and private notes.",
+        slots: [
+          {
+            title: "Student Dashboard",
+            description: "Shows dynamic Continue Learning queue, System Suggestions, and study workspace with timestamped bookmarks.",
+            placeholderText: "TODO: Screenshot of Student Dashboard (to be supplied by Kundan)"
+          },
+          {
+            title: "Quiz Result with Remediation",
+            description: "Displays <50% score lock and prerequisite remedial video injection before subsequent module unlocking.",
+            placeholderText: "TODO: Screenshot of Quiz Result with Remediation (to be supplied by Kundan)"
+          }
+        ]
+      },
+      instructorSide: {
+        description: "Course and module builder (CMS), video lessons, downloadable assignments, MCQ quizzes with automatic grading, a human-in-the-loop panel to push priority tasks to a student or a batch, and analytics on attempts, average scores and completion.",
+        slots: [
+          {
+            title: "Instructor Panel",
+            description: "CMS for course modules, downloadable assignments, and a human-in-the-loop panel to push priority tasks to a student or batch.",
+            placeholderText: "TODO: Screenshot of Instructor Panel (to be supplied by Kundan)"
+          },
+          {
+            title: "Analytics",
+            description: "Aggregated attempt telemetry, average quiz scores, and student lesson completion metrics.",
+            placeholderText: "TODO: Screenshot of Analytics (to be supplied by Kundan)"
+          }
+        ]
+      },
+      security: "Role-based access with Firestore Security Rules that check request.auth.uid and role documents, so admin writes and other students' notes and submissions are blocked at the database layer.",
+      agentFlow: [
+        {
+          step: "01",
+          title: "MCQ Quiz Submitted",
+          description: "Student completes a module test; answers are evaluated and graded instantaneously.",
+          badge: "Trigger"
+        },
+        {
+          step: "02",
+          title: "Rule-Based Threshold Check",
+          description: "Deterministic evaluation against the 50% cutoff benchmark with zero per-request LLM API cost.",
+          badge: "Evaluation"
+        },
+        {
+          step: "03",
+          title: "Remedial Lessons Queued",
+          description: "Score < 50% locks progression and puts foundational prerequisite lessons at the top of the Continue Learning queue.",
+          badge: "Branching"
+        },
+        {
+          step: "04",
+          title: "Progression Unlocked",
+          description: "Upon reviewing remedial videos and retaking the quiz above threshold, progression is unlocked.",
+          badge: "Unlock"
+        }
+      ],
+      architectureTable: [
+        {
+          layer: "Frontend Framework",
+          technologies: "Next.js (App Router), React, TypeScript",
+          details: "Fast SSR, static pre-rendering, and modular client component boundaries"
+        },
+        {
+          layer: "UI & Component Library",
+          technologies: "Tailwind CSS, Shadcn UI, Radix, Lucide",
+          details: "Accessible component primitives and responsive design tokens"
+        },
+        {
+          layer: "Backend & API Layer",
+          technologies: "Next.js API Routes",
+          details: "Serverless endpoints handling secure operations and server-side logic"
+        },
+        {
+          layer: "Authentication",
+          technologies: "Firebase Auth",
+          details: "Secure role-based email/password authentication & session tokens"
+        },
+        {
+          layer: "Database & Security",
+          technologies: "Cloud Firestore, Firestore Security Rules",
+          details: "Granular DB-level authorization via request.auth.uid and role doc verification"
+        },
+        {
+          layer: "Deployment",
+          technologies: "Vercel",
+          details: "Edge network distribution with automated production CI/CD"
+        }
+      ],
+      challengeCards: [
+        {
+          title: "No joins in Firestore",
+          problem: "Dashboard needs profile, progress, quiz results and recommendations concurrently.",
+          whatIDid: "I fetched them in parallel with Promise.allSettled so one slow or failed call doesn't block the page.",
+          result: "Dashboard loads resiliently without cascading blocking delays."
+          // TODO: measured dashboard load improvement: [Kundan to provide verified benchmark % - leave out of UI until confirmed]
+        },
+        {
+          title: "Smart routing without LLM cost",
+          problem: "Need intelligent dynamic curriculum adaptations without incurring recurring per-token LLM API latency and expense.",
+          whatIDid: "I made the agent rule-based, computing thresholds when a test is submitted.",
+          result: "Results are deterministic, instant, and have zero per-request API cost."
+        },
+        {
+          title: "Access control",
+          problem: "Preventing cross-student private note leakage and unauthorized instructor content mutations.",
+          whatIDid: "Wrote custom Firestore Security Rules for ownership and roles checking request.auth.uid and role documents.",
+          result: "Admin writes and other students' notes and submissions are blocked directly at the database layer."
+        }
+      ],
+      whatILearnedTodo: "TODO: Kundan to write 2 lines on key takeaways from building EduAgent"
+    }
   },
   {
     slug: "personal-portfolio-website",
