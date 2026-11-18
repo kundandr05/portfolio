@@ -1,93 +1,104 @@
 "use client";
 
+import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Download, ExternalLink } from 'lucide-react';
-import { useEffect } from 'react';
+import { X, Download, ExternalLink, FileText } from 'lucide-react';
 
 interface ResumeModalProps {
-    isOpen: boolean;
-    onClose: () => void;
+  isOpen: boolean;
+  onClose: () => void;
 }
 
 export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
-    // Prevent scrolling when modal is open
-    useEffect(() => {
-        if (isOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'unset';
-        }
-        return () => {
-            document.body.style.overflow = 'unset';
-        };
-    }, [isOpen]);
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
 
-    return (
-        <AnimatePresence>
-            {isOpen && (
-                <div className="fixed inset-0 z-[100] flex items-center justify-center px-4 sm:px-6 py-6 sm:py-12">
-                    {/* Backdrop */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        onClick={onClose}
-                        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-                    />
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 md:p-8">
+          {/* Backdrop */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="absolute inset-0 bg-[#18181b]/50 backdrop-blur-xs"
+          />
 
-                    {/* Modal Content */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                        transition={{ type: "spring", duration: 0.5, bounce: 0 }}
-                        className="relative w-full max-w-5xl h-full flex flex-col bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-2xl"
-                    >
-                        {/* Header */}
-                        <div className="flex items-center justify-between p-4 border-b border-slate-200 bg-slate-50/90 backdrop-blur-md shrink-0">
-                            <h2 className="text-xl font-display font-bold text-slate-900 flex items-center gap-2">
-                                <span className="w-2.5 h-2.5 rounded-full bg-blue-600 animate-pulse" />
-                                Resume Preview
-                            </h2>
-                            <div className="flex items-center gap-2">
-                                <a 
-                                    href="/Kundan_Resume.pdf" 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    className="p-2 text-slate-500 hover:text-blue-600 hover:bg-slate-100 rounded-lg transition-colors hidden sm:block"
-                                    title="Open in new tab"
-                                >
-                                    <ExternalLink className="w-5 h-5" />
-                                </a>
-                                <a 
-                                    href="/Kundan_Resume.pdf" 
-                                    download="Kundan_Resume.pdf"
-                                    className="p-2 text-slate-500 hover:text-rose-600 hover:bg-slate-100 rounded-lg transition-colors"
-                                    title="Download PDF"
-                                >
-                                    <Download className="w-5 h-5" />
-                                </a>
-                                <button 
-                                    onClick={onClose}
-                                    className="p-2 text-slate-500 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-lg transition-all"
-                                    title="Close"
-                                >
-                                    <X className="w-5 h-5" />
-                                </button>
-                            </div>
-                        </div>
+          {/* Modal Card - Styled like a Manila Folder / Clip Document */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 15, rotate: -1 }}
+            animate={{ opacity: 1, scale: 1, y: 0, rotate: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 15, rotate: 1 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            className="relative w-full max-w-5xl h-[88vh] flex flex-col bg-[#fdfbf7] border-2 border-[#18181b] rounded-2xl overflow-hidden shadow-[8px_8px_0px_#18181b]"
+          >
+            {/* Washi tape on top */}
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-28 h-6 bg-[#fde047]/80 border border-[#18181b]/30 rotate-1 z-20 pointer-events-none shadow-xs" />
 
-                        {/* PDF Viewer */}
-                        <div className="flex-1 bg-slate-100 p-2 sm:p-4 overflow-hidden">
-                            <iframe 
-                                src="/Kundan_Resume.pdf?v=20261117#toolbar=0" 
-                                className="w-full h-full rounded-lg border border-slate-200 bg-white shadow-inner"
-                                title="Resume PDF Preview"
-                            />
-                        </div>
-                    </motion.div>
+            {/* Header */}
+            <div className="flex items-center justify-between px-6 py-4 border-b-2 border-[#18181b] bg-[#faf7ee] shrink-0">
+              <div className="flex items-center gap-3">
+                <span className="p-1.5 bg-[#fde047] border border-[#18181b] rounded-md shadow-[1px_1px_0px_#18181b]">
+                  <FileText className="w-5 h-5 text-[#18181b]" />
+                </span>
+                <div>
+                  <h2 className="text-lg font-display font-black text-[#18181b]">
+                    Kundan_Resume.pdf
+                  </h2>
+                  <p className="text-xs text-stone-500 font-mono">B.E. CSE (AI & ML) · Graduating 2027</p>
                 </div>
-            )}
-        </AnimatePresence>
-    );
+              </div>
+
+              <div className="flex items-center gap-2">
+                <a
+                  href="/kundan_resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-[#18181b] bg-white border-2 border-[#18181b] rounded-lg shadow-[2px_2px_0px_#18181b] hover:-translate-y-0.5 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all"
+                  title="Open in new tab"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  <span>Open Full PDF</span>
+                </a>
+                <a
+                  href="/kundan_resume.pdf"
+                  download="Kundan_DR_Resume.pdf"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-[#18181b] bg-[#22c55e] border-2 border-[#18181b] rounded-lg shadow-[2px_2px_0px_#18181b] hover:-translate-y-0.5 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  <span>Download</span>
+                </a>
+                <button
+                  onClick={onClose}
+                  className="p-1.5 text-[#18181b] bg-white border-2 border-[#18181b] rounded-lg shadow-[2px_2px_0px_#18181b] hover:bg-[#ef4444] hover:text-white transition-colors"
+                  aria-label="Close modal"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+
+            {/* PDF Viewer */}
+            <div className="flex-grow w-full bg-stone-100 p-2 sm:p-4 overflow-hidden">
+              <iframe
+                src="/kundan_resume.pdf#view=FitH"
+                className="w-full h-full rounded-xl border border-stone-300 shadow-inner bg-white"
+                title="Kundan DR Resume"
+              />
+            </div>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
+  );
 }

@@ -1,197 +1,109 @@
 "use client";
 
-import { motion } from 'framer-motion';
-import { Briefcase, Calendar, BookOpen, ExternalLink, FileText } from 'lucide-react';
-
-const experiences = [
-    {
-        id: 2,
-        role: "UI/UX Design Intern – WizzyBox Career Accelerator Program (WCAP)",
-        company: "WizzyBox Private Limited",
-        period: "Sep 2026 – Present",
-        description: [
-            "Selected for WCAP, delivered by WizzyBox in partnership with NammaQA.",
-            "Applying design thinking through target audience research, empathy mapping, personas, user stories, and user journey mapping.",
-            "Working on competitive audits, problem statements, information architecture, user flows, storyboards, and low-fidelity wireframes."
-        ],
-        skills: ["UI/UX Design", "Design Thinking", "User Research", "Wireframing", "Figma", "Information Architecture"],
-        link: "/WizzyBox_Offer_Letter.pdf",
-        linkLabel: "View Offer Letter"
-    }
-];
-
-const publications = [
-    {
-        id: 1,
-        title: "Tournament Management Agent Using Agentic Artificial Intelligence",
-        journal: "International Journal of Creative Research Thoughts (IJCRT)",
-        date: "2025",
-        description: "A detailed design and implementation of an AI-powered Tournament Management Agent based on Agentic Artificial Intelligence. The system introduces an autonomous conversational agent capable of understanding natural language queries and executing tournament management tasks.",
-        link: "http://ijcrt.org/viewfull.php?&p_id=IJCRT2512785",
-        type: "Research Paper"
-    },
-    {
-        id: 2,
-        title: "RECLAIM YOUR FOCUS: A Guide to Dopamine Detox and Get Things Done",
-        journal: "Amazon",
-        date: "2024",
-        description: "In a world drowning in digital noise, our brains are overstimulated by notifications and endless scrolling. This book is your roadmap back to clarity, exploring the science behind distractions and how our modern environment overloads the brain's reward system.",
-        link: "https://a.co/d/07SiOZpN",
-        type: "Book"
-    },
-    {
-        id: 3,
-        title: "The Two-Speed Mind: Solving the 90s vs. 2000s Conflict to End Your Structural Stress",
-        journal: "Amazon",
-        date: "2024",
-        description: "Stop calling it burnout. It's structural failure. You are suffering from a structural non-alignment between the stable 1990s Mindset and the relentless speed of the 2000s World. This book introduces Computational Physics to expose the true source of modern anxiety.",
-        link: "https://a.co/d/0euaUcnC",
-        type: "Book"
-    }
-];
+import React from 'react';
+import { Briefcase, Calendar, GraduationCap, Compass, FileCheck, ExternalLink } from 'lucide-react';
+import { experiences } from '@/data/experience';
 
 export default function Experience() {
-    return (
-        <>
-            <section className="py-20">
-                <div className="container mx-auto px-4">
-                    <div className="text-center mb-16 relative">
-                        <span className="font-handwriting text-2xl text-blue-600 font-bold rotate-[-2deg] inline-block mb-1">
-                            professional journey 💼
-                        </span>
-                        <h2 className="text-4xl md:text-5xl font-display font-extrabold text-slate-900 tracking-tight">
-                            Experience &{' '}
-                            <span className="font-serif-italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-rose-600">
-                                Internships
-                            </span>
-                        </h2>
-                    </div>
+  return (
+    <section id="experience" className="py-16 md:py-24 relative">
+      {/* Section Header */}
+      <div className="flex flex-col items-start mb-12">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#22c55e] text-white border-2 border-[#18181b] rounded-md shadow-[2px_2px_0px_#18181b] text-xs font-black uppercase tracking-wider rotate-1 mb-3">
+          <Briefcase className="w-3.5 h-3.5" />
+          <span>Timeline</span>
+        </div>
 
-                    <div className="relative max-w-4xl mx-auto">
-                        {/* Vertical Line */}
-                        <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-blue-500 via-indigo-500 to-rose-500 opacity-25" />
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-black tracking-tight text-[#18181b]">
+          Experience &{' '}
+          <span className="bg-[#fde047] px-2 py-0.5 rounded-md border-2 border-[#18181b] shadow-[2px_2px_0px_#18181b] inline-block -rotate-1">
+            education
+          </span>
+        </h2>
+        <p className="text-stone-600 text-sm sm:text-base mt-2 max-w-xl">
+          Real roles and institutional grounding. No exaggerated job titles or fake enterprise claims.
+        </p>
+      </div>
 
-                        {experiences.map((exp, index) => (
-                            <motion.div
-                                key={exp.id}
-                                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: index * 0.2 }}
-                                className={`flex flex-col md:flex-row gap-8 mb-12 relative ${index % 2 === 0 ? 'md:flex-row-reverse' : ''
-                                    }`}
-                            >
-                                {/* Timeline Dot */}
-                                <div className="absolute left-[-5px] md:left-1/2 md:-ml-[6px] w-3 h-3 rounded-full bg-blue-600 shadow-[0_0_10px_rgba(37,99,235,0.4)] z-10 mt-6" />
+      {/* Dotted Roadmap Path */}
+      <div className="relative pl-6 sm:pl-10 border-l-2 border-dashed border-[#18181b] space-y-12 ml-2 sm:ml-4">
+        {experiences.map((item, idx) => (
+          <div key={item.id} className="relative group">
+            {/* Pop Stop Pin on Dotted Line */}
+            <div
+              className={`absolute -left-[35px] sm:-left-[51px] top-1.5 w-8 h-8 sm:w-10 sm:h-10 rounded-xl border-2 border-[#18181b] flex items-center justify-center shadow-[2px_2px_0px_#18181b] transition-transform group-hover:scale-110 ${
+                item.color === 'tomato'
+                  ? 'bg-[#ef4444] text-white'
+                  : 'bg-[#fde047] text-[#18181b]'
+              }`}
+            >
+              {item.id === 'wizzybox' ? (
+                <Compass className="w-4 h-4 sm:w-5 sm:h-5" />
+              ) : (
+                <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5" />
+              )}
+            </div>
 
-                                {/* Content Card */}
-                                <div className="md:w-1/2 pl-8 md:pl-0 md:pr-12 group">
-                                    <div className={`glass-panel p-6 rounded-2xl hover:border-blue-400/50 transition-all duration-300 transform group-hover:-translate-y-1 ${index % 2 === 0 ? 'md:mr-12' : 'md:ml-12'
-                                        }`}>
-                                        <div className="flex items-center gap-2 text-blue-600 mb-2">
-                                            <Briefcase className="w-4 h-4" />
-                                            <h3 className="font-bold text-lg text-slate-900">{exp.role}</h3>
-                                        </div>
-                                        <div className="flex items-center gap-2 text-slate-500 text-sm mb-4">
-                                            <Calendar className="w-3.5 h-3.5" />
-                                            <span>{exp.period}</span>
-                                            <span className="mx-2">|</span>
-                                            <span className="font-medium text-slate-700">{exp.company}</span>
-                                        </div>
-                                        <ul className="text-slate-600 mb-4 leading-relaxed text-sm list-disc list-inside space-y-1">
-                                            {exp.description.map((point, idx) => (
-                                                <li key={idx}>{point}</li>
-                                            ))}
-                                        </ul>
-                                        <div className="flex flex-wrap gap-1.5 mb-4">
-                                            {exp.skills.map((skill, i) => (
-                                                <span key={i} className="text-xs px-2.5 py-1 rounded-full bg-blue-50 border border-blue-200/80 text-blue-700 font-medium">
-                                                    {skill}
-                                                </span>
-                                            ))}
-                                        </div>
-                                        {exp.link && (
-                                            <a
-                                                href={exp.link}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="inline-flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 font-medium transition-colors"
-                                            >
-                                                <FileText className="w-4 h-4" />
-                                                {exp.linkLabel}
-                                            </a>
-                                        )}
-                                    </div>
-                                </div>
-
-                                {/* Empty Space for alignment */}
-                                <div className="md:w-1/2" />
-                            </motion.div>
-                        ))}
-                    </div>
-
-                    {/* Research Publications Section */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="mt-32 max-w-4xl mx-auto"
+            {/* Experience Card */}
+            <div
+              className={`bg-white border-2 border-[#18181b] rounded-2xl p-6 sm:p-8 shadow-[5px_5px_0px_#18181b] hover:shadow-[8px_8px_0px_#18181b] transition-all relative ${
+                idx % 2 === 0 ? '-rotate-0.5 hover:rotate-0' : 'rotate-0.5 hover:rotate-0'
+              }`}
+            >
+              {/* Card Header */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 mb-4 border-b border-[#18181b]/15">
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span
+                      className={`px-2 py-0.5 border border-[#18181b] rounded-md text-[10px] font-mono font-bold uppercase shadow-[1px_1px_0px_#18181b] ${
+                        item.color === 'tomato' ? 'bg-[#ef4444] text-white' : 'bg-[#fde047] text-[#18181b]'
+                      }`}
                     >
-                        <h2 className="text-3xl md:text-5xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 mb-12 text-center">
-                            Publications & Authorship
-                        </h2>
-
-                        <div className="space-y-6">
-                            {publications.map((pub, index) => (
-                                <motion.div
-                                    key={pub.id}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="glass-panel p-8 rounded-2xl relative overflow-hidden group hover:border-blue-400/50 transition-colors duration-300"
-                                >
-                                    <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 relative z-10">
-                                        <div className="flex-1">
-                                            <div className="flex items-center gap-3 mb-3">
-                                                {pub.type === "Book" ? (
-                                                    <BookOpen className="w-6 h-6 text-indigo-600" />
-                                                ) : (
-                                                    <FileText className="w-6 h-6 text-blue-600" />
-                                                )}
-                                                <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
-                                                    {pub.title}
-                                                </h3>
-                                            </div>
-                                            
-                                            <div className="flex items-center gap-4 text-sm text-slate-500 mb-4">
-                                                <span className="flex items-center gap-1 text-rose-600 font-medium">
-                                                    <Calendar className="w-4 h-4" /> {pub.date}
-                                                </span>
-                                                <span>|</span>
-                                                <span className="font-medium text-slate-700">{pub.journal}</span>
-                                            </div>
-                                            
-                                            <p className="text-slate-600 leading-relaxed text-sm">
-                                                {pub.description}
-                                            </p>
-                                        </div>
-
-                                        <a
-                                            href={pub.link}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="shrink-0 flex items-center gap-2 px-6 py-3 bg-blue-50 border border-blue-200 rounded-xl text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300 font-medium shadow-sm"
-                                        >
-                                            View <ExternalLink className="w-4 h-4" />
-                                        </a>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </motion.div>
+                      {item.badge}
+                    </span>
+                    <span className="text-xs font-mono text-stone-500 font-bold">{item.location}</span>
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-display font-black text-[#18181b]">
+                    {item.role}
+                  </h3>
+                  <p className="text-sm font-bold text-stone-700">{item.organization}</p>
                 </div>
-            </section>
-        </>
-    );
+
+                <div className="flex items-center gap-1.5 px-3 py-1 bg-[#faf7ee] border border-[#18181b] rounded-lg shadow-[1px_1px_0px_#18181b] text-xs font-mono font-bold self-start sm:self-center">
+                  <Calendar className="w-3.5 h-3.5 text-stone-500" />
+                  <span>{item.period}</span>
+                </div>
+              </div>
+
+              {/* Highlights Bullet List */}
+              <ul className="space-y-2 text-stone-700 text-xs sm:text-sm">
+                {item.highlights.map((highlight, hIdx) => (
+                  <li key={hIdx} className="flex items-start gap-2">
+                    <span className="text-[#ef4444] font-bold text-base leading-none mt-0.5">↳</span>
+                    <span>{highlight}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Document Link for Verified Offer Letter */}
+              {item.documentUrl && (
+                <div className="pt-4 mt-4 border-t border-[#18181b]/15 flex items-center justify-start">
+                  <a
+                    href={item.documentUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-[#fde047] text-[#18181b] border-2 border-[#18181b] rounded-xl text-xs font-bold shadow-[2px_2px_0px_#18181b] hover:-translate-y-0.5 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all"
+                  >
+                    <FileCheck className="w-3.5 h-3.5 text-[#ef4444]" />
+                    <span>{item.documentLabel || 'View Verification Document (PDF)'}</span>
+                    <ExternalLink className="w-3 h-3 ml-0.5" />
+                  </a>
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
 }

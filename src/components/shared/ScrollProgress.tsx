@@ -1,24 +1,22 @@
-"use client";
+'use client';
 
-import { motion, useScroll, useSpring } from "framer-motion";
+import React from 'react';
+import { motion, useScroll, useSpring } from 'framer-motion';
 
 export default function ScrollProgress() {
-    const { scrollYProgress } = useScroll();
-    
-    // Add spring physics for smooth, premium progress bar movement
-    const scaleX = useSpring(scrollYProgress, {
-        stiffness: 100,
-        damping: 30,
-        restDelta: 0.001
-    });
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 24,
+    restDelta: 0.001
+  });
 
-    return (
-        <motion.div
-            className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-magenta origin-left z-[9999]"
-            style={{ scaleX }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 1 }}
-        />
-    );
+  return (
+    <div className="fixed top-0 left-0 right-0 h-1.5 z-50 pointer-events-none bg-stone-200/60">
+      <motion.div
+        className="h-full bg-amber-400 origin-left border-b border-[#18181b]"
+        style={{ scaleX }}
+      />
+    </div>
+  );
 }

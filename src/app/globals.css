@@ -1,150 +1,218 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-background: #f8fafc;
-  --color-foreground: #0f172a;
-  --color-surface: #ffffff;
-  --color-text-secondary: #64748b;
+  --color-canvas: #faf7ee;
+  --color-canvas-card: #ffffff;
+  --color-ink: #18181b;
+  --color-ink-muted: #52525b;
 
-  --color-neon-cyan: #2563eb;
-  --color-neon-magenta: #f43f5e;
-  --color-neon-purple: #7c3aed;
-  --color-neon-green: #059669;
+  --color-tomato: #ef4444;
+  --color-yellow: #fde047;
+  --color-green: #22c55e;
+  --color-blue: #38bdf8;
+  --color-tape: #fef08a;
 
-  --color-glass-border: rgba(15, 23, 42, 0.08);
-  --color-glass-bg: rgba(255, 255, 255, 0.85);
-
-  --font-sans: 'Plus Jakarta Sans', var(--font-inter), sans-serif;
-  --font-display: var(--font-space-grotesk), sans-serif;
-  --font-mono: var(--font-fira-code), monospace;
-
-  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --font-display: var(--font-bricolage), sans-serif;
+  --font-sans: var(--font-jakarta), sans-serif;
+  --font-handwriting: var(--font-caveat), cursive;
+  --font-mono: var(--font-fira), monospace;
 }
 
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
+  --background: #faf7ee;
+  --foreground: #18181b;
 }
 
 html {
-  scroll-behavior: smooth;
+  background-color: #faf7ee;
+  color: #18181b;
+  font-family: var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
+/* Subtle Notebook / Paper Grain Texture */
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: var(--font-sans);
+  background-color: #faf7ee;
+  background-image: radial-gradient(#d4d4d8 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: #18181b;
+  min-height: 100vh;
   overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 
-/* Custom Scrollbar (Clean Modern Light) */
+/* Selection Color (Playful Yellow Marker) */
+::selection {
+  background-color: #fde047;
+  color: #18181b;
+}
+
+/* Custom Scrollbar (Chunky & Clean) */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #faf7ee;
+  border-left: 2px solid #18181b;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 4px;
+  background: #fde047;
+  border: 2px solid #18181b;
+  border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #2563eb;
+  background: #ef4444;
 }
 
-/* Selection Color (Vibrant Prism Cobalt) */
-::selection {
-  background: #2563eb;
+/* Lenis Smooth Scroll Recommended Rules */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Scrapbook Sticker Card Utility */
+.sticker-card {
+  background-color: #ffffff;
+  border: 2px solid #18181b;
+  border-radius: 1rem;
+  box-shadow: 4px 4px 0px #18181b;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sticker-card:hover {
+  box-shadow: 6px 6px 0px #18181b;
+  transform: translateY(-2px);
+}
+
+/* Tactile Buttons with Hard Collapse Press */
+.btn-scrapbook-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #ef4444;
   color: #ffffff;
+  font-weight: 800;
+  border: 2px solid #18181b;
+  border-radius: 0.75rem;
+  box-shadow: 4px 4px 0px #18181b;
+  padding: 0.75rem 1.5rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+  user-select: none;
 }
 
-/* Typography Extensions */
-.font-handwriting {
-  font-family: 'Caveat', cursive;
+.btn-scrapbook-primary:hover {
+  background-color: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: 6px 6px 0px #18181b;
 }
 
-.font-serif-italic {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-style: italic;
-}
-
-/* 3D Utilities */
-.perspective-1000 {
-  perspective: 1000px;
-}
-
-.transform-style-3d {
-  transform-style: preserve-3d;
-}
-
-/* Tactile 3D Buttons (Human physical touch) */
-.btn-tactile {
-  box-shadow: 3px 3px 0px #0f172a;
-  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.btn-tactile:hover {
-  transform: translate(-1px, -1px);
-  box-shadow: 4px 4px 0px #0f172a;
-}
-
-.btn-tactile:active {
+.btn-scrapbook-primary:active {
   transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0px #0f172a;
+  box-shadow: 1px 1px 0px #18181b;
 }
 
-/* Tactile Secondary Button */
-.btn-tactile-secondary {
-  box-shadow: 3px 3px 0px rgba(15, 23, 42, 0.15);
-  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+.btn-scrapbook-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #ffffff;
+  color: #18181b;
+  font-weight: 700;
+  border: 2px solid #18181b;
+  border-radius: 0.75rem;
+  box-shadow: 4px 4px 0px #18181b;
+  padding: 0.75rem 1.5rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+  user-select: none;
 }
 
-.btn-tactile-secondary:hover {
-  transform: translate(-1px, -1px);
-  box-shadow: 4px 4px 0px rgba(15, 23, 42, 0.25);
+.btn-scrapbook-secondary:hover {
+  background-color: #fef08a;
+  transform: translateY(-2px);
+  box-shadow: 6px 6px 0px #18181b;
 }
 
-.btn-tactile-secondary:active {
+.btn-scrapbook-secondary:active {
   transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0px rgba(15, 23, 42, 0.1);
+  box-shadow: 1px 1px 0px #18181b;
 }
 
-/* Sticky Tape Accent Effect */
-.tape-strip {
+/* Washi Tape Strip */
+.washi-tape {
   position: absolute;
-  top: -9px;
-  left: 50%;
-  transform: translateX(-50%) rotate(-2deg);
-  width: 86px;
-  height: 20px;
-  background-color: rgba(254, 240, 138, 0.7);
-  backdrop-filter: blur(2px);
-  border: 1px dashed rgba(202, 138, 4, 0.35);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  height: 1.5rem;
+  width: 5rem;
+  background-color: rgba(254, 240, 138, 0.85);
+  border-top: 1px dashed rgba(24, 24, 27, 0.3);
+  border-bottom: 1px dashed rgba(24, 24, 27, 0.3);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+  pointer-events: none;
   z-index: 20;
 }
 
-/* Glass Panel */
-.glass-panel {
-  background-color: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(15, 23, 42, 0.08);
-  border-radius: 20px;
-  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+/* Highlighter Marker Effect */
+.highlighter-yellow {
+  background: linear-gradient(104deg, rgba(253, 224, 71, 0) 0.9%, rgba(253, 224, 71, 0.9) 2.4%, rgba(253, 224, 71, 0.75) 98%);
+  padding: 0.1rem 0.4rem;
+  border-radius: 0.25rem;
+  display: inline-block;
 }
 
-.glass-panel:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 36px -4px rgba(37, 99, 235, 0.12), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
-  border-color: rgba(37, 99, 235, 0.3);
+.highlighter-blue {
+  background: linear-gradient(104deg, rgba(56, 189, 248, 0) 0.9%, rgba(56, 189, 248, 0.8) 2.4%, rgba(56, 189, 248, 0.65) 98%);
+  padding: 0.1rem 0.4rem;
+  border-radius: 0.25rem;
+  display: inline-block;
 }
 
-.text-glow {
-  text-shadow: 0 2px 12px rgba(37, 99, 235, 0.25);
+.highlighter-green {
+  background: linear-gradient(104deg, rgba(34, 197, 94, 0) 0.9%, rgba(34, 197, 94, 0.8) 2.4%, rgba(34, 197, 94, 0.65) 98%);
+  padding: 0.1rem 0.4rem;
+  border-radius: 0.25rem;
+  display: inline-block;
+}
+
+/* Rubber Stamp Styling */
+.rubber-stamp {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  border: 2px dashed #ef4444;
+  color: #ef4444;
+  border-radius: 0.375rem;
+  transform: rotate(-3deg);
+  user-select: none;
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

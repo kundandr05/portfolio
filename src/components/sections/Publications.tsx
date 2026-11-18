@@ -1,66 +1,116 @@
 "use client";
 
-import { motion } from 'framer-motion';
-import { BookOpen, ExternalLink, FileText } from 'lucide-react';
-import PublicationCarousel from '@/components/publications/PublicationCarousel';
-
-const publications = [
-    {
-        type: "research",
-        title: "Tournament Management Agent Using Agentic Artificial Intelligence",
-        publisher: "IJCRT",
-        date: "December 2025",
-        description: "A detailed design and implementation of an AI-powered Tournament Management Agent based on Agentic Artificial Intelligence. The system introduces an autonomous conversational agent capable of understanding natural language queries and executing tournament management tasks.",
-        link: "http://ijcrt.org/viewfull.php?&p_id=IJCRT2512785",
-        image: "/paper-image.png",
-        icon: FileText,
-        color: "text-blue-600"
-    },
-    {
-        type: "book",
-        title: "RECLAIM YOUR FOCUS: A Guide to Dopamine Detox and Get Things Done",
-        publisher: "Amazon",
-        date: "2024",
-        description: "In a world drowning in digital noise, our brains are overstimulated by notifications and endless scrolling. This book is your roadmap back to clarity, exploring the science behind distractions and how our modern environment overloads the brain's reward system. Learn to strategically fast from high-stimulation activities, combat burnout, and forge new habits for a more intentional life.",
-        link: "https://a.co/d/07SiOZpN",
-        image: "/book-reclaim.jpg",
-        icon: BookOpen,
-        color: "text-rose-600"
-    },
-    {
-        type: "book",
-        title: "The Two-Speed Mind: Solving the 90s vs. 2000s Conflict to End Your Structural Stress",
-        publisher: "Amazon",
-        date: "2024",
-        description: "Stop calling it burnout. It's structural failure. You are suffering from a structural non-alignment between the stable 1990s Mindset and the relentless speed of the 2000s World. This book introduces Computational Physics to expose the true source of modern anxiety and provides a clear path to achieving the structural rebellion required for computational peace.",
-        link: "https://a.co/d/0euaUcnC",
-        image: "/book-twospeed.jpg",
-        icon: BookOpen,
-        color: "text-indigo-600"
-    }
-];
+import React from 'react';
+import Image from 'next/image';
+import { BookOpen, ExternalLink, Quote } from 'lucide-react';
+import { publications, featuredQuote } from '@/data/publications';
 
 export default function Publications() {
-    return (
-        <section id="publications" className="py-20">
-            <div className="container mx-auto px-4 max-w-6xl">
-                <div className="text-center mb-16 relative">
-                    <span className="font-handwriting text-2xl text-rose-500 font-bold rotate-[-2deg] inline-block mb-1">
-                        scholarly work & authorship 📖
-                    </span>
-                    <h2 className="text-4xl md:text-5xl font-display font-extrabold text-slate-900 tracking-tight">
-                        Published{' '}
-                        <span className="font-serif-italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-rose-600">
-                            Words & Papers
-                        </span>
-                    </h2>
-                    <p className="text-slate-600 text-base max-w-xl mx-auto mt-2">
-                        Peer-reviewed research in Agentic AI alongside two books authored and published globally on Amazon KDP.
-                    </p>
-                </div>
+  return (
+    <section id="publications" className="py-16 md:py-24 relative">
+      {/* Section Header */}
+      <div className="flex flex-col items-start mb-12">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#ef4444] text-white border-2 border-[#18181b] rounded-md shadow-[2px_2px_0px_#18181b] text-xs font-black uppercase tracking-wider -rotate-1 mb-3">
+          <BookOpen className="w-3.5 h-3.5" />
+          <span>Research & Authorship</span>
+        </div>
 
-                <PublicationCarousel publications={publications} />
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-black tracking-tight text-[#18181b]">
+          Published{' '}
+          <span className="bg-[#fde047] px-2 py-0.5 rounded-md border-2 border-[#18181b] shadow-[2px_2px_0px_#18181b] inline-block -rotate-1">
+            papers & books
+          </span>
+        </h2>
+        <p className="text-stone-600 text-sm sm:text-base mt-2 max-w-xl">
+          One peer-reviewed paper on autonomous agent coordination alongside two self-published books on focus and mental models.
+        </p>
+      </div>
+
+      {/* 3-Column Publications Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        {publications.map((pub) => (
+          <article
+            key={pub.id}
+            className={`bg-white border-2 border-[#18181b] rounded-2xl p-5 shadow-[5px_5px_0px_#18181b] hover:shadow-[8px_8px_0px_#18181b] transition-all flex flex-col justify-between relative ${
+              pub.rotation
+            } hover:rotate-0`}
+          >
+            {/* Top Washi Tape Corner */}
+            <div className="absolute -top-2.5 right-6 w-16 h-4 bg-[#fef08a] border border-[#18181b]/30 rotate-2 z-20 pointer-events-none shadow-xs" />
+
+            <div>
+              {/* Type Badge & Date */}
+              <div className="flex items-center justify-between gap-2 mb-3">
+                <span
+                  className={`px-2 py-0.5 border border-[#18181b] rounded-md text-[10px] font-mono font-bold uppercase shadow-[1px_1px_0px_#18181b] ${
+                    pub.type === 'Research Paper'
+                      ? 'bg-[#ef4444] text-white'
+                      : 'bg-[#fde047] text-[#18181b]'
+                  }`}
+                >
+                  {pub.badge}
+                </span>
+                <span className="text-xs font-mono text-stone-500 font-bold">{pub.date}</span>
+              </div>
+
+              {/* Cover Thumbnail Frame */}
+              <div className="relative aspect-[3/4] max-h-56 w-full rounded-xl overflow-hidden border-2 border-[#18181b] bg-stone-100 shadow-[2px_2px_0px_#18181b] mb-4">
+                <Image
+                  src={pub.image}
+                  alt={pub.title}
+                  fill
+                  className="object-cover object-top hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </div>
+
+              {/* Title & Subtitle */}
+              <h3 className="text-lg font-display font-black text-[#18181b] leading-snug mb-1">
+                {pub.title}
+              </h3>
+              <p className="text-xs text-stone-500 font-mono mb-2">{pub.identifier}</p>
+
+              {/* Description */}
+              <p className="text-stone-700 text-xs leading-relaxed mb-4">
+                {pub.description}
+              </p>
             </div>
-        </section>
-    );
+
+            {/* Read / View Link Button */}
+            <a
+              href={pub.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 bg-[#faf7ee] text-[#18181b] border-2 border-[#18181b] rounded-xl text-xs font-bold shadow-[2px_2px_0px_#18181b] hover:bg-[#38bdf8] hover:-translate-y-0.5 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all mt-2"
+            >
+              <span>{pub.linkLabel}</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          </article>
+        ))}
+      </div>
+
+      {/* Featured Author Quote Box */}
+      <div className="bg-[#fde047] border-2 border-[#18181b] rounded-2xl p-6 sm:p-8 shadow-[6px_6px_0px_#18181b] rotate-0.5 relative">
+        <div className="absolute -top-3 left-10 w-24 h-6 bg-white border border-[#18181b]/30 -rotate-2 z-20 pointer-events-none shadow-xs flex items-center justify-center text-[10px] font-mono font-bold text-stone-600">
+          BOOK EXCERPT
+        </div>
+
+        <div className="flex items-start gap-4">
+          <span className="p-2 bg-white border-2 border-[#18181b] rounded-xl shadow-[2px_2px_0px_#18181b] shrink-0 hidden sm:block">
+            <Quote className="w-6 h-6 text-[#ef4444]" />
+          </span>
+
+          <div className="space-y-2">
+            <blockquote className="text-base sm:text-lg font-display font-bold text-[#18181b] leading-relaxed italic">
+              &ldquo;{featuredQuote.text}&rdquo;
+            </blockquote>
+            <p className="text-xs font-mono font-bold text-stone-700">
+              — Kundan DR, <span className="underline">{featuredQuote.source}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }

@@ -1,46 +1,85 @@
-import { Github, Linkedin, Mail, Heart, Coffee } from 'lucide-react';
+"use client";
+
+import React from 'react';
+import { ArrowUp, Github, Linkedin, Mail } from 'lucide-react';
 
 export default function Footer() {
-    return (
-        <footer className="bg-white/90 backdrop-blur-md border-t border-slate-200/90 py-10 mt-auto relative z-10">
-            <div className="container mx-auto px-4 max-w-6xl flex flex-col md:flex-row justify-between items-center gap-6">
-                <div className="text-center md:text-left">
-                    <p className="text-slate-900 text-sm font-bold tracking-tight" suppressHydrationWarning>
-                        &copy; {new Date().getFullYear()} Kundan DR &bull; All rights reserved.
-                    </p>
-                    <p className="text-slate-500 text-xs mt-1 flex items-center justify-center md:justify-start gap-1.5 font-medium">
-                        <span>Crafted with</span>
-                        <Coffee className="w-3.5 h-3.5 text-amber-600 inline" />
-                        <span>& zero generic templates from Mysuru, India 🇮🇳</span>
-                    </p>
-                </div>
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
-                {/* Quirky Handwritten Stamp */}
-                <div className="text-center">
-                    <span className="font-handwriting text-xl text-blue-600 font-bold rotate-[-2deg] inline-block">
-                        &ldquo;Intelligent Systems. Elegant Solutions.&rdquo;
-                    </span>
-                </div>
+  return (
+    <footer className="mt-20 border-t-2 border-[#18181b] bg-[#faf7ee] py-10 relative z-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl flex flex-col md:flex-row items-center justify-between gap-6">
+        
+        {/* Left: Colophon & Copyright */}
+        <div className="flex flex-col items-center md:items-start text-center md:text-left gap-1">
+          <div className="flex items-center gap-2">
+            <span className="w-6 h-6 rounded-md bg-[#ef4444] text-white border border-[#18181b] flex items-center justify-center font-black font-display text-xs shadow-[1px_1px_0px_#18181b]">
+              K
+            </span>
+            <span className="font-display font-black text-sm text-[#18181b]">
+              Kundan DR · Portfolio
+            </span>
+          </div>
 
-                <div className="flex space-x-3">
-                    {[
-                        { icon: Github, href: "https://github.com/kundandr05", label: "GitHub", hover: "hover:text-blue-600 hover:bg-blue-50 hover:border-blue-200" },
-                        { icon: Linkedin, href: "https://linkedin.com/in/kundan-d-r-914274310", label: "LinkedIn", hover: "hover:text-indigo-600 hover:bg-indigo-50 hover:border-indigo-200" },
-                        { icon: Mail, href: "mailto:kundandr05@gmail.com", label: "Email", hover: "hover:text-rose-600 hover:bg-rose-50 hover:border-rose-200" }
-                    ].map((social, index) => (
-                        <a
-                            key={index}
-                            href={social.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={social.label}
-                            className={`p-2.5 rounded-xl border border-slate-200 bg-white text-slate-600 ${social.hover} shadow-sm transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0`}
-                        >
-                            <social.icon className="w-4 h-4" />
-                        </a>
-                    ))}
-                </div>
-            </div>
-        </footer>
-    );
+          <p className="text-xs font-mono text-stone-500" suppressHydrationWarning>
+            © {new Date().getFullYear()} Kundan DR. Hand-crafted with Next.js 16, TypeScript &amp; Tailwind CSS.
+          </p>
+          <p className="text-[11px] font-mono text-stone-400">
+            Deployed on Vercel · Mysuru, Karnataka, India 🇮🇳
+          </p>
+        </div>
+
+        {/* Center: Playful Handwritten Stamp */}
+        <div className="hidden lg:block text-center">
+          <span className="font-handwriting text-lg text-stone-700 font-bold -rotate-1 inline-block">
+            &ldquo;Built with code, grit &amp; zero templates&rdquo; 🛠️
+          </span>
+        </div>
+
+        {/* Right: Socials & Back to Top Button */}
+        <div className="flex items-center gap-3">
+          <a
+            href="https://github.com/kundandr05"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 bg-white text-[#18181b] border-2 border-[#18181b] rounded-xl shadow-[2px_2px_0px_#18181b] hover:bg-[#38bdf8] hover:-translate-y-0.5 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all"
+            aria-label="GitHub"
+          >
+            <Github className="w-4 h-4" />
+          </a>
+
+          <a
+            href="https://linkedin.com/in/kundan-d-r-914274310"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 bg-white text-[#18181b] border-2 border-[#18181b] rounded-xl shadow-[2px_2px_0px_#18181b] hover:bg-[#38bdf8] hover:-translate-y-0.5 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all"
+            aria-label="LinkedIn"
+          >
+            <Linkedin className="w-4 h-4 text-[#0a66c2]" />
+          </a>
+
+          <a
+            href="mailto:kundandr05@gmail.com"
+            className="p-2 bg-white text-[#18181b] border-2 border-[#18181b] rounded-xl shadow-[2px_2px_0px_#18181b] hover:bg-[#fde047] hover:-translate-y-0.5 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all"
+            aria-label="Email"
+          >
+            <Mail className="w-4 h-4 text-[#ef4444]" />
+          </a>
+
+          {/* Back to top button */}
+          <button
+            onClick={scrollToTop}
+            className="inline-flex items-center gap-1 px-3 py-2 bg-[#fde047] text-[#18181b] border-2 border-[#18181b] rounded-xl text-xs font-bold shadow-[2px_2px_0px_#18181b] hover:-translate-y-0.5 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all ml-1"
+            title="Scroll to top"
+          >
+            <span>Top</span>
+            <ArrowUp className="w-3.5 h-3.5" />
+          </button>
+        </div>
+
+      </div>
+    </footer>
+  );
 }

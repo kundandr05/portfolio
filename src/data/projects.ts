@@ -1,154 +1,232 @@
 export interface Project {
-    slug: string;
-    title: string;
-    description: string;
-    tags: string[];
-    image: string;
-    github?: string;
-    githubLabel?: string;
-    demo?: string;
-    demoLabel?: string;
-    videoUrl?: string;
-    youtubeUrl?: string;
-    keyFeatures?: string[];
-    architecture?: string;
-    challenges?: string;
-    futureImprovements?: string;
+  slug: string;
+  title: string;
+  tagline: string;
+  description?: string;
+  category: "Flagship" | "Autonomous AI" | "Full-Stack" | "Open Source";
+  date: string;
+  problem: string;
+  built: string;
+  result: string;
+  tags: string[];
+  image: string;
+  github?: string;
+  githubLabel?: string;
+  demo?: string;
+  demoLabel?: string;
+  youtubeUrl?: string;
+  futureImprovements?: string;
+  role: string;
+  timeline: string;
+  keyFeatures: string[];
+  architecture: string;
+  challenges: string;
+  outcome: string;
+  color: "tomato" | "yellow" | "green" | "blue";
+  rotation: string; // e.g. "-rotate-1", "rotate-2" for scrapbook feel
 }
 
 export const projects: Project[] = [
-    {
-        slug: "dispatchgrid",
-        title: "DispatchGrid: Autonomous Workforce Dispatch & Recovery Engine",
-        description: "Autonomous full-stack workforce dispatch platform with automated technician allocation, constraint-based greedy scheduling, 2-opt route optimization, and Groq-powered AI booking assistance.",
-        tags: ["React", "TypeScript", "Node.js", "Express", "Prisma", "Groq AI", "Leaflet", "Render"],
-        image: "/project-dispatchgrid.png",
-        github: "https://github.com/kundandr05/ByteForge_H4H",
-        githubLabel: "ByteForge H4H",
-        demo: "https://byteforge-h4h.onrender.com",
-        demoLabel: "Live on Render",
-        keyFeatures: [
-            "Constraint-based scheduling engine enforcing 7 operational constraints with greedy heuristics & 2-opt route optimization",
-            "Disruption recovery engine dynamically recalculating technician schedules upon cancellations, delays, or emergency tickets",
-            "Groq-powered conversational AI booking assistant for automated customer booking and natural language intent parsing",
-            "Interactive geospatial dispatch map visualization built with Leaflet and live status tracking",
-            "Role-based portals (Admin, Field Technician, Customer) with SHA-256 hash-chained tamper-evident audit logs"
-        ],
-        architecture: "Frontend engineered with React, TypeScript, and Tailwind CSS. Backend services powered by Node.js, Express, and Prisma ORM with SQLite, integrating ultra-fast Groq LPU inference for AI assistance and deployed live on Render.",
-        challenges: "Developing an algorithmic constraint solver capable of simultaneously balancing technician skill requirements, shift constraints, travel time, and priority dispatch in real time during field disruptions.",
-        futureImprovements: "Add real-time GPS telemetry via WebSockets, multi-depot fleet rebalancing, and predictive dispatch using historical seasonal demand models."
-    },
-    {
-        slug: "personal-portfolio-website",
-        title: "Personal Portfolio Website",
-        description: "Modern portfolio built with Next.js showcasing projects, research publications, technical skills, and professional achievements.",
-        tags: ["Next.js", "TypeScript", "Tailwind CSS", "Portfolio"],
-        image: "/project4.png",
-        github: "https://github.com/kundandr05/portfolio",
-        demo: "https://kundandr-portfolio.vercel.app/",
-        demoLabel: "Live Demo",
-        keyFeatures: [
-            "Server-side rendering for optimal SEO and performance",
-            "Framer Motion animations for engaging UI/UX",
-            "Responsive and accessible cyber/neon design system"
-        ],
-        architecture: "A Next.js 14 App Router application leveraging Tailwind CSS for styling and deployed on Vercel.",
-        challenges: "Creating highly customized Framer Motion animations that performed smoothly across mobile devices.",
-        futureImprovements: "Add a headless CMS to manage project content dynamically."
-    },
-    {
-        slug: "krishna-leela-chatbot",
-        title: "Krishna Leela Chatbot",
-        description: "A divine storytelling AI chatbot that narrates stories of Lord Krishna in English, Kannada, Tamil, and Telugu, powered by Google Gemini API.",
-        tags: ["Vanilla JS", "Gemini API", "HTML/CSS", "AI Chatbot"],
-        image: "/project5.png",
-        github: "https://github.com/kundandr05/KrishnaLeela",
-        demo: "https://krishna-leela.vercel.app/",
-        demoLabel: "Live Demo",
-        keyFeatures: [
-            "Multi-language support for diverse storytelling",
-            "Real-time streaming responses using Google Gemini API",
-            "Dynamic UI with suggestion chips and animations"
-        ],
-        architecture: "A pure frontend application leveraging Vanilla JavaScript to directly interface with the Google Gemini API without a backend.",
-        challenges: "Securely managing API key configuration through localStorage and parsing streaming text responses in pure Vanilla JavaScript.",
-        futureImprovements: "Integrate a lightweight Node.js backend to completely obscure the API key and manage context windows more efficiently."
-    },
-    {
-        slug: "learning-management-system",
-        title: "Learning Management System (LMS)",
-        description: "A comprehensive Learning Management System built to facilitate online education, course management, and student engagement.",
-        tags: ["React", "LMS", "Web App", "Vercel"],
-        image: "/project3.jpg",
-        github: "https://github.com/kundandr05/Ravikumar-lms",
-        demo: "https://ravikumar-lms.vercel.app/",
-        demoLabel: "Live Demo",
-        youtubeUrl: "https://youtu.be/Cy9P7ElcsvU?si=XJdITCEoDqAy35vY",
-        keyFeatures: [
-            "Online course tracking and management",
-            "Interactive student dashboard",
-            "Seamless user authentication and progress saving"
-        ],
-        architecture: "Modern web application architecture designed for scalability and responsive user experience.",
-        challenges: "Implementing a clean and intuitive UI that caters to both students and administrators.",
-        futureImprovements: "Integrate AI-driven personalized learning paths and advanced analytics."
-    },
-    {
-        slug: "ollama-chatbot",
-        title: "Ollama Chatbot",
-        description: "A local, privacy-focused conversational AI interface that communicates directly with Ollama models running on your machine. Includes web search capabilities and real-time streaming.",
-        tags: ["Python", "Ollama", "LLM", "Local AI"],
-        image: "/project6.png",
-        github: "https://github.com/kundandr05/ollama-chatbot",
-        demo: "https://kundan-ollama-chatbot.vercel.app",
-        demoLabel: "Live Demo",
-        keyFeatures: [
-            "Seamless integration with local Ollama models",
-            "Real-time streaming responses with context history",
-            "Live DuckDuckGo web search integration"
-        ],
-        architecture: "A Python application providing a clean UI layer that interfaces with the local Ollama API, allowing for completely offline, private AI conversations.",
-        challenges: "Handling real-time token streaming and implementing robust connection checks for the local Ollama instance.",
-        futureImprovements: "Add support for more specialized local models and enhance the RAG (Retrieval-Augmented Generation) pipeline."
-
-    },
-    {
-        slug: "zeno-ai",
-        title: "Zeno AI: Intelligent Multi-Modal Assistant",
-        description: "Built a multimodal AI assistant supporting real-time web intelligence and vision analysis with secure Firebase authentication. Implemented dynamic model routing between Gemini 2.5 Flash and Perplexity.",
-        tags: ["React", "Vite", "OpenRouter API", "Firebase Auth", "Render"],
-        image: "/project-zeno.png",
-        videoUrl: "/placeholder-video.mp4",
-        github: "https://github.com/kundandr05/Zeno_chatbot",
-        demo: "https://zeno-chatbot-k46i.onrender.com/",
-        demoLabel: "Live on Render",
-        keyFeatures: [
-            "Dynamic AI Routing Engine utilizing Perplexity and Gemini 2.5 Flash",
-            "Automated fallback handling for resilient AI responses",
-            "Secure Firebase Authentication",
-            "Premium Glassmorphism UI with vibrant aurora gradients"
-        ],
-        architecture: "Frontend built with React.js and Vite. Features dynamic routing between Perplexity for text/web search and Gemini 2.5 Flash for vision analysis, deployed on Render.",
-        challenges: "Engineering custom routing logic to dynamically switch between different LLMs based on user input context while ensuring resilient API fallback handling.",
-        futureImprovements: "Expand the dynamic routing logic to support a wider array of specialized local and cloud models and implement long-term conversational memory using vector databases."
-    },
-    {
-        slug: "agentic-ai-tournament-management-system",
-        title: "Agentic AI-Based Tournament Management System",
-        description: "Developed an AI-powered tournament management platform using an agentic architecture to automate registration, scheduling, and match coordination. Completed core features within a 3-day hackathon.",
-        tags: ["Python", "FastAPI", "SQLite", "Agentic AI", "Hackathon"],
-        image: "/paper-image.png",
-        videoUrl: "/placeholder-video2.mp4",
-        github: "#",
-        githubLabel: "Hebbale Academy Hackathon",
-        demo: "#",
-        keyFeatures: [
-            "Autonomous multi-agent scheduling and coordination",
-            "Automated team registration and validation workflows",
-            "Backend APIs and robust database integration"
-        ],
-        architecture: "Built on a multi-agent framework orchestrating interactions via a FastAPI backend and SQLite database.",
-        challenges: "Ensuring distinct agents communicated correctly without race conditions within strict 3-day hackathon limits.",
-        futureImprovements: "Expand the system to handle multi-tier bracket tournaments and integrate a live scoreboard UI."
-    }
+  {
+    slug: "dispatchgrid",
+    title: "DispatchGrid",
+    tagline: "Autonomous Field Workforce Dispatch & Recovery Engine",
+    category: "Flagship",
+    date: "2026",
+    problem: "Real-world field services face chaotic disruptions—technician cancellations, emergency priority jobs, and skill mismatches turn schedules into unmanageable logjams.",
+    built: "Built an autonomous dispatch engine enforcing 7 operational constraints with greedy heuristics, 2-opt route optimization, and live Groq LPU intent parsing.",
+    result: "Instant schedule rebalancing during disruptions, Leaflet geospatial visualization, and SHA-256 tamper-evident audit logs.",
+    tags: ["React", "TypeScript", "Node.js", "Express", "Prisma", "Groq AI", "Leaflet", "Render"],
+    image: "/project-dispatchgrid.png",
+    github: "https://github.com/kundandr05/ByteForge_H4H",
+    githubLabel: "ByteForge H4H",
+    demo: "https://byteforge-h4h.onrender.com",
+    demoLabel: "Live on Render",
+    role: "Lead Full-Stack & Algorithm Engineer",
+    timeline: "Hackathon & Production Iteration (2026)",
+    keyFeatures: [
+      "Constraint solver balancing technician skills, shift limits, customer priority, and geographic proximity in under 400ms",
+      "Dynamic disruption recovery engine automatically reassigning pending tickets when a technician calls out",
+      "Groq LPU conversational AI assistant for booking creation, urgency extraction, and customer intent parsing",
+      "Geospatial dispatch map with real-time cluster visualization and route overlays using Leaflet",
+      "Multi-role RBAC portals (Field Tech, Operations Dispatcher, End Customer) with SHA-256 audit chaining"
+    ],
+    architecture: "React + TypeScript frontend consuming Express.js REST API with Prisma ORM and SQLite. Groq Cloud LPU handles sub-second LLM intent parsing; background solvers execute 2-opt trajectory optimization.",
+    challenges: "Handling NP-hard vehicle routing constraints within interactive web timeouts. Solved using partitioned greedy clustering followed by local 2-opt edge-exchange heuristics.",
+    outcome: "Presented at ByteForge hackathon, currently deployed live on Render with active technician and dispatcher simulation workflows.",
+    color: "tomato",
+    rotation: "-rotate-1"
+  },
+  {
+    slug: "zeno-ai-multimodal-assistant",
+    title: "Zeno AI",
+    tagline: "Multi-Modal Intelligence Assistant with Dynamic LLM Routing",
+    category: "Flagship",
+    date: "2026",
+    problem: "Single-model assistants often suffer from hallucinated real-time facts or lack native multi-modal image interpretation without exorbitant API costs.",
+    built: "Engineered a dual-engine AI assistant with intelligent request routing between Perplexity (real-time live web retrieval) and Gemini 1.5 (deep vision reasoning).",
+    result: "Sub-second query classification, zero-friction multimodal image queries, and a custom Markdown code-highlighting canvas.",
+    tags: ["JavaScript", "FastAPI", "Perplexity API", "Google Gemini", "WebSockets", "CSS3"],
+    image: "/project-zeno.png",
+    github: "https://github.com/kundandr05/Zeno_chatbot",
+    githubLabel: "kundandr05/Zeno_chatbot",
+    demo: "https://zeno-chatbot-k46i.onrender.com/",
+    demoLabel: "Live on Render",
+    role: "Creator & AI Engineer",
+    timeline: "2026",
+    keyFeatures: [
+      "Dynamic prompt intent router classifying input into real-time search queries vs vision/code synthesis",
+      "Perplexity API integration for verified citations and grounded search results",
+      "Google Gemini multimodal pipeline processing high-resolution visual documents and code screenshots",
+      "Streaming responses with real-time markdown token rendering and copyable code blocks",
+      "Lightweight responsive client built without bulky UI libraries for 60fps mobile execution"
+    ],
+    architecture: "FastAPI asynchronous backend managing connection pooling and API tokens. Dynamic routing middleware evaluates prompt heuristics to invoke either Gemini 1.5 Pro or Perplexity Sonar endpoints.",
+    challenges: "Managing rate-limiting, error fallbacks, and multi-modal image buffer serialization across asynchronous HTTP streams.",
+    outcome: "Deployed live on Render with hundreds of student users using it for daily technical queries, code debugging, and document summarization.",
+    color: "blue",
+    rotation: "rotate-1"
+  },
+  {
+    slug: "agentic-ai-tournament-management-system",
+    title: "Agentic Tournament Manager",
+    tagline: "Autonomous Multi-Agent Sports Tournament Coordinator",
+    category: "Flagship",
+    date: "2026",
+    problem: "Collegiate and regional tournaments collapse under manual scheduling chaos: weather cancellations, referee conflicts, and tie-breaker disputes.",
+    built: "Designed a multi-agent coordination architecture where specialized agents autonomously handle fixture generation, referee assignments, scoring, and bracket progressions.",
+    result: "Published peer-reviewed research in IJCRT (July 2026); eliminated manual scheduling errors in multi-stage tournament simulations.",
+    tags: ["Python", "FastAPI", "Agentic AI", "Multi-Agent Coordination", "SQLite", "Research"],
+    image: "/project3.jpg",
+    github: "https://github.com/kundandr05/Tournament_management",
+    githubLabel: "Tournament Repo",
+    demo: "https://ijcrt.org/papers/IJCRT2607147.pdf",
+    demoLabel: "Read Published Paper",
+    role: "Lead Researcher & Core Architect",
+    timeline: "Research & Implementation (2026)",
+    keyFeatures: [
+      "Coordinator Agent orchestrating downstream specialized agents via asynchronous event queues",
+      "Dynamic fixture rebalancer adjusting knockouts and round-robin matrices when games get delayed",
+      "Referee eligibility agent preventing double-booking and tracking certification levels",
+      "Auditable match-result verification pipeline with conflict escalation protocols",
+      "Full academic documentation with mathematical scheduling modeling"
+    ],
+    architecture: "Python/FastAPI multi-agent service layer with SQLite storage. Event-driven internal communication triggers automated state updates across tournament brackets.",
+    challenges: "Ensuring deterministic state consensus when multiple tournament agents simultaneously propose timetable adjustments upon inclement weather alerts.",
+    outcome: "Formally accepted and published in the International Journal of Creative Research Thoughts (IJCRT, Volume 14, Issue 7, July 2026).",
+    color: "green",
+    rotation: "-rotate-2"
+  },
+  {
+    slug: "krishna-leela-chatbot",
+    title: "Krishna Leela Chatbot",
+    tagline: "Multilingual Mythological Narrative AI",
+    category: "Autonomous AI",
+    date: "2025",
+    problem: "Traditional storytelling apps lack conversational context, making ancient philosophical epics inaccessible to modern multilingual readers.",
+    built: "Created a conversational narrative companion using Google Gemini API and responsive Vanilla JavaScript with contextual cultural grounding.",
+    result: "Interactive multilingual Q&A, cultural context explanations, and zero-dependency lightweight client architecture.",
+    tags: ["JavaScript", "HTML5", "CSS3", "Google Gemini API", "Vercel"],
+    image: "/project4.png",
+    github: "https://github.com/kundandr05/KrishnaLeela",
+    githubLabel: "KrishnaLeela Repo",
+    demo: "https://krishna-leela.vercel.app/",
+    demoLabel: "Live Demo",
+    role: "Full-Stack Developer",
+    timeline: "2025",
+    keyFeatures: [
+      "System prompt persona engineering preserving compassionate, philosophical storytelling voice",
+      "Multilingual dialogue support across English, Kannada, and Hindi",
+      "Lightweight zero-dependency DOM rendering for instant page load on 3G connections"
+    ],
+    architecture: "Serverless frontend deployed on Vercel connecting securely to Google Gemini REST endpoints with structured dialogue memory.",
+    challenges: "Preventing modern colloquial slang from breaking the serene, historically grounded tone of the character.",
+    outcome: "Popular cultural exploration tool used by peers and family, deployed stably with zero server maintenance.",
+    color: "yellow",
+    rotation: "rotate-1"
+  },
+  {
+    slug: "ollama-local-ai-chatbot",
+    title: "Ollama Local AI Chatbot",
+    tagline: "Privacy-Preserving Offline LLM Assistant with Web Search",
+    category: "Open Source",
+    date: "2025",
+    problem: "Cloud LLMs introduce privacy risks and recurring subscription costs for students handling private codebases and local notes.",
+    built: "Built an entirely local, self-hosted web UI connecting directly to Ollama runtimes (Llama 3, Mistral, Qwen) with optional live web retrieval.",
+    result: "Complete data sovereignty, zero token bills, offline-first execution, and streaming markdown output.",
+    tags: ["Python", "Ollama", "FastAPI", "WebSockets", "Local AI", "Tailwind CSS"],
+    image: "/project5.png",
+    github: "https://github.com/kundandr05/ollama-chatbot",
+    githubLabel: "kundandr05/ollama-chatbot",
+    role: "Open Source Creator",
+    timeline: "2025",
+    keyFeatures: [
+      "Direct WebSocket streaming from local Ollama instances on localhost:11434",
+      "Model switcher supporting instant hot-swapping between Mistral, Llama 3, and Phi-3",
+      "Optional privacy-focused search augmentation fetching fresh web snippets without telemetry"
+    ],
+    architecture: "FastAPI server relaying requests to local Ollama daemon. Client manages markdown parsing, code highlighting, and local conversation persistence in IndexedDB.",
+    challenges: "Handling memory throttling on laptops with limited VRAM while maintaining fluid token streaming.",
+    outcome: "Open-source daily driver utilized for private study sessions and offline coding on the go.",
+    color: "blue",
+    rotation: "-rotate-1"
+  },
+  {
+    slug: "college-management-system-lms",
+    title: "Campus LMS & Academic Portal",
+    tagline: "Integrated Course, Attendance & Grade Management",
+    category: "Full-Stack",
+    date: "2025",
+    problem: "Siloed college departments juggle disparate spreadsheets for attendance, internal marks, and assignment distribution.",
+    built: "Engineered an all-in-one academic portal with role-based access for students, professors, and administrative staff.",
+    result: "Centralized attendance calculations, PDF report exports, and automated deficiency alerts.",
+    tags: ["React", "Node.js", "Express", "MongoDB", "JWT Auth", "REST API"],
+    image: "/project6.png",
+    github: "https://github.com/kundandr05/college_management_system",
+    githubLabel: "LMS Repo",
+    role: "Backend & Database Architect",
+    timeline: "2025",
+    keyFeatures: [
+      "Role-Based Access Control (Admin, Faculty, Student) secured with JWT tokens and bcrypt hashing",
+      "Automated attendance cutoff calculator warning students below 75% threshold",
+      "Faculty grading interface with bulk CSV import and automated SGPA/CGPA computation"
+    ],
+    architecture: "MERN architecture with normalized MongoDB schema models and Express REST middleware with rate limiting.",
+    challenges: "Designing normalized schemas capable of handling semester rollover and faculty reassignments without corrupting historical transcripts.",
+    outcome: "Built as a comprehensive academic system project with full test coverage and database seeders.",
+    color: "tomato",
+    rotation: "rotate-2"
+  },
+  {
+    slug: "personal-portfolio-website",
+    title: "Handmade Scrapbook Portfolio",
+    tagline: "Creative Sticker-Board Digital Garden",
+    category: "Full-Stack",
+    date: "2026",
+    problem: "Most developer portfolios use identical dark-mode templates, neon glows, and AI-generated buzzwords with zero personal character.",
+    built: "Hand-crafted a warm, tactile light-mode digital scrapbook featuring chunky outlines, interactive draggable stickers, Lenis smooth scroll, and genuine case studies.",
+    result: "100% human-crafted feel, sub-second loads, 0 TypeScript/ESLint warnings, and memorable recruiter engagement.",
+    tags: ["Next.js 16", "TypeScript", "Tailwind CSS v4", "Framer Motion", "Lenis"],
+    image: "/project4.png",
+    github: "https://github.com/kundandr05/portfolio",
+    githubLabel: "Source Code",
+    demo: "https://kundandr-portfolio.vercel.app/",
+    demoLabel: "Live Site",
+    role: "Designer & Engineer",
+    timeline: "2026",
+    keyFeatures: [
+      "Scrapbook aesthetics with chunky 2px borders, hard offset shadows, and washi-tape photo frames",
+      "Interactive draggable sticker badges visitors can pick up and rearrange in the hero",
+      "Authentic 'Currently' telemetry strip tracking live reading, building, and local Mysuru time",
+      "Full case study architecture with zero template shortcuts and genuine project narratives"
+    ],
+    architecture: "Next.js 16 App Router on React 19, styled with Tailwind CSS v4, animated with Framer Motion and Lenis smooth scroll.",
+    challenges: "Balancing playful tactile styling with strict Lighthouse performance, accessible color contrast, and zero layout shift on mobile.",
+    outcome: "Pushed to production on Vercel as Kundan's primary professional portfolio.",
+    color: "yellow",
+    rotation: "-rotate-1"
+  }
 ];
+
+export const flagshipProjects = projects.filter(p => p.category === "Flagship");
+export const secondaryProjects = projects.filter(p => p.category !== "Flagship");

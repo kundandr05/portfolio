@@ -1,164 +1,133 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Terminal, Sparkles } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import MagneticWrapper from '@/components/shared/MagneticWrapper';
+import { Menu, X, FileText } from 'lucide-react';
+import ResumeModal from '@/components/shared/ResumeModal';
 
-const navItems = [
-    { name: 'Home', path: '/#home' },
-    { name: 'Studio Desk', path: '/#desk' },
-    { name: 'About', path: '/#about' },
-    { name: 'Experience', path: '/#experience' },
-    { name: 'Projects', path: '/#projects' },
-    { name: 'Skills', path: '/#skills' },
-    { name: 'Publications', path: '/#publications' },
-    { name: 'Contact', path: '/#contact' },
+const navLinks = [
+  { name: 'Work', href: '/#projects', color: 'hover:bg-[#fde047]' },
+  { name: 'About', href: '/#about', color: 'hover:bg-[#38bdf8]' },
+  { name: 'Research & Books', href: '/#publications', color: 'hover:bg-[#ef4444] hover:text-white' },
+  { name: 'Experience', href: '/#experience', color: 'hover:bg-[#22c55e] hover:text-white' },
+  { name: 'Skills', href: '/#skills', color: 'hover:bg-[#fde047]' },
+  { name: 'Contact', href: '/#contact', color: 'hover:bg-[#38bdf8]' },
 ];
 
 export default function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
-    const [activeSection, setActiveSection] = useState('/#home');
-    const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        setActiveSection(`/#${entry.target.id}`);
-                    }
-                });
-            },
-            { rootMargin: '-20% 0px -70% 0px' }
-        );
+  return (
+    <>
+      <header
+        className={`fixed top-3 sm:top-4 left-0 right-0 z-40 transition-all duration-200 px-3 sm:px-6 max-w-6xl mx-auto`}
+      >
+        <nav className="bg-[#ffffff] border-2 border-[#18181b] rounded-2xl px-4 sm:px-6 py-2.5 sm:py-3 shadow-[4px_4px_0px_#18181b] flex items-center justify-between relative">
+          {/* Subtle Decorative Washi Tape on top left corner */}
+          <div className="hidden sm:block absolute -top-2.5 left-8 w-16 h-4 bg-[#fde047]/80 border-t border-b border-[#18181b]/30 rotate-[-2deg] pointer-events-none shadow-xs" />
 
-        navItems.forEach((item) => {
-            const id = item.path.replace('/#', '');
-            const element = document.getElementById(id);
-            if (element) observer.observe(element);
-        });
-
-        return () => observer.disconnect();
-    }, [pathname]);
-
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const hash = window.location.hash;
-            if (hash) {
-                setActiveSection(`/${hash}`);
-            }
-        }
-    }, [pathname]);
-
-    const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
-        setIsOpen(false);
-        const id = path.replace('/#', '');
-        const element = document.getElementById(id);
-        if (element) {
-            e.preventDefault();
-            element.scrollIntoView({ behavior: 'smooth' });
-            window.history.pushState(null, '', path);
-            setActiveSection(path);
-        }
-    };
-
-    return (
-        <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/80 shadow-[0_1px_3px_rgba(0,0,0,0.03)]">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-16">
-                    <Link href="/#home" onClick={(e) => handleLinkClick(e, '/#home')} className="flex items-center space-x-2.5 group">
-                        <div className="w-8 h-8 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold text-xs shadow-sm group-hover:bg-blue-600 transition-colors">
-                            K
-                        </div>
-                        <div className="flex flex-col">
-                            <span className="text-sm font-black font-display tracking-tight text-slate-900 group-hover:text-blue-600 transition-colors leading-tight">
-                                KUNDAN DR
-                            </span>
-                            <span className="text-[10px] text-slate-500 font-mono">
-                                AI Engineer &bull; Author
-                            </span>
-                        </div>
-                    </Link>
-
-                    {/* Desktop Menu */}
-                    <div className="hidden lg:flex items-center space-x-1">
-                        {navItems.map((item) => (
-                            <MagneticWrapper key={item.path}>
-                                <Link
-                                    href={item.path}
-                                    onClick={(e) => handleLinkClick(e, item.path)}
-                                    className={cn(
-                                        "px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 relative group inline-block",
-                                        activeSection === item.path
-                                            ? "text-blue-600 bg-blue-50/80 font-bold"
-                                            : "text-slate-600 hover:text-slate-900 hover:bg-slate-100/60"
-                                    )}
-                                >
-                                    <span>{item.name}</span>
-                                </Link>
-                            </MagneticWrapper>
-                        ))}
-
-                        <a
-                            href="mailto:kundandr05@gmail.com"
-                            className="ml-3 px-4 py-2 rounded-xl bg-slate-900 text-white text-xs font-bold hover:bg-blue-600 transition-colors shadow-sm"
-                        >
-                            Let&apos;s Talk
-                        </a>
-                    </div>
-
-                    {/* Mobile Menu Button */}
-                    <div className="lg:hidden flex items-center">
-                        <button
-                            onClick={() => setIsOpen(!isOpen)}
-                            className="text-slate-700 hover:text-blue-600 p-2 focus:outline-none"
-                            aria-label="Toggle menu"
-                        >
-                            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-                        </button>
-                    </div>
-                </div>
+          {/* Logo / Brand Name */}
+          <Link
+            href="/"
+            className="flex items-center gap-2 group focus:outline-none"
+            aria-label="Kundan DR Homepage"
+          >
+            <span className="w-8 h-8 rounded-lg bg-[#ef4444] text-white border-2 border-[#18181b] flex items-center justify-center font-black font-display text-base shadow-[2px_2px_0px_#18181b] group-hover:rotate-6 transition-transform">
+              K
+            </span>
+            <div className="flex flex-col">
+              <span className="font-display font-black text-lg tracking-tight text-[#18181b] group-hover:text-[#ef4444] transition-colors">
+                kundan.dr
+              </span>
+              <span className="text-[10px] font-mono text-stone-500 font-bold uppercase tracking-wider -mt-1 hidden xs:block">
+                ai & backend
+              </span>
             </div>
+          </Link>
 
-            {/* Mobile Menu */}
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="lg:hidden bg-white/95 backdrop-blur-xl border-b border-slate-200 px-4 pt-2 pb-6 space-y-1 shadow-lg"
-                    >
-                        {navItems.map((item) => (
-                            <Link
-                                key={item.path}
-                                href={item.path}
-                                onClick={(e) => handleLinkClick(e, item.path)}
-                                className={cn(
-                                    "block px-4 py-2.5 rounded-xl text-sm font-semibold transition-colors",
-                                    activeSection === item.path
-                                        ? "text-blue-600 bg-blue-50 font-bold"
-                                        : "text-slate-700 hover:text-blue-600 hover:bg-slate-50"
-                                )}
-                            >
-                                {item.name}
-                            </Link>
-                        ))}
-                        <div className="pt-2">
-                            <a
-                                href="mailto:kundandr05@gmail.com"
-                                className="block w-full text-center px-4 py-2.5 rounded-xl bg-slate-900 text-white text-sm font-bold shadow-sm"
-                            >
-                                Contact Directly
-                            </a>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+          {/* Desktop Nav Items */}
+          <div className="hidden md:flex items-center gap-1.5 lg:gap-2">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className={`px-3 py-1.5 text-xs font-bold text-[#18181b] rounded-lg border border-transparent hover:border-[#18181b] hover:shadow-[2px_2px_0px_#18181b] hover:-translate-y-0.5 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all ${link.color}`}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
+
+          {/* Right Action: Resume & Mobile Hamburger */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            <button
+              onClick={() => setIsResumeOpen(true)}
+              className="inline-flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 text-xs font-extrabold text-[#18181b] bg-[#fde047] border-2 border-[#18181b] rounded-xl shadow-[3px_3px_0px_#18181b] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_#18181b] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all"
+            >
+              <FileText className="w-3.5 h-3.5 text-[#18181b]" />
+              <span>Resume</span>
+            </button>
+
+            {/* Mobile Hamburger Button */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden p-2 text-[#18181b] bg-white border-2 border-[#18181b] rounded-xl shadow-[2px_2px_0px_#18181b] hover:bg-[#fde047] transition-colors"
+              aria-label="Toggle navigation menu"
+              aria-expanded={isOpen}
+            >
+              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
         </nav>
-    );
+
+        {/* Mobile Navigation Drawer */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -10, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -10, scale: 0.98 }}
+              transition={{ duration: 0.2 }}
+              className="md:hidden mt-2 p-5 bg-[#faf7ee] border-2 border-[#18181b] rounded-2xl shadow-[6px_6px_0px_#18181b] flex flex-col gap-3"
+            >
+              <div className="flex items-center justify-between pb-2 border-b border-[#18181b]/20">
+                <span className="text-xs font-mono font-bold text-stone-500 uppercase">Directory</span>
+                <span className="text-xs font-handwriting text-stone-600">tumble into a section ↘</span>
+              </div>
+
+              <div className="grid grid-cols-2 gap-2">
+                {navLinks.map((link, idx) => (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className={`p-3 text-sm font-extrabold text-[#18181b] bg-white border-2 border-[#18181b] rounded-xl shadow-[2px_2px_0px_#18181b] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all ${
+                      idx % 2 === 0 ? '-rotate-1 hover:rotate-0' : 'rotate-1 hover:rotate-0'
+                    } ${link.color}`}
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </div>
+
+              <div className="pt-2 border-t border-[#18181b]/20 flex justify-between items-center text-xs font-mono text-stone-500">
+                <span>Graduating 2027 · MIT Mysuru</span>
+                <a
+                  href="mailto:kundandr05@gmail.com"
+                  className="font-bold text-[#ef4444] hover:underline"
+                >
+                  kundandr05@gmail.com
+                </a>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </header>
+
+      {/* Resume Modal */}
+      <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
+    </>
+  );
 }
