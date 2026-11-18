@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -15,7 +15,12 @@ import {
   ArrowDown,
   Layers,
   ShieldCheck,
-  GraduationCap
+  GraduationCap,
+  Cpu,
+  Clock,
+  Zap,
+  HelpCircle,
+  ChevronDown
 } from 'lucide-react';
 import PageTransition from '@/components/shared/PageTransition';
 import { Project } from '@/data/projects';
@@ -62,12 +67,45 @@ function ScreenshotSlot({
   );
 }
 
+function InterviewQAItem({ question, answer, defaultOpen = false }: { question: string; answer: string; defaultOpen?: boolean }) {
+  const [isOpen, setIsOpen] = useState(defaultOpen);
+
+  return (
+    <div className="p-4 bg-white border-2 border-[#18181b] rounded-xl shadow-[3px_3px_0px_#18181b] transition-all">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex items-center justify-between text-left gap-3 group"
+        aria-expanded={isOpen}
+      >
+        <span className="font-display font-black text-sm sm:text-base text-[#18181b] group-hover:text-[#ef4444] transition-colors flex items-center gap-2">
+          <HelpCircle className="w-4 h-4 text-[#ef4444] shrink-0" />
+          <span>{question}</span>
+        </span>
+        <ChevronDown
+          className={`w-4 h-4 text-stone-500 shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+        />
+      </button>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          transition={{ duration: 0.2 }}
+          className="mt-3 pt-3 border-t border-stone-200 text-xs sm:text-sm text-stone-700 leading-relaxed font-sans"
+        >
+          {answer}
+        </motion.div>
+      )}
+    </div>
+  );
+}
+
 export default function ProjectClientView({
   project,
   prevProject,
   nextProject,
 }: ProjectClientViewProps) {
   const cs = project.eduAgentCaseStudy;
+  const dg = project.dispatchGridCaseStudy;
 
   return (
     <PageTransition>
@@ -124,7 +162,7 @@ export default function ProjectClientView({
               {project.tagline}
             </p>
 
-            {/* Meta Strip: Role, Timeline, Stack */}
+            {/* Meta Strip: Role, Timeline, Status */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-6 pt-6 border-t border-stone-100 text-xs font-mono">
               <div className="p-2.5 bg-[#faf7ee] border border-[#18181b] rounded-lg">
                 <span className="text-stone-500 block text-[10px] uppercase font-bold">Role</span>
@@ -144,7 +182,7 @@ export default function ProjectClientView({
 
             {/* Action Links with Wobble & Collapse Press */}
             <div className="flex flex-wrap items-center gap-3 mt-6">
-              {project.demo && (
+              {project.demo ? (
                 <motion.a
                   href={project.demo}
                   target="_blank"
@@ -156,7 +194,12 @@ export default function ProjectClientView({
                   <ExternalLink className="w-3.5 h-3.5" />
                   <span>{project.demoLabel || 'Open Live Demo'}</span>
                 </motion.a>
-              )}
+              ) : project.demoLabel ? (
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-stone-600 bg-[#faf7ee] border-2 border-[#18181b]/30 rounded-lg">
+                  <Clock className="w-3.5 h-3.5 text-stone-500" />
+                  <span>{project.demoLabel}</span>
+                </span>
+              ) : null}
 
               {project.github && (
                 <motion.a
@@ -186,17 +229,51 @@ export default function ProjectClientView({
             </div>
           </div>
 
-          {/* Hero Screenshot Frame */}
-          <div className="relative aspect-[16/10] rounded-xl overflow-hidden border-2 border-[#18181b] bg-stone-100 shadow-[4px_4px_0px_#18181b] mb-10">
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              priority
-              className="object-cover object-top"
-              sizes="(max-width: 1024px) 100vw, 800px"
-            />
-          </div>
+          {/* Hero Screenshot Frame or Architectural Blueprint */}
+          {project.image ? (
+            <div className="relative aspect-[16/10] rounded-xl overflow-hidden border-2 border-[#18181b] bg-stone-100 shadow-[4px_4px_0px_#18181b] mb-10">
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                priority
+                className="object-cover object-top"
+                sizes="(max-width: 1024px) 100vw, 800px"
+              />
+            </div>
+          ) : (
+            <div className="relative aspect-[16/9] sm:aspect-[21/9] rounded-xl overflow-hidden border-2 border-[#18181b] bg-[#faf7ee] shadow-[4px_4px_0px_#18181b] mb-10 p-6 flex flex-col justify-between">
+              {/* Tape */}
+              <div className="absolute -top-3 right-10 w-48 h-6 bg-[#fde047] border border-[#18181b]/30 -rotate-1 z-20 pointer-events-none shadow-xs text-[10px] font-mono font-bold text-[#18181b] flex items-center justify-center">
+                SYSTEM ARCHITECTURE SCHEMATIC
+              </div>
+              <div className="flex items-center justify-between z-10">
+                <span className="px-2.5 py-1 bg-white border border-[#18181b] rounded text-[10px] font-mono font-bold shadow-[1px_1px_0px_#18181b]">
+                  HEXAGONAL ARCHITECTURE · MODULAR MONOREPO
+                </span>
+                <span className="px-2.5 py-1 bg-[#22c55e] text-white font-mono font-bold text-[10px] rounded shadow-[1px_1px_0px_#18181b]">
+                  99 TESTS PASSING
+                </span>
+              </div>
+              <div className="my-auto py-4 text-center z-10">
+                <div className="w-14 h-14 mx-auto rounded-2xl bg-white border-2 border-[#18181b] flex items-center justify-center mb-3 shadow-[3px_3px_0px_#18181b]">
+                  <Cpu className="w-7 h-7 text-[#ef4444]" />
+                </div>
+                <h3 className="font-display font-black text-xl sm:text-2xl text-[#18181b]">
+                  DispatchGrid Algorithmic Engine
+                </h3>
+                <p className="text-xs sm:text-sm text-stone-600 font-mono mt-1 max-w-lg mx-auto">
+                  Pure In-Memory Constraint Solver · 2-Opt Route Optimizer · Disruption Manager
+                </p>
+              </div>
+              <div className="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-[#18181b]/20 text-[11px] font-mono text-stone-600 z-10">
+                <span>⚡ 1,000 Jobs in 244ms</span>
+                <span>🛡️ 100% Hard Constraints</span>
+                <span>🚫 0 Route Overlaps</span>
+                <span className="text-[#854d0e] font-bold">📌 Cover Image Slot (Asset to be supplied by Kundan)</span>
+              </div>
+            </div>
+          )}
 
           {/* Structured Deep-Dive Sections */}
           <div className="space-y-8 text-stone-800 text-sm sm:text-base leading-relaxed">
@@ -217,7 +294,266 @@ export default function ProjectClientView({
               </p>
             </motion.section>
 
-            {cs ? (
+            {dg ? (
+              /* BESPOKE LAYOUT FOR DISPATCHGRID CASE STUDY */
+              <>
+                {/* Executive Summary & Pitches */}
+                <motion.section
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="space-y-4"
+                >
+                  {/* Resume One-Liner */}
+                  <div className="p-4 sm:p-5 bg-[#fefce8] border-2 border-[#18181b] rounded-xl shadow-[3px_3px_0px_#18181b] relative">
+                    <span className="text-[10px] font-mono font-bold uppercase text-[#854d0e] block mb-1">
+                      Resume One-Liner
+                    </span>
+                    <p className="text-sm sm:text-base font-bold text-[#18181b] leading-snug">
+                      &ldquo;{dg.resumeOneLiner}&rdquo;
+                    </p>
+                  </div>
+
+                  {/* 30-Second & 2-Minute Pitches */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="p-4 bg-white border-2 border-[#18181b] rounded-xl shadow-[3px_3px_0px_#18181b]">
+                      <span className="text-[10px] font-mono uppercase font-black text-[#38bdf8] block mb-1">
+                        ⏱️ 30-Second Elevator Pitch
+                      </span>
+                      <p className="text-xs sm:text-sm text-stone-700 leading-relaxed">
+                        {dg.elevatorPitch30s}
+                      </p>
+                    </div>
+
+                    <div className="p-4 bg-white border-2 border-[#18181b] rounded-xl shadow-[3px_3px_0px_#18181b]">
+                      <span className="text-[10px] font-mono uppercase font-black text-[#22c55e] block mb-1">
+                        🎙️ 2-Minute Technical Screening Deep Dive
+                      </span>
+                      <p className="text-xs sm:text-sm text-stone-700 leading-relaxed">
+                        {dg.technicalDeepDive2m}
+                      </p>
+                    </div>
+                  </div>
+                </motion.section>
+
+                {/* Measurable Impact & Benchmarks */}
+                <motion.section
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="bg-[#faf7ee] p-5 sm:p-8 rounded-2xl border-2 border-[#18181b] shadow-[4px_4px_0px_#18181b]"
+                >
+                  <div className="flex items-center justify-between mb-4">
+                    <h2 className="text-xl font-display font-black text-[#18181b] flex items-center gap-2">
+                      <span className="px-2 py-0.5 bg-[#ef4444] text-white text-xs rounded font-mono">02</span>
+                      Measurable Impact &amp; Benchmarks
+                    </h2>
+                    <span className="text-xs font-mono font-bold text-stone-500 hidden sm:inline">
+                      Verified via 12 Test Suites
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+                    {dg.benchmarks.map((b, idx) => (
+                      <div
+                        key={idx}
+                        className="p-3.5 bg-white border-2 border-[#18181b] rounded-xl shadow-[3px_3px_0px_#18181b] flex flex-col justify-between"
+                      >
+                        <div>
+                          <span className="text-[10px] font-mono uppercase font-bold text-stone-500 block">
+                            {b.metric}
+                          </span>
+                          <h4 className="font-display font-black text-base sm:text-lg text-[#ef4444] mt-1 leading-tight">
+                            {b.measuredResult}
+                          </h4>
+                        </div>
+                        <p className="text-[10px] sm:text-[11px] text-stone-600 font-sans mt-2 pt-2 border-t border-stone-100">
+                          {b.significance}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </motion.section>
+
+                {/* Algorithmic Scheduling & 7 Hard Constraints */}
+                <motion.section
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="bg-white p-5 sm:p-8 rounded-2xl border-2 border-[#18181b] shadow-[4px_4px_0px_#18181b] space-y-6"
+                >
+                  <h2 className="text-xl font-display font-black text-[#18181b] flex items-center gap-2">
+                    <span className="px-2 py-0.5 bg-[#fde047] text-[#18181b] text-xs rounded font-mono">03</span>
+                    Core Solver &amp; 7 Mandatory Hard Constraints
+                  </h2>
+
+                  {/* Multi-Criteria Scoring Formula */}
+                  <div className="p-4 bg-[#faf7ee] border-2 border-[#18181b] rounded-xl">
+                    <span className="text-[10px] font-mono uppercase font-black text-stone-500 block mb-1">
+                      Objective Function Formula
+                    </span>
+                    <div className="p-2.5 bg-white border border-[#18181b]/30 rounded-lg font-mono text-xs sm:text-sm text-[#18181b] font-bold overflow-x-auto">
+                      Score = w₁·SkillMatch + w₂·SLAUrgency + w₃·TransitEfficiency + w₄·WorkloadBalance
+                    </div>
+                    <p className="text-xs text-stone-600 mt-2">
+                      Decoupled business logic implemented as pure, in-memory algorithmic functions with zero database side-effects for 100% deterministic, high-throughput execution.
+                    </p>
+                  </div>
+
+                  {/* 7 Hard Constraints Checklist */}
+                  <div>
+                    <h3 className="text-sm font-display font-black text-[#18181b] mb-3 flex items-center gap-2">
+                      <ShieldCheck className="w-4 h-4 text-[#22c55e]" />
+                      <span>7 Mandatory Constraints Verified Prior to Slot Generation:</span>
+                    </h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                      {dg.hardConstraints.map((constraint, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-center gap-2 p-2.5 bg-[#f0fdf4] border border-[#22c55e]/40 rounded-lg text-stone-800"
+                        >
+                          <CheckCircle2 className="w-4 h-4 text-[#22c55e] shrink-0" />
+                          <span className="font-medium">{constraint}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* 2-Opt Optimization */}
+                  <div className="p-4 bg-[#fff1f2] border-2 border-[#ef4444] rounded-xl">
+                    <div className="flex items-center gap-2 mb-1">
+                      <Zap className="w-4 h-4 text-[#ef4444]" />
+                      <h4 className="font-display font-black text-sm text-[#ef4444]">
+                        2-Opt Local Search Route Optimization
+                      </h4>
+                    </div>
+                    <p className="text-xs text-stone-700 mt-1">
+                      Applies intra-route edge exchanges to untangle geographical transit zigzags, reducing travel time by 40.0%. Inter-technician workload rebalancing migrates flexible tickets to achieve a 66.6% workload variance reduction with a zero-regression score guarantee.
+                    </p>
+                  </div>
+                </motion.section>
+
+                {/* Autonomous Disruption Management (6 Failure Modes) */}
+                <motion.section
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="bg-[#faf7ee] p-5 sm:p-8 rounded-2xl border-2 border-[#18181b] shadow-[4px_4px_0px_#18181b]"
+                >
+                  <h2 className="text-xl font-display font-black text-[#18181b] flex items-center gap-2 mb-2">
+                    <span className="px-2 py-0.5 bg-[#38bdf8] text-[#18181b] text-xs rounded font-mono">04</span>
+                    Autonomous Disruption Management (6 Scenarios)
+                  </h2>
+                  <p className="text-xs sm:text-sm text-stone-600 mb-6">
+                    Autonomous reactive replanning executing in 1 to 3 ms per event with zero human dispatcher bottleneck.
+                  </p>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                    {dg.disruptionScenarios.map((s, idx) => (
+                      <div
+                        key={idx}
+                        className="p-3.5 bg-white border-2 border-[#18181b] rounded-xl shadow-[2px_2px_0px_#18181b] flex flex-col justify-between"
+                      >
+                        <div>
+                          <span className="text-[9px] font-mono uppercase font-black px-1.5 py-0.5 bg-stone-100 border border-stone-300 rounded text-stone-700 block w-fit mb-1.5">
+                            {s.scenario}
+                          </span>
+                          <h4 className="font-display font-black text-xs sm:text-sm text-[#18181b]">
+                            {s.label}
+                          </h4>
+                          <p className="text-[11px] text-stone-600 mt-1.5 leading-snug">
+                            {s.description}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </motion.section>
+
+                {/* Enterprise Concurrency & SQLite Hardening */}
+                <motion.section
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="bg-white p-5 sm:p-6 rounded-2xl border-2 border-[#18181b] shadow-[4px_4px_0px_#18181b]"
+                >
+                  <h2 className="text-xl font-display font-black text-[#18181b] flex items-center gap-2 mb-4">
+                    <span className="px-2 py-0.5 bg-[#22c55e] text-white text-xs rounded font-mono">05</span>
+                    Enterprise Concurrency &amp; SQLite Hardening
+                  </h2>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {dg.concurrencyHardening.map((ch, idx) => (
+                      <div
+                        key={idx}
+                        className="p-4 bg-[#faf7ee] border-2 border-[#18181b] rounded-xl shadow-[2px_2px_0px_#18181b]"
+                      >
+                        <h4 className="font-display font-black text-sm text-[#18181b] mb-1">
+                          {ch.title}
+                        </h4>
+                        <p className="text-xs text-stone-700 leading-relaxed">
+                          {ch.description}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </motion.section>
+
+                {/* Suggested Screenshots / Media Slots */}
+                <motion.section
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="bg-white p-5 sm:p-8 rounded-2xl border-2 border-[#18181b] shadow-[4px_4px_0px_#18181b]"
+                >
+                  <h2 className="text-xl font-display font-black text-[#18181b] flex items-center gap-2 mb-2">
+                    <span className="px-2 py-0.5 bg-[#fde047] text-[#18181b] text-xs rounded font-mono">06</span>
+                    Operations UI &amp; Visual Evidence
+                  </h2>
+                  <p className="text-xs sm:text-sm text-stone-600 mb-6">
+                    Interactive Gantt operations board, AI explainability modal, and disruption simulation visual evidence.
+                  </p>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {dg.screenshotSlots.map((slot, idx) => (
+                      <ScreenshotSlot
+                        key={idx}
+                        title={slot.title}
+                        description={slot.description}
+                        placeholderText={slot.placeholderText}
+                      />
+                    ))}
+                  </div>
+                </motion.section>
+
+                {/* Technical Interview Q&A Accordion */}
+                <motion.section
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="bg-[#faf7ee] p-5 sm:p-8 rounded-2xl border-2 border-[#18181b] shadow-[4px_4px_0px_#18181b]"
+                >
+                  <h2 className="text-xl font-display font-black text-[#18181b] flex items-center gap-2 mb-2">
+                    <span className="px-2 py-0.5 bg-[#ef4444] text-white text-xs rounded font-mono">07</span>
+                    Technical Interview Q&amp;A (Screening Guide)
+                  </h2>
+                  <p className="text-xs sm:text-sm text-stone-600 mb-6">
+                    In-depth engineering trade-offs, architecture decisions, and concurrency answers.
+                  </p>
+
+                  <div className="space-y-3">
+                    {dg.interviewQA.map((qa, idx) => (
+                      <InterviewQAItem
+                        key={idx}
+                        question={qa.question}
+                        answer={qa.answer}
+                        defaultOpen={idx === 0}
+                      />
+                    ))}
+                  </div>
+                </motion.section>
+              </>
+            ) : cs ? (
               /* BESPOKE LAYOUT FOR EDUAGENT CASE STUDY */
               <>
                 {/* 2. What I Built (Student & Instructor with Screenshot Slots) */}
@@ -598,8 +934,7 @@ export default function ProjectClientView({
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="bg-[#f0fdf4] p-5 sm:p-6 rounded-2xl border-2 border-[#22c55e]"
-                >
+                  className="bg-[#f0fdf4] p-5 sm:p-6 rounded-2xl border-2 border-[#22c55e]">
                   <h2 className="text-lg font-display font-black text-[#15803d] flex items-center gap-2 mb-2">
                     <Rocket className="w-5 h-5 text-[#15803d]" />
                     Outcome &amp; Production Status

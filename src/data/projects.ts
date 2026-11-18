@@ -41,6 +41,38 @@ export interface EduAgentCaseStudy {
   whatILearnedTodo: string;
 }
 
+export interface DispatchGridBenchmark {
+  metric: string;
+  measuredResult: string;
+  significance: string;
+}
+
+export interface DispatchGridDisruptionScenario {
+  scenario: string;
+  label: string;
+  description: string;
+}
+
+export interface DispatchGridInterviewQA {
+  question: string;
+  answer: string;
+}
+
+export interface DispatchGridCaseStudy {
+  resumeOneLiner: string;
+  elevatorPitch30s: string;
+  technicalDeepDive2m: string;
+  benchmarks: DispatchGridBenchmark[];
+  hardConstraints: string[];
+  disruptionScenarios: DispatchGridDisruptionScenario[];
+  concurrencyHardening: {
+    title: string;
+    description: string;
+  }[];
+  interviewQA: DispatchGridInterviewQA[];
+  screenshotSlots: CaseStudySlot[];
+}
+
 export interface Project {
   slug: string;
   title: string;
@@ -68,38 +100,177 @@ export interface Project {
   color: "tomato" | "yellow" | "green" | "blue";
   rotation: string; // e.g. "-rotate-1", "rotate-2" for scrapbook feel
   eduAgentCaseStudy?: EduAgentCaseStudy;
+  dispatchGridCaseStudy?: DispatchGridCaseStudy;
 }
 
 export const projects: Project[] = [
   {
     slug: "dispatchgrid",
     title: "DispatchGrid",
-    tagline: "Autonomous Field Workforce Dispatch & Recovery Engine",
+    tagline: "Intelligent Workforce Scheduling & Real-Time Disruption Recovery Engine",
     category: "Flagship",
     date: "2026",
-    problem: "Real-world field services face chaotic disruptions—technician cancellations, emergency priority jobs, and skill mismatches turn schedules into unmanageable logjams.",
-    built: "Built an autonomous dispatch engine enforcing 7 operational constraints with greedy heuristics, 2-opt route optimization, and live Groq LPU intent parsing.",
-    result: "Instant schedule rebalancing during disruptions, Leaflet geospatial visualization, and SHA-256 tamper-evident audit logs.",
-    tags: ["React", "TypeScript", "Node.js", "Express", "Prisma", "Groq AI", "Leaflet", "Render"],
-    image: "/project-dispatchgrid.png",
+    problem: "In field service management, operations constantly face chaotic real-world disruptions—delays, traffic, cancellations, and skill mismatches turn schedules into unmanageable logjams.",
+    built: "Engineered an automated, constraint-aware workforce scheduling and 2-Opt local search route optimization engine that schedules 1,000 service jobs across 100 technicians in 244ms with 100% hard constraint compliance, 0 route overlaps, and an autonomous disruption recovery engine resolving operational shocks in 1–3ms.",
+    result: "40.0% travel transit reduction via 2-Opt reordering, 66.6% workload variance reduction, and instant reactive replanning across 6 failure modes without human dispatcher bottleneck.",
+    tags: ["Node.js", "TypeScript", "React 18", "Express.js", "Prisma ORM", "SQLite (WAL)", "2-Opt Algorithm", "Vitest", "Tailwind CSS", "Recharts"],
+    image: "", // Empty per user instruction ("for cover image leave empty")
     github: "https://github.com/kundandr05/ByteForge_H4H",
-    githubLabel: "ByteForge H4H",
-    demo: "https://byteforge-h4h.onrender.com",
-    demoLabel: "Live on Render",
-    role: "Lead Full-Stack & Algorithm Engineer",
-    timeline: "Hackathon & Production Iteration (2026)",
+    githubLabel: "kundandr05/ByteForge_H4H",
+    demoLabel: "Demo Coming Soon",
+    role: "Lead Software Engineer & System Architect",
+    timeline: "2026",
     keyFeatures: [
-      "Constraint solver balancing technician skills, shift limits, customer priority, and geographic proximity in under 400ms",
-      "Dynamic disruption recovery engine automatically reassigning pending tickets when a technician calls out",
-      "Groq LPU conversational AI assistant for booking creation, urgency extraction, and customer intent parsing",
-      "Geospatial dispatch map with real-time cluster visualization and route overlays using Leaflet",
-      "Multi-role RBAC portals (Field Tech, Operations Dispatcher, End Customer) with SHA-256 audit chaining"
+      "Pure In-Memory Constraint Solver: Schedules 1,000 service jobs across 100 technicians in 244ms with 100% adherence across 7 mandatory hard constraints",
+      "Assignment Optimization Layer: 2-Opt intra-route reordering cuts transit deadhead by 40.0% and balances technician workload variance by 66.6%",
+      "Autonomous Disruption Recovery: Instant reactive replanning in 1–3ms across 6 failure modes (illness, emergency break-in, duration change, cancellation, delays)",
+      "Full Decision Explainability: 'Why This Technician?' multi-factor scorecards and candidate rejection root-cause diagnostics",
+      "Enterprise SQLite Hardening: WAL mode with custom executeWithRetry exponential backoff jitter and idempotent request deduplication",
+      "Comprehensive Test Suite: 99 automated tests across 12 suites (100% pass) spanning stress tests, edge cases A–L, and React Testing Library integration"
     ],
-    architecture: "React + TypeScript frontend consuming Express.js REST API with Prisma ORM and SQLite. Groq Cloud LPU handles sub-second LLM intent parsing; background solvers execute 2-opt trajectory optimization.",
-    challenges: "Handling NP-hard vehicle routing constraints within interactive web timeouts. Solved using partitioned greedy clustering followed by local 2-opt edge-exchange heuristics.",
-    outcome: "Presented at ByteForge hackathon, currently deployed live on Render with active technician and dispatcher simulation workflows.",
+    architecture: "Decoupled Modular Monorepo with Hexagonal Architecture. Node.js/Express backend with pure in-memory algorithmic solvers, Prisma ORM, and SQLite WAL persistence. React 18 frontend built with Vite, Tailwind CSS, Recharts, and Lucide React.",
+    challenges: "Handling SQLite single-writer lock contention during concurrent write spikes (resolved via randomized exponential backoff jitter) and guaranteeing zero route regressions during multi-neighborhood local search.",
+    outcome: "High-throughput distributed systems platform verified through 99 automated test suites with 100% constraint adherence and 0 double-bookings.",
     color: "tomato",
-    rotation: "-rotate-1"
+    rotation: "-rotate-1",
+    dispatchGridCaseStudy: {
+      resumeOneLiner: "Built an automated, constraint-aware workforce scheduling and real-time replanning engine that schedules 1,000 service jobs across 100 technicians in 244ms with 100% hard constraint compliance and 0 route overlaps.",
+      elevatorPitch30s: "DispatchGrid is an enterprise workforce scheduling platform designed for mission-critical field operations. Rather than just being a CRUD dashboard, it features a pure algorithmic constraint solver, a 2-Opt local search route optimizer, and an autonomous disruption recovery engine that replans routes in under 5 milliseconds when technicians call in sick, emergencies break in, or jobs overrun. It also features a fully interactive React Gantt operations dashboard and an AI explainability modal breaking down every single scheduling decision.",
+      technicalDeepDive2m: "In field service management, operations constantly face chaotic real-world disruptions—delays, traffic, cancellations, and skill mismatches. DispatchGrid solves this in three decoupled layers: A deterministic scheduling engine that factors in multi-skill matching, geographical service zones, transit matrices, and SLA deadlines; an optimization engine leveraging 2-Opt intra-route swaps and technician workload balancing, reducing average travel time by 40% and workload standard deviation by 66%; and an autonomous disruption recovery engine supporting 6 real-time operational failure modes with zero downtime. The entire system is backed by a transactional SQLite WAL persistence layer with exponential backoff retries, complete idempotency deduplication, and a rich React operations dashboard.",
+      benchmarks: [
+        {
+          metric: "Scheduling Speed",
+          measuredResult: "244 ms for 1,000 jobs across 100 technicians",
+          significance: "High-throughput sub-second response under enterprise scale"
+        },
+        {
+          metric: "Memory Efficiency",
+          measuredResult: "25.73 MB peak heap memory",
+          significance: "Ultra-lightweight algorithmic memory footprint"
+        },
+        {
+          metric: "Hard Constraint Adherence",
+          measuredResult: "100.0% across all test runs",
+          significance: "Zero labor violation risks (skill gaps, shift breaches, SLA breaks)"
+        },
+        {
+          metric: "Route Overlaps",
+          measuredResult: "Strictly 0",
+          significance: "Mathematically guaranteed double-booking prevention"
+        },
+        {
+          metric: "Travel Time Reduction",
+          measuredResult: "40.0% reduction via 2-Opt intra-route swap",
+          significance: "Eliminates geographic crisscross / zigzag transit inefficiencies"
+        },
+        {
+          metric: "Workload Balancing",
+          measuredResult: "66.6% variance reduction (106.1 min down to 35.4 min)",
+          significance: "Balances technician shifts and prevents employee burnout"
+        },
+        {
+          metric: "Recovery Resolution Latency",
+          measuredResult: "1 to 3 ms per disruption event",
+          significance: "Instant autonomous replanning without human dispatcher bottleneck"
+        },
+        {
+          metric: "Test Coverage & Reliability",
+          measuredResult: "99 automated tests across 12 suites (100% pass)",
+          significance: "Stress tests, edge cases A–L, SQLite concurrency, and RTL UI tests"
+        }
+      ],
+      hardConstraints: [
+        "Required skill certifications & technician qualification matching",
+        "Geographical service zone boundaries & transit radius eligibility",
+        "Working shift boundaries (including midnight-crossing shift handling)",
+        "Pre-existing technician commitments & unavailability blocks",
+        "Round-trip transit travel buffers & geographic proximity constraints",
+        "Customer promised time-window boundaries",
+        "Strict SLA contractual deadlines"
+      ],
+      disruptionScenarios: [
+        {
+          scenario: "TECHNICIAN_UNAVAILABLE",
+          label: "Technician Callout / Sickness",
+          description: "Automated cascading reassignment of pending work orders to eligible backup peers without breaking existing promises."
+        },
+        {
+          scenario: "URGENT_JOB_ARRIVAL",
+          label: "Emergency Break-In Job",
+          description: "High-priority emergency slotting into compacted gaps without breaching downstream customer SLAs."
+        },
+        {
+          scenario: "JOB_DURATION_CHANGED",
+          label: "Job Scope Expansion",
+          description: "Dynamic downstream window sliding and buffer adaptation when on-site diagnosis extends scope."
+        },
+        {
+          scenario: "JOB_CANCELLED",
+          label: "Customer Cancellation",
+          description: "Immediate appointment removal followed by opportunistic route compaction and idle gap reclamation."
+        },
+        {
+          scenario: "EARLY_COMPLETION",
+          label: "Early Finish Optimization",
+          description: "Pulls downstream work forward dynamically to minimize technician deadhead and idle waiting."
+        },
+        {
+          scenario: "DELAYED_COMPLETION",
+          label: "Traffic / On-Site Delay",
+          description: "Safe forward delay propagation ensuring 0 route overlaps across subsequent commitments."
+        }
+      ],
+      concurrencyHardening: [
+        {
+          title: "Exponential Backoff with Jitter",
+          description: "Custom transactionService.executeWithRetry intercepts SQLITE_BUSY, P2034, and P1008 timeout errors and applies randomized jitter to eliminate lock starvation under concurrent load."
+        },
+        {
+          title: "Atomic Midway Rollback Guarantee",
+          description: "Multi-table atomic database transactions ensure zero orphan state records if any assignment or rebalancing step fails midway."
+        },
+        {
+          title: "Transparent Idempotency Deduplication",
+          description: "All mutating requests pass unique Idempotency-Key headers; concurrent or retried identical requests return cached responses with zero double-processing."
+        }
+      ],
+      interviewQA: [
+        {
+          question: "Why did you use SQLite instead of PostgreSQL or MongoDB?",
+          answer: "I chose SQLite in WAL (Write-Ahead Logging) mode to create a self-contained, zero-configuration engine with near-zero latency for local reads. SQLite allows multiple concurrent readers, but has a single-writer lock. To make this production-resilient, I built transactionService.executeWithRetry, which intercepts SQLITE_BUSY, P2034, and P1008 timeout errors and applies randomized exponential backoff jitter. This allowed our system to handle concurrent write spikes without deadlocks while remaining completely portable."
+        },
+        {
+          question: "How does the optimization engine avoid getting stuck in local minima?",
+          answer: "The optimization engine uses a multi-neighborhood candidate move generator. Instead of just swapping consecutive jobs, it explores three complementary neighborhoods: (1) intra-route 2-opt reordering to untangle geographic zigzags, (2) inter-technician reassignments to balance overloaded shifts, and (3) opportunistic insertion of previously unassigned high-priority jobs. By evaluating a composite objective function that balances SLA urgency, travel time, workload standard deviation, and schedule stability, we guarantee monotonically improving quality scores without schedule regression."
+        },
+        {
+          question: "How do you guarantee that ongoing or completed work isn't cancelled during a disruption?",
+          answer: "We implemented an explicit job lifecycle state machine. COMPLETED and IN_PROGRESS assignments are flagged as immutable anchors. When a disruption occurs (like a technician falling ill or experiencing a vehicle breakdown), the affected job detector isolates only SCHEDULED or PENDING jobs for reassignment. If an ongoing job is delayed, its end time is extended in the technician's commitment block, and only subsequent downstream jobs are shifted forward or reassigned."
+        }
+      ],
+      screenshotSlots: [
+        {
+          title: "Gantt Operations Timeline",
+          description: "Color-coded technician rows with scheduled jobs, travel buffer blocks, and live status badges.",
+          placeholderText: "TODO: Screenshot of Gantt Operations Timeline (to be supplied by Kundan)"
+        },
+        {
+          title: "AI Explainability Modal",
+          description: "Hard Constraints Compliance Checklist (100% Passed) and candidate rejection root-cause diagnostics.",
+          placeholderText: "TODO: Screenshot of Explainability Modal (to be supplied by Kundan)"
+        },
+        {
+          title: "Disruption Simulator",
+          description: "Before-and-after view when an emergency break-in hospital job is slotted into the active schedule.",
+          placeholderText: "TODO: Screenshot of Disruption Simulator (to be supplied by Kundan)"
+        },
+        {
+          title: "Optimization Center",
+          description: "Recharts comparison graph demonstrating reduced travel transit and balanced technician workloads.",
+          placeholderText: "TODO: Screenshot of Optimization Center (to be supplied by Kundan)"
+        }
+      ]
+    }
   },
   {
     slug: "zeno-ai-multimodal-assistant",

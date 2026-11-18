@@ -4,11 +4,11 @@ import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, ArrowRight, Sparkles } from 'lucide-react';
+import { ExternalLink, Github, ArrowRight, Sparkles, Cpu } from 'lucide-react';
 import { projects } from '@/data/projects';
 
 const filterCategories = [
-  { id: 'all', label: 'All Projects (7)' },
+  { id: 'all', label: `All Projects (${projects.length})` },
   { id: 'Flagship', label: '★ Flagships (3)' },
   { id: 'Autonomous AI', label: '🤖 Autonomous AI' },
   { id: 'Full-Stack', label: '⚡ Full-Stack' },
@@ -120,16 +120,34 @@ export default function Projects() {
                 
                 {/* Project Preview Image with Zoom on Card Hover */}
                 <div className="lg:col-span-6 relative aspect-[16/10] rounded-xl overflow-hidden border-2 border-[#18181b] bg-stone-100 shadow-[3px_3px_0px_#18181b]">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover object-top group-hover:scale-108 transition-transform duration-500 ease-out"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
+                  {project.image ? (
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover object-top group-hover:scale-108 transition-transform duration-500 ease-out"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-[#faf7ee] relative overflow-hidden">
+                      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#18181b_1px,transparent_1px)] [background-size:12px_12px]" />
+                      <div className="w-12 h-12 rounded-xl bg-white border-2 border-[#18181b] flex items-center justify-center mb-2 shadow-[2px_2px_0px_#18181b] z-10">
+                        <Cpu className="w-6 h-6 text-[#ef4444]" />
+                      </div>
+                      <span className="text-[10px] font-mono uppercase font-black text-stone-500 tracking-wider z-10">
+                        ALGORITHMIC ENGINE // BLUEPRINT
+                      </span>
+                      <h4 className="text-sm font-display font-black text-[#18181b] mt-1 z-10">
+                        Deterministic Constraint Solver
+                      </h4>
+                      <p className="text-[11px] text-stone-600 mt-1 max-w-xs z-10 font-mono">
+                        1,000 jobs in 244ms · 0 overlaps · 2-Opt
+                      </p>
+                    </div>
+                  )}
                   
                   {/* Year Badge */}
-                  <div className="absolute top-3 left-3 px-2.5 py-1 bg-white/95 border border-[#18181b] rounded-md shadow-[1px_1px_0px_#18181b] text-[10px] font-mono font-bold text-[#18181b]">
+                  <div className="absolute top-3 left-3 px-2.5 py-1 bg-white/95 border border-[#18181b] rounded-md shadow-[1px_1px_0px_#18181b] text-[10px] font-mono font-bold text-[#18181b] z-20">
                     {project.date} · {project.category}
                   </div>
                 </div>
@@ -282,13 +300,19 @@ export default function Projects() {
                 >
                   <div>
                     <div className="relative aspect-[16/9] rounded-xl overflow-hidden border-2 border-[#18181b] mb-4 bg-stone-100 shadow-[2px_2px_0px_#18181b]">
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        className="object-cover object-top group-hover:scale-106 transition-transform duration-300"
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                      />
+                      {project.image ? (
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          className="object-cover object-top group-hover:scale-106 transition-transform duration-300"
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center bg-[#faf7ee]">
+                          <span className="text-[11px] font-mono font-bold text-stone-500">Asset Pending</span>
+                        </div>
+                      )}
                       <span className="absolute top-2 left-2 px-2 py-0.5 bg-white/90 border border-[#18181b] rounded text-[10px] font-mono font-bold">
                         {project.date} · {project.category}
                       </span>
