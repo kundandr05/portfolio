@@ -99,7 +99,12 @@ export default function Publications() {
                 <h3 className="text-lg font-display font-black text-[#18181b] leading-snug mb-1">
                   {pub.title}
                 </h3>
-                <p className="text-xs text-stone-500 font-mono mb-2">{pub.identifier}</p>
+                {pub.subtitle && (
+                  <p className="text-xs font-bold text-stone-700 mb-1 leading-snug">
+                    {pub.subtitle}
+                  </p>
+                )}
+                <p className="text-[11px] text-stone-500 font-mono mb-2">{pub.identifier}</p>
 
                 {/* Description */}
                 <p className="text-stone-700 text-xs leading-relaxed mb-4">

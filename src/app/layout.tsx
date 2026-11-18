@@ -89,8 +89,8 @@ const personJsonLd = {
   sameAs: [
     'https://github.com/kundandr05',
     'https://linkedin.com/in/kundan-d-r-914274310',
-    'https://www.amazon.com/dp/B0DKFYW454',
-    'https://www.amazon.com/dp/B0D796X3L1',
+    'https://amzn.in/d/08HiYofZ',
+    'https://amzn.in/d/0by7Rnky',
   ],
   knowsAbout: [
     'Agentic AI',

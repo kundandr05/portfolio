@@ -130,7 +130,7 @@ export default function About() {
             </p>
 
             <p>
-              Beyond code, I think a lot about cognitive bandwidth and developer productivity. I&apos;ve written and published two books on <strong>Amazon KDP</strong> (<em>The Two-Speed Mind</em> and <em>The Habit of Focus</em>) exploring how to switch between rapid execution and deep, uninterrupted architectural thinking.
+              Beyond code, I think a lot about cognitive bandwidth and developer productivity. I&apos;ve written and published two books on <strong>Amazon KDP</strong> (<em>The Two-Speed Mind</em> and <em>Reclaim Your Focus</em>) exploring how to switch between rapid execution and deep, uninterrupted architectural thinking.
             </p>
 
             <p>
