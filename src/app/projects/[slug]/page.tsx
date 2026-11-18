@@ -25,6 +25,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 
   const title = `${project.title} · Case Study | Kundan DR`;
   const description = `${project.tagline} — Built by Kundan DR. ${project.problem}`;
+  const ogImageUrl = project.image || '/opengraph-image';
 
   return {
     title,
@@ -34,9 +35,9 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       description,
       images: [
         {
-          url: project.image,
+          url: ogImageUrl,
           width: 1200,
-          height: 750,
+          height: 630,
           alt: project.title,
         },
       ],
@@ -46,7 +47,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       card: 'summary_large_image',
       title,
       description,
-      images: [project.image],
+      images: [ogImageUrl],
     },
   };
 }

@@ -47,6 +47,12 @@ body {
   color: #18181b;
 }
 
+/* Accessible Keyboard Focus States */
+:focus-visible {
+  outline: 3px solid #ef4444 !important;
+  outline-offset: 3px !important;
+}
+
 /* Custom Scrollbar (Chunky & Clean) */
 ::-webkit-scrollbar {
   width: 10px;
