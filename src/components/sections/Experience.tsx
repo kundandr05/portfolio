@@ -1,37 +1,85 @@
 "use client";
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Briefcase, Calendar, GraduationCap, Compass, FileCheck, ExternalLink } from 'lucide-react';
 import { experiences } from '@/data/experience';
 
 export default function Experience() {
   return (
     <section id="experience" className="py-16 md:py-24 relative">
-      {/* Section Header */}
-      <div className="flex flex-col items-start mb-12">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#22c55e] text-white border-2 border-[#18181b] rounded-md shadow-[2px_2px_0px_#18181b] text-xs font-black uppercase tracking-wider rotate-1 mb-3">
+      {/* Section Header with Highlighter Sweep */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="flex flex-col items-start mb-12"
+      >
+        <motion.div
+          whileHover={{ scale: 1.05, rotate: -2 }}
+          className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#22c55e] text-white border-2 border-[#18181b] rounded-md shadow-[2px_2px_0px_#18181b] text-xs font-black uppercase tracking-wider rotate-1 mb-3 cursor-default"
+        >
           <Briefcase className="w-3.5 h-3.5" />
           <span>Timeline</span>
-        </div>
+        </motion.div>
 
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-black tracking-tight text-[#18181b]">
-          Experience &{' '}
-          <span className="bg-[#fde047] px-2 py-0.5 rounded-md border-2 border-[#18181b] shadow-[2px_2px_0px_#18181b] inline-block -rotate-1">
+          Experience &amp;{' '}
+          <motion.span
+            initial={{ backgroundSize: "0% 100%" }}
+            whileInView={{ backgroundSize: "100% 100%" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            className="bg-[#fde047] px-2 py-0.5 rounded-md border-2 border-[#18181b] shadow-[2px_2px_0px_#18181b] inline-block -rotate-1"
+          >
             education
-          </span>
+          </motion.span>
         </h2>
         <p className="text-stone-600 text-sm sm:text-base mt-2 max-w-xl">
           Real roles and institutional grounding. No exaggerated job titles or fake enterprise claims.
         </p>
-      </div>
+      </motion.div>
 
-      {/* Dotted Roadmap Path */}
-      <div className="relative pl-6 sm:pl-10 border-l-2 border-dashed border-[#18181b] space-y-12 ml-2 sm:ml-4">
+      {/* Roadmap Container with Animated Dotted Line and Popping Stops */}
+      <div className="relative pl-6 sm:pl-10 space-y-12 ml-2 sm:ml-4">
+        
+        {/* Animated SVG Dotted Line that draws itself */}
+        <div className="absolute top-4 bottom-4 left-0 w-2 flex justify-center pointer-events-none">
+          <svg className="w-2 h-full" preserveAspectRatio="none">
+            <motion.line
+              x1="1"
+              y1="0"
+              x2="1"
+              y2="100%"
+              stroke="#18181b"
+              strokeWidth="2.5"
+              strokeDasharray="8 8"
+              strokeLinecap="round"
+              initial={{ pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 1.2, ease: "easeInOut" }}
+            />
+          </svg>
+        </div>
+
         {experiences.map((item, idx) => (
           <div key={item.id} className="relative group">
-            {/* Pop Stop Pin on Dotted Line */}
-            <div
-              className={`absolute -left-[35px] sm:-left-[51px] top-1.5 w-8 h-8 sm:w-10 sm:h-10 rounded-xl border-2 border-[#18181b] flex items-center justify-center shadow-[2px_2px_0px_#18181b] transition-transform group-hover:scale-110 ${
+            
+            {/* Pop Stop Pin on Dotted Line with Spring Entrance */}
+            <motion.div
+              initial={{ scale: 0, rotate: -40 }}
+              whileInView={{ scale: 1, rotate: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{
+                type: "spring",
+                stiffness: 420,
+                damping: 18,
+                delay: idx * 0.2,
+              }}
+              whileHover={{ scale: 1.18, rotate: idx % 2 === 0 ? 8 : -8 }}
+              className={`absolute -left-[35px] sm:-left-[51px] top-1.5 w-8 h-8 sm:w-10 sm:h-10 rounded-xl border-2 border-[#18181b] flex items-center justify-center shadow-[3px_3px_0px_#18181b] cursor-default z-10 ${
                 item.color === 'tomato'
                   ? 'bg-[#ef4444] text-white'
                   : 'bg-[#fde047] text-[#18181b]'
@@ -42,13 +90,26 @@ export default function Experience() {
               ) : (
                 <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5" />
               )}
-            </div>
+            </motion.div>
 
-            {/* Experience Card */}
-            <div
-              className={`bg-white border-2 border-[#18181b] rounded-2xl p-6 sm:p-8 shadow-[5px_5px_0px_#18181b] hover:shadow-[8px_8px_0px_#18181b] transition-all relative ${
-                idx % 2 === 0 ? '-rotate-0.5 hover:rotate-0' : 'rotate-0.5 hover:rotate-0'
-              }`}
+            {/* Experience Card with Staggered Scroll Reveal */}
+            <motion.div
+              initial={{ opacity: 0, x: 40, rotate: idx % 2 === 0 ? -1 : 1 }}
+              whileInView={{ opacity: 1, x: 0, rotate: idx % 2 === 0 ? -0.5 : 0.5 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{
+                type: "spring",
+                stiffness: 280,
+                damping: 24,
+                delay: 0.1 + idx * 0.15,
+              }}
+              whileHover={{
+                y: -5,
+                rotate: 0,
+                boxShadow: "8px 8px 0px #18181b",
+                transition: { duration: 0.2 },
+              }}
+              className="bg-white border-2 border-[#18181b] rounded-2xl p-6 sm:p-8 shadow-[5px_5px_0px_#18181b] relative cursor-pointer"
             >
               {/* Card Header */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 mb-4 border-b border-[#18181b]/15">
@@ -85,22 +146,24 @@ export default function Experience() {
                 ))}
               </ul>
 
-              {/* Document Link for Verified Offer Letter */}
+              {/* Document Link for Verified Offer Letter with Tactile Wobble */}
               {item.documentUrl && (
                 <div className="pt-4 mt-4 border-t border-[#18181b]/15 flex items-center justify-start">
-                  <a
+                  <motion.a
                     href={item.documentUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-[#fde047] text-[#18181b] border-2 border-[#18181b] rounded-xl text-xs font-bold shadow-[2px_2px_0px_#18181b] hover:-translate-y-0.5 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all"
+                    whileHover={{ scale: 1.04, rotate: -1 }}
+                    whileTap={{ scale: 0.95, x: 2, y: 2 }}
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-[#fde047] text-[#18181b] border-2 border-[#18181b] rounded-xl text-xs font-bold shadow-[2px_2px_0px_#18181b] hover:bg-yellow-300 transition-colors"
                   >
                     <FileCheck className="w-3.5 h-3.5 text-[#ef4444]" />
                     <span>{item.documentLabel || 'View Verification Document (PDF)'}</span>
                     <ExternalLink className="w-3 h-3 ml-0.5" />
-                  </a>
+                  </motion.a>
                 </div>
               )}
-            </div>
+            </motion.div>
           </div>
         ))}
       </div>

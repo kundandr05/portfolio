@@ -4,6 +4,7 @@ import React, { use } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import { motion } from 'framer-motion';
 import { ArrowLeft, ExternalLink, Github, CheckCircle2, AlertTriangle, Rocket } from 'lucide-react';
 import PageTransition from '@/components/shared/PageTransition';
 import { projects } from '@/data/projects';
@@ -24,15 +25,20 @@ export default function ProjectDetail({ params }: { params: Promise<{ slug: stri
     <PageTransition>
       <div className="py-8 sm:py-12 max-w-4xl mx-auto">
         
-        {/* Navigation Breadcrumb */}
+        {/* Navigation Breadcrumb with Spring Entrance */}
         <div className="mb-8 flex items-center justify-between">
-          <Link
-            href="/#projects"
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white text-[#18181b] border-2 border-[#18181b] rounded-xl text-xs font-bold shadow-[2px_2px_0px_#18181b] hover:bg-[#fde047] hover:-translate-y-0.5 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all"
+          <motion.div
+            whileHover={{ scale: 1.05, rotate: -1 }}
+            whileTap={{ scale: 0.95 }}
           >
-            <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Back to All Projects</span>
-          </Link>
+            <Link
+              href="/#projects"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-white text-[#18181b] border-2 border-[#18181b] rounded-xl text-xs font-bold shadow-[2px_2px_0px_#18181b] hover:bg-[#fde047] transition-colors"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              <span>Back to All Projects</span>
+            </Link>
+          </motion.div>
 
           <span className="text-xs font-mono font-bold text-stone-500 uppercase">
             CASE STUDY // {project.category}
@@ -40,8 +46,12 @@ export default function ProjectDetail({ params }: { params: Promise<{ slug: stri
         </div>
 
         {/* Notebook Lab Binder Article */}
-        <article className="bg-white border-2 border-[#18181b] rounded-2xl p-6 sm:p-10 md:p-12 shadow-[8px_8px_0px_#18181b] relative">
-          
+        <motion.article
+          initial={{ opacity: 0, y: 35, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ type: "spring", stiffness: 300, damping: 24 }}
+          className="bg-white border-2 border-[#18181b] rounded-2xl p-6 sm:p-10 md:p-12 shadow-[8px_8px_0px_#18181b] relative"
+        >
           {/* Top Washi Tape Corner */}
           <div className="absolute -top-3 left-16 w-32 h-6 bg-[#fde047]/90 border border-[#18181b]/30 rotate-1 z-20 pointer-events-none shadow-xs flex items-center justify-center text-[10px] font-mono font-bold text-stone-700">
             ENGINEERING LAB NOTE
@@ -84,30 +94,34 @@ export default function ProjectDetail({ params }: { params: Promise<{ slug: stri
               </div>
             </div>
 
-            {/* Action Links */}
+            {/* Action Links with Wobble & Collapse Press */}
             <div className="flex flex-wrap items-center gap-3 mt-6">
               {project.demo && (
-                <a
+                <motion.a
                   href={project.demo}
                   target="_blank"
                   rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05, rotate: -1 }}
+                  whileTap={{ scale: 0.95, x: 2, y: 2 }}
                   className="btn-scrapbook-primary py-2 px-4 text-xs"
                 >
                   <ExternalLink className="w-3.5 h-3.5" />
                   <span>{project.demoLabel || 'Open Live Demo'}</span>
-                </a>
+                </motion.a>
               )}
 
               {project.github && (
-                <a
+                <motion.a
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
+                  whileHover={{ scale: 1.05, rotate: 1 }}
+                  whileTap={{ scale: 0.95, x: 2, y: 2 }}
                   className="btn-scrapbook-secondary py-2 px-4 text-xs"
                 >
                   <Github className="w-3.5 h-3.5" />
                   <span>{project.githubLabel || 'View Source Code'}</span>
-                </a>
+                </motion.a>
               )}
             </div>
           </div>
@@ -128,35 +142,55 @@ export default function ProjectDetail({ params }: { params: Promise<{ slug: stri
           <div className="space-y-8 text-stone-800 text-sm sm:text-base leading-relaxed">
             
             {/* 1. Problem & Context */}
-            <section className="bg-[#faf7ee] p-5 sm:p-6 rounded-2xl border-2 border-[#18181b]/30">
+            <motion.section
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-[#faf7ee] p-5 sm:p-6 rounded-2xl border-2 border-[#18181b]/30"
+            >
               <h2 className="text-lg font-display font-black text-[#18181b] flex items-center gap-2 mb-2">
                 <span className="px-2 py-0.5 bg-[#ef4444] text-white text-xs rounded font-mono">01</span>
                 Problem &amp; Real-World Context
               </h2>
               <p className="text-stone-700">{project.problem}</p>
-            </section>
+            </motion.section>
 
             {/* 2. Technical Approach */}
-            <section className="bg-[#faf7ee] p-5 sm:p-6 rounded-2xl border-2 border-[#18181b]/30">
+            <motion.section
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-[#faf7ee] p-5 sm:p-6 rounded-2xl border-2 border-[#18181b]/30"
+            >
               <h2 className="text-lg font-display font-black text-[#18181b] flex items-center gap-2 mb-2">
                 <span className="px-2 py-0.5 bg-[#fde047] text-[#18181b] text-xs rounded font-mono">02</span>
                 Technical Approach &amp; Solution
               </h2>
               <p className="text-stone-700">{project.built}</p>
-            </section>
+            </motion.section>
 
             {/* 3. System Architecture */}
-            <section className="bg-[#faf7ee] p-5 sm:p-6 rounded-2xl border-2 border-[#18181b]/30">
+            <motion.section
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-[#faf7ee] p-5 sm:p-6 rounded-2xl border-2 border-[#18181b]/30"
+            >
               <h2 className="text-lg font-display font-black text-[#18181b] flex items-center gap-2 mb-2">
                 <span className="px-2 py-0.5 bg-[#38bdf8] text-[#18181b] text-xs rounded font-mono">03</span>
                 System Architecture
               </h2>
               <p className="text-stone-700">{project.architecture}</p>
-            </section>
+            </motion.section>
 
             {/* 4. Key Implementation Features */}
             {project.keyFeatures && project.keyFeatures.length > 0 && (
-              <section className="bg-white p-5 sm:p-6 rounded-2xl border-2 border-[#18181b]">
+              <motion.section
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="bg-white p-5 sm:p-6 rounded-2xl border-2 border-[#18181b]"
+              >
                 <h2 className="text-lg font-display font-black text-[#18181b] flex items-center gap-2 mb-4">
                   <span className="px-2 py-0.5 bg-[#22c55e] text-white text-xs rounded font-mono">04</span>
                   Key Features &amp; Engineering Highlights
@@ -169,40 +203,50 @@ export default function ProjectDetail({ params }: { params: Promise<{ slug: stri
                     </li>
                   ))}
                 </ul>
-              </section>
+              </motion.section>
             )}
 
             {/* 5. Challenges Overcome & What Broke */}
-            <section className="bg-[#fff1f2] p-5 sm:p-6 rounded-2xl border-2 border-[#ef4444]">
+            <motion.section
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-[#fff1f2] p-5 sm:p-6 rounded-2xl border-2 border-[#ef4444]"
+            >
               <h2 className="text-lg font-display font-black text-[#ef4444] flex items-center gap-2 mb-2">
                 <AlertTriangle className="w-5 h-5 text-[#ef4444]" />
                 Challenges Overcome &amp; Edge Cases
               </h2>
               <p className="text-stone-800 text-xs sm:text-sm">{project.challenges}</p>
-            </section>
+            </motion.section>
 
             {/* 6. Outcome & What I Learned */}
-            <section className="bg-[#f0fdf4] p-5 sm:p-6 rounded-2xl border-2 border-[#22c55e]">
+            <motion.section
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-[#f0fdf4] p-5 sm:p-6 rounded-2xl border-2 border-[#22c55e]">
               <h2 className="text-lg font-display font-black text-[#15803d] flex items-center gap-2 mb-2">
                 <Rocket className="w-5 h-5 text-[#15803d]" />
                 Outcome &amp; Production Status
               </h2>
               <p className="text-stone-800 text-xs sm:text-sm">{project.outcome}</p>
-            </section>
+            </motion.section>
 
-            {/* Tech Stack Chips */}
+            {/* Tech Stack Chips with Hover Wiggle */}
             <div className="pt-4">
               <span className="block text-xs font-mono font-bold text-stone-500 uppercase mb-2">
                 Technologies Used:
               </span>
               <div className="flex flex-wrap gap-1.5">
                 {project.tags.map((tag) => (
-                  <span
+                  <motion.span
                     key={tag}
-                    className="px-2.5 py-1 bg-white border border-[#18181b] rounded-lg text-xs font-mono font-bold text-[#18181b] shadow-[1px_1px_0px_#18181b]"
+                    whileHover={{ scale: 1.08, rotate: 2, backgroundColor: "#fde047" }}
+                    className="px-2.5 py-1 bg-white border border-[#18181b] rounded-lg text-xs font-mono font-bold text-[#18181b] shadow-[1px_1px_0px_#18181b] cursor-default"
                   >
                     {tag}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
             </div>
@@ -211,28 +255,38 @@ export default function ProjectDetail({ params }: { params: Promise<{ slug: stri
 
           {/* Next / Previous Project Navigation */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-12 pt-8 border-t-2 border-[#18181b]/15">
-            <Link
-              href={`/projects/${prevProject.slug}`}
-              className="p-4 bg-[#faf7ee] border-2 border-[#18181b] rounded-xl shadow-[3px_3px_0px_#18181b] hover:-translate-y-0.5 transition-all text-left group"
+            <motion.div
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <span className="text-[10px] font-mono text-stone-500 uppercase block">← Previous Project</span>
-              <span className="text-sm font-display font-black text-[#18181b] group-hover:text-[#ef4444]">
-                {prevProject.title}
-              </span>
-            </Link>
+              <Link
+                href={`/projects/${prevProject.slug}`}
+                className="p-4 bg-[#faf7ee] border-2 border-[#18181b] rounded-xl shadow-[3px_3px_0px_#18181b] block text-left group"
+              >
+                <span className="text-[10px] font-mono text-stone-500 uppercase block">← Previous Project</span>
+                <span className="text-sm font-display font-black text-[#18181b] group-hover:text-[#ef4444] transition-colors">
+                  {prevProject.title}
+                </span>
+              </Link>
+            </motion.div>
 
-            <Link
-              href={`/projects/${nextProject.slug}`}
-              className="p-4 bg-[#faf7ee] border-2 border-[#18181b] rounded-xl shadow-[3px_3px_0px_#18181b] hover:-translate-y-0.5 transition-all text-right group"
+            <motion.div
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <span className="text-[10px] font-mono text-stone-500 uppercase block">Next Project →</span>
-              <span className="text-sm font-display font-black text-[#18181b] group-hover:text-[#ef4444]">
-                {nextProject.title}
-              </span>
-            </Link>
+              <Link
+                href={`/projects/${nextProject.slug}`}
+                className="p-4 bg-[#faf7ee] border-2 border-[#18181b] rounded-xl shadow-[3px_3px_0px_#18181b] block text-right group"
+              >
+                <span className="text-[10px] font-mono text-stone-500 uppercase block">Next Project →</span>
+                <span className="text-sm font-display font-black text-[#18181b] group-hover:text-[#ef4444] transition-colors">
+                  {nextProject.title}
+                </span>
+              </Link>
+            </motion.div>
           </div>
 
-        </article>
+        </motion.article>
 
       </div>
     </PageTransition>

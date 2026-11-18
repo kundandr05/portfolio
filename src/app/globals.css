@@ -88,18 +88,46 @@ html.lenis, html.lenis body {
   pointer-events: none;
 }
 
+/* Marquee Keyframes & Animation Classes */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
+}
+
+.animate-marquee {
+  display: flex !important;
+  width: max-content !important;
+  animation: marquee 25s linear infinite !important;
+}
+
+.animate-marquee-reverse {
+  display: flex !important;
+  width: max-content !important;
+  animation: marquee-reverse 25s linear infinite !important;
+}
+
+.animate-marquee:hover,
+.animate-marquee-reverse:hover {
+  animation-play-state: paused !important;
+}
+
 /* Scrapbook Sticker Card Utility */
 .sticker-card {
   background-color: #ffffff;
   border: 2px solid #18181b;
   border-radius: 1rem;
   box-shadow: 4px 4px 0px #18181b;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .sticker-card:hover {
-  box-shadow: 6px 6px 0px #18181b;
-  transform: translateY(-2px);
+  box-shadow: 7px 7px 0px #18181b;
+  transform: translateY(-4px);
 }
 
 /* Tactile Buttons with Hard Collapse Press */
@@ -170,7 +198,22 @@ html.lenis, html.lenis body {
   z-index: 20;
 }
 
-/* Highlighter Marker Effect */
+/* Highlighter Marker Effect & Sweeps */
+.highlighter-sweep-yellow {
+  background-image: linear-gradient(104deg, #fde047 0%, #fde047 100%);
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 0% 100%;
+  transition: background-size 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 0.1rem 0.4rem;
+  border-radius: 0.25rem;
+  display: inline-block;
+}
+
+.highlighter-sweep-yellow.in-view {
+  background-size: 100% 100%;
+}
+
 .highlighter-yellow {
   background: linear-gradient(104deg, rgba(253, 224, 71, 0) 0.9%, rgba(253, 224, 71, 0.9) 2.4%, rgba(253, 224, 71, 0.75) 98%);
   padding: 0.1rem 0.4rem;

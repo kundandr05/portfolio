@@ -21,10 +21,13 @@ export default function Navbar() {
 
   return (
     <>
-      <header
-        className={`fixed top-3 sm:top-4 left-0 right-0 z-40 transition-all duration-200 px-3 sm:px-6 max-w-6xl mx-auto`}
-      >
-        <nav className="bg-[#ffffff] border-2 border-[#18181b] rounded-2xl px-4 sm:px-6 py-2.5 sm:py-3 shadow-[4px_4px_0px_#18181b] flex items-center justify-between relative">
+      <header className="fixed top-3 sm:top-4 left-0 right-0 z-40 px-3 sm:px-6 max-w-6xl mx-auto">
+        <motion.nav
+          initial={{ y: -30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ type: "spring", stiffness: 350, damping: 24 }}
+          className="bg-[#ffffff] border-2 border-[#18181b] rounded-2xl px-4 sm:px-6 py-2.5 sm:py-3 shadow-[4px_4px_0px_#18181b] flex items-center justify-between relative"
+        >
           {/* Subtle Decorative Washi Tape on top left corner */}
           <div className="hidden sm:block absolute -top-2.5 left-8 w-16 h-4 bg-[#fde047]/80 border-t border-b border-[#18181b]/30 rotate-[-2deg] pointer-events-none shadow-xs" />
 
@@ -34,62 +37,75 @@ export default function Navbar() {
             className="flex items-center gap-2 group focus:outline-none"
             aria-label="Kundan DR Homepage"
           >
-            <span className="w-8 h-8 rounded-lg bg-[#ef4444] text-white border-2 border-[#18181b] flex items-center justify-center font-black font-display text-base shadow-[2px_2px_0px_#18181b] group-hover:rotate-6 transition-transform">
+            <motion.span
+              whileHover={{ rotate: 12, scale: 1.1 }}
+              whileTap={{ scale: 0.92 }}
+              className="w-8 h-8 rounded-lg bg-[#ef4444] text-white border-2 border-[#18181b] flex items-center justify-center font-black font-display text-base shadow-[2px_2px_0px_#18181b]"
+            >
               K
-            </span>
+            </motion.span>
             <div className="flex flex-col">
               <span className="font-display font-black text-lg tracking-tight text-[#18181b] group-hover:text-[#ef4444] transition-colors">
                 kundan.dr
               </span>
               <span className="text-[10px] font-mono text-stone-500 font-bold uppercase tracking-wider -mt-1 hidden xs:block">
-                ai & backend
+                ai &amp; backend
               </span>
             </div>
           </Link>
 
-          {/* Desktop Nav Items */}
+          {/* Desktop Nav Items with Tactile Wobble */}
           <div className="hidden md:flex items-center gap-1.5 lg:gap-2">
             {navLinks.map((link) => (
-              <Link
+              <motion.div
                 key={link.name}
-                href={link.href}
-                className={`px-3 py-1.5 text-xs font-bold text-[#18181b] rounded-lg border border-transparent hover:border-[#18181b] hover:shadow-[2px_2px_0px_#18181b] hover:-translate-y-0.5 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all ${link.color}`}
+                whileHover={{ scale: 1.06, rotate: [-1, 1, 0] }}
+                whileTap={{ scale: 0.94 }}
               >
-                {link.name}
-              </Link>
+                <Link
+                  href={link.href}
+                  className={`px-3 py-1.5 text-xs font-bold text-[#18181b] rounded-lg border border-transparent hover:border-[#18181b] hover:shadow-[2px_2px_0px_#18181b] transition-all block ${link.color}`}
+                >
+                  {link.name}
+                </Link>
+              </motion.div>
             ))}
           </div>
 
           {/* Right Action: Resume & Mobile Hamburger */}
           <div className="flex items-center gap-2 sm:gap-3">
-            <button
+            <motion.button
               onClick={() => setIsResumeOpen(true)}
-              className="inline-flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 text-xs font-extrabold text-[#18181b] bg-[#fde047] border-2 border-[#18181b] rounded-xl shadow-[3px_3px_0px_#18181b] hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_#18181b] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all"
+              whileHover={{ scale: 1.06, rotate: [1, -1, 0] }}
+              whileTap={{ scale: 0.94, x: 1, y: 1 }}
+              className="inline-flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 text-xs font-extrabold text-[#18181b] bg-[#fde047] border-2 border-[#18181b] rounded-xl shadow-[3px_3px_0px_#18181b] transition-colors"
             >
               <FileText className="w-3.5 h-3.5 text-[#18181b]" />
               <span>Resume</span>
-            </button>
+            </motion.button>
 
             {/* Mobile Hamburger Button */}
-            <button
+            <motion.button
               onClick={() => setIsOpen(!isOpen)}
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.92 }}
               className="md:hidden p-2 text-[#18181b] bg-white border-2 border-[#18181b] rounded-xl shadow-[2px_2px_0px_#18181b] hover:bg-[#fde047] transition-colors"
               aria-label="Toggle navigation menu"
               aria-expanded={isOpen}
             >
               {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
+            </motion.button>
           </div>
-        </nav>
+        </motion.nav>
 
         {/* Mobile Navigation Drawer */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              initial={{ opacity: 0, y: -10, scale: 0.98 }}
+              initial={{ opacity: 0, y: -15, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -10, scale: 0.98 }}
-              transition={{ duration: 0.2 }}
+              exit={{ opacity: 0, y: -15, scale: 0.96 }}
+              transition={{ type: "spring", stiffness: 350, damping: 25 }}
               className="md:hidden mt-2 p-5 bg-[#faf7ee] border-2 border-[#18181b] rounded-2xl shadow-[6px_6px_0px_#18181b] flex flex-col gap-3"
             >
               <div className="flex items-center justify-between pb-2 border-b border-[#18181b]/20">
@@ -99,16 +115,24 @@ export default function Navbar() {
 
               <div className="grid grid-cols-2 gap-2">
                 {navLinks.map((link, idx) => (
-                  <Link
+                  <motion.div
                     key={link.name}
-                    href={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className={`p-3 text-sm font-extrabold text-[#18181b] bg-white border-2 border-[#18181b] rounded-xl shadow-[2px_2px_0px_#18181b] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all ${
-                      idx % 2 === 0 ? '-rotate-1 hover:rotate-0' : 'rotate-1 hover:rotate-0'
-                    } ${link.color}`}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: idx * 0.04 }}
+                    whileHover={{ scale: 1.04, rotate: 0 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    {link.name}
-                  </Link>
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className={`p-3 text-sm font-extrabold text-[#18181b] bg-white border-2 border-[#18181b] rounded-xl shadow-[2px_2px_0px_#18181b] transition-all block ${
+                        idx % 2 === 0 ? '-rotate-1' : 'rotate-1'
+                      } ${link.color}`}
+                    >
+                      {link.name}
+                    </Link>
+                  </motion.div>
                 ))}
               </div>
 

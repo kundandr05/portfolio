@@ -3,21 +3,26 @@
 import React, { useEffect, useState, useSyncExternalStore } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
-function subscribeTouch(callback: () => void) {
-  window.addEventListener('resize', callback);
-  return () => window.removeEventListener('resize', callback);
+function subscribeFinePointer(callback: () => void) {
+  const mql = window.matchMedia('(pointer: fine)');
+  mql.addEventListener('change', callback);
+  return () => mql.removeEventListener('change', callback);
 }
 
-function getSnapshotTouch() {
-  return window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window;
+function getSnapshotFinePointer() {
+  return window.matchMedia('(pointer: fine)').matches;
 }
 
-function getServerSnapshotTouch() {
-  return true;
+function getServerSnapshotFinePointer() {
+  return false;
 }
 
 export default function CustomCursor() {
-  const isTouchDevice = useSyncExternalStore(subscribeTouch, getSnapshotTouch, getServerSnapshotTouch);
+  const isDesktop = useSyncExternalStore(
+    subscribeFinePointer,
+    getSnapshotFinePointer,
+    getServerSnapshotFinePointer
+  );
   const [cursorText, setCursorText] = useState('');
   const [isHovered, setIsHovered] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -25,17 +30,17 @@ export default function CustomCursor() {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
-  const springConfig = { damping: 28, stiffness: 350, mass: 0.5 };
+  const springConfig = { damping: 24, stiffness: 450, mass: 0.35 };
   const smoothX = useSpring(cursorX, springConfig);
   const smoothY = useSpring(cursorY, springConfig);
 
   useEffect(() => {
-    if (isTouchDevice) return;
+    if (!isDesktop) return;
 
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
-      if (!isVisible) setIsVisible(true);
+      setIsVisible(true);
     };
 
     const handleMouseOver = (e: MouseEvent) => {
@@ -73,9 +78,9 @@ export default function CustomCursor() {
       document.removeEventListener('mouseover', handleMouseOver);
       document.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, [cursorX, cursorY, isVisible, isTouchDevice]);
+  }, [cursorX, cursorY, isDesktop]);
 
-  if (isTouchDevice || !isVisible) return null;
+  if (!isDesktop || !isVisible) return null;
 
   return (
     <motion.div
@@ -89,17 +94,18 @@ export default function CustomCursor() {
     >
       <motion.div
         animate={{
-          width: cursorText ? 64 : isHovered ? 36 : 18,
-          height: cursorText ? 64 : isHovered ? 36 : 18,
+          width: cursorText ? 68 : isHovered ? 40 : 18,
+          height: cursorText ? 68 : isHovered ? 40 : 18,
           backgroundColor: cursorText ? '#fde047' : isHovered ? '#ef4444' : '#18181b',
           borderColor: '#18181b',
           rotate: cursorText ? -6 : 0,
+          scale: isHovered ? 1.05 : 1,
         }}
-        transition={{ type: 'spring', damping: 20, stiffness: 300 }}
-        className="rounded-full border-2 border-[#18181b] shadow-[2px_2px_0px_#18181b] flex items-center justify-center text-center overflow-hidden"
+        transition={{ type: 'spring', damping: 18, stiffness: 350 }}
+        className="rounded-full border-2 border-[#18181b] shadow-[3px_3px_0px_#18181b] flex items-center justify-center text-center overflow-hidden"
       >
         {cursorText && (
-          <span className="text-[#18181b] font-black text-[11px] tracking-tight leading-none">
+          <span className="text-[#18181b] font-black text-[12px] tracking-tight leading-none select-none">
             {cursorText}
           </span>
         )}
