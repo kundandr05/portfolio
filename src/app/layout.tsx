@@ -51,6 +51,10 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Kundan DR', url: 'https://kundandr-portfolio.vercel.app/' }],
   creator: 'Kundan DR',
+  icons: {
+    icon: '/icon',
+    apple: '/apple-icon',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -58,14 +62,46 @@ export const metadata: Metadata = {
     title: 'Kundan DR · AI & Backend Engineer · Scrapbook Portfolio',
     description: 'Undergraduate AI & ML Engineer at MIT Mysuru, UI/UX Intern at WizzyBox, IJCRT Published Researcher, and Author.',
     siteName: 'Kundan DR Portfolio',
-    images: [{ url: '/suit-photo.jpg', width: 800, height: 900, alt: 'Kundan DR' }],
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Kundan DR Portfolio' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Kundan DR · AI & Backend Engineer',
     description: 'Undergraduate AI & ML Engineer at MIT Mysuru, UI/UX Intern at WizzyBox, Published Researcher, and Author.',
-    images: ['/suit-photo.jpg'],
+    images: ['/opengraph-image'],
   },
+};
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Kundan DR',
+  url: 'https://kundandr-portfolio.vercel.app/',
+  jobTitle: 'AI & Machine Learning Engineer',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'WizzyBox Private Limited',
+  },
+  alumniOf: {
+    '@type': 'EducationalOrganization',
+    name: 'Maharaja Institute of Technology Mysuru',
+  },
+  sameAs: [
+    'https://github.com/kundandr05',
+    'https://linkedin.com/in/kundan-d-r-914274310',
+    'https://www.amazon.com/dp/B0DKFYW454',
+    'https://www.amazon.com/dp/B0D796X3L1',
+  ],
+  knowsAbout: [
+    'Agentic AI',
+    'FastAPI',
+    'Python',
+    'Next.js',
+    'React',
+    'Tailwind CSS',
+    'Combinatorial Optimization',
+    'Multi-Agent Coordination',
+  ],
 };
 
 export default function RootLayout({
@@ -79,7 +115,21 @@ export default function RootLayout({
       className={`${bricolage.variable} ${jakarta.variable} ${caveat.variable} ${fira.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+      </head>
       <body className="bg-[#faf7ee] text-[#18181b] min-h-screen flex flex-col antialiased selection:bg-[#fde047] selection:text-[#18181b]" suppressHydrationWarning>
+        {/* Accessible Skip Link */}
+        <a
+          href="#projects"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#fde047] focus:text-[#18181b] focus:border-2 focus:border-[#18181b] focus:rounded-xl focus:shadow-[3px_3px_0px_#18181b] focus:font-bold"
+        >
+          Skip to main work
+        </a>
+
         <SmoothScroll>
           <ScrollProgress />
           <CustomCursor />
