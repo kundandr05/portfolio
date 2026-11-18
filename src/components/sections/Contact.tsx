@@ -41,7 +41,7 @@ export default function Contact() {
             </motion.div>
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-black tracking-tight text-[#18181b] mb-4">
-              Have an idea, research role, or{' '}
+              Have a job, research role, or{' '}
               <motion.span
                 initial={{ backgroundSize: "0% 100%" }}
                 whileInView={{ backgroundSize: "100% 100%" }}
@@ -54,7 +54,7 @@ export default function Contact() {
             </h2>
 
             <p className="text-stone-600 text-sm sm:text-base leading-relaxed mb-8">
-              I am open to software engineering internships, research collaborations, and backend development roles for 2027. My inbox is always open.
+              I am open to software engineering jobs, internships, research collaborations, and backend development roles for 2027. My inbox is always open.
             </p>
 
             {/* BIG TACTILE EMAIL BUTTON with Collapse Press */}

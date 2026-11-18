@@ -52,8 +52,8 @@ export default function Hero() {
             whileHover={{ scale: 1.04, rotate: 1 }}
             className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#ffffff] border-2 border-[#18181b] rounded-full shadow-[2px_2px_0px_#18181b] text-xs font-bold text-[#18181b] -rotate-1 transition-transform cursor-default"
           >
-            <span className="w-2.5 h-2.5 rounded-full bg-[#22c55e] animate-pulse" />
-            <span>Open to internships and research (2027 graduate)</span>
+            <span className="w-2.5 h-2.5 rounded-full bg-[#22c55e] animate-pulse shrink-0" />
+            <span>Open to work / jobs, internships &amp; research (2027 graduate)</span>
           </motion.div>
         </div>
 
