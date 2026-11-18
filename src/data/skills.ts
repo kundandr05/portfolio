@@ -28,11 +28,11 @@ export const skillCategories: SkillCategory[] = [
     tagline: "Scalable REST APIs, scheduling algorithms & databases",
     color: "yellow",
     skills: [
-      { name: "Node.js & Express", usedIn: "DispatchGrid & Campus LMS" },
+      { name: "Node.js & Express", usedIn: "DispatchGrid" },
       { name: "Prisma ORM & SQLite", usedIn: "DispatchGrid" },
-      { name: "MongoDB & Mongoose", usedIn: "Campus LMS" },
+      { name: "Firebase & Cloud Firestore", usedIn: "Campus OS" },
       { name: "Greedy Heuristics & 2-Opt", usedIn: "DispatchGrid" },
-      { name: "JWT Authentication & RBAC", usedIn: "Campus LMS & DispatchGrid" },
+      { name: "Multi-Tier RBAC & Auth", usedIn: "Campus OS & DispatchGrid" },
       { name: "WebSockets & Streaming", usedIn: "Ollama Chatbot & Zeno AI" }
     ]
   },

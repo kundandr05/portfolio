@@ -23,6 +23,14 @@ const nextConfig: NextConfig = {
         source: '/resume',
         destination: '/Kundan_Resume.pdf',
       },
+      {
+        source: '/projects/campus-os',
+        destination: '/projects/college-management-system-lms',
+      },
+      {
+        source: '/projects/campusos',
+        destination: '/projects/college-management-system-lms',
+      },
     ];
   },
 };
