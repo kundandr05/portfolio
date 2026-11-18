@@ -127,7 +127,7 @@ export const projects: Project[] = [
     built: "Created a conversational narrative companion using Google Gemini API and responsive Vanilla JavaScript with contextual cultural grounding.",
     result: "Interactive multilingual Q&A, cultural context explanations, and zero-dependency lightweight client architecture.",
     tags: ["JavaScript", "HTML5", "CSS3", "Google Gemini API", "Vercel"],
-    image: "/project4.png",
+    image: "/project-krishnaleela.png",
     github: "https://github.com/kundandr05/KrishnaLeela",
     githubLabel: "KrishnaLeela Repo",
     demo: "https://krishna-leela.vercel.app/",
