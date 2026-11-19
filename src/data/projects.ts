@@ -117,7 +117,6 @@ export const projects: Project[] = [
     image: "", // Empty per user instruction ("for cover image leave empty")
     github: "https://github.com/kundandr05/ByteForge_H4H",
     githubLabel: "kundandr05/ByteForge_H4H",
-    demoLabel: "Demo Coming Soon",
     role: "Lead Software Engineer & System Architect",
     timeline: "2026",
     keyFeatures: [

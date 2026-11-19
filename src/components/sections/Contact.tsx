@@ -1,8 +1,10 @@
 "use client";
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, Copy, Check, MapPin, ArrowUpRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Mail, Github, Linkedin, Copy, Check, MapPin, ArrowUpRight, Sparkles } from 'lucide-react';
+
+const confettiColors = ['#ef4444', '#fde047', '#22c55e', '#38bdf8', '#a855f7'];
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
@@ -57,37 +59,82 @@ export default function Contact() {
               I am open to software engineering jobs, internships, research collaborations, and backend development roles for 2027. My inbox is always open.
             </p>
 
-            {/* BIG TACTILE EMAIL BUTTON with Collapse Press */}
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              className="w-full max-w-md bg-[#faf7ee] border-2 border-[#18181b] rounded-2xl p-4 shadow-[4px_4px_0px_#18181b] mb-8 flex flex-col sm:flex-row items-center justify-between gap-3"
-            >
-              <a
-                href="mailto:kundandr05@gmail.com"
-                className="font-mono font-black text-sm sm:text-base text-[#18181b] hover:text-[#ef4444] transition-colors break-all"
-              >
-                kundandr05@gmail.com
-              </a>
-
-              <motion.button
-                onClick={copyEmail}
-                whileHover={{ scale: 1.06, rotate: [-1, 1, 0] }}
-                whileTap={{ scale: 0.94, x: 2, y: 2 }}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-[#fde047] text-[#18181b] border-2 border-[#18181b] rounded-xl text-xs font-bold shadow-[2px_2px_0px_#18181b] shrink-0"
-              >
-                {copied ? (
-                  <>
-                    <Check className="w-3.5 h-3.5 text-[#22c55e]" />
-                    <span>Copied!</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-3.5 h-3.5" />
-                    <span>Copy Email</span>
-                  </>
+            {/* BIG TACTILE EMAIL BUTTON with Collapse Press, Toast, & Confetti */}
+            <div className="relative w-full max-w-md mb-8">
+              <AnimatePresence>
+                {copied && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10, scale: 0.8 }}
+                    animate={{ opacity: 1, y: -45, scale: 1 }}
+                    exit={{ opacity: 0, y: -55, scale: 0.8 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                    className="absolute -top-6 left-1/2 -translate-x-1/2 px-4 py-2 bg-[#22c55e] text-white border-2 border-[#18181b] rounded-xl font-display font-black text-xs shadow-[3px_3px_0px_#18181b] flex items-center gap-2 pointer-events-none z-30 whitespace-nowrap"
+                  >
+                    <Sparkles className="w-4 h-4 text-yellow-200" />
+                    <span>Copied, say hi! 🎉</span>
+                  </motion.div>
                 )}
-              </motion.button>
-            </motion.div>
+              </AnimatePresence>
+
+              {/* Confetti Particles */}
+              {copied && (
+                <div className="absolute inset-0 pointer-events-none overflow-visible">
+                  {[...Array(12)].map((_, i) => {
+                    const angle = (i / 12) * 2 * Math.PI;
+                    const dist = 60 + (i % 3) * 25;
+                    const x = Math.cos(angle) * dist;
+                    const y = Math.sin(angle) * dist - 20;
+                    return (
+                      <motion.span
+                        key={i}
+                        initial={{ opacity: 1, scale: 0, x: 0, y: 0 }}
+                        animate={{
+                          opacity: [1, 1, 0],
+                          scale: [0, 1.2, 0.6],
+                          x,
+                          y,
+                          rotate: i * 35,
+                        }}
+                        transition={{ duration: 0.9, ease: "easeOut" }}
+                        className="absolute left-1/2 top-1/2 w-2.5 h-2.5 rounded-sm border border-[#18181b]"
+                        style={{ backgroundColor: confettiColors[i % confettiColors.length] }}
+                      />
+                    );
+                  })}
+                </div>
+              )}
+
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                className="w-full bg-[#faf7ee] border-2 border-[#18181b] rounded-2xl p-4 shadow-[4px_4px_0px_#18181b] flex flex-col sm:flex-row items-center justify-between gap-3"
+              >
+                <a
+                  href="mailto:kundandr05@gmail.com"
+                  className="font-mono font-black text-sm sm:text-base text-[#18181b] hover:text-[#ef4444] transition-colors break-all"
+                >
+                  kundandr05@gmail.com
+                </a>
+
+                <motion.button
+                  onClick={copyEmail}
+                  whileHover={{ scale: 1.06, rotate: [-1, 1, 0] }}
+                  whileTap={{ scale: 0.94, x: 2, y: 2 }}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-[#fde047] text-[#18181b] border-2 border-[#18181b] rounded-xl text-xs font-bold shadow-[2px_2px_0px_#18181b] shrink-0"
+                >
+                  {copied ? (
+                    <>
+                      <Check className="w-3.5 h-3.5 text-[#22c55e]" />
+                      <span>Copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3.5 h-3.5" />
+                      <span>Copy Email</span>
+                    </>
+                  )}
+                </motion.button>
+              </motion.div>
+            </div>
 
             {/* Social Stamp Links with Hover Wobble */}
             <div className="flex flex-wrap items-center justify-center gap-3">

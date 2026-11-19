@@ -7,6 +7,7 @@ import CustomCursor from '@/components/shared/CustomCursor';
 import ScrollProgress from '@/components/shared/ScrollProgress';
 import ScrollToTop from '@/components/shared/ScrollToTop';
 import SmoothScroll from '@/components/shared/SmoothScroll';
+import EasterEgg from '@/components/shared/EasterEgg';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
@@ -133,6 +134,7 @@ export default function RootLayout({
         <SmoothScroll>
           <ScrollProgress />
           <CustomCursor />
+          <EasterEgg />
           <Navbar />
           <main className="flex-grow pt-20 container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 overflow-x-clip">
             {children}
