@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useSyncExternalStore } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Download, ExternalLink, FileText } from 'lucide-react';
 
@@ -9,29 +10,46 @@ interface ResumeModalProps {
   onClose: () => void;
 }
 
+const emptySubscribe = () => () => {};
+const getClientSnapshot = () => true;
+const getServerSnapshot = () => false;
+
 export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    getClientSnapshot,
+    getServerSnapshot
+  );
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') onClose();
+      };
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.body.style.overflow = 'unset';
+        window.removeEventListener('keydown', handleKeyDown);
+      };
     } else {
       document.body.style.overflow = 'unset';
     }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [isOpen]);
+  }, [isOpen, onClose]);
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 md:p-8">
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-6 md:p-8">
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-[#18181b]/55 backdrop-blur-xs"
+            className="fixed inset-0 bg-[#18181b]/70 backdrop-blur-xs"
           />
 
           {/* Modal Card - Styled like a Manila Folder / Clip Document */}
@@ -40,7 +58,7 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             animate={{ opacity: 1, scale: 1, y: 0, rotate: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 15, rotate: 1 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="relative w-full max-w-5xl h-[90vh] flex flex-col bg-[#fdfbf7] border-2 border-[#18181b] rounded-2xl overflow-hidden shadow-[8px_8px_0px_#18181b]"
+            className="relative z-10 w-full max-w-5xl h-[88vh] sm:h-[90vh] flex flex-col bg-[#fdfbf7] border-2 border-[#18181b] rounded-2xl overflow-hidden shadow-[8px_8px_0px_#18181b]"
           >
             {/* Washi tape on top */}
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-28 h-6 bg-[#fde047]/90 border border-[#18181b]/30 rotate-1 z-20 pointer-events-none shadow-xs" />
@@ -128,6 +146,7 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
           </motion.div>
         </div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }
