@@ -37,7 +37,7 @@ export default function Courses() {
           </motion.span>
         </h2>
         <p className="text-stone-600 text-sm sm:text-base mt-2 max-w-xl">
-          Completed virtual job simulations and technical foundations with Forage, Tata, Wells Fargo, IBM, Microsoft, and Google.
+          Verified certifications and coursework across Infosys Springboard, IBM SkillsBuild, Coursera, Tata Group, and Wells Fargo.
         </p>
       </motion.div>
 

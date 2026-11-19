@@ -578,6 +578,34 @@ export const projects: Project[] = [
     }
   },
   {
+    slug: "cloud-connected-retail-pos",
+    title: "Cloud-Connected Retail POS",
+    tagline: "Cross-Platform Barcode Inventory & Real-Time POS Platform",
+    category: "Full-Stack",
+    date: "2025",
+    problem: "Retail shops and warehouse stockrooms face constant inventory shrinkage, checkout bottlenecks, and discrepancies between physical shelves and ledger records.",
+    built: "Built and deployed a cloud-connected POS platform for Web (PWA) and Android supporting inventory tracking, stock intake, checkout billing, and sales reporting using Flutter, Dart, Supabase, and PostgreSQL.",
+    result: "Enabled barcode-based fast checkout, atomic PostgreSQL stock deductions to prevent over-selling, thermal PDF receipts, and live sales and low-stock telemetry.",
+    tags: ["Flutter", "Dart", "Supabase", "PostgreSQL", "REST APIs", "PWA", "Vercel"],
+    image: "",
+    github: "https://github.com/kundandr05",
+    githubLabel: "kundandr05 / Retail-POS",
+    role: "Full-Stack Mobile & Cloud Engineer",
+    timeline: "2025",
+    keyFeatures: [
+      "Cross-Platform Deployment: Runs as a high-performance PWA on desktop and natively on Android handheld scanners",
+      "Barcode Inventory Tracking: Instant camera and barcode scanner decoding for rapid item lookups and cart additions",
+      "Atomic Stock Updates: Supabase backend leveraging PostgreSQL atomic transactions to prevent inventory race conditions",
+      "Thermal PDF Printing: Automated generation and formatting of receipts for standard thermal POS printers",
+      "Sales & Profit Analytics: Live dashboards visualizing daily revenue, gross margins, and low-stock replenishment alerts"
+    ],
+    architecture: "Flutter client with reactive Dart state management connected to a Supabase managed PostgreSQL database via secure REST APIs.",
+    challenges: "Guaranteeing atomic inventory balance updates during concurrent billing requests and formatting dynamic receipt streams for diverse printer widths.",
+    outcome: "Full-stack cloud-connected point-of-sale and inventory platform verified on web and Android.",
+    color: "blue",
+    rotation: "rotate-1"
+  },
+  {
     slug: "personal-portfolio-website",
     title: "My Diary",
     tagline: "Creative Sticker-Board Digital Garden",

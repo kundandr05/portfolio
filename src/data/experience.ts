@@ -21,10 +21,10 @@ export const experiences: ExperienceItem[] = [
     badge: "Active Internship",
     color: "tomato",
     highlights: [
-      "Selected for the WizzyBox Career Acceleration Program (WCAP) as a UI/UX Design Intern.",
-      "Conducting user research, wireframing, and interactive prototyping for customer-facing web and mobile applications.",
-      "Collaborating closely with engineering leads to transform user interaction patterns into high-fidelity component libraries and design tokens.",
-      "Validating design usability through iterative prototype testing and accessibility audits."
+      "Selected for WCAP, delivered by WizzyBox in partnership with NammaQA.",
+      "Applying design thinking through target audience research, empathy mapping, personas, user stories, and user journey mapping.",
+      "Working on competitive audits, problem statements, information architecture, user flows, storyboards, and low-fidelity wireframes.",
+      "Collaborating closely with engineering leads to transform user interaction patterns into high-fidelity component libraries and design tokens."
     ],
     documentUrl: "/WizzyBox_Offer_Letter.pdf",
     documentLabel: "View Verified Offer Letter (PDF)"

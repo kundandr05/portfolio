@@ -9,11 +9,35 @@ export interface CertificationItem {
 
 export const certifications: CertificationItem[] = [
   {
+    id: "infosys-llmops",
+    name: "Getting Started with LLMOps",
+    issuer: "Infosys Springboard",
+    year: "2025",
+    color: "tomato",
+    category: "LLMOps & AI"
+  },
+  {
+    id: "ibm-skillsbuild-ai",
+    name: "Artificial Intelligence Fundamentals",
+    issuer: "IBM SkillsBuild",
+    year: "2025",
+    color: "yellow",
+    category: "AI Fundamentals"
+  },
+  {
+    id: "ibm-coursera-stats",
+    name: "Statistics for Data Science with Python",
+    issuer: "IBM / Coursera",
+    year: "2025",
+    color: "blue",
+    category: "Data Science"
+  },
+  {
     id: "forage-tata",
-    name: "Data Visualization: Empowering Business with Effective Insights",
+    name: "Data Visualization: Empowering Business with Insights",
     issuer: "Tata Group (via Forage)",
     year: "2024",
-    color: "blue",
+    color: "green",
     category: "Data Analytics"
   },
   {
@@ -25,27 +49,11 @@ export const certifications: CertificationItem[] = [
     category: "Software Engineering"
   },
   {
-    id: "ibm-python",
-    name: "Python for Data Science & AI Development",
-    issuer: "IBM",
-    year: "2024",
-    color: "yellow",
-    category: "AI & Data Science"
-  },
-  {
     id: "microsoft-cloud",
     name: "Cloud Foundations & Azure Core Services",
     issuer: "Microsoft",
     year: "2024",
-    color: "green",
-    category: "Cloud Computing"
-  },
-  {
-    id: "google-cybersecurity",
-    name: "Foundations of Cybersecurity & Network Defense",
-    issuer: "Google",
-    year: "2024",
     color: "blue",
-    category: "Security"
+    category: "Cloud Computing"
   }
 ];
