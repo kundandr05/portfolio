@@ -42,7 +42,7 @@ export const publications: PublicationItem[] = [
     title: "The Two-Speed Mind",
     subtitle: "Solving the 90s vs. 2000s Conflict to End Your Structural Stress",
     venueOrPublisher: "Published on Amazon KDP",
-    date: "2024",
+    date: "2025",
     identifier: "Amazon KDP · Paperback & Kindle",
     description: "An inquiry into mental models for technical creators: bridging generational friction between 90s depth and 2000s hyper-connectivity to eliminate structural cognitive stress and cultivate deliberate focus.",
     link: "https://amzn.in/d/08HiYofZ",
@@ -58,7 +58,7 @@ export const publications: PublicationItem[] = [
     title: "Reclaim Your Focus",
     subtitle: "A Guide to Dopamine Detox and Get Things Done",
     venueOrPublisher: "Published on Amazon KDP",
-    date: "2024",
+    date: "2025",
     identifier: "Amazon KDP · Paperback & Kindle",
     description: "A pragmatic guide to executing a dopamine detox, overcoming digital addiction, eliminating attention fragmentation, and structuring high-output daily habits to get things done.",
     link: "https://amzn.in/d/0by7Rnky",
@@ -72,5 +72,5 @@ export const publications: PublicationItem[] = [
 
 export const featuredQuote = {
   text: "Velocity without clarity is just frantic motion. The highest leverage engineering happens when you step away from the terminal and let the problem settle before writing a single line.",
-  source: "The Two-Speed Mind (2024)"
+  source: "The Two-Speed Mind (2025)"
 };

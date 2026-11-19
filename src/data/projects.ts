@@ -580,7 +580,7 @@ export const projects: Project[] = [
   },
   {
     slug: "personal-portfolio-website",
-    title: "Handmade Scrapbook Portfolio",
+    title: "My Diary",
     tagline: "Creative Sticker-Board Digital Garden",
     category: "Full-Stack",
     date: "2026",
