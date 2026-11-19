@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowDownRight, FileText, Github, Linkedin, Mail, Sparkles, BookOpen, GraduationCap, Award, Compass } from 'lucide-react';
 import ResumeModal from '@/components/shared/ResumeModal';
 
@@ -13,6 +13,50 @@ const roles = [
   "Published Author (2x)",
   "UI/UX Design Intern (WizzyBox)"
 ];
+
+// Scramble Typewriter Component for Role Line
+function ScrambleRole({ text }: { text: string }) {
+  const [displayText, setDisplayText] = useState(text);
+  const chars = "!<>-_\\/[]{}—=+*^?#________";
+
+  useEffect(() => {
+    let iteration = 0;
+    const interval = setInterval(() => {
+      setDisplayText(
+        text
+          .split("")
+          .map((letter, index) => {
+            if (index < iteration) {
+              return text[index];
+            }
+            return chars[Math.floor(Math.random() * chars.length)];
+          })
+          .join("")
+      );
+
+      if (iteration >= text.length) {
+        clearInterval(interval);
+      }
+
+      iteration += 1 / 2;
+    }, 28);
+
+    return () => clearInterval(interval);
+  }, [text]);
+
+  return (
+    <span className="font-mono font-bold tracking-tight">
+      {displayText}
+      <motion.span
+        animate={{ opacity: [1, 0, 1] }}
+        transition={{ repeat: Infinity, duration: 0.8 }}
+        className="inline-block ml-0.5 text-[#ef4444]"
+      >
+        _
+      </motion.span>
+    </span>
+  );
+}
 
 // Title words for staggered bouncy drop-in
 const headlineWords = [
@@ -124,7 +168,7 @@ export default function Hero() {
               </h1>
             </div>
 
-            {/* Slot-Machine Role Cycler with 3D Flip */}
+            {/* Typewriter Scramble Role Line */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -132,19 +176,10 @@ export default function Hero() {
               className="flex items-center gap-2 text-base sm:text-lg font-mono"
             >
               <span className="text-stone-500 font-bold">&gt; role:</span>
-              <div className="h-9 overflow-hidden relative inline-flex items-center">
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={roles[roleIndex]}
-                    initial={{ y: 28, opacity: 0, rotateX: -90 }}
-                    animate={{ y: 0, opacity: 1, rotateX: 0 }}
-                    exit={{ y: -28, opacity: 0, rotateX: 90 }}
-                    transition={{ type: "spring", stiffness: 420, damping: 24 }}
-                    className="inline-block px-3 py-0.5 bg-[#ffffff] border-2 border-[#18181b] rounded-lg shadow-[2px_2px_0px_#18181b] font-bold text-[#18181b]"
-                  >
-                    {roles[roleIndex]}
-                  </motion.span>
-                </AnimatePresence>
+              <div className="h-9 min-w-[240px] sm:min-w-[280px] overflow-hidden relative inline-flex items-center">
+                <span className="inline-block px-3 py-1 bg-[#ffffff] border-2 border-[#18181b] rounded-lg shadow-[2px_2px_0px_#18181b] font-bold text-[#18181b] text-sm sm:text-base">
+                  <ScrambleRole key={roles[roleIndex]} text={roles[roleIndex]} />
+                </span>
               </div>
             </motion.div>
 
@@ -255,8 +290,13 @@ export default function Hero() {
                   <span className="text-[10px] font-mono text-stone-500 tracking-widest uppercase">KUNDAN // 2026</span>
                 </div>
 
-                {/* Photo Container */}
-                <div className="relative w-full h-[85%] rounded-xl overflow-hidden border border-[#18181b]/20 bg-stone-100">
+                {/* Photo Container with Sketch-to-Color Reveal */}
+                <motion.div
+                  initial={{ filter: "grayscale(100%) contrast(220%) brightness(110%)", scale: 0.96 }}
+                  animate={{ filter: "grayscale(0%) contrast(100%) brightness(100%)", scale: 1 }}
+                  transition={{ duration: 1.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  className="relative w-full h-[85%] rounded-xl overflow-hidden border border-[#18181b]/20 bg-stone-100"
+                >
                   <Image
                     src="/suit-photo.jpg"
                     alt="Kundan DR"
@@ -265,12 +305,27 @@ export default function Hero() {
                     className="object-cover object-top hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 768px) 300px, 400px"
                   />
-                </div>
+                </motion.div>
 
-                {/* Polaroid Caption Strip */}
+                {/* Polaroid Caption Strip with Animated SVG Signature that draws itself */}
                 <div className="pt-2 px-1 flex items-center justify-between text-xs font-handwriting text-stone-700">
-                  <span className="font-bold text-sm text-[#18181b]">Kundan DR</span>
-                  <span className="text-stone-500">Mysuru, Karnataka 📍</span>
+                  <div className="flex items-center gap-1.5">
+                    <svg width="105" height="24" viewBox="0 0 105 24" className="text-[#18181b]">
+                      <motion.path
+                        d="M 4,18 Q 8,4 12,8 Q 15,20 18,10 L 22,17 L 27,10 L 31,16 L 36,9 Q 40,20 44,12 L 48,17 M 55,6 L 55,20 Q 64,20 64,13 Q 64,6 55,6 M 72,6 L 72,20 M 72,6 Q 84,5 84,13 Q 84,20 72,20 L 86,20"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        initial={{ pathLength: 0 }}
+                        animate={{ pathLength: 1 }}
+                        transition={{ duration: 1.6, delay: 0.8, ease: "easeInOut" }}
+                      />
+                    </svg>
+                    <span className="font-mono text-[9px] text-stone-400 font-bold uppercase">(signature)</span>
+                  </div>
+                  <span className="text-stone-500 font-mono text-[11px]">Mysuru 📍</span>
                 </div>
 
                 {/* Hand-Drawn Sparkle that draws itself */}
@@ -287,7 +342,7 @@ export default function Hero() {
                 </motion.div>
               </motion.div>
 
-              {/* DRAGGABLE STICKER 1: IJCRT Published (Elastic Snap-Back & Continuous Gentle Float) */}
+              {/* DRAGGABLE STICKER 1: IJCRT Published (Elastic Snap-Back, Gentle Float, & Dog-Ear Peel Corner) */}
               <motion.div
                 drag
                 dragSnapToOrigin
@@ -303,15 +358,19 @@ export default function Hero() {
                 }}
                 whileDrag={{ scale: 1.2, rotate: 0, zIndex: 60 }}
                 whileHover={{ scale: 1.1, rotate: -8 }}
-                className="absolute -top-6 -left-8 sm:-left-12 cursor-grab active:cursor-grabbing z-30 select-none"
+                className="absolute -top-6 -left-8 sm:-left-12 cursor-grab active:cursor-grabbing z-30 select-none group"
               >
-                <div className="px-3.5 py-1.5 bg-[#ef4444] text-white border-2 border-[#18181b] rounded-xl shadow-[3px_3px_0px_#18181b] -rotate-6 flex items-center gap-1.5 text-xs font-black">
+                <div className="relative px-3.5 py-1.5 bg-[#ef4444] text-white border-2 border-[#18181b] rounded-xl shadow-[3px_3px_0px_#18181b] -rotate-6 flex items-center gap-1.5 text-xs font-black overflow-hidden">
                   <Award className="w-3.5 h-3.5 text-yellow-200" />
                   <span>IJCRT Published</span>
+                  {/* Curled Peel Corner */}
+                  <div className="absolute top-0 right-0 w-3.5 h-3.5 overflow-hidden pointer-events-none">
+                    <div className="w-full h-full bg-[#faf7ee] border-b border-l border-[#18181b] shadow-xs group-hover:scale-130 transition-transform origin-top-right" style={{ clipPath: "polygon(100% 0, 0 100%, 100% 100%)" }} />
+                  </div>
                 </div>
               </motion.div>
 
-              {/* DRAGGABLE STICKER 2: 2x Author (Elastic Snap-Back & Float) */}
+              {/* DRAGGABLE STICKER 2: 2x Author (Elastic Snap-Back, Float, & Dog-Ear Peel Corner) */}
               <motion.div
                 drag
                 dragSnapToOrigin
@@ -327,15 +386,19 @@ export default function Hero() {
                 }}
                 whileDrag={{ scale: 1.2, rotate: 0, zIndex: 60 }}
                 whileHover={{ scale: 1.1, rotate: 8 }}
-                className="absolute -top-5 -right-6 sm:-right-8 cursor-grab active:cursor-grabbing z-30 select-none"
+                className="absolute -top-5 -right-6 sm:-right-8 cursor-grab active:cursor-grabbing z-30 select-none group"
               >
-                <div className="px-3.5 py-1.5 bg-[#fde047] text-[#18181b] border-2 border-[#18181b] rounded-xl shadow-[3px_3px_0px_#18181b] rotate-6 flex items-center gap-1.5 text-xs font-black">
+                <div className="relative px-3.5 py-1.5 bg-[#fde047] text-[#18181b] border-2 border-[#18181b] rounded-xl shadow-[3px_3px_0px_#18181b] rotate-6 flex items-center gap-1.5 text-xs font-black overflow-hidden">
                   <BookOpen className="w-3.5 h-3.5 text-[#ef4444]" />
                   <span>2x Author</span>
+                  {/* Curled Peel Corner */}
+                  <div className="absolute top-0 right-0 w-3.5 h-3.5 overflow-hidden pointer-events-none">
+                    <div className="w-full h-full bg-[#faf7ee] border-b border-l border-[#18181b] shadow-xs group-hover:scale-130 transition-transform origin-top-right" style={{ clipPath: "polygon(100% 0, 0 100%, 100% 100%)" }} />
+                  </div>
                 </div>
               </motion.div>
 
-              {/* DRAGGABLE STICKER 3: MIT Mysuru '27 (Elastic Snap-Back & Float) */}
+              {/* DRAGGABLE STICKER 3: MIT Mysuru '27 (Elastic Snap-Back, Float, & Dog-Ear Peel Corner) */}
               <motion.div
                 drag
                 dragSnapToOrigin
@@ -351,15 +414,19 @@ export default function Hero() {
                 }}
                 whileDrag={{ scale: 1.2, rotate: 0, zIndex: 60 }}
                 whileHover={{ scale: 1.1, rotate: -4 }}
-                className="absolute -bottom-7 -left-6 sm:-left-10 cursor-grab active:cursor-grabbing z-30 select-none"
+                className="absolute -bottom-7 -left-6 sm:-left-10 cursor-grab active:cursor-grabbing z-30 select-none group"
               >
-                <div className="px-3.5 py-1.5 bg-[#38bdf8] text-[#18181b] border-2 border-[#18181b] rounded-xl shadow-[3px_3px_0px_#18181b] -rotate-3 flex items-center gap-1.5 text-xs font-black">
+                <div className="relative px-3.5 py-1.5 bg-[#38bdf8] text-[#18181b] border-2 border-[#18181b] rounded-xl shadow-[3px_3px_0px_#18181b] -rotate-3 flex items-center gap-1.5 text-xs font-black overflow-hidden">
                   <GraduationCap className="w-3.5 h-3.5 text-[#18181b]" />
                   <span>MIT Mysuru &apos;27</span>
+                  {/* Curled Peel Corner */}
+                  <div className="absolute top-0 right-0 w-3.5 h-3.5 overflow-hidden pointer-events-none">
+                    <div className="w-full h-full bg-[#faf7ee] border-b border-l border-[#18181b] shadow-xs group-hover:scale-130 transition-transform origin-top-right" style={{ clipPath: "polygon(100% 0, 0 100%, 100% 100%)" }} />
+                  </div>
                 </div>
               </motion.div>
 
-              {/* DRAGGABLE STICKER 4: WizzyBox UI/UX (Elastic Snap-Back & Float) */}
+              {/* DRAGGABLE STICKER 4: WizzyBox UI/UX (Elastic Snap-Back, Float, & Dog-Ear Peel Corner) */}
               <motion.div
                 drag
                 dragSnapToOrigin
@@ -375,11 +442,15 @@ export default function Hero() {
                 }}
                 whileDrag={{ scale: 1.2, rotate: 0, zIndex: 60 }}
                 whileHover={{ scale: 1.1, rotate: 6 }}
-                className="absolute -bottom-6 -right-6 sm:-right-8 cursor-grab active:cursor-grabbing z-30 select-none"
+                className="absolute -bottom-6 -right-6 sm:-right-8 cursor-grab active:cursor-grabbing z-30 select-none group"
               >
-                <div className="px-3.5 py-1.5 bg-[#22c55e] text-white border-2 border-[#18181b] rounded-xl shadow-[3px_3px_0px_#18181b] rotate-4 flex items-center gap-1.5 text-xs font-black">
+                <div className="relative px-3.5 py-1.5 bg-[#22c55e] text-white border-2 border-[#18181b] rounded-xl shadow-[3px_3px_0px_#18181b] rotate-4 flex items-center gap-1.5 text-xs font-black overflow-hidden">
                   <Compass className="w-3.5 h-3.5 text-white" />
                   <span>WizzyBox Intern</span>
+                  {/* Curled Peel Corner */}
+                  <div className="absolute top-0 right-0 w-3.5 h-3.5 overflow-hidden pointer-events-none">
+                    <div className="w-full h-full bg-[#faf7ee] border-b border-l border-[#18181b] shadow-xs group-hover:scale-130 transition-transform origin-top-right" style={{ clipPath: "polygon(100% 0, 0 100%, 100% 100%)" }} />
+                  </div>
                 </div>
               </motion.div>
 

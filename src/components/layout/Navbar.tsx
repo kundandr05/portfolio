@@ -1,23 +1,42 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, FileText } from 'lucide-react';
 import ResumeModal from '@/components/shared/ResumeModal';
 
 const navLinks = [
-  { name: 'Work', href: '/#projects', color: 'hover:bg-[#fde047]' },
-  { name: 'About', href: '/#about', color: 'hover:bg-[#38bdf8]' },
-  { name: 'Research & Books', href: '/#publications', color: 'hover:bg-[#ef4444] hover:text-white' },
-  { name: 'Experience', href: '/#experience', color: 'hover:bg-[#22c55e] hover:text-white' },
-  { name: 'Skills', href: '/#skills', color: 'hover:bg-[#fde047]' },
-  { name: 'Contact', href: '/#contact', color: 'hover:bg-[#38bdf8]' },
+  { id: 'projects', name: 'Work', href: '/#projects', color: 'hover:bg-[#fde047]' },
+  { id: 'about', name: 'About', href: '/#about', color: 'hover:bg-[#38bdf8]' },
+  { id: 'publications', name: 'Research & Books', href: '/#publications', color: 'hover:bg-[#ef4444] hover:text-white' },
+  { id: 'experience', name: 'Experience', href: '/#experience', color: 'hover:bg-[#22c55e] hover:text-white' },
+  { id: 'skills', name: 'Skills', href: '/#skills', color: 'hover:bg-[#fde047]' },
+  { id: 'contact', name: 'Contact', href: '/#contact', color: 'hover:bg-[#38bdf8]' },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('projects');
+
+  useEffect(() => {
+    const sectionIds = ['projects', 'about', 'publications', 'experience', 'skills', 'contact'];
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 220;
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sectionIds[i]);
+        if (el && el.offsetTop <= scrollPosition) {
+          setActiveSection(sectionIds[i]);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <>
@@ -54,22 +73,29 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Nav Items with Tactile Wobble */}
+          {/* Desktop Nav Items with Active Indicator Gliding on Scroll */}
           <div className="hidden md:flex items-center gap-1.5 lg:gap-2">
-            {navLinks.map((link) => (
-              <motion.div
-                key={link.name}
-                whileHover={{ scale: 1.06, rotate: [-1, 1, 0] }}
-                whileTap={{ scale: 0.94 }}
-              >
-                <Link
-                  href={link.href}
-                  className={`px-3 py-1.5 text-xs font-bold text-[#18181b] rounded-lg border border-transparent hover:border-[#18181b] hover:shadow-[2px_2px_0px_#18181b] transition-all block ${link.color}`}
-                >
-                  {link.name}
-                </Link>
-              </motion.div>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.id;
+              return (
+                <div key={link.id} className="relative">
+                  <Link
+                    href={link.href}
+                    className="relative px-3 py-1.5 text-xs font-bold text-[#18181b] rounded-lg transition-colors block z-10 hover:text-[#ef4444]"
+                  >
+                    {link.name}
+                  </Link>
+
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeNavPill"
+                      className="absolute inset-0 bg-[#fde047] border-2 border-[#18181b] rounded-lg shadow-[2px_2px_0px_#18181b] z-0 pointer-events-none"
+                      transition={{ type: "spring", stiffness: 400, damping: 28 }}
+                    />
+                  )}
+                </div>
+              );
+            })}
           </div>
 
           {/* Right Action: Resume & Mobile Hamburger */}

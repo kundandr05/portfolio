@@ -3,9 +3,9 @@
 import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import { ExternalLink, Github, ArrowRight, Sparkles, Cpu } from 'lucide-react';
-import { projects } from '@/data/projects';
+import { projects, Project } from '@/data/projects';
 
 const filterCategories = [
   { id: 'all', label: `All Projects (${projects.length})` },
@@ -17,6 +17,17 @@ const filterCategories = [
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('all');
+  const [hoveredProject, setHoveredProject] = useState<Project | null>(null);
+
+  const mouseX = useMotionValue(-300);
+  const mouseY = useMotionValue(-300);
+  const springX = useSpring(mouseX, { stiffness: 450, damping: 28 });
+  const springY = useSpring(mouseY, { stiffness: 450, damping: 28 });
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    mouseX.set(e.clientX);
+    mouseY.set(e.clientY);
+  };
 
   const filteredProjects = useMemo(() => {
     if (activeFilter === 'all') return projects;
@@ -27,7 +38,50 @@ export default function Projects() {
   const secondary = filteredProjects.filter((p) => p.category !== 'Flagship');
 
   return (
-    <section id="projects" className="py-16 md:py-24 relative">
+    <section id="projects" onMouseMove={handleMouseMove} className="py-16 md:py-24 relative">
+      {/* Floating Screenshot Preview that follows cursor on Desktop */}
+      <AnimatePresence>
+        {hoveredProject && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.75, rotate: -4 }}
+            animate={{ opacity: 1, scale: 1, rotate: 2 }}
+            exit={{ opacity: 0, scale: 0.8, rotate: -2 }}
+            transition={{ type: "spring", stiffness: 350, damping: 25 }}
+            style={{
+              left: springX,
+              top: springY,
+              x: 28,
+              y: -110,
+            }}
+            className="fixed pointer-events-none z-50 hidden md:block w-52 p-2.5 bg-white border-2 border-[#18181b] rounded-xl shadow-[8px_8px_0px_#18181b]"
+          >
+            <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 w-16 h-4 bg-[#fef08a] border border-[#18181b]/30 -rotate-2 z-10 pointer-events-none" />
+            <div className="relative aspect-[16/10] w-full rounded-lg overflow-hidden border border-[#18181b]/20 bg-stone-100 mb-1.5">
+              {hoveredProject.image ? (
+                <Image
+                  src={hoveredProject.image}
+                  alt={hoveredProject.title}
+                  fill
+                  className="object-cover object-top"
+                  sizes="210px"
+                />
+              ) : (
+                <div className="w-full h-full flex flex-col items-center justify-center bg-[#faf7ee] p-2 text-center">
+                  <Cpu className="w-5 h-5 text-[#ef4444] mb-1" />
+                  <span className="text-[10px] font-mono font-bold text-stone-600">Architecture</span>
+                </div>
+              )}
+            </div>
+            <div className="text-xs font-display font-black text-[#18181b] truncate">
+              {hoveredProject.title}
+            </div>
+            <div className="text-[10px] font-mono font-bold text-[#ef4444] uppercase tracking-wider">
+              {hoveredProject.category} · {hoveredProject.date}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Section Header with Highlighter Sweep */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -52,8 +106,13 @@ export default function Projects() {
                 initial={{ backgroundSize: "0% 100%" }}
                 whileInView={{ backgroundSize: "100% 100%" }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-                className="bg-[#fde047] px-2 py-0.5 rounded-md border-2 border-[#18181b] shadow-[2px_2px_0px_#18181b] inline-block -rotate-1"
+                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                style={{
+                  backgroundImage: "linear-gradient(to right, #fde047, #fde047)",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "0% 100%",
+                }}
+                className="px-2 py-0.5 rounded-md border-2 border-[#18181b] shadow-[2px_2px_0px_#18181b] inline-block -rotate-1"
               >
                 real code
               </motion.span>
@@ -96,6 +155,8 @@ export default function Projects() {
             <motion.article
               key={project.slug}
               data-cursor="view"
+              onMouseEnter={() => setHoveredProject(project)}
+              onMouseLeave={() => setHoveredProject(null)}
               initial={{ opacity: 0, y: 50, rotate: initialRotation }}
               whileInView={{ opacity: 1, y: 0, rotate: initialRotation }}
               viewport={{ once: true, margin: "-60px" }}
@@ -201,7 +262,7 @@ export default function Projects() {
                       {project.tags.map((tag) => (
                         <motion.span
                           key={tag}
-                          whileHover={{ scale: 1.1, rotate: [-2, 2, 0], backgroundColor: "#38bdf8" }}
+                          whileHover={{ scale: 1.12, rotate: [-4, 4, -2, 0], backgroundColor: "#38bdf8" }}
                           transition={{ duration: 0.25 }}
                           className="px-2 py-0.5 bg-white border border-[#18181b] rounded-md text-[11px] font-mono font-bold text-[#18181b] shadow-[1px_1px_0px_#18181b] cursor-default"
                         >
@@ -281,6 +342,8 @@ export default function Projects() {
                 <motion.article
                   key={project.slug}
                   data-cursor="view"
+                  onMouseEnter={() => setHoveredProject(project)}
+                  onMouseLeave={() => setHoveredProject(null)}
                   initial={{ opacity: 0, y: 40, rotate: initRot }}
                   whileInView={{ opacity: 1, y: 0, rotate: initRot }}
                   viewport={{ once: true, margin: "-50px" }}
@@ -332,8 +395,9 @@ export default function Projects() {
                       {project.tags.slice(0, 4).map((tag) => (
                         <motion.span
                           key={tag}
-                          whileHover={{ scale: 1.08, rotate: 2 }}
-                          className="px-1.5 py-0.5 bg-[#faf7ee] border border-[#18181b]/40 rounded text-[10px] font-mono text-[#18181b]"
+                          whileHover={{ scale: 1.12, rotate: [-4, 4, -2, 0], backgroundColor: "#38bdf8" }}
+                          transition={{ duration: 0.25 }}
+                          className="px-1.5 py-0.5 bg-[#faf7ee] border border-[#18181b]/40 rounded text-[10px] font-mono font-bold text-[#18181b] cursor-default"
                         >
                           {tag}
                         </motion.span>

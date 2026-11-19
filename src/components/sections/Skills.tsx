@@ -30,8 +30,13 @@ export default function Skills() {
             initial={{ backgroundSize: "0% 100%" }}
             whileInView={{ backgroundSize: "100% 100%" }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-            className="bg-[#fde047] px-2 py-0.5 rounded-md border-2 border-[#18181b] shadow-[2px_2px_0px_#18181b] inline-block -rotate-1"
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            style={{
+              backgroundImage: "linear-gradient(to right, #fde047, #fde047)",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "0% 100%",
+            }}
+            className="px-2 py-0.5 rounded-md border-2 border-[#18181b] shadow-[2px_2px_0px_#18181b] inline-block -rotate-1"
           >
             shipped with
           </motion.span>
@@ -42,8 +47,8 @@ export default function Skills() {
       </motion.div>
 
       {/* MARQUEE TAPE 1: Left to Right with Pause on Hover */}
-      <div className="mb-4 -mx-4 sm:-mx-8 overflow-hidden py-2.5 bg-[#fde047] border-y-2 border-[#18181b] rotate-1 shadow-[3px_3px_0px_#18181b]">
-        <div className="animate-marquee gap-8 font-display font-black text-sm sm:text-base tracking-wide text-[#18181b] select-none">
+      <div className="group mb-4 -mx-4 sm:-mx-8 overflow-hidden py-2.5 bg-[#fde047] border-y-2 border-[#18181b] rotate-1 shadow-[3px_3px_0px_#18181b] cursor-grab">
+        <div className="animate-marquee group-hover:[animation-play-state:paused] gap-8 font-display font-black text-sm sm:text-base tracking-wide text-[#18181b] select-none">
           {[...marqueeRow1, ...marqueeRow1, ...marqueeRow1, ...marqueeRow1].map((item, i) => (
             <span key={i} className="inline-flex items-center gap-6 shrink-0">
               <span>{item}</span>
@@ -54,8 +59,8 @@ export default function Skills() {
       </div>
 
       {/* MARQUEE TAPE 2: Right to Left with Pause on Hover */}
-      <div className="mb-12 -mx-4 sm:-mx-8 overflow-hidden py-2.5 bg-[#38bdf8] border-y-2 border-[#18181b] -rotate-1 shadow-[3px_3px_0px_#18181b]">
-        <div className="animate-marquee-reverse gap-8 font-display font-black text-sm sm:text-base tracking-wide text-[#18181b] select-none">
+      <div className="group mb-12 -mx-4 sm:-mx-8 overflow-hidden py-2.5 bg-[#38bdf8] border-y-2 border-[#18181b] -rotate-1 shadow-[3px_3px_0px_#18181b] cursor-grab">
+        <div className="animate-marquee-reverse group-hover:[animation-play-state:paused] gap-8 font-display font-black text-sm sm:text-base tracking-wide text-[#18181b] select-none">
           {[...marqueeRow2, ...marqueeRow2, ...marqueeRow2, ...marqueeRow2].map((item, i) => (
             <span key={i} className="inline-flex items-center gap-6 shrink-0">
               <span>{item}</span>

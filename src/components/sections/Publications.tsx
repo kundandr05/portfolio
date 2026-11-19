@@ -31,8 +31,13 @@ export default function Publications() {
             initial={{ backgroundSize: "0% 100%" }}
             whileInView={{ backgroundSize: "100% 100%" }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-            className="bg-[#fde047] px-2 py-0.5 rounded-md border-2 border-[#18181b] shadow-[2px_2px_0px_#18181b] inline-block -rotate-1"
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            style={{
+              backgroundImage: "linear-gradient(to right, #fde047, #fde047)",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "0% 100%",
+            }}
+            className="px-2 py-0.5 rounded-md border-2 border-[#18181b] shadow-[2px_2px_0px_#18181b] inline-block -rotate-1"
           >
             papers &amp; books
           </motion.span>

@@ -1,11 +1,18 @@
 "use client";
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import { Briefcase, Calendar, GraduationCap, Compass, FileCheck, ExternalLink } from 'lucide-react';
 import { experiences } from '@/data/experience';
 
 export default function Experience() {
+  const roadmapRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: roadmapRef,
+    offset: ["start 75%", "end 80%"]
+  });
+  const linePathLength = useSpring(scrollYProgress, { stiffness: 240, damping: 28 });
+
   return (
     <section id="experience" className="py-16 md:py-24 relative">
       {/* Section Header with Highlighter Sweep */}
@@ -30,8 +37,13 @@ export default function Experience() {
             initial={{ backgroundSize: "0% 100%" }}
             whileInView={{ backgroundSize: "100% 100%" }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-            className="bg-[#fde047] px-2 py-0.5 rounded-md border-2 border-[#18181b] shadow-[2px_2px_0px_#18181b] inline-block -rotate-1"
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            style={{
+              backgroundImage: "linear-gradient(to right, #fde047, #fde047)",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "0% 100%",
+            }}
+            className="px-2 py-0.5 rounded-md border-2 border-[#18181b] shadow-[2px_2px_0px_#18181b] inline-block -rotate-1"
           >
             education
           </motion.span>
@@ -42,24 +54,18 @@ export default function Experience() {
       </motion.div>
 
       {/* Roadmap Container with Animated Dotted Line and Popping Stops */}
-      <div className="relative pl-6 sm:pl-10 space-y-12 ml-2 sm:ml-4">
+      <div ref={roadmapRef} className="relative pl-6 sm:pl-10 space-y-12 ml-2 sm:ml-4">
         
-        {/* Animated SVG Dotted Line that draws itself */}
+        {/* Animated SVG Dotted Line that draws itself as you scroll */}
         <div className="absolute top-4 bottom-4 left-0 w-2 flex justify-center pointer-events-none">
-          <svg className="w-2 h-full" preserveAspectRatio="none">
-            <motion.line
-              x1="1"
-              y1="0"
-              x2="1"
-              y2="100%"
+          <svg className="w-2 h-full" viewBox="0 0 2 100" preserveAspectRatio="none">
+            <motion.path
+              d="M 1,0 L 1,100"
               stroke="#18181b"
               strokeWidth="2.5"
-              strokeDasharray="8 8"
+              strokeDasharray="4 4"
               strokeLinecap="round"
-              initial={{ pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 1.2, ease: "easeInOut" }}
+              style={{ pathLength: linePathLength }}
             />
           </svg>
         </div>
