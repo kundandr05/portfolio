@@ -1,11 +1,25 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowDownRight, FileText, Github, Linkedin, Mail, Sparkles, BookOpen, GraduationCap, Award, Compass } from 'lucide-react';
 import ResumeModal from '@/components/shared/ResumeModal';
+
+function subscribeReducedMotion(callback: () => void) {
+  const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
+  mql.addEventListener('change', callback);
+  return () => mql.removeEventListener('change', callback);
+}
+
+function getSnapshotReducedMotion() {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+function getServerSnapshotReducedMotion() {
+  return false;
+}
 
 const roles = [
   "AI & ML Engineer",
@@ -76,6 +90,12 @@ const headlineWords = [
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
+  const [isPhotoHovered, setIsPhotoHovered] = useState(false);
+  const prefersReducedMotion = useSyncExternalStore(
+    subscribeReducedMotion,
+    getSnapshotReducedMotion,
+    getServerSnapshotReducedMotion
+  );
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -290,22 +310,82 @@ export default function Hero() {
                   <span className="text-[10px] font-mono text-stone-500 tracking-widest uppercase">KUNDAN // 2026</span>
                 </div>
 
-                {/* Photo Container with Sketch-to-Color Reveal */}
+                {/* Hand-Drawn "hover me ✍️" Doodle Caption (Desktop Only) */}
                 <motion.div
-                  initial={{ filter: "grayscale(100%) contrast(220%) brightness(110%)", scale: 0.96 }}
-                  animate={{ filter: "grayscale(0%) contrast(100%) brightness(100%)", scale: 1 }}
-                  transition={{ duration: 1.6, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="relative w-full h-[85%] rounded-xl overflow-hidden border border-[#18181b]/20 bg-stone-100"
+                  initial={{ opacity: 0, y: -4, rotate: -6 }}
+                  animate={{ opacity: 1, y: 0, rotate: -4 }}
+                  transition={{ delay: 2.2, duration: 0.5 }}
+                  className="hidden md:flex items-center gap-1 absolute -top-8 right-2 text-xs font-handwriting text-stone-600 pointer-events-none select-none z-20"
                 >
-                  <Image
-                    src="/suit-photo.jpg"
-                    alt="Kundan DR"
-                    fill
-                    priority
-                    className="object-cover object-top hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 768px) 300px, 400px"
-                  />
+                  <span>hover me</span>
+                  <span className="text-sm text-[#ef4444]">✍️</span>
                 </motion.div>
+
+                {/* Photo Container: Pencil Sketch Base + Full-Colour Photo Overlay with Wipe */}
+                <div
+                  onMouseEnter={() => setIsPhotoHovered(true)}
+                  onMouseLeave={() => setIsPhotoHovered(false)}
+                  onClick={() => setIsPhotoHovered((prev) => !prev)}
+                  className="relative w-full h-[85%] rounded-xl overflow-hidden border border-[#18181b]/20 bg-[#faf7ee] cursor-pointer group select-none"
+                  title="Hover (or tap) to see the pencil sketch"
+                >
+                  {/* Layer 1: Pencil Sketch (Draws in top-to-bottom on page load) */}
+                  <motion.div
+                    initial={{
+                      clipPath: prefersReducedMotion ? "inset(0% 0% 0% 0%)" : "inset(0% 0% 100% 0%)",
+                      opacity: 0.35,
+                    }}
+                    animate={{
+                      clipPath: "inset(0% 0% 0% 0%)",
+                      opacity: 1,
+                    }}
+                    transition={{
+                      duration: 0.8,
+                      delay: 0.2,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
+                    className="absolute inset-0 w-full h-full"
+                  >
+                    <Image
+                      src="/hero-sketch.webp"
+                      alt="Kundan DR - Pencil Sketch"
+                      fill
+                      priority
+                      className="object-cover object-top"
+                      sizes="(max-width: 768px) 300px, 400px"
+                    />
+                  </motion.div>
+
+                  {/* Layer 2: Full-Colour Photo (Wipes over sketch on load; re-wipes on hover) */}
+                  <motion.div
+                    initial={{
+                      clipPath: prefersReducedMotion ? "circle(150% at 50% 50%)" : "circle(0% at 50% 50%)",
+                      opacity: prefersReducedMotion ? 1 : 0.7,
+                    }}
+                    animate={
+                      prefersReducedMotion
+                        ? { clipPath: "circle(150% at 50% 50%)", opacity: 1 }
+                        : isPhotoHovered
+                        ? { clipPath: "circle(0% at 50% 50%)", opacity: 0 }
+                        : { clipPath: "circle(150% at 50% 50%)", opacity: 1 }
+                    }
+                    transition={
+                      isPhotoHovered
+                        ? { duration: 0.35, ease: "easeInOut" }
+                        : { duration: 1.2, delay: 0.6, ease: [0.16, 1, 0.3, 1] }
+                    }
+                    className="absolute inset-0 w-full h-full z-10"
+                  >
+                    <Image
+                      src="/suit-photo.jpg"
+                      alt="Kundan DR"
+                      fill
+                      priority
+                      className="object-cover object-top hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 768px) 300px, 400px"
+                    />
+                  </motion.div>
+                </div>
 
                 {/* Polaroid Caption Strip with Animated SVG Signature that draws itself */}
                 <div className="pt-2 px-1 flex items-center justify-between text-xs font-handwriting text-stone-700">
