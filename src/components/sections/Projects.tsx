@@ -55,7 +55,9 @@ export default function Projects() {
               x: 28,
               y: -110,
             }}
-            className="fixed pointer-events-none z-50 hidden md:block w-52 p-2.5 bg-white border-2 border-[#18181b] rounded-xl shadow-[8px_8px_0px_#18181b]"
+            onClick={() => router.push(`/projects/${hoveredProject.slug}`)}
+            className="fixed pointer-events-auto cursor-pointer z-50 hidden md:block w-52 p-2.5 bg-white border-2 border-[#18181b] rounded-xl shadow-[8px_8px_0px_#18181b] hover:scale-105 active:scale-95 transition-transform"
+            title={`View ${hoveredProject.title} Case Study`}
           >
             <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 w-16 h-4 bg-[#fef08a] border border-[#18181b]/30 -rotate-2 z-10 pointer-events-none" />
             <div className="relative aspect-[16/10] w-full rounded-lg overflow-hidden border border-[#18181b]/20 bg-stone-100 mb-1.5">
@@ -156,6 +158,7 @@ export default function Projects() {
             <motion.article
               key={project.slug}
               data-cursor="view"
+              data-slug={project.slug}
               onMouseEnter={() => setHoveredProject(project)}
               onMouseLeave={() => setHoveredProject(null)}
               initial={{ opacity: 0, y: 50, rotate: initialRotation }}
@@ -348,6 +351,7 @@ export default function Projects() {
                 <motion.article
                   key={project.slug}
                   data-cursor="view"
+                  data-slug={project.slug}
                   onMouseEnter={() => setHoveredProject(project)}
                   onMouseLeave={() => setHoveredProject(null)}
                   initial={{ opacity: 0, y: 40, rotate: initRot }}
