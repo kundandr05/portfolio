@@ -92,7 +92,7 @@ export default function Skills() {
                 boxShadow: "8px 8px 0px #18181b",
                 transition: { duration: 0.2 },
               }}
-              className="bg-white border-2 border-[#18181b] rounded-2xl p-6 shadow-[5px_5px_0px_#18181b] relative cursor-pointer"
+              className="bg-white border-2 border-[#18181b] rounded-2xl p-6 shadow-[5px_5px_0px_#18181b] relative cursor-default"
             >
               {/* Header */}
               <div className="flex items-start justify-between pb-3 mb-4 border-b border-[#18181b]/15">

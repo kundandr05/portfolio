@@ -29,7 +29,28 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
 
     animationFrameId = requestAnimationFrame(raf);
 
+    // Smooth scroll for anchor clicks (e.g. #projects, /#about, etc.)
+    const handleAnchorClick = (e: MouseEvent) => {
+      const target = (e.target as HTMLElement).closest('a');
+      if (!target) return;
+      const href = target.getAttribute('href');
+      if (href && (href.startsWith('#') || href.startsWith('/#'))) {
+        const hash = href.startsWith('/#') ? href.slice(1) : href;
+        if (hash.length > 1) {
+          const targetEl = document.querySelector(hash);
+          if (targetEl) {
+            e.preventDefault();
+            lenis.scrollTo(targetEl as HTMLElement, { offset: -70 });
+            history.pushState(null, '', href);
+          }
+        }
+      }
+    };
+
+    document.addEventListener('click', handleAnchorClick);
+
     return () => {
+      document.removeEventListener('click', handleAnchorClick);
       cancelAnimationFrame(animationFrameId);
       lenis.destroy();
     };

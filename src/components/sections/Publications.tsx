@@ -69,6 +69,11 @@ export default function Publications() {
                 boxShadow: "8px 8px 0px #18181b",
                 transition: { duration: 0.2 },
               }}
+              onClick={(e) => {
+                const target = e.target as HTMLElement;
+                if (target.closest('a') || target.closest('button')) return;
+                window.open(pub.link, '_blank', 'noopener,noreferrer');
+              }}
               className="bg-white border-2 border-[#18181b] rounded-2xl p-5 shadow-[5px_5px_0px_#18181b] transition-all flex flex-col justify-between relative cursor-pointer"
             >
               {/* Top Washi Tape Corner */}

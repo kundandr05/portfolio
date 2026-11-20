@@ -102,7 +102,7 @@ export default function CustomCursor() {
           scale: isHovered ? 1.05 : 1,
         }}
         transition={{ type: 'spring', damping: 18, stiffness: 350 }}
-        className="rounded-full border-2 border-[#18181b] shadow-[3px_3px_0px_#18181b] flex items-center justify-center text-center overflow-hidden"
+        className="rounded-full border-2 border-[#18181b] shadow-[3px_3px_0px_#18181b] flex items-center justify-center text-center overflow-hidden pointer-events-none select-none"
       >
         {cursorText && (
           <span className="text-[#18181b] font-black text-[12px] tracking-tight leading-none select-none">

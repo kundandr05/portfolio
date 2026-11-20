@@ -26,11 +26,12 @@ export default function ScrollToTop() {
     <AnimatePresence>
       {isVisible && (
         <motion.button
+          type="button"
           initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
           exit={{ opacity: 0, scale: 0.8, rotate: 10 }}
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-40 p-3 bg-[#fde047] text-[#18181b] border-2 border-[#18181b] rounded-2xl shadow-[4px_4px_0px_#18181b] hover:bg-[#ef4444] hover:text-white hover:-translate-y-1 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all"
+          className="fixed bottom-6 right-6 z-40 p-3 bg-[#fde047] text-[#18181b] border-2 border-[#18181b] rounded-2xl shadow-[4px_4px_0px_#18181b] hover:bg-[#ef4444] hover:text-white hover:-translate-y-1 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all cursor-pointer"
           aria-label="Scroll to top"
           title="Back to top"
         >

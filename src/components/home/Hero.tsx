@@ -221,28 +221,22 @@ export default function Hero() {
               transition={{ delay: 0.8, duration: 0.4 }}
               className="flex flex-wrap items-center gap-3 pt-2"
             >
-              <motion.div
-                whileHover={{ scale: 1.04, rotate: [-1, 1, 0] }}
-                whileTap={{ scale: 0.95, x: 2, y: 2 }}
+              <Link
+                href="/#projects"
+                className="btn-scrapbook-primary cursor-pointer hover:-rotate-1 transition-all"
               >
-                <Link
-                  href="/#projects"
-                  className="btn-scrapbook-primary"
-                >
-                  <span>View Selected Work</span>
-                  <ArrowDownRight className="w-4 h-4" />
-                </Link>
-              </motion.div>
+                <span>View Selected Work</span>
+                <ArrowDownRight className="w-4 h-4" />
+              </Link>
 
-              <motion.button
+              <button
+                type="button"
                 onClick={() => setIsResumeModalOpen(true)}
-                whileHover={{ scale: 1.04, rotate: [1, -1, 0] }}
-                whileTap={{ scale: 0.95, x: 2, y: 2 }}
-                className="btn-scrapbook-secondary"
+                className="btn-scrapbook-secondary cursor-pointer hover:rotate-1 transition-all"
               >
                 <FileText className="w-4 h-4 text-[#ef4444]" />
                 <span>Resume (PDF)</span>
-              </motion.button>
+              </button>
 
               {/* Social Stamp Buttons */}
               <div className="flex items-center gap-2 ml-1">

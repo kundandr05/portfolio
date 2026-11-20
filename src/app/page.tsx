@@ -14,49 +14,31 @@ export default function Home() {
     <PageTransition>
       <div className="flex flex-col gap-0 w-full">
         {/* 1. Hero */}
-        <section id="home">
-          <Hero />
-        </section>
+        <Hero />
 
         {/* 2. Selected Work */}
-        <section id="projects">
-          <Projects />
-        </section>
+        <Projects />
 
         {/* 3. About */}
-        <section id="about">
-          <About />
-        </section>
+        <About />
 
         {/* 4. Research and Books */}
-        <section id="publications">
-          <Publications />
-        </section>
+        <Publications />
 
         {/* 5. Experience */}
-        <section id="experience">
-          <Experience />
-        </section>
+        <Experience />
 
         {/* 6. How I Work */}
-        <section id="how-i-work">
-          <HowIWork />
-        </section>
+        <HowIWork />
 
         {/* 7. Skills */}
-        <section id="skills">
-          <Skills />
-        </section>
+        <Skills />
 
         {/* 8. Certifications */}
-        <section id="courses">
-          <Courses />
-        </section>
+        <Courses />
 
         {/* 9. Contact */}
-        <section id="contact">
-          <Contact />
-        </section>
+        <Contact />
       </div>
     </PageTransition>
   );

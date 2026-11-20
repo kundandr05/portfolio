@@ -187,7 +187,7 @@ export default function About() {
             viewport={{ once: true, margin: "-60px" }}
             transition={{ type: "spring", stiffness: 280, damping: 20, delay: 0.2 }}
             whileHover={{ rotate: 0, y: -4 }}
-            className="bg-white border-2 border-[#18181b] rounded-2xl p-4 shadow-[6px_6px_0px_#18181b] relative cursor-pointer"
+            className="bg-white border-2 border-[#18181b] rounded-2xl p-4 shadow-[6px_6px_0px_#18181b] relative cursor-default"
           >
             <div className="absolute -top-3 right-8 w-20 h-5 bg-[#fed7aa] border border-[#18181b]/30 -rotate-3 z-20 pointer-events-none shadow-xs" />
 

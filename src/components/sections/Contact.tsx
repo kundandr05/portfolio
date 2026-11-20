@@ -120,11 +120,10 @@ export default function Contact() {
                   kundandr05@gmail.com
                 </a>
 
-                <motion.button
+                <button
+                  type="button"
                   onClick={copyEmail}
-                  whileHover={{ scale: 1.06, rotate: [-1, 1, 0] }}
-                  whileTap={{ scale: 0.94, x: 2, y: 2 }}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-[#fde047] text-[#18181b] border-2 border-[#18181b] rounded-xl text-xs font-bold shadow-[2px_2px_0px_#18181b] shrink-0"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-[#fde047] text-[#18181b] border-2 border-[#18181b] rounded-xl text-xs font-bold shadow-[2px_2px_0px_#18181b] hover:-translate-y-0.5 active:translate-x-0.5 active:translate-y-0.5 active:shadow-[1px_1px_0px_#18181b] transition-all shrink-0 cursor-pointer"
                 >
                   {copied ? (
                     <>
@@ -137,7 +136,7 @@ export default function Contact() {
                       <span>Copy Email</span>
                     </>
                   )}
-                </motion.button>
+                </button>
               </motion.div>
             </div>
 

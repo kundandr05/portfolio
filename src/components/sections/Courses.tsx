@@ -68,7 +68,7 @@ export default function Courses() {
                 boxShadow: "7px 7px 0px #18181b",
                 transition: { duration: 0.2 },
               }}
-              className="bg-white border-2 border-[#18181b] rounded-2xl p-5 shadow-[4px_4px_0px_#18181b] transition-all flex flex-col justify-between cursor-pointer"
+              className="bg-white border-2 border-[#18181b] rounded-2xl p-5 shadow-[4px_4px_0px_#18181b] transition-all flex flex-col justify-between cursor-default"
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-2">

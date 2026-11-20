@@ -100,27 +100,25 @@ export default function Navbar() {
 
           {/* Right Action: Resume & Mobile Hamburger */}
           <div className="flex items-center gap-2 sm:gap-3">
-            <motion.button
+            <button
+              type="button"
               onClick={() => setIsResumeOpen(true)}
-              whileHover={{ scale: 1.06, rotate: [1, -1, 0] }}
-              whileTap={{ scale: 0.94, x: 1, y: 1 }}
-              className="inline-flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 text-xs font-extrabold text-[#18181b] bg-[#fde047] border-2 border-[#18181b] rounded-xl shadow-[3px_3px_0px_#18181b] transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 text-xs font-extrabold text-[#18181b] bg-[#fde047] border-2 border-[#18181b] rounded-xl shadow-[3px_3px_0px_#18181b] hover:-translate-y-0.5 hover:rotate-1 active:translate-x-0.5 active:translate-y-0.5 active:shadow-[1px_1px_0px_#18181b] transition-all cursor-pointer"
             >
               <FileText className="w-3.5 h-3.5 text-[#18181b]" />
               <span>Resume</span>
-            </motion.button>
+            </button>
 
             {/* Mobile Hamburger Button */}
-            <motion.button
+            <button
+              type="button"
               onClick={() => setIsOpen(!isOpen)}
-              whileHover={{ scale: 1.08 }}
-              whileTap={{ scale: 0.92 }}
-              className="md:hidden p-2 text-[#18181b] bg-white border-2 border-[#18181b] rounded-xl shadow-[2px_2px_0px_#18181b] hover:bg-[#fde047] transition-colors"
+              className="md:hidden p-2 text-[#18181b] bg-white border-2 border-[#18181b] rounded-xl shadow-[2px_2px_0px_#18181b] hover:bg-[#fde047] hover:scale-105 active:scale-95 transition-all cursor-pointer"
               aria-label="Toggle navigation menu"
               aria-expanded={isOpen}
             >
               {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </motion.button>
+            </button>
           </div>
         </motion.nav>
 

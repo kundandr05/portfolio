@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import { ExternalLink, Github, ArrowRight, Sparkles, Cpu } from 'lucide-react';
 import { projects, Project } from '@/data/projects';
@@ -16,6 +17,7 @@ const filterCategories = [
 ];
 
 export default function Projects() {
+  const router = useRouter();
   const [activeFilter, setActiveFilter] = useState('all');
   const [hoveredProject, setHoveredProject] = useState<Project | null>(null);
 
@@ -130,19 +132,18 @@ export default function Projects() {
         {/* Filter Pills with Tactile Wobble */}
         <div className="flex flex-wrap gap-2 mt-6">
           {filterCategories.map((cat) => (
-            <motion.button
+            <button
+              type="button"
               key={cat.id}
               onClick={() => setActiveFilter(cat.id)}
-              whileHover={{ scale: 1.04, rotate: [-1, 1, 0] }}
-              whileTap={{ scale: 0.95, x: 1, y: 1 }}
-              className={`px-3.5 py-1.5 text-xs font-bold rounded-xl border-2 border-[#18181b] transition-colors ${
+              className={`px-3.5 py-1.5 text-xs font-bold rounded-xl border-2 border-[#18181b] transition-all cursor-pointer hover:-translate-y-0.5 active:translate-x-0.5 active:translate-y-0.5 ${
                 activeFilter === cat.id
                   ? 'bg-[#18181b] text-white shadow-[2px_2px_0px_#ef4444]'
                   : 'bg-white text-[#18181b] shadow-[2px_2px_0px_#18181b] hover:bg-[#fde047]'
               }`}
             >
               {cat.label}
-            </motion.button>
+            </button>
           ))}
         </div>
       </motion.div>
@@ -171,6 +172,11 @@ export default function Projects() {
                 rotate: 0,
                 boxShadow: "10px 10px 0px #18181b",
                 transition: { duration: 0.2 },
+              }}
+              onClick={(e) => {
+                const target = e.target as HTMLElement;
+                if (target.closest('a') || target.closest('button')) return;
+                router.push(`/projects/${project.slug}`);
               }}
               className="group bg-white border-2 border-[#18181b] rounded-2xl p-6 sm:p-8 shadow-[6px_6px_0px_#18181b] relative cursor-pointer"
             >
@@ -358,6 +364,11 @@ export default function Projects() {
                     rotate: 0,
                     boxShadow: "7px 7px 0px #18181b",
                     transition: { duration: 0.2 },
+                  }}
+                  onClick={(e) => {
+                    const target = e.target as HTMLElement;
+                    if (target.closest('a') || target.closest('button')) return;
+                    router.push(`/projects/${project.slug}`);
                   }}
                   className="bg-white border-2 border-[#18181b] rounded-2xl p-5 shadow-[4px_4px_0px_#18181b] flex flex-col justify-between group cursor-pointer"
                 >

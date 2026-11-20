@@ -97,8 +97,9 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                   <span>Download</span>
                 </a>
                 <button
+                  type="button"
                   onClick={onClose}
-                  className="p-1.5 text-[#18181b] bg-white border-2 border-[#18181b] rounded-lg shadow-[2px_2px_0px_#18181b] hover:bg-[#ef4444] hover:text-white transition-colors"
+                  className="p-1.5 text-[#18181b] bg-white border-2 border-[#18181b] rounded-lg shadow-[2px_2px_0px_#18181b] hover:bg-[#ef4444] hover:text-white transition-colors cursor-pointer"
                   aria-label="Close modal"
                 >
                   <X className="w-5 h-5" />
